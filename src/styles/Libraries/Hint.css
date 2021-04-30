@@ -1,0 +1,194 @@
+[class*="lib-hint-"] {
+  --lib-hint-bg: var(--color-dark);
+  --lib-hint-fg: var(--color-light);
+  position: relative;
+
+  &.lib-hint-light {
+    --lib-hint-bg: var(--color-light);
+    --lib-hint-fg: var(--color-dark);
+  }
+
+  &.lib-hint-error {
+    --lib-hint-bg: var(--color-error);
+  }
+
+  &.lib-hint-warning {
+    --lib-hint-bg: var(--color-warning);
+  }
+
+  &.lib-hint-info {
+    --lib-hint-bg: var(--color-info);
+  }
+
+  &.lib-hint-success {
+    --lib-hint-bg: var(--color-success);
+  }
+
+  &:before, &:after {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    z-index: var(--z-10);
+    pointer-events: none;
+    transition: var(--transition) ease;
+    transition-delay: 0ms;
+    will-change: transform;
+    backface-visibility: hidden;
+
+    @nest :hover& {
+      visibility: visible;
+      opacity: 1;
+      transition-delay: 100ms;
+    }
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    background-color: transparent;
+    border: 0.375rem solid transparent;
+    z-index: var(--z-20);
+
+    @nest [class*="lib-hint-top"]& {
+      border-top-color: rgb(var(--lib-hint-bg));
+    }
+
+    @nest [class*="lib-hint-bottom"]& {
+      border-bottom-color: rgb(var(--lib-hint-bg));
+    }
+
+    @nest [class*="lib-hint-left"]& {
+      border-left-color: rgb(var(--lib-hint-bg));
+    }
+
+    @nest [class*="lib-hint-right"]& {
+      border-right-color: rgb(var(--lib-hint-bg));
+    }
+  }
+
+  &:after {
+    border-radius: var(--radius);
+    background-color: rgb(var(--lib-hint-bg));
+    color: rgb(var(--lib-hint-fg));
+    padding: 0.75rem;
+    font-size: 0.875rem;
+    font-family: inherit;
+    line-height: 0.875rem;
+    white-space: nowrap;
+    box-shadow: 0.25rem 0.25rem 0.5rem rgba(var(--lib-hint-bg), 0.15);
+
+    @nest .lib-hint-light& {
+      box-shadow: 0.25rem 0.25rem 0.5rem rgba(var(--color-dark), 0.15);
+    }
+
+    @nest [aria-label]& {
+      content: attr(aria-label);
+    }
+
+    @nest .lib-hint-sm&, .lib-hint-md&, .lib-hint-lg& {
+      white-space: normal;
+      line-height: 1.5;
+      word-wrap: break-word;
+    }
+
+    @nest .lib-hint-sm& {
+      width: 5rem;
+    }
+
+    @nest .lib-hint-md& {
+      width: 10rem;
+    }
+
+    @nest .lib-hint-lg& {
+      width: 15rem;
+    }
+  }
+
+  &.lib-hint-top {
+    &:before, &:after {
+      bottom: 100%;
+      left: 50%;
+    }
+
+    &:before {
+      left: calc(50% - 0.375rem);
+      margin-bottom: -0.6875rem;
+
+      @nest :hover& {
+        transform: translateY(-0.5rem);
+      }
+    }
+
+    &:after {
+      transform: translateX(-50%);
+
+      @nest :hover& {
+        transform: translateX(-50%) translateY(-0.5rem);
+      }
+    }
+  }
+
+  &.lib-hint-bottom {
+    &:before, &:after {
+      top: 100%;
+      left: 50%;
+    }
+
+    &:before {
+      left: calc(50% - 0.375rem);
+      margin-top: -0.6875rem;
+
+      @nest :hover& {
+        transform: translateY(0.5rem);
+      }
+    }
+
+    &:after {
+      transform: translateX(-50%);
+
+      @nest :hover& {
+        transform: translateX(-50%) translateY(0.5rem);
+      }
+    }
+  }
+
+  &.lib-hint-right {
+    &:before, &:after {
+      left: 100%;
+      bottom: 50%;
+
+      @nest :hover& {
+        transform: translateX(0.5rem);
+      }
+    }
+
+    &:before {
+      margin-left: -0.6875rem;
+      margin-bottom: -0.375rem;
+    }
+
+    &:after {
+      margin-bottom: -1.1875rem;
+    }
+  }
+
+  &.lib-hint-left {
+    &:before, &:after {
+      right: 100%;
+      bottom: 50%;
+
+      @nest :hover& {
+        transform: translateX(-0.5rem);
+      }
+    }
+
+    &:before {
+      margin-right: -0.6875rem;
+      margin-bottom: -0.375rem;
+    }
+
+    &:after {
+      margin-bottom: -1.1875rem;
+    }
+  }
+}

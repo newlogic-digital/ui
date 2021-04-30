@@ -1,0 +1,34 @@
+{
+  "name": "@newlogic-digital/ui",
+  "version": "3.0.0",
+  "type": "module",
+  "main": "gulpfile.js",
+  "author": "New Logic Studio s.r.o.",
+  "description": "Modern and modular CSS framework with the best principles",
+  "license": "GNU GPLv3",
+  "imports": {},
+  "dependencies": {
+    "@simonwep/pickr": "^1.8.0",
+    "cleave.js": "^1.6.0",
+    "stimulus": "2.0.0",
+    "swup": "2.0.14",
+    "vanillajs-datepicker": "^1.1.4"
+  },
+  "devDependencies": {
+    "@newlogic-digital/core": "^0.2.5",
+    "postcss-mixins": "^7.0.3"
+  },
+  "files": [
+    "src",
+    "gulpfile.js"
+  ],
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=7.10.0",
+    "yarn": ">=2.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/newlogic-digital/ui.git"
+  }
+}

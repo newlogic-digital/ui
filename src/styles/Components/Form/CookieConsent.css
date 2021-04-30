@@ -1,0 +1,36 @@
+.c-form-cookieconsent {
+  & .wrp_form_head {
+    margin-bottom: 1.5rem;
+
+    & .ui-heading {
+      & span {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  & .wrp_form_body {
+    display: flex;
+    flex-direction: row;
+    margin: 1.5rem 0 1.75rem;
+
+    @media (--media-400) {
+      flex-direction: column;
+    }
+
+    & .ui-radio {
+      &:not(:last-of-type) {
+        margin-right: 1rem;
+
+        @media (--media-400) {
+          margin-right: auto;
+          margin-bottom: 0.75rem;
+        }
+      }
+    }
+  }
+
+  & .wrp_form_foot {
+    margin-top: 1rem;
+  }
+}

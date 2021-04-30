@@ -1,0 +1,19 @@
+[data-controller="lib-tabs"] {
+  & [data-lib-tabs-nav] {
+    & [data-lib-tabs-item][data-state="active"] {
+      cursor: default;
+    }
+  }
+
+  & [data-lib-tabs-area] {
+    & > [data-lib-tabs-item] {
+      animation: 0.3s ease 0s backwards 1 fadeOut;
+      display: none;
+
+      &[data-state="active"] {
+        animation: 0.3s ease 0s backwards 1 fadeIn;
+        display: block;
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{% for url in assets.css.all %}
+    <link rel="stylesheet" href="{{ url|asset }}">
+{% endfor %}
+
+{% if assets.fonts.inline %}
+    <style>
+        {% for url in webfont(assets.fonts) %}
+            {{ fetch (outputPath ~ url|asset) }}
+        {% endfor %}
+    </style>
+{% else %}
+    {% for url in webfont(assets.fonts) %}
+        <link rel="stylesheet" href="{{ url|asset }}" >
+    {% endfor %}
+{% endif %}
+
+{% if preload %}
+    <style data-loadcss>
+        {{ fetch (outputPath ~ assets.css.preload|asset) }}
+    </style>
+{% endif %}

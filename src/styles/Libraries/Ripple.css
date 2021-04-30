@@ -1,0 +1,26 @@
+[data-lib-ripple] {
+  position: relative;
+  user-select: none;
+}
+
+.lib-ripple-inner {
+  position: absolute;
+  background: rgb(var(--color-background));
+  border-radius: 50%;
+  transform: scale(0);
+  opacity: 0.4;
+  animation-duration: 1s;
+  pointer-events: none;
+
+  @nest body > & {
+    position: fixed;
+  }
+
+  @nest html.ie & {
+    z-index: -1;
+  }
+
+  &.animation {
+    animation-name: ripple;
+  }
+}

@@ -1,0 +1,24 @@
+@layer utilities {
+  @variants responsive {
+    .before-content {
+      content: attr(data-content);
+    }
+
+    .after-content {
+
+      content: attr(data-content);
+    }
+
+    .before-none {
+      &:after {
+        content: none;
+      }
+    }
+
+    .after-none {
+      &:after {
+        content: none;
+      }
+    }
+  }
+}

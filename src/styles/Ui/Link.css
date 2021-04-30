@@ -1,0 +1,34 @@
+.ui-link {
+  --ui-link-size: 0.875rem;
+  --ui-link-weight: var(--font-medium);
+  --ui-link-hover-opacity: 0.8;
+  --ui-link-underline-opacity: 0.5;
+
+  display: inline-flex;
+  align-self: flex-start;
+  cursor: pointer;
+  font-size: var(--ui-link-size);
+  font-weight: var(--ui-link-weight);
+  transition: var(--transition-opacity);
+  position: relative;
+  white-space: nowrap;
+
+  @nest .no-touch &:hover {
+    opacity: var(--ui-link-hover-opacity);
+  }
+
+  &:after {
+    content: "";
+    border-bottom: 1px solid currentColor;
+    opacity: 0;
+    position: absolute;
+    inset: auto 0 0 0;
+    transition: var(--transition-opacity), var(--transition-transform);
+    transform: translateY(-0.25rem);
+
+    @nest .no-touch :hover:not([href^="tel:"]):not([href^="mailto:"])& {
+      transform: none;
+      opacity: var(--ui-link-underline-opacity);
+    }
+  }
+}

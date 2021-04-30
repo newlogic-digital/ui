@@ -1,0 +1,14 @@
+.ui-icon {
+  display: inline-flex;
+  font-size: 1.25rem;
+
+  &[class*="icon-"], & [class*="icon-"] {
+    &:before {
+      transition: var(--transition-opacity);
+
+      @nest .no-touch [href]:hover&, .no-touch button:hover& {
+        opacity: 0.8;
+      }
+    }
+  }
+}

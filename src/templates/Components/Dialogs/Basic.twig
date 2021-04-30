@@ -1,0 +1,20 @@
+<div class="c-dialog c-dialog-basic" data-size="sm" data-type="scrollable">
+    <form class="wrp_dialog">
+        <button class="elm_dialog_close icon-close" type="button" data-action="click->lib-dialog#hide"></button>
+        <div class="wrp_dialog_head">
+            <h2 class="ui-heading">Info</h2>
+        </div>
+        <div class="wrp_dialog_body py-4">
+            <div class="ui-wsw">
+                {% for i in 1..44 %}
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget efficitur metus. In bibendum nisi et dui sagittis efficitur.</p>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="wrp_dialog_foot">
+            <div class="col m:col-12">
+                <button class="ui-btn" type="button" data-action="click->lib-dialog#hide"><span>Pokračovat</span></button>
+            </div>
+        </div>
+    </form>
+</div>

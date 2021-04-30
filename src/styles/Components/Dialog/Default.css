@@ -1,0 +1,81 @@
+.c-dialog {
+  --c-dialog-py: 1rem;
+  --c-dialog-px: 1.5rem;
+  --c-dialog-offset-y: 2rem;
+  animation: 0.3s ease 0s backwards 1 fadeInDown;
+  position: relative;
+  z-index: var(--z-30);
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  pointer-events: none;
+  min-height: 100%;
+  align-self: baseline;
+  border-top: var(--c-dialog-offset-y) solid transparent;
+  border-bottom: var(--c-dialog-offset-y) solid transparent;
+  width: calc(100% - 2rem);
+
+  @nest [data-state*="hiding"] & {
+    animation: 0.3s ease 0s forwards 1 fadeOutUp;
+  }
+
+  @media (--media-min-768) {
+    --c-dialog-offset-y: 4rem;
+    width: 100%;
+    min-width: 18.75rem;
+    max-width: 40rem;
+  }
+
+  &[data-size="sm"] {
+    max-width: 31.25rem;
+  }
+
+  &[data-size="base"] {
+    max-width: none;
+    width: auto;
+  }
+
+  &[data-size="lg"] {
+    max-width: 80rem;
+  }
+
+  &[data-type="scrollable"] {
+    height: 100%;
+
+    & .wrp_dialog_body {
+      flex: 1 1 auto;
+      overflow: auto;
+      margin: var(--c-dialog-py) calc(var(--c-dialog-px) * -1);
+      padding: 0 var(--c-dialog-px);
+      overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+
+  & .wrp_dialog {
+    position: relative;
+    background-color: rgb(var(--color-background));
+    pointer-events: auto;
+    border-radius: var(--radius);
+    padding: var(--c-dialog-py) var(--c-dialog-px);
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+
+    @media (--media-min-768) {
+      --c-dialog-py: 1.25rem;
+    }
+  }
+
+  & .elm_dialog_close {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    transition: var(--transition-opacity);
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}

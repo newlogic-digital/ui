@@ -1,0 +1,10 @@
+.ui-title {
+  display: block;
+  line-height: 1.15;
+  font-size: 0.875rem;
+  font-weight: var(--font-semibold);
+
+  &[class*="uppercase"] {
+    letter-spacing: 0.05rem;
+  }
+}

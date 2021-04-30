@@ -1,0 +1,259 @@
+.ui-wsw {
+  --ui-wsw-size: 0.9375rem;
+  --ui-wsw-weight: var(--font-normal);
+  --ui-wsw-weight-bold: var(--font-semibold);
+  --ui-wsw-marker-color: var(--color-primary);
+  --ui-wsw-link-color: var(--color-primary);
+  font-weight: var(--ui-wsw-weight);
+  font-size: var(--ui-wsw-size);
+  line-height: 1.75;
+
+  & a {
+    text-decoration: underline;
+    transition: var(--transition-opacity);
+
+    &:not([class*="text-"]) {
+      color: rgb(var(--ui-wsw-link-color));
+
+      @nest .no-touch &[href]:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+
+  & b, & strong {
+    font-weight: var(--ui-wsw-weight-bold);
+  }
+
+  & i, & em {
+    display: inline;
+    font-style: italic;
+  }
+
+  & figure {
+    margin: 1rem 0;
+
+    @media (--media-min-768) {
+      margin: 2rem 0;
+    }
+
+    & figcaption {
+      font-size: 0.875rem;
+      font-weight: var(--font-semibold);
+      margin-top: 0.875rem;
+    }
+  }
+
+  & img {
+    max-width: 100%;
+    height: auto !important;
+
+    @media (--media-400) {
+      display: block;
+      float: none !important;
+    }
+
+    @media (--media-min-768) {
+      &[style*="right"], &.float-right {
+        margin: 0 0 2rem 4rem;
+      }
+
+      &[style="left"], &.float-left {
+        margin: 0 2rem 4rem 0;
+      }
+    }
+  }
+
+  & p {
+    line-height: inherit;
+    margin: 0;
+
+    &:empty {
+      line-height: 1rem;
+    }
+
+    &:after {
+      content: "\00a0";
+    }
+  }
+
+  & hr {
+    margin: 1.125rem 0;
+  }
+
+  & h1, & h2, & h3, & h4, & h5, & h6 {
+    font-weight: var(--ui-wsw-weight-bold);
+    font-family: var(--font-secondary);
+    line-height: 1.15;
+    margin: 0 0 1.125rem;
+  }
+
+  & h1 {
+    font-size: 2rem;
+  }
+
+  & h2 {
+    font-size: 1.5rem;
+  }
+
+  & h3 {
+    font-size: 1.125rem;
+  }
+
+  & h4 {
+    font-size: 1.125rem;
+  }
+
+  & h5 {
+    font-size: 1rem;
+  }
+
+  & h6 {
+    font-size: 1rem;
+  }
+
+  & table {
+    border: 0;
+
+    @media (--media-400) {
+      min-width: 100%;
+    }
+
+    & td, & th {
+      padding: 1rem 1.125rem;
+      text-align: left;
+    }
+
+    & thead {
+      font-weight: var(--ui-wsw-weight-bold);
+      border-bottom: 1px solid rgb(var(--color-background-200));
+    }
+
+    & tbody {
+      & tr {
+        &:nth-of-type(even) {
+          background-color: rgb(var(--color-background-100));
+        }
+      }
+    }
+  }
+
+  & iframe {
+    max-width: 100%;
+  }
+
+  & blockquote {
+    background-color: rgb(var(--color-background-100));
+    border-left: 0.3125rem solid rgb(var(--color-background-200));
+    padding: 1.25em 1.5em;
+    margin: 0;
+    font-size: inherit;
+  }
+
+  & code {
+    margin: 0;
+    border-radius: var(--radius);
+    padding: .25rem .5rem;
+    font-size: .85em;
+    color: #476582;
+    font-family: source-code-pro,Menlo,Monaco,Consolas,"Courier New",monospace;
+    background-color: rgba(27, 31, 35, .05);
+
+    @nest .dark & {
+      background-color: rgb(var(--color-background-100));
+      color: #da1039;
+    }
+  }
+
+  & ul {
+    list-style-type: none !important;
+    margin: 0;
+    padding: 0;
+
+    & li {
+      position: relative;
+      line-height: inherit;
+      padding-left: 1.5rem;
+
+      &:not(:last-of-type) {
+        margin: 0 0 0.5rem;
+      }
+
+      &:before {
+        width: 0.25rem;
+        height: 0.25rem;
+        position: absolute;
+        content: "";
+        border: 1px solid rgb(var(--ui-wsw-marker-color));
+        background-color: rgb(var(--ui-wsw-marker-color));
+        left: 0;
+        top: 0.625rem;
+        text-indent: 0;
+      }
+    }
+
+    &, &[style*="disc"] {
+      & li {
+        &:before {
+          border-radius: 50%;
+        }
+      }
+    }
+
+    &[style*="square"] {
+      & li {
+        &:before {
+          border-radius: 0;
+        }
+      }
+    }
+
+    &[style*="circle"] {
+      & li {
+        &:before {
+          border-radius: 50%;
+          background-color: transparent;
+        }
+      }
+    }
+  }
+
+  & ol {
+    margin: 0;
+    padding: 0 0 0 1rem;
+
+    & li {
+      padding-left: 0.5rem;
+
+      &::marker {
+        color: rgb(var(--ui-wsw-marker-color));
+      }
+    }
+  }
+
+  & .elm_wsw_table {
+    display: block;
+
+    @media (--media-400) {
+      max-width: 100%;
+      overflow: auto;
+    }
+  }
+
+  & .elm_wsw_video {
+    aspect-ratio: 16/9;
+    position: relative;
+
+    &:before {
+      content: "";
+      display: block;
+    }
+
+    & iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

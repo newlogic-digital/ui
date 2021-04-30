@@ -1,0 +1,188 @@
+.ui-select {
+  --ui-select-height: 3rem;
+  --ui-select-py: 0.25rem;
+  --ui-select-px: 1rem;
+  --ui-select-size: 0.875rem;
+  --ui-select-weight: var(--font-medium);
+  --ui-select-border-color: var(--color-default);
+  --ui-select-border-opacity: 0.15;
+
+  position: relative;
+  display: block;
+  font-size: var(--ui-select-size);
+  cursor: pointer;
+
+  &:after {
+    @mixin iconfont;
+    position: absolute;
+    z-index: 1;
+    font-size: 1.5rem;
+    right: 0.75rem;
+    top: 50%;
+    margin-top: -0.75rem;
+    will-change: transform;
+    transition: transform 200ms;
+    content: var(--icon-angle-down);
+    pointer-events: none;
+
+    @nest [data-state*="invalid"]& {
+      color: rgb(var(--color-error));
+    }
+
+    @nest [data-state*="focus"]& {
+      @nest .no-touch & {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  & select {
+    width: 100%;
+    transition: var(--transition-border);
+    box-shadow: none;
+    line-height: normal;
+    background-color: transparent;
+    font-size: inherit;
+    height: var(--ui-select-height);
+    font-weight: var(--ui-select-weight);
+    border-radius: var(--radius);
+    padding: calc(var(--ui-select-height) / 2.5) var(--ui-select-px) var(--ui-select-py);
+    color: inherit;
+    border: 1px solid rgba(var(--ui-select-border-color), var(--ui-select-border-opacity));
+    position: relative;
+    z-index: 1;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    @nest :not([data-state*="placeholder"])& {
+      &[data-placeholder] {
+        padding-top: var(--ui-select-py);
+      }
+    }
+
+    &[disabled] {
+      cursor: default;
+      background-color: rgb(var(--color-background-100));
+    }
+
+    @nest [tabindex]& {
+      pointer-events: none;
+    }
+
+    @nest [data-state*="focus"]& {
+      border-color: rgba(var(--color-default), calc(var(--ui-select-border-opacity) * 2));
+      border-bottom-color: rgba(var(--color-default), var(--ui-select-border-opacity));
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    @nest [data-state*="invalid"]& {
+      border-color: rgb(var(--color-error));
+    }
+
+    &:focus {
+      outline: 0;
+    }
+
+    &:-moz-focusring {
+      color: transparent;
+      text-shadow: 0 0 0 #000;
+    }
+
+    &:not([data-placeholder]) {
+      @nest :not([data-state*="active"])& {
+        font-size: 0;
+      }
+    }
+  }
+
+  & option {
+    font-size: var(--ui-select-size);
+
+    &:not(:checked) {
+      color: inherit;
+    }
+
+    &[disabled] {
+      opacity: 0.5;
+    }
+  }
+
+  &[data-state*="active"] {
+    & label {
+      transform: translateY(calc(var(--ui-select-size) / 1.4  * -1)) scale(0.8);
+    }
+  }
+
+  & label {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+    transition: transform .4s cubic-bezier(.25, .8, .25, 1), var(--transition-color);
+    transform-origin: 0 50%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    transform: perspective(100px);
+    will-change: transform;
+    font-weight: var(--ui-select-weight);
+    left: var(--ui-select-px);
+    right: var(--ui-select-px);
+    top: calc(var(--ui-select-height) / 2);
+    line-height: var(--ui-select-size);
+    margin-top: calc(var(--ui-select-size) / 2  * -1);
+
+    @nest html.ie & {
+      display: none;
+    }
+  }
+
+  & > div {
+    border-radius: var(--radius);
+    position: absolute;
+    background-color: rgb(var(--color-background));
+    z-index: 10;
+    left: 0;
+    right: 0;
+    top: 100%;
+    border: 1px solid rgba(var(--color-default), 0.3);
+    border-top: 0;
+    transform: scaleY(0);
+    opacity: 0;
+    transition: var(--transition-opacity), var(--transition-transform);
+    transform-origin: center top;
+    user-select: none;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+
+    @nest [data-state*="focus"]& {
+      opacity: 1;
+      transform: none;
+    }
+
+    & [data-option] {
+      padding: var(--ui-select-px);
+      cursor: pointer;
+      transition: var(--transition-background);
+      font-size: var(--ui-select-size);
+
+      @nest .no-touch &:hover, &:focus {
+        background-color: rgba(var(--color-default), 0.05);
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 0 \0) and (min-resolution: +72dpi) {
+  .ui-select:after {
+    content: "";
+  }
+
+  select {
+    padding: 0.5rem !important;
+    min-width: 4rem;
+  }
+}

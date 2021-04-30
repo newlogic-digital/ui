@@ -1,0 +1,231 @@
+v2.6.0
+* Added: newlogic-core as new core compiler toolstack, for install use npm i
+* Improved: hbs helpers have new syntax and are inherited from newlogic-core
+* Improved: directory and naming full restructure
+* Improved: renamed core.{css,less,js} to main.{css,less,js}
+
+v2.5.0
+* Added: es modules modern javascript
+* Added: importmaps cdn for javascript
+* Added: rollup for js build
+* Added: legacy es5 build for javascript
+* Added: new serve server
+* Added: ability to serve javascript without build
+* Added: new task fro installing cms
+* Added: import folder resolution for js and less
+* Added: purgecss updated to version 4
+* Improved: gulpfile rewritten to es6 imports
+* Improved: directory basic restructure
+* Improved: caching modifiers build
+* Removed: install.bat and install-cms.bat - use yarn install and gulp cms:install in the future
+* Removed: importScript extended functionality - use es6 dynamic imports in the future
+
+v2.4.3
+* Added: stimulus version 2.0, stimulus helpers getValue, setValue, hasValue, getCLass, getTarget, getTargetAll, hasTarget, getController
+* Added: updated all dependencies and libraries
+* Improved: form validation
+* Improved: swup target blank
+* Improved: smarty cms import
+
+v2.4.2
+* Added: form elements - datepicker, datetimepicker, colorpicker
+* Added: inView function for loading elements in view
+* Added: email zipping, email copy www files to templates
+* Added: gitlab ci 20.04 version
+* Improved: default email template
+* Improved: docs loading of components
+* Improved: fetch handler improvements
+* Improved: anchor links
+* Improved: docs for stimulus
+* Improved: cookies notice on mobile
+* Improved: styles and scripts build times
+* Fixed: exclude purgecss for wsw styles
+* Fixed: drawer closing bug
+* Fixed: smarty templates were rewriting existing files
+* Fixed: swup replace state bug
+
+v2.4.1
+* Added: native slider library
+* Added: fetch snippet library
+* Added: cookieconsent library
+* Added: new text--size modifiers
+* Added: polyfills for IE11, fetch and smoothscroll
+* Added: new browser detection oneliner
+* Improved: row and row--flex modifiers are now available in more viewports
+* Improved: better conditions on tasks
+* Improved: added stimulus as minified js
+* Improved: object fit on images aplied only on picture ones
+* Improved: emails can have multiple less files now
+* Improved: emails ending with -template.tpl are gitignored in www
+* Fixed: cdnjs didn't work for main.js rewrite
+* Fixed: gulp-smarty generated files with spaces
+* Fixed: gulp-smarty didn't genereted files from subfolders
+* Fixed: lib-dialog not opening when defined as autoopen, data-lib-dialog-open
+* Removed: ajax jquery dependency
+
+v2.4.0
+* Added: stimulus.js framework
+* Improved: complete js and css rewrite
+* Improved: loadCSS replaced with newer variant media print
+* Improved: dist folder changed to assets
+* Improved: es6 javascript now used as default, babel fallback included
+* Improved: form validation and default input / select states
+* Fixed: css and js filenames containing dot could not be processed
+* Removed: slideandswipe, replaced by native drawer implementation
+* Removed: dependency on jQuery
+* Removed: gulp.bat for tasks
+
+v2.3.5
+* Added: gitlab ci 19.04 (core)
+* Added: replace hbs helper (core, hbs)
+* Added: new detection script in head, detecting no-touch, no-pointer etc. (core, hbs)
+* Added: data from gulp.conf are available in hbs (core, hbs)
+* Added: https in install-cms.bat changed to ssh (core)
+* Added: new luiLoad function for loading components (master, js)
+* Added: new modifiers (core, less)
+* Added: updated all dependencies (core)
+* Improved: content now loads even without js (all)
+* Improved: repeat hbs helper can now repeat from strings eg "string 1, string 2" (core, hbs)
+* Improved: components can have subfolders (core, hbs)
+* Improved: components for php are generated even if missing in main.json (core)
+* Improved: theme vars moved one level up (core, less)
+* Improved: recaptcha autoreinit (master, js)
+* Improved: all files auto formated (all)
+* Improved: animated class changed to animation (master, less)
+* Improved: adaptive background vars changed to if/else statement (core, less)
+* Fixed: watch:email was not working for subfolders (core)
+* Fixed: captcha typo in cdnjs (core, js)
+* Fixed: webfonts load not detected on safari (core, js)
+* Fixed: gtag swup reinit (master, js)
+* Removed: parallax lib script (master)
+* Removed: reveal lib script (master)
+* Removed: ie outdated message script (core)
+* Removed: close option for alerts (master)
+* Removed: dropdown ui component (master)
+* Removed: number input ui component (master)
+* Removed: default styles for hint (core)
+* Removed: letterspacing vars, material shadow vars (core, less)
+* Removed: lib--lazyload css classes (core, less)
+
+v2.3.4
+* Added: system font stack added to emails (core)
+* Added: scrollbar color (core)
+* Added: ajaxHandler callback to open dialog (master)
+* Added: handlebars logical helpers (core)
+* Added: pictium webp format (core)
+* Improved: show gulp task only if files exists (core)
+* Improved: Gitlab CI settings (core)
+* Improved: all packages updated to latest version (core)
+* Fixed: recaptcha missing in whitelistPatterns (core)
+
+v2.3.3
+* Added: state-loading to ajax buttons (master)
+* Added: new gulp.conf parameters (core)
+* Added: additional modifiers (core)
+* Added: cleanup task (core)
+* Added: less vendor cache (core)
+* Improved: swup animation changed from swup:animationInStart to swup:animationOutDone (master)
+* Improved: all packages and libs updated to latest version (core, master)
+* Fixed: serve.production not working correctly
+* Fixed: local fonts / icons problems (core)
+
+v2.3.2
+* Added: new modifiers and mixins (row--v, cols-16, cols-5, order, display--contents, text--weight, col--auto) (core)
+* Added: swup updated to 2.0.4 (master)
+* Added: cookieconsent updated to 1.1.0
+* Added: lazysizes updated to 5.1.0
+* Added: partial support for CSP and SRI integrity
+* Added: placeholder with webp support
+* Improved: email builder moved to src and uses handlebars and browserSync now (core)
+* Improved: whole js folder or less folder can be deleted in src (core)
+* Improved: all libs updated to latest version (core)
+* Changed: webfontloader is now disabled by default, native browser detection is used and fonts are preloaded  (core)
+* Changed: iconfont moved to src and is processed into dist/css  (core)
+* Changed: swup moved from main.js to _core/libraries/swup.js
+* Changed: recapatcha defered by 2500ms
+* Fixed: srcollreveal problems in ie  (master)
+* Fixed: purge wasn't ignoring ui page in styles:production
+* Fixed: serve with production false did not disable purge
+* Removed: sw-toolbox.js, it's loaded from jsdelivr now
+
+v2.3.1
+* Added: main.json is now located in src/ (core)
+* Added: encode64 and rem hbs helper (core, hbs)
+* Added: smarty components generator for newlogic cms (core)
+* Added: recapcha library, icon and form element
+* Added: auto reinit lib js functions in ajaxHandler (core)
+* Added: tracking widgets support for swup (master)
+* Added: animations for checkbox and radio elements (master)
+* Improved: optimization of styles and scripts task, new `optimizations` parameter in gulpfile.conf (core)
+* Improved: serve can be configurable in gulpfile.conf now (core)
+* Improved: smarty templates generator (core)
+* Improved: it's now possible to scroll inside of lib_dialog (master)
+* Improved: lib_ripple can be now appended to body (master)
+* Improved: swup default paramters now with `doScrollingRightAway` and `animateScroll` as false (master)
+* Changed: nodeJS 10.15.3 LTS is now required (core)
+* Changed: updated all packages and js libs to last versions (core)
+* Changed: CI & CMS related things updated (core)
+* Changed: copy task now creates components that are located in main.json (core)
+* Changed: dist path and other paths are now fully configurable in gulpfile.conf (core)
+* Changed: default font including changed from inline to default link rel (core)
+* Changed: google apis excluded from cdnjs download (core)
+* Changed: install-cms.bat now  copies only admin_ex js file, robots.txt are no longer copied
+* Fixed: lib_reveal not working in ie correctly (master)
+
+v2.3.0
+* + updated all packages to newer versions (core)
+* + gulp updated to 4.0 (core)
+* + lui selector for dynamic components (core, js)
+* + lazy helper in hbs (core, hbs)
+* + theme color helper in hbs (core, hbs)
+* + mobile first modifiers in css (core, css)
+* + icomoon.io API integration (core)
+* + scrollreveal updated to 4.0 (css, js)
+* + swup page transitions (css, js)
+* + new row--grid for css grid (core, css)
+* + new documentation (landing)
+* + dynamic fetch for fonts from main.json (core, hbs)
+* + import preload css styles from less (core, hbs)
+* + new install.bat with versioning (core)
+* + browser and platform detection classes for html (core, hbs)
+* + dns-prefetch in main.json (hbs)
+* @ improved browserSync serve sync
+* @ big ui components refactor (css, js)
+* @ em changed to rem (core, css)
+* @ css ie11 class changed to ie and ie class changed to ie9 (css)
+* @ all libraries data attributes have now lib prefix (js)
+* @ cdnjs changed to jsdelivr (core)
+* @ default row modifier chaned to row--flex (core, css)
+* - icons folder removed in favor of icomoon.io API
+* - removed all css modifier prefix mod--, now changed to respective property (css)
+* - removed cordova (core)
+* - removed debug.js, it was not used
+
+v2.2.9.06062018
+* + new CI template
+* + service worker only https
+* + install cms bat
+* + component ajax handler
+* + gdpr cookie consent
+* + import js files
+* + handle error parameter
+* @ local_cdnjs - support for https and different domains
+* @ hbs repeat helper now supports @ind var where index starts with 1
+* @ recompile html only if revision is on
+* @ updated gulp smarty task
+
+v2.2.9
+* + purgecss (core)
+* + modifiers utilities (core)
+* + min font-size (core)
+* + json_block helper (core)
+* + ci gulp script (core)
+* @ dialog options
+
+v2.2.6
+* + [#15898298](https://newlogic.teamworkpm.net/#tasks/15898298)
+* + updated all packages to latest versions
+* - [#16211247](https://newlogic.teamworkpm.net/#tasks/16211247)
+* @ [#16211254](https://newlogic.teamworkpm.net/#tasks/16211254)
+* @ [#16211259](https://newlogic.teamworkpm.net/#tasks/16211259)
+* @ [#16211265](https://newlogic.teamworkpm.net/#tasks/16211265)

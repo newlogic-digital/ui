@@ -1,0 +1,12 @@
+.idea
+temp/*
+.DS_Store
+/node_modules/
+/public/assets/
+/public/*.html
+/public/*.json
+/public/emails/*.html
+/src/templates/*.twig
+!/src/templates/dialog*
+!/src/templates/json*
+!.gitkeep

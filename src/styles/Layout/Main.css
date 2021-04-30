@@ -1,0 +1,146 @@
+html {
+  font-family: sans-serif;
+  scroll-padding-top: 0;
+
+  @media (--media-min-400) {
+    font-size: 95%;
+  }
+
+  @media (--media-min-768) {
+    font-size: 90%;
+  }
+
+  @media (--media-min-1360) {
+    font-size: 100%;
+  }
+
+  @media (--media-only-960) {
+    font-size: 80%;
+  }
+
+  @media (--media-360) {
+    font-size: 90%;
+  }
+
+  &.is-lib-drawer-active {
+    overflow: hidden;
+  }
+
+  &.no-js {
+    & .l-default {
+      opacity: 1;
+    }
+
+    & .l-spinner {
+      display: none;
+    }
+  }
+
+  &[class*="wf-"] {
+    & body {
+      & .l-default {
+        transition: var(--transition-opacity);
+      }
+
+      &:not(.is-body-preload) {
+        & .l-default {
+          opacity: 1;
+        }
+
+        & .l-spinner {
+          opacity: 0;
+          transition: var(--transition-opacity)
+        }
+      }
+
+      &.is-body-loaded {
+        & .l-spinner {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &.no-touch, &.no-touch * {
+    scrollbar-color: rgba(var(--color-default),0.2) rgb(var(--color-background));
+    scrollbar-width: thin;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: rgb(var(--color-background));
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba(var(--color-default),0.2);
+    }
+  }
+}
+
+body {
+  font-family: var(--font-primary);
+  color: rgb(var(--color-default));
+  font-weight: var(--font-normal);
+  line-height: 1.5;
+  position: relative;
+  background-color: rgb(var(--color-background));
+  cursor: default;
+
+  & .l-default {
+    overflow: visible !important;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  & a {
+    color: inherit;
+    text-decoration: none;
+
+    &:active,
+    &:hover {
+      outline-width: 0;
+    }
+  }
+}
+
+#l-main {
+  background-color: rgb(var(--color-background));
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+
+  &.transition-fade {
+    @nest html.swup-enabled body.is-body-loaded & {
+      /* clean-css ignore:start */
+      transition: opacity .2s;
+      /* clean-css ignore:end */
+    }
+
+    @nest html.swup-enabled & {
+      /* clean-css ignore:start */
+      opacity: 1;
+      /* clean-css ignore:end */
+    }
+
+    @nest html.is-animating & {
+      /* clean-css ignore:start */
+      opacity: 0;
+      /* clean-css ignore:end */
+    }
+  }
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: var(--container);
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+
+  &[data-size="sm"] {
+    --container: var(--container-sm);
+  }
+}

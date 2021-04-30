@@ -1,0 +1,21 @@
+.ui-heading {
+  display: block;
+  font-weight: var(--font-bold);
+  line-height: 1.15;
+
+  &:not([data-size]) {
+    font-size: 1.5rem;
+  }
+
+  &[data-size^="lg"] {
+    font-size: 1.625rem;
+
+    @media (--media-min-768) {
+      font-size: 2rem;
+    }
+  }
+
+  &[data-size^="sm"] {
+    font-size: 1.125rem;
+  }
+}

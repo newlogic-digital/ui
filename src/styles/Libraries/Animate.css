@@ -1,0 +1,184 @@
+/* TODO asi předělat do tailwindu */
+.animate {
+  animation-duration: .5s;
+  animation-fill-mode: both;
+}
+
+.animate-load {
+  animation-name: load;
+  animation-iteration-count: infinite;
+  animation-duration: 1.5s;
+  animation-fill-mode: both;
+}
+
+@keyframes load {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translate3d(-5rem, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translate3d(5rem, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity:0;
+    transform:translateY(2rem)
+  }
+  to {
+    opacity:1;
+    transform:translateY(0)
+  }
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity:0;
+    transform:translateY(-2rem)
+  }
+  to {
+    opacity:1;
+    transform:translateY(0)
+  }
+}
+
+@keyframes fadeOutLeft {
+  from {
+    opacity: 1;
+    transform: none;
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(-5rem, 0, 0);
+  }
+}
+
+@keyframes fadeOutRight {
+  from {
+    opacity: 1;
+    transform: none;
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(5rem, 0, 0);
+  }
+}
+
+@keyframes fadeOutUp {
+  0% {
+    opacity:1;
+    transform:translateY(0)
+  }
+  to {
+    opacity:0;
+    transform:translateY(-2rem)
+  }
+}
+
+@keyframes fadeOutDown {
+  0% {
+    opacity:1;
+    transform:translateY(0)
+  }
+  to {
+    opacity:0;
+    transform:translateY(2rem)
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slideInDown {
+  0% {
+    transform: translateY(-100%)
+  }
+  100% {
+    transform: translateY(0)
+  }
+}
+
+@keyframes slideOutUp {
+  0% {
+    transform: translateY(0)
+  }
+  100% {
+    transform: translateY(-100%)
+  }
+}
+
+@keyframes slideInUp {
+  0% {
+    transform: translateY(100%)
+  }
+  100% {
+    transform: translateY(0)
+  }
+}
+
+@keyframes slideOutDown {
+  0% {
+    transform: translateY(0)
+  }
+  100% {
+    transform: translateY(100%)
+  }
+}
+
+@keyframes ripple {
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+@keyframes rippleSmall {
+  100% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+}

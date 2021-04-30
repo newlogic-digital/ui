@@ -1,0 +1,86 @@
+.ui-checkbox, .ui-radio {
+  --ui-checkbox-width: 1.25rem;
+  --ui-checkbox-size: 0.875rem;
+  --ui-checkbox-bg: var(--color-background);
+  --ui-checkbox-bg-opacity: 0.1;
+  --ui-checkbox-border-color: var(--color-default);
+  --ui-checkbox-border-opacity: 0.3;
+  --ui-checkbox-checked-bg: var(--color-primary);
+  --ui-checkbox-checked-fg: var(--color-light);
+  display: inline-flex;
+  align-self: flex-start;
+  position: relative;
+  user-select: none;
+  font-size: var(--ui-checkbox-size);
+  z-index: 1;
+
+  @nest .text-light & {
+    --ui-checkbox-border-color: var(--color-light);
+  }
+
+  & input {
+    position: relative;
+    display: inline-flex;
+    -moz-appearance: none;
+    appearance: none;
+    height: var(--ui-checkbox-width);
+    width: var(--ui-checkbox-width);
+    background-color: rgba(var(--ui-checkbox-bg), var(--ui-checkbox-bg-opacity));
+    border: 1px solid rgba(var(--ui-checkbox-border-color), var(--ui-checkbox-border-opacity));
+    border-radius: var(--radius);
+    cursor: pointer;
+    outline: none;
+    justify-content: center;
+    align-items: center;
+    transition: var(--transition-border), var(--transition-background);
+
+    &:checked {
+      --ui-checkbox-border-opacity: 0;
+
+      &:not([class*="checked:bg"]) {
+        background-color: rgb(var(--ui-checkbox-checked-bg));
+      }
+
+      &:before {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    &:not(:only-child) {
+      margin-right: 0.75rem;
+
+      @nest .flex-row-reverse& {
+        margin-right: 0;
+        margin-left: 0.75rem;
+      }
+    }
+
+    &:before {
+      @mixin iconfont;
+      line-height: 1.125rem;
+      font-size: 1.125rem;
+      text-indent: 0;
+      display: block;
+      transition: var(--transition-color), var(--transition-opacity), var(--transition-transform);
+      color: rgb(var(--ui-checkbox-checked-fg));
+      content: var(--icon-checkbox-filled);
+      opacity: 0;
+      transform: scale(0);
+      will-change: transform;
+    }
+  }
+
+  & a {
+    text-decoration: underline;
+    transition: var(--transition-color);
+
+    &:not([class*="text-"]) {
+      color: rgb(var(--color-primary));
+
+      @nest .no-touch &[href]:hover {
+        color: rgba(var(--color-primary), 0.8);
+      }
+    }
+  }
+}

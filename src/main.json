@@ -1,0 +1,65 @@
+{
+  "prefetch": [
+    "https://cdn.jsdelivr.net",
+    "https://fonts.gstatic.com",
+    "https://fonts.googleapis.com"
+  ],
+  "assets": {
+    "fonts": {
+      "google": {
+        "families": ["Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700&display=block"]
+      },
+      "custom": {
+        "families": ["iconfont"],
+        "urls": ["/public/assets/css/iconfont.css"],
+        "testStrings": {
+          "iconfont": "\ue905"
+        }
+      },
+      "inline": false
+    },
+    "css": {
+      "all": [
+        "/public/assets/css/main.css"
+      ],
+      "core.src": "/src/styles/main.css",
+      "icons.src": "/src/icons/style.css",
+      "preload": "/public/assets/css/preload.css",
+      "tailwind": "/temp/tailwind.css"
+    },
+    "js": {
+      "importmap": "/public/importmap.json",
+      "core.es5": "/public/assets/js/es5/core.js",
+      "core": "/public/assets/js/main.js",
+      "core.src": "/src/scripts/main.js",
+      "es-module-shims": "https://cdn.jsdelivr.net/npm/es-module-shims@0.10.4/dist/es-module-shims.js",
+      "lazysizes": "https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js",
+      "polyfills": "/public/assets/js/es5/polyfills.js"
+    }
+  },
+  "layout": {
+    "template": "Layout/Main.twig",
+    "cookies": true,
+    "nav": [
+      {
+        "name": "Domů",
+        "url": "/"
+      }
+    ]
+  },
+  "media": {
+    "min-1280": "(min-width: 1280px)",
+    "min-960": "(min-width: 960px)",
+    "min-768": "(min-width: 768px)",
+    "max-400": "(max-width: 767px)",
+    "min-320": "(min-width: 320px)"
+  },
+  "lazy": {
+    "1x1": "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==",
+    "16x9": "data:image/gif;base64,R0lGODlhEAAJAIAAAP///wAAACwAAAAAEAAJAAACCoSPqcvtD6OclBUAOw==",
+    "5x2": "data:image/gif;base64,R0lGODlhBQACAIAAAP///wAAACwAAAAABQACAAACA4SPBQA7",
+    "4x3": "data:image/gif;base64,R0lGODlhBAADAIAAAP///wAAACwAAAAABAADAAACA4SPVgA7",
+    "8x5": "data:image/gif;base64,R0lGODlhCAAFAIAAAP///wAAACwAAAAACAAFAAACBYSPqctYADs=",
+    "3x2": "data:image/gif;base64,R0lGODlhAwACAIAAAP///wAAACwAAAAAAwACAAACAoRfADs="
+  }
+}
