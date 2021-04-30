@@ -34,7 +34,7 @@ Newlogic UI is component framework with simple syntax. Inspired by popular frame
 
 The core of the Newlogic UI is Newlogic Core, which compiles modern JS and CSS code and contains other tools for web development. The source code is written in way that it can be used with other tools or a completely different environment than NodeJS, such as Deno. In general the rule is that the source code should be executable in current or future browsers, so it's written with W3C standards in mind. The framework is modular and you can really use only what is needed for your project.
 
-##🪄 Instalation
+## 🪄 Instalation
 
 Creating a new project (using Newlogic Core)
 ```sh
