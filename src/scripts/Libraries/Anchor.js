@@ -1,5 +1,3 @@
-import {cssLoaded} from "../Utils/Functions/+.js";
-
 const LibAnchor = {
     animation: (element) => {
         let offset;
@@ -50,9 +48,7 @@ const LibAnchor = {
 
             selector.forEach((element) => {
                 if (window.location.hash && element.getAttribute("id") === window.location.hash.replace('#', '')) {
-                    cssLoaded(function () {
-                        LibAnchor.animation(element);
-                    }, 50);
+                    LibAnchor.animation(element);
                 }
             });
         }

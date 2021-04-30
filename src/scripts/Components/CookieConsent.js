@@ -1,6 +1,5 @@
 import {LibStimulus, Controller} from "../Libraries/Stimulus.js";
 import LibCookieConsent from "../Libraries/CookieConsent.js";
-import {cssLoaded} from "../Utils/Functions/+.js";
 
 LibCookieConsent.init();
 
@@ -10,10 +9,8 @@ LibStimulus.register("c-cookieconsent", class extends Controller {
 
         if (localStorage.getItem('cookieconsent') === null) {
             setTimeout(() => {
-                cssLoaded(() => {
-                    selector._addDataValue("state", "active");
-                    selector.classList.add("is-animate");
-                })
+                selector._addDataValue("state", "active");
+                selector.classList.add("is-animate");
             },1500);
         }
 

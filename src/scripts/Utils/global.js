@@ -1,5 +1,3 @@
-import { cssLoaded } from "./Functions/+.js";
-
 if ('serviceWorker' in navigator && location.protocol === "https:") {
     window.addEventListener('load', function () {
         if (!document.documentElement.classList.contains("no-sw")) {
@@ -19,12 +17,10 @@ if ('serviceWorker' in navigator && location.protocol === "https:") {
 }
 
 if (document.body.classList.contains("is-body-preload")) {
-    cssLoaded(function () {
-        document.body.classList.remove("is-body-preload");
-        setTimeout(function () {
-            document.body.classList.add("is-body-loaded");
-        }, 300);
-    });
+    document.body.classList.remove("is-body-preload");
+    setTimeout(function () {
+        document.body.classList.add("is-body-loaded");
+    }, 300);
 }
 
 if (document.querySelector("[data-loadcss]") !== null) {

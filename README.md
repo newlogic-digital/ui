@@ -8,7 +8,7 @@
   <a href="https://nodejs.org/en/about/releases/"><img src="https://img.shields.io/node/v/@newlogic-digital/ui.svg" alt="node compatility"></a>
 </p>
 
-# Newlogic UI 🎨
+# 🎨 Newlogic UI
 
 > v3 is still in early development
 
@@ -22,7 +22,7 @@ Modern and modular CSS framework with the best principles.
 
 Newlogic UI is component framework with simple syntax. Inspired by popular frameworks like Bootstrap and Bulma. It uses Tailwind CSS for utility classes. The modern approach comes first.
 
-## Under the hood
+## ⚙️ Under the hood
 * **[Newlogic Core](https://core.newlogic.cz/)** - set of tools that can be used to create modern web applications
 * **[ESM](https://tailwindcss.com/)** - completely written in modern JS syntax - ES8+, ES module, etc.
 * **[PostCSS](https://postcss.org/)** - completely written in modern CSS syntax - nesting, variables, etc.
@@ -34,7 +34,7 @@ Newlogic UI is component framework with simple syntax. Inspired by popular frame
 
 The core of the Newlogic UI is Newlogic Core, which compiles modern JS and CSS code and contains other tools for web development. The source code is written in way that it can be used with other tools or a completely different environment than NodeJS, such as Deno. In general the rule is that the source code should be executable in current or future browsers, so it's written with W3C standards in mind. The framework is modular and you can really use only what is needed for your project.
 
-## Instalation
+##🪄 Instalation
 
 Creating a new project (using Newlogic Core)
 ```sh
@@ -73,6 +73,12 @@ import "node_modules/@newlogic/ui/src/scripts/main.js"
 ### Config
 
 Each Newlogic Core project has to have config via `gulpfile.js`, docs - [core.newlogic.cz](https://core.newlogic.cz/)
+
+## 📌 Future plans
+- finishing docs and translating it to english
+- lighthouse optimization
+- upgrading form elements
+- new elements - dropdown, notificaton, snack and more
 
 ## Licence
 GNU GPLv3
