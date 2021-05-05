@@ -85,7 +85,7 @@ LibStimulus.register("ui-input", class extends Controller {
         let date = element.querySelector(`[type^="date"]`);
 
         if (date !== null && !document.documentElement.classList.contains("mobile")) {
-            const lang = await import(`https://cdn.esm.sh/v41/vanillajs-datepicker@1.1.2/es2020/locales/${document.documentElement.lang === "en" ? "cs" : document.documentElement.lang}.js`);
+            const lang = await import(`/* @vite-ignore */https://cdn.esm.sh/v41/vanillajs-datepicker/locales/${document.documentElement.lang === "en" ? "cs" : document.documentElement.lang}.js`);
             const { Datepicker } = await import("vanillajs-datepicker");
 
             Object.assign(Datepicker.locales, lang.default)

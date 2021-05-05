@@ -122,7 +122,7 @@ a, area, button, input, label, select, summary, textarea, [tabindex] {
     height: 100%;
   }
 
-  picture& > img {
+  @nest picture& > img {
     object-fit: cover;
   }
 }

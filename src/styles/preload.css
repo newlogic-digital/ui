@@ -14,7 +14,7 @@
     left: 50%;
     top: 50vh;
 
-    html.ie & {
+    @nest html.ie & {
         display: none;
     }
 }

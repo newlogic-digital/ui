@@ -16,7 +16,7 @@
   }
 
   &.is-grabbing {
-    &, * {
+    &, & * {
       cursor: grabbing;
     }
     & a {

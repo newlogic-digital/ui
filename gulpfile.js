@@ -1,19 +1,18 @@
-import {Core} from  "@newlogic-digital/core";
+import {defineConfig} from "@newlogic-digital/core";
 import postcssMixins from "postcss-mixins";
 
-export default new Core().init({
+export default defineConfig({
     scripts: {
         importResolution: {
             directories: ["Components", "Sections", "Layout", "Libraries", "Utils/Functions"]
         },
         importMap: {
-            build: false,
+            build: true,
             trailingSlashes: /(vanillajs-datepicker)/
         }
     },
     styles: {
         purge: {
-            enabled: true,
             content: ['src/scripts/**/*.js', 'src/templates/**/*.twig', 'temp/cdn/*.js'],
             options: {
                 safelist: {
