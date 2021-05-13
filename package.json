@@ -1,6 +1,6 @@
 {
   "name": "@newlogic-digital/ui",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "type": "module",
   "main": "gulpfile.js",
   "author": "New Logic Studio s.r.o.",
@@ -15,7 +15,7 @@
     "vanillajs-datepicker": "^1.1.4"
   },
   "devDependencies": {
-    "@newlogic-digital/core": "^0.5.4",
+    "@newlogic-digital/core": "~0.5.10",
     "postcss-mixins": "^7.0.3"
   },
   "files": [
