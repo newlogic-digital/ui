@@ -10,13 +10,13 @@ LibStimulus.register("lib-recaptcha", class extends Controller {
     }
 
     captcha() {
-        importScript(cdn.recaptcha.replace("{apikey}", this.data.get("api")).then(() => {
-            window.grecaptcha.ready(function () {
+        importScript(cdn.recaptcha.replace("{apikey}", this.data.get("api"))).then(() => {
+            window.grecaptcha.ready(() => {
                 window.grecaptcha.execute(this.data.get("api"), {action: 'form'}).then(token => {
                     this.element.querySelector(`[name="gtoken"]`).value = token;
                 });
             });
-        }))
+        })
     }
 
     disconnect() {
