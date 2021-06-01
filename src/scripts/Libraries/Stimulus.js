@@ -1,4 +1,4 @@
-import { Application, Controller } from "stimulus";
+import { Application, Controller } from "@stimulus/core";
 import loadStimulus from "../Utils/Functions/loadStimulus.js";
 
 const LibStimulus = new Application(document.documentElement, {
