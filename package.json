@@ -1,6 +1,6 @@
 {
   "name": "@newlogic-digital/ui",
-  "version": "3.0.4",
+  "version": "3.0.5",
   "type": "module",
   "main": "gulpfile.js",
   "author": "New Logic Studio s.r.o.",
@@ -8,15 +8,15 @@
   "license": "GNU GPLv3",
   "imports": {},
   "dependencies": {
-    "@simonwep/pickr": "^1.8.0",
+    "@simonwep/pickr": "^1.8.1",
     "cleave.js": "^1.6.0",
     "stimulus": "2.0.0",
     "swup": "2.0.14",
     "vanillajs-datepicker": "^1.1.4"
   },
   "devDependencies": {
-    "@newlogic-digital/core": "~0.5.24",
-    "postcss-mixins": "^7.0.3"
+    "@newlogic-digital/core": "~0.5.29",
+    "postcss-mixins": "^8.0.0"
   },
   "files": [
     "src",
