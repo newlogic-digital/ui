@@ -1,4 +1,4 @@
-import { Application, Controller } from "@stimulus/core";
+import { Application, Controller as DefaultController } from "@stimulus/core";
 import loadStimulus from "../Utils/Functions/loadStimulus.js";
 
 const LibStimulus = new Application(document.documentElement, {
@@ -9,33 +9,29 @@ const LibStimulus = new Application(document.documentElement, {
 
 LibStimulus.getController = (element, identifier) => LibStimulus.getControllerForElementAndIdentifier(element, identifier);
 
-Controller.prototype.getValue = function(value) {
-    return this[`${value}Value`]
-};
-
-Controller.prototype.setValue = function(type, value) {
-    this[`${type}Value`] = value;
-};
-
-Controller.prototype.hasValue = function(type, value) {
-    return this.data.has(`${type}Value`, value);
-};
-
-Controller.prototype.getClass = function(value) {
-    return this.data.get(`${value}Class`)
-};
-
-Controller.prototype.queryTarget = function(target) {
-    return this.targets.find(target)
-};
-
-Controller.prototype.queryTargetAll = function(targets) {
-    return this.targets.findAll(targets)
-};
-
-Controller.prototype.hasTarget = function(target) {
-    return this.targets.has(target)
-};
+class Controller extends DefaultController {
+    getValue(value) {
+        return this[`${value}Value`]
+    }
+    setValue(type, value) {
+        this[`${type}Value`] = value;
+    }
+    hasValue(value) {
+        return this.data.has(`${value}Value`);
+    }
+    getClass(value) {
+        return this.data.get(`${value}Class`)
+    }
+    queryTarget(target) {
+        return this.targets.find(target)
+    }
+    queryTargetAll(targets) {
+        return this.targets.findAll(targets)
+    }
+    hasTarget(target) {
+        return this.targets.has(target)
+    }
+}
 
 LibStimulus.start().then(() => {
     loadStimulus(document);
