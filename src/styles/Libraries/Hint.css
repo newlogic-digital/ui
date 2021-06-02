@@ -2,6 +2,7 @@
   --lib-hint-bg: var(--color-dark);
   --lib-hint-fg: var(--color-light);
   position: relative;
+  text-align: center;
 
   &.lib-hint-light {
     --lib-hint-bg: var(--color-light);

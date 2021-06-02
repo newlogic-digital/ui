@@ -3,6 +3,7 @@
   --ui-input-py: 0.25rem;
   --ui-input-px: 1rem;
   --ui-input-size: 0.875rem;
+  --ui-input-icon-size: 1.25rem;
   --ui-input-weight: var(--font-medium);
   --ui-input-border-color: var(--color-default);
   --ui-input-border-opacity: 0.15;
@@ -15,23 +16,67 @@
     --ui-input-border-color: var(--color-light);
   }
 
-  &:after {
-    opacity: 0;
-    font-weight: var(--ui-input-weight);
+  & [class^="icon"] {
+    font-weight: var(--font-medium);
     position: absolute;
     z-index: 1;
     transition: var(--transition-opacity);
-    right: var(--ui-input-px);
+    right: calc(var(--ui-input-px) / 1.25);
     content: "";
-    pointer-events: none;
     top: calc(var(--ui-input-height) / 2);
-    line-height: var(--ui-input-size);
-    margin-top: calc(var(--ui-input-size) / 2  * -1);
+    margin-top: calc(var(--ui-input-icon-size) / -2);
+    font-size: var(--ui-input-icon-size);
 
-    @nest [data-state*="invalid"]& {
-      color: rgb(var(--color-error));
-      opacity: 1;
-      content: "!";
+    &:first-child {
+      left: calc(var(--ui-input-px) / 1.25);
+      right: auto;
+    }
+
+    &.is-left {
+      right: auto;
+      left: 0.875rem;
+    }
+
+    &.icon-validity {
+      opacity: 0;
+      pointer-events: none;
+
+      &:after {
+        white-space: normal;
+        line-height: 1.5;
+        word-wrap: break-word;
+        width: 12rem;
+        font-weight: var(--font-normal);
+      }
+
+      & span {
+        &:after {
+          position: absolute;
+          inset: 0.375rem;
+          background-color: rgb(var(--color-light));
+          content: "";
+        }
+
+        &:before {
+          @mixin iconfont;
+          color: rgb(var(--color-error));
+          content: var(--icon-invalid);
+          position: relative;
+          z-index: 1;
+          display: block;
+
+          @nest [data-state*="valid"]& {
+          //opacity: 1;
+          //color: @color-success;
+          //content: @icon--valid;
+          }
+        }
+      }
+
+      @nest [data-state*="invalid"]& {
+        opacity: 1;
+        pointer-events: auto;
+      }
     }
   }
 
@@ -145,6 +190,14 @@
     color: inherit;
     border: 1px solid rgba(var(--ui-input-border-color), var(--ui-input-border-opacity));
     background-clip: padding-box;
+
+    @nest [data-icon="left"]& {
+      padding-left: calc(var(--ui-input-px) + var(--ui-input-icon-size) + calc(var(--ui-input-px) / 1.75));
+    }
+
+    @nest [data-icon="right"]& {
+      padding-right: calc(var(--ui-input-px) + var(--ui-input-icon-size) + calc(var(--ui-input-px) / 1.75));
+    }
 
     @nest :not([data-state*="placeholder"])& {
       &[placeholder] {
