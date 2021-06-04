@@ -6,10 +6,10 @@ LibStimulus.register("ui-input", class extends Controller {
     connect() {
         let element = this.element;
 
-        this.validateInput(element, false);
+        this.validate(element, false);
 
         element.addEventListener("change", () => {
-            this.validateInput(element, true);
+            this.validate(element, true);
         });
 
         this.typeNumber(element);
@@ -23,17 +23,35 @@ LibStimulus.register("ui-input", class extends Controller {
         this.typeFile(element);
     }
 
-    validateInput(element, validate) {
+    validate(element, validate) {
         let input = element.querySelectorAll("input, textarea");
 
-        [...input].map((input) => {
+        input.forEach(input => {
+            let validationMessage = input.validationMessage;
+
+            if (typeof input.dataset.validationMessage !== "undefined") {
+                validationMessage = input.dataset.validationMessage;
+            }
+
             if (input.outerHTML.match(/(data-novalidate|readonly|hidden|data-state="invalid")/) === null && validate) {
-                element.removeAttribute("data-state");
+                element._removeDataValue("state", "valid invalid active");
+
+                if (element.querySelector(`[class^="icon"][class*="valid"]`) !== null) {
+                    element.querySelector(`[class^="icon"][class*="valid"]`).remove();
+                }
 
                 if (input.checkValidity()) {
                     element._addDataValue("state", "valid");
+
+                    // if (element.querySelector(`[class^="icon"][class*="valid"]`) === null) {
+                    //     element.insertAdjacentHTML("beforeend", `<span class="icon-r icon-valid text-success"></span>`);
+                    // }
                 } else {
                     element._addDataValue("state", "invalid");
+
+                    if (element.querySelector(`[class^="icon"][class*="valid"]`) === null) {
+                        element.insertAdjacentHTML("beforeend", `<span class="icon-r icon-invalid text-error"><span tabindex="0" class="lib-hint-top lib-hint-error" aria-label="${validationMessage}"></span></span>`);
+                    }
                 }
             }
 
@@ -61,7 +79,7 @@ LibStimulus.register("ui-input", class extends Controller {
 
             element.querySelector(`[data-action="plus"]`).addEventListener("click", () => {
                 let input = this.element.querySelector("input"),
-                    num = parseInt(input.value) + parseInt(input.getAttribute('data-step'));
+                    num = parseInt(input.value === "" ? 0 : input.value) + parseInt(input.step);
 
                 if (num <= input.getAttribute('max')) {
                     input.value = num;
@@ -71,7 +89,7 @@ LibStimulus.register("ui-input", class extends Controller {
 
             element.querySelector(`[data-action="minus"]`).addEventListener("click", () => {
                 let input = this.element.querySelector("input"),
-                    num = parseInt(input.value) - parseInt(input.getAttribute('data-step'));
+                    num = parseInt(input.value) - parseInt(input.step);
 
                 if (num >= input.getAttribute('min')) {
                     input.value = num;
@@ -269,7 +287,7 @@ LibStimulus.register("ui-input", class extends Controller {
                 } else {
                     let files = e.target.files;
                     placeholder.removeAttribute("data-placeholder");
-                    placeholder.textContent = `${Object.keys(files).length} soubory`;
+                    placeholder.textContent = Object.keys(files).length === 1 ? e.target.value.replace(/.*(\/|\\)/, '') : `${Object.keys(files).length} soubory`;
 
                 }
             });

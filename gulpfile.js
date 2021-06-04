@@ -4,10 +4,10 @@ import postcssMixins from "postcss-mixins";
 export default defineConfig({
     scripts: {
         importResolution: {
-            directories: ["Components", "Sections", "Layout", "Libraries", "Utils/Functions"]
+            directories: ["Components", "Sections", "Layout", "Libraries", "Utils/Functions", "Ui"]
         },
         importMap: {
-            build: true,
+            build: false,
             trailingSlashes: /(vanillajs-datepicker)/
         }
     },

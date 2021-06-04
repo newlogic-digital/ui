@@ -1,0 +1,9 @@
+.ui-label {
+  font-size: 0.875rem;
+  display: block;
+  font-weight: var(--font-medium);
+
+  &:not(:last-child) {
+    margin-bottom: 0.5rem;
+  }
+}
