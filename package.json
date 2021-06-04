@@ -15,7 +15,7 @@
     "vanillajs-datepicker": "^1.1.4"
   },
   "devDependencies": {
-    "@newlogic-digital/core": "~0.5.31",
+    "@newlogic-digital/core": "~0.5.33",
     "postcss-mixins": "^8.0.0"
   },
   "files": [
