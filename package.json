@@ -1,6 +1,6 @@
 {
   "name": "@newlogic-digital/ui",
-  "version": "3.0.5",
+  "version": "3.0.6",
   "type": "module",
   "main": "gulpfile.js",
   "author": "New Logic Studio s.r.o.",
