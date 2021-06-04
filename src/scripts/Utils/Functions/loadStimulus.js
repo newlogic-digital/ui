@@ -1,12 +1,17 @@
-let dynamicControllers = ["ui-input", "ui-select", "ui-wsw", "c-cookieconsent", "c-form-cookieconsent"];
+let dynamicControllers = ["ui-input", "ui-select", "ui-wsw", "ui-checkbox", "c-cookieconsent", "c-form-cookieconsent"];
 let dynamicActions = [[`a[href^="#"]`, "click->lib#anchor"], [`.ui-btn`, "click->lib#ripple"]];
 
 function loadControllers(parent, selectors) {
     if (parent !== null) {
-        selectors.forEach((selector) => {
-            [...parent.getElementsByClassName(selector)].filter((element) => {
+        selectors.forEach(selector => {
+            [...parent.getElementsByClassName(selector)].filter(element => {
                 if (element.getAttribute("data-controller") === null) {
-                    element.setAttribute("data-controller", element.className.split(" ")[0]);
+                    element.setAttribute("data-controller", selector);
+                }
+            });
+            [...parent.getElementsByClassName("ui-radio")].filter(element => {
+                if (element.getAttribute("data-controller") === null) {
+                    element.setAttribute("data-controller", "ui-checkbox");
                 }
             });
         });
@@ -16,7 +21,7 @@ function loadControllers(parent, selectors) {
 function loadActions(parent, selectors) {
     if (parent !== null) {
         selectors.forEach((selector) => {
-            [...parent.querySelectorAll(selector[0])].filter((element) => {
+            [...parent.querySelectorAll(selector[0])].filter(element => {
                 let attribute = element.getAttribute("data-action");
 
                 if (attribute === null) {

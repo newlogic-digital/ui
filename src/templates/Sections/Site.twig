@@ -1,22 +1,111 @@
-<div style="padding: 6rem 4rem" class="col-4">
-    <div class="ui-input" data-state="invalid">
-        <input type="email" required />
+<form style="padding: 6rem 4rem" class="col-6 m:col-12" data-controller="c-form">
+    <button class="ui-icon icon-dark icon-light" data-action="click->lib#darkMode" type="button"></button>
+    <br/><br/>
+    <div class="ui-input">
+        <input type="email" required data-validation-message="Zadejte prosím platnou e-mailovou adresu." />
         <label>E-mail</label>
-        <span class="icon-validity lib-hint-top" aria-label="Zadejte prosím platnou e-mailovou adresu.">
-            <span></span>
-        </span>
     </div>
-    <br/>
+    <br>
+    <div class="ui-input" data-state="placeholder">
+        <input type="text" required placeholder="Prosím vyplnit" />
+        <label>Jméno</label>
+        <span class="icon-r icon-social-instagram"></span>
+    </div>
+    <br>
     <div class="ui-input" data-state="placeholder">
         <input type="email" required placeholder="Prosím vyplnit" />
         <label>E-mail</label>
-        <span class="icon icon-social-instagram"></span>
+        <span class="icon-r" aria-label="Kč"></span>
     </div>
-    <br/>
+    <br>
     <label class="ui-label">E-mail</label>
-    <div class="ui-input" data-icon="left">
-        <span class="icon icon-social-instagram"></span>
+    <div class="ui-input" data-icon="left right">
         <input type="email" required placeholder="" />
-        <span class="icon-validity" aria-label="Zadejte prosím platnou e-mailovou adresu."></span>
+        <span class="icon-l icon-social-instagram"></span>
+        <span class="icon-r icon-social-instagram"></span>
     </div>
-</div>
+    <br>
+    <div class="ui-select" tabindex="-1">
+        <select required>
+            <option selected disabled value="">- vyberte možnost -</option>
+            <option value="1">Czechia</option>
+            <option value="2">Slovakia</option>
+            <option value="3">Germany</option>
+        </select>
+        <label>Javascript select</label>
+        <div aria-hidden="true">
+            <div data-option="1">Czechia</div>
+            <div data-option="2">Slovakia</div>
+            <div data-option="3">Germany</div>
+        </div>
+    </div>
+    <br>
+    <div class="ui-select" data-icon="left">
+        <span class="icon-l icon-social-instagram"></span>
+        <select required>
+            <option value="" selected>- vyberte možnost -</option>
+            <option value="1">Možnost 1</option>
+            <option value="2">Možnost 2</option>
+            <option value="3">Možnost 3</option>
+        </select>
+        <label>Select</label>
+    </div>
+    <br>
+    <div class="ui-input">
+        <input type="color" required placeholder="Vybrat barvu">
+    </div>
+    <br>
+    <div class="ui-input">
+        <textarea required></textarea>
+        <label>Zpráva</label>
+    </div>
+    <br>
+    <div class="ui-input">
+        <input type="file" multiple="multiple" title="Nahrát soubory" placeholder="Vyberte nebo přetáhněte soubor" required>
+    </div>
+    <br>
+    <div class="ui-input">
+        <input type="number" min="1" max="999" step="1" required>
+        <label>Zvolit počet</label>
+    </div>
+    <br>
+    <div class="ui-input">
+        <input type="datetime-local" required>
+        <label>Vybrat datum a čas</label>
+    </div>
+    <br>
+    <div class="ui-input">
+        <input type="date" required>
+        <label>Vybrat datum</label>
+    </div>
+    <br>
+    <div class="ui-input">
+        <input type="time" placeholder="Vybrat čas" required>
+    </div>
+    <br>
+    <div class="ui-input" data-type="number" data-title="ks">
+        <input type="number" placeholder="" min="1" max="999" data-step="1" required />
+        <span class="icon icon-angle-down" data-action="minus"></span>
+        <span class="icon icon-angle-up" data-action="plus"></span>
+    </div>
+    <br>
+    <label class="ui-checkbox">
+        <input type="checkbox" required />
+        <span>Souhlasím se zpracováním osobních údajů</span>
+    </label>
+    <br>
+    <label class="ui-radio">
+        <input type="radio" required name="asd" />
+        <span>Souhlasím se zpracováním osobních údajů</span>
+    </label>
+    <label class="ui-radio">
+        <input type="radio" required name="asd" />
+        <span>Souhlasím se zpracováním osobních údajů</span>
+    </label>
+    <label class="ui-radio">
+        <input type="radio" required name="asd" />
+        <span>Souhlasím se zpracováním osobních údajů</span>
+    </label>
+    <br><br>
+    <button class="ui-btn">Send</button>
+</form>

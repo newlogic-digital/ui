@@ -4,6 +4,10 @@
   position: relative;
   text-align: center;
 
+  @nest .dark & {
+    --lib-hint-bg: var(--color-background-200);
+  }
+
   &.lib-hint-light {
     --lib-hint-bg: var(--color-light);
     --lib-hint-fg: var(--color-dark);
@@ -36,7 +40,7 @@
     will-change: transform;
     backface-visibility: hidden;
 
-    @nest :hover& {
+    @nest :hover&, :focus& {
       visibility: visible;
       opacity: 1;
       transition-delay: 100ms;
@@ -115,7 +119,7 @@
       left: calc(50% - 0.375rem);
       margin-bottom: -0.6875rem;
 
-      @nest :hover& {
+      @nest :hover&, :focus& {
         transform: translateY(-0.5rem);
       }
     }
@@ -123,7 +127,7 @@
     &:after {
       transform: translateX(-50%);
 
-      @nest :hover& {
+      @nest :hover&, :focus& {
         transform: translateX(-50%) translateY(-0.5rem);
       }
     }

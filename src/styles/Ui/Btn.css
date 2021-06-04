@@ -43,7 +43,7 @@
     opacity: 0;
     transition: var(--transition-opacity);
 
-    @nest .no-touch :hover&, [data-state="active"]& {
+    @nest .no-touch :hover&, [data-state="active"]&, :focus& {
       opacity: var(--ui-btn-hover-opacity);
     }
   }
