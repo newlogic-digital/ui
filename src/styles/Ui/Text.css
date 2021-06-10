@@ -1,11 +1,11 @@
-.ui-wsw {
-  --ui-wsw-size: 0.9375rem;
-  --ui-wsw-weight: var(--font-normal);
-  --ui-wsw-weight-bold: var(--font-semibold);
-  --ui-wsw-marker-color: var(--color-primary);
-  --ui-wsw-link-color: var(--color-primary);
-  font-weight: var(--ui-wsw-weight);
-  font-size: var(--ui-wsw-size);
+.ui-text {
+  --ui-text-size: 0.9375rem;
+  --ui-text-weight: var(--font-normal);
+  --ui-text-weight-bold: var(--font-semibold);
+  --ui-text-marker-color: var(--color-primary);
+  --ui-text-link-color: var(--color-primary);
+  font-weight: var(--ui-text-weight);
+  font-size: var(--ui-text-size);
   line-height: 1.75;
 
   & a {
@@ -13,7 +13,7 @@
     transition: var(--transition-opacity);
 
     &:not([class*="text-"]) {
-      color: rgb(var(--ui-wsw-link-color));
+      color: rgb(var(--ui-text-link-color));
 
       @nest .no-touch &[href]:hover {
         opacity: 0.8;
@@ -22,7 +22,7 @@
   }
 
   & b, & strong {
-    font-weight: var(--ui-wsw-weight-bold);
+    font-weight: var(--ui-text-weight-bold);
   }
 
   & i, & em {
@@ -81,8 +81,8 @@
     margin: 1.125rem 0;
   }
 
-  & h1, & h2, & h3, & h4, & h5, & h6 {
-    font-weight: var(--ui-wsw-weight-bold);
+  & :is(h1, h2, h3, h4, h5, h6) {
+    font-weight: var(--ui-text-weight-bold);
     font-family: var(--font-secondary);
     line-height: 1.15;
     margin: 0 0 1.125rem;
@@ -125,7 +125,7 @@
     }
 
     & thead {
-      font-weight: var(--ui-wsw-weight-bold);
+      font-weight: var(--ui-text-weight-bold);
       border-bottom: 1px solid rgb(var(--color-background-200));
     }
 
@@ -184,8 +184,8 @@
         height: 0.25rem;
         position: absolute;
         content: "";
-        border: 1px solid rgb(var(--ui-wsw-marker-color));
-        background-color: rgb(var(--ui-wsw-marker-color));
+        border: 1px solid rgb(var(--ui-text-marker-color));
+        background-color: rgb(var(--ui-text-marker-color));
         left: 0;
         top: 0.625rem;
         text-indent: 0;
@@ -226,12 +226,12 @@
       padding-left: 0.5rem;
 
       &::marker {
-        color: rgb(var(--ui-wsw-marker-color));
+        color: rgb(var(--ui-text-marker-color));
       }
     }
   }
 
-  & .elm_wsw_table {
+  & .elm_text_table {
     display: block;
 
     @media (--media-400) {
@@ -240,7 +240,7 @@
     }
   }
 
-  & .elm_wsw_video {
+  & .elm_text_video {
     aspect-ratio: 16/9;
     position: relative;
 
