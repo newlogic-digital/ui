@@ -81,9 +81,9 @@ LibStimulus.register("lib-tippy", class extends Controller {
         let attributes = this.element.getAttribute("data-lib-tippy");
 
         if (attributes !== null) {
-            LibTippy(this.element, attributes.replace(/\s/g,"").split(","))
+            new LibTippy().create(this.element, attributes.replace(/\s/g,"").split(","))
         } else {
-            LibTippy(this.element)
+            new LibTippy().create(this.element)
         }
     }
 });
