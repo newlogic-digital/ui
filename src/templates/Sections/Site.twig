@@ -1,6 +1,56 @@
 <form style="padding: 6rem 4rem" class="col-6 m:col-12" data-controller="c-form">
     <button class="ui-icon icon-dark icon-light" data-action="click->lib#darkMode" type="button"></button>
     <br/><br/>
+    <div>
+        <button class="ui-btn ml-24" type="button" data-type="square" data-controller="lib-tippy" data-lib-tippy="dropdown, tippy-template" data-lib-tippy-slot="">
+            show
+        </button>
+        <template id="tippy-template">
+            <div class="ui-dropdown">
+                <ul class="wrp_ui_list flex-col row-y gy-4">
+                    <li class="col">
+                        <button class="ui-link" data-action="click->lib-dialog#show" data-action-url="/assets/dialog-range.json">
+                            <span>Upravit položku</span>
+                        </button>
+                    </li>
+                    <li class="col">
+                        <button class="ui-link" data-action="click->lib-dialog#show" data-action-url="/assets/dialog-confirm.json">
+                            <span>Smazat položku</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </template>
+    </div>
+    <br/><br/>
+    <button class="ui-btn" type="button" data-controller="lib-tippy" data-lib-tippy="tooltip, /dialog-basic.json" style="margin-left: 100%">
+        Zobrazit tooltip
+    </button>
+    <template id="tippy-template2">
+        <div class="ui-dropdown">
+            <ul class="wrp_ui_list flex-col row-y gy-4">
+                <li class="col">
+                    <button class="ui-link" data-action="click->lib-dialog#show" data-action-url="/assets/dialog-range.json">
+                        <span>Upravit položku</span>
+                    </button>
+                </li>
+                <li class="col">
+                    <button class="ui-link" data-action="click->lib-dialog#show" data-action-url="/assets/dialog-confirm.json">
+                        <span>Smazat položku</span>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </template>
+    <br/><br/>
+    <button class="ui-btn" type="button" data-controller="lib-tippy" aria-label="Hehehe hello">
+        Zobrazit tooltip
+    </button>
+    <br/><br/>
+    <div class="ui-text">
+        <h1>Hello there</h1>
+    </div>
+    <br/>
     <div class="ui-input">
         <input type="email" required data-validation-message="Zadejte prosím platnou e-mailovou adresu." />
         <label>E-mail</label>

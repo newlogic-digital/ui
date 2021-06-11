@@ -10,6 +10,7 @@
   "dependencies": {
     "@stimulus/core": "2.0.0",
     "@simonwep/pickr": "^1.8.1",
+    "tippy.js": "^6.3.1",
     "cleave.js": "^1.6.0",
     "swup": "2.0.14",
     "vanillajs-datepicker": "^1.1.4"

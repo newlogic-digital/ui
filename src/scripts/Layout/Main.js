@@ -3,6 +3,7 @@ import {bodyLoaded, importScript} from "../Utils/Functions/+.js";
 import LibRipple from "../Libraries/Ripple.js";
 import LibAnchor from "../Libraries/Anchor.js";
 import LibDialog from "../Libraries/Dialog.js";
+import LibTippy from "../Libraries/Tippy.js";
 import LibTabs from "../Libraries/Tabs.js";
 import LibNativeSlider from "../Libraries/NativeSlider.js";
 import cdn from "../Utils/cdn.js";
@@ -72,5 +73,17 @@ LibStimulus.register("lib-ns", class extends Controller {
         }
 
         bodyLoaded(() => LibNativeSlider(this.element.querySelector("[data-lib-ns]"), this.element))
+    }
+});
+
+LibStimulus.register("lib-tippy", class extends Controller {
+    connect() {
+        let attributes = this.element.getAttribute("data-lib-tippy");
+
+        if (attributes !== null) {
+            LibTippy(this.element, attributes.replace(/\s/g,"").split(","))
+        } else {
+            LibTippy(this.element)
+        }
     }
 });
