@@ -2,31 +2,15 @@
     <button class="ui-icon icon-dark icon-light" data-action="click->lib#darkMode" type="button"></button>
     <br/><br/>
     <div>
-        <button class="ui-btn ml-24" type="button" data-type="square" data-controller="lib-tippy" data-lib-tippy="dropdown, tippy-template" data-lib-tippy-slot="">
-            show
+        <button class="ui-btn ml-24" type="button" data-type="square" data-controller="lib-tippy" data-lib-tippy="dropdown-full, /json-tippy.json" data-lib-tippy-slot='{ "edit": "Upravit položku", "delete": "Smazat položku" }'>
+            <span class="icon icon-chevron-down"></span>
         </button>
-        <template id="tippy-template">
-            <div class="ui-dropdown">
-                <ul class="wrp_ui_list flex-col row-y gy-4">
-                    <li class="col">
-                        <button class="ui-link" data-action="click->lib-dialog#show" data-action-url="/assets/dialog-range.json">
-                            <span>Upravit položku</span>
-                        </button>
-                    </li>
-                    <li class="col">
-                        <button class="ui-link" data-action="click->lib-dialog#show" data-action-url="/assets/dialog-confirm.json">
-                            <span>Smazat položku</span>
-                        </button>
-                    </li>
-                </ul>
-            </div>
-        </template>
     </div>
     <br/><br/>
-    <button class="ui-btn" type="button" data-controller="lib-tippy" data-lib-tippy="tooltip, /dialog-basic.json" style="margin-left: 100%">
-        Zobrazit tooltip
+    <button class="ui-btn" type="button" data-controller="lib-tippy" data-lib-tippy="tooltip-arrow, tippy-template">
+        Tooltip arrow
     </button>
-    <template id="tippy-template2">
+    <template id="tippy-template">
         <div class="ui-dropdown">
             <ul class="wrp_ui_list flex-col row-y gy-4">
                 <li class="col">
@@ -44,7 +28,7 @@
     </template>
     <br/><br/>
     <button class="ui-btn" type="button" data-controller="lib-tippy" aria-label="Hehehe hello">
-        Zobrazit tooltip
+        Basic tooltip
     </button>
     <br/><br/>
     <div class="ui-text">

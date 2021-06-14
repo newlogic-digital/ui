@@ -1,10 +1,10 @@
-import {LibStimulus, Controller} from "../Libraries/Stimulus.js";
+import {LibStimulus, Controller} from "../Libraries/Stimulus.js"
 
 LibStimulus.register("c-form", class extends Controller {
     validate(element, e) {
         if (element.reportValidity() === false) {
-            e.preventDefault();
-            e.stopPropagation();
+            e.preventDefault()
+            e.stopPropagation()
         }
 
         element.querySelectorAll(".ui-input").forEach(element => {
@@ -12,11 +12,11 @@ LibStimulus.register("c-form", class extends Controller {
         });
 
         element.querySelectorAll(`.ui-select:not([data-state*="active"]) select[required]`).forEach(select => {
-            LibStimulus.getController(select.parentNode, "ui-select").validate(select.parentNode, select);
+            LibStimulus.getController(select.parentNode, "ui-select").validate(select.parentNode, select)
         });
 
         element.querySelectorAll(`[data-controller="ui-checkbox"] input:not([type="hidden"])`).forEach(input => {
-            input.parentNode._removeDataValue("state", "valid invalid");
+            input.parentNode._removeDataValue("state", "valid invalid")
 
             if (input.checkValidity()) {
                 input.parentNode._addDataValue("state", "valid")
@@ -26,11 +26,11 @@ LibStimulus.register("c-form", class extends Controller {
         });
     }
     connect() {
-        let element = this.element;
+        let element = this.element
 
         if (typeof HTMLFormElement.prototype.reportValidity !== "undefined") {
-            element.setAttribute("novalidate","");
-            element.addEventListener('submit', (e) => this.validate(element, e), false);
+            element.setAttribute("novalidate","")
+            element.addEventListener('submit', e => this.validate(element, e), false)
         }
     }
 });

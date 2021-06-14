@@ -14,6 +14,10 @@
     border-radius: var(--radius);
     left: 0.1875rem;
 
+    @nest .dark & {
+      --color-background: var(--color-background-200);
+    }
+
     & .tippy-svg-arrow {
       fill: rgb(var(--color-background));
 
@@ -42,6 +46,42 @@
   }
 }
 
-[data-lib-tippy]:not([data-lib-tippy^="dropdown"]) {
+[data-controller*="lib-tippy"]:not([data-lib-tippy^="dropdown"]) {
   cursor: default;
+}
+
+[data-tippy-root] {
+  &.is-full {
+    @media (--media-m) {
+      inset: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      position: fixed !important;
+      transform: none !important;
+      pointer-events: none;
+      max-width: 100%;
+
+      & .tippy-content {
+        padding-bottom: env(safe-area-inset-bottom);
+        pointer-events: auto;
+      }
+
+      & .tippy-box {
+        max-width: 100% !important;
+        position: absolute;
+        border: 0 !important;
+        bottom: 0;
+        left: 0 !important;
+        right: 0;
+        border-radius: 2rem 2rem 0 0 !important;
+        transition-timing-function: ease !important;
+        transition-duration: 300ms !important;
+
+        &[data-state=hidden] {
+          transform: translateY(100%);
+          opacity: 0
+        }
+      }
+    }
+  }
 }

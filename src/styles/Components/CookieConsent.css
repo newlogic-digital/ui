@@ -138,6 +138,7 @@
 
       & .ui-link {
         margin-right: 1rem;
+        align-self: center;
 
         @media (--media-400) {
           margin: 0 1rem 1rem;
@@ -172,7 +173,7 @@
         }
 
         &[data-lib-cookieconsent-approve] {
-          color: rgb(var(--color-success));
+          --ui-btn-bg: var(--color-success);
         }
 
         & span {

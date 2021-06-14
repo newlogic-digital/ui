@@ -22,6 +22,10 @@ html {
     font-size: 90%;
   }
 
+  &.is-overlay {
+    overflow: hidden;
+  }
+
   &.is-lib-drawer-active {
     overflow: hidden;
   }
@@ -87,6 +91,24 @@ body {
   position: relative;
   background-color: rgb(var(--color-background));
   cursor: default;
+
+  &:before {
+    position: fixed;
+    inset: 0;
+    content: "";
+    background-color: rgba(var(--color-dark), 0.6);
+    z-index: var(--z-30);
+    transition: var(--transition-opacity);
+    opacity: 0;
+    pointer-events: none;
+
+    @nest .m\:is-overlay & {
+      @media (--media-m) {
+        pointer-events: auto;
+        opacity: 1;
+      }
+    }
+  }
 
   & .l-default {
     overflow: visible !important;
