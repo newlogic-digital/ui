@@ -8,3 +8,4 @@ export { default as Ripple } from './Ripple.js';
 import './Stimulus.js';
 export { default as Swup } from './Swup.js';
 export { default as Tabs } from './Tabs.js';
+export { default as Tippy } from './Tippy.js';

@@ -106,6 +106,8 @@ LibStimulus.register("ui-input", class extends Controller {
             const lang = await import(`/* @vite-ignore */https://cdn.esm.sh/v41/vanillajs-datepicker/locales/${document.documentElement.lang === "en" ? "cs" : document.documentElement.lang}.js`);
             const { Datepicker } = await import("vanillajs-datepicker");
 
+            await importStyle(cdn.datepicker);
+
             Object.assign(Datepicker.locales, lang.default)
 
             let datetime = date.getAttribute("type") === "datetime-local";
