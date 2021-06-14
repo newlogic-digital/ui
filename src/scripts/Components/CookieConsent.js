@@ -16,7 +16,7 @@ LibStimulus.register("c-cookieconsent", class extends Controller {
 
         selector.addEventListener("click", () => {
             selector.classList.add("is-mobile-show")
-        });
+        })
 
         selector.querySelector("[data-lib-cookieconsent-approve]").addEventListener("click", () => {
             LibCookieConsent.set("approve")
@@ -26,7 +26,7 @@ LibStimulus.register("c-cookieconsent", class extends Controller {
                 selector._removeDataValue("state", "active")
                 selector.remove()
             },500)
-        });
+        })
 
         selector.querySelector("[data-lib-cookieconsent-decline]").addEventListener("click", () => {
             LibCookieConsent.set("performance")
@@ -36,9 +36,9 @@ LibStimulus.register("c-cookieconsent", class extends Controller {
                 selector._removeDataValue("state", "active")
                 selector.remove()
             },500)
-        });
+        })
     }
-});
+})
 
 LibStimulus.register("c-form-cookieconsent", class extends Controller {
     connect() {
@@ -69,7 +69,7 @@ LibStimulus.register("c-form-cookieconsent", class extends Controller {
 
             if (value === "approve") {
                 LibCookieConsent.set("marketing")
-                location.reload();
+                location.reload()
             } else if (value === "performance") {
                 LibCookieConsent.set("performance")
                 location.reload()
@@ -78,4 +78,4 @@ LibStimulus.register("c-form-cookieconsent", class extends Controller {
             }
         })
     }
-});
+})

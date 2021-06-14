@@ -1,12 +1,12 @@
 export default function bodyLoaded(callback) {
     if (!document.body.classList.contains("is-body-loaded")) {
-        let wait = setInterval(function(){
+        let wait = setInterval(() => {
             if (document.body.classList.contains("is-body-loaded")) {
-                clearInterval(wait);
-                callback();
+                clearInterval(wait)
+                callback()
             }
-        },1);
+        },1)
     } else {
-        callback();
+        callback()
     }
 }

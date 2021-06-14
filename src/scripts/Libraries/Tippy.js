@@ -1,5 +1,5 @@
-import {loadStimulus, importStyle} from "../Utils/Functions/+.js";
-import cdn from "../Utils/cdn.js";
+import {loadStimulus, importStyle} from "../Utils/Functions/+.js"
+import cdn from "../Utils/cdn.js"
 
 export default class LibTippy {
     options = {
@@ -14,20 +14,20 @@ export default class LibTippy {
         inertia: true,
         allowHTML: true,
         onShow: (instance) => {
-            let name = this.template;
+            let name = this.template
 
             if (this.type.includes("-full")) {
-                instance.popper.classList.add("is-full");
-                document.documentElement.classList.add("m:is-overlay");
+                instance.popper.classList.add("is-full")
+                document.documentElement.classList.add("m:is-overlay")
             }
 
             if (typeof name === "undefined") {
-                name = this.type;
+                name = this.type
             }
 
-            instance.popper.querySelector(".tippy-box").setAttribute("data-name", name);
+            instance.popper.querySelector(".tippy-box").setAttribute("data-name", name)
 
-            loadStimulus(instance.popper.querySelector(".tippy-content"));
+            loadStimulus(instance.popper.querySelector(".tippy-content"))
         },
         onHide: () => {
             if (this.type.includes("-full")) {
@@ -36,13 +36,13 @@ export default class LibTippy {
         }
     }
     async init(element, options, template) {
-        const tippy = (await import("tippy.js")).default;
-        const {roundArrow} = await import("tippy.js");
+        const tippy = (await import("tippy.js")).default
+        const {roundArrow} = await import("tippy.js")
 
-        await importStyle(cdn.tippy);
+        await importStyle(cdn.tippy)
 
         if (typeof element._tippy !== "undefined") {
-            return false;
+            return false
         }
 
         if (this.type.includes("dropdown")) {
@@ -65,7 +65,7 @@ export default class LibTippy {
                             ${element.getAttribute("aria-label")}
                         </div>
                     </div>
-                `;
+                `
             }
         }
 
@@ -78,10 +78,10 @@ export default class LibTippy {
         tippy(element, options)
     }
     constructor(element, attributes = ["tooltip", ""]) {
-        const self = this;
+        const self = this
 
-        this.type = attributes[0];
-        this.template = attributes[1];
+        this.type = attributes[0]
+        this.template = attributes[1]
 
         if (this.type.includes("dropdown")) {
             this.options.trigger = "click"
@@ -91,24 +91,24 @@ export default class LibTippy {
             this.options.trigger = element.dataset.tippyTrigger
         }
 
-        this.options.showOnCreate = true;
+        this.options.showOnCreate = true
 
         this.options.trigger !== "manual" && this.options.trigger.split(" ").map(event => {
             element.addEventListener(event, async function e() {
                 if (self.template.startsWith("/") && self.options.content === "") {
-                    element.style.cursor = "wait";
+                    element.style.cursor = "wait"
 
                     fetch(self.template, {headers: {'X-Requested-With': 'XMLHttpRequest'}}).then(response => {
-                        return response.json();
+                        return response.json()
                     }).then(async (data) => {
-                        self.options.content = data["content"];
-                        element.style.cursor = "";
-                        await self.init(element, self.options, self.template);
-                        element.removeEventListener(event, e);
+                        self.options.content = data["content"]
+                        element.style.cursor = ""
+                        await self.init(element, self.options, self.template)
+                        element.removeEventListener(event, e)
                     })
                 } else {
-                    await self.init(element, self.options, self.template);
-                    element.removeEventListener(event, e);
+                    await self.init(element, self.options, self.template)
+                    element.removeEventListener(event, e)
                 }
             })
         })

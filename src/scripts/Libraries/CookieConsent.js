@@ -50,9 +50,9 @@ const LibCookieConsent = {
         [...document.querySelectorAll("[data-lib-cookieconsent]")].map(elm => {
             if (type === "all" || elm.getAttribute("data-lib-cookieconsent") === type) {
                 let script = document.createElement("script")
-                let delay = 0;
+                let delay = 0
 
-                [...elm.attributes].forEach((attribute) => {
+                ;[...elm.attributes].forEach((attribute) => {
                     if (attribute.specified) {
                         if (attribute.name.indexOf("data-lib-cookieconsent") === -1 && attribute.name.indexOf("type") === -1) {
                             script.setAttribute(attribute.name, attribute.value)
@@ -60,7 +60,7 @@ const LibCookieConsent = {
                     }
                 })
 
-                script.innerHTML = elm.innerHTML;
+                script.innerHTML = elm.innerHTML
 
                 if (elm.getAttribute("data-lib-cookieconsent-delay")) {
                     delay = parseInt(elm.getAttribute("data-lib-cookieconsent-delay"))
@@ -78,6 +78,6 @@ const LibCookieConsent = {
             }
         })
     }
-};
+}
 
-export default LibCookieConsent;
+export default LibCookieConsent

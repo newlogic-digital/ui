@@ -14,7 +14,7 @@ LibStimulus.register("lib", class extends Controller {
     }
 
     anchor(e) {
-        e.preventDefault();
+        e.preventDefault()
         LibAnchor.action(e.currentTarget)
     }
 
@@ -26,16 +26,16 @@ LibStimulus.register("lib", class extends Controller {
             document.documentElement.classList.remove('dark')
             currentTarget.classList.remove("icon-light")
         } else {
-            localStorage.theme = 'dark';
+            localStorage.theme = 'dark'
             document.documentElement.classList.add('dark')
             currentTarget.classList.add("icon-light")
         }
     }
-});
+})
 
 LibStimulus.register("lib-dialog", class extends Controller {
     connect() {
-        let element = this.element;
+        let element = this.element
 
         if (typeof element.dataset.libDialogOpen !== "undefined") {
             let url = element.getAttribute("data-action-url")
@@ -62,7 +62,7 @@ LibStimulus.register("lib-dialog", class extends Controller {
 
 LibStimulus.register("lib-tabs", class extends Controller {
     connect() {
-        LibTabs(this.element);
+        LibTabs(this.element)
     }
 })
 

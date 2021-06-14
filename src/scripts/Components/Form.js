@@ -9,11 +9,11 @@ LibStimulus.register("c-form", class extends Controller {
 
         element.querySelectorAll(".ui-input").forEach(element => {
             LibStimulus.getController(element, "ui-input").validate(element, true)
-        });
+        })
 
         element.querySelectorAll(`.ui-select:not([data-state*="active"]) select[required]`).forEach(select => {
             LibStimulus.getController(select.parentNode, "ui-select").validate(select.parentNode, select)
-        });
+        })
 
         element.querySelectorAll(`[data-controller="ui-checkbox"] input:not([type="hidden"])`).forEach(input => {
             input.parentNode._removeDataValue("state", "valid invalid")
@@ -23,7 +23,7 @@ LibStimulus.register("c-form", class extends Controller {
             } else {
                 input.parentNode._addDataValue("state", "invalid")
             }
-        });
+        })
     }
     connect() {
         let element = this.element
@@ -33,4 +33,4 @@ LibStimulus.register("c-form", class extends Controller {
             element.addEventListener('submit', e => this.validate(element, e), false)
         }
     }
-});
+})
