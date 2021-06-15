@@ -31,5 +31,13 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/newlogic-digital/ui.git"
+  },
+  "standard": {
+    "rules": {
+      "no-new": "off"
+    },
+    "env": {
+      "browser": true
+    }
   }
 }
