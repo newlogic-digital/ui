@@ -1,43 +1,43 @@
 Element.prototype._addDataValue = (key, value) => {
-  key = `data-${key}`
+    key = `data-${key}`
 
-  let attribute = this.getAttribute(key)
+    let attribute = this.getAttribute(key)
 
-  if (attribute === null) {
-    this.setAttribute(key, value)
-  } else {
-    value = value.split(' ')
-    attribute = attribute.split(' ')
+    if (attribute === null) {
+        this.setAttribute(key, value)
+    } else {
+        value = value.split(" ")
+        attribute = attribute.split(" ")
 
-    value.map(value => !attribute.includes(value) && attribute.push(value))
+        value.map(value => !attribute.includes(value) && attribute.push(value))
 
-    this.setAttribute(key, attribute.join(' '))
-  }
+        this.setAttribute(key, attribute.join(" "))
+    }
 }
 
 Element.prototype._removeDataValue = (key, value) => {
-  const result = []
+    const result = []
 
-  key = `data-${key}`
+    key = `data-${key}`
 
-  const attribute = this.getAttribute(key)
+    const attribute = this.getAttribute(key)
 
-  if (attribute === null) return
+    if (attribute === null) return
 
-  attribute.split(' ').map(attribute => !value.split(' ').includes(attribute) && result.push(attribute))
+    attribute.split(" ").map(attribute => !value.split(" ").includes(attribute) && result.push(attribute))
 
-  if (result.length !== 0) {
-    this.setAttribute(key, result.join(' '))
-  } else {
-    this.removeAttribute(key)
-  }
+    if (result.length !== 0) {
+        this.setAttribute(key, result.join(" "))
+    } else {
+        this.removeAttribute(key)
+    }
 }
 
 Element.prototype._hasDataValue = (key, value) => {
-  key = `data-${key}`
+    key = `data-${key}`
 
-  const attribute = this.getAttribute(key)
+    const attribute = this.getAttribute(key)
 
-  if (attribute === null) return false
-  return attribute.split(' ').includes(value)
+    if (attribute === null) return false
+    return attribute.split(" ").includes(value)
 }

@@ -1,11 +1,11 @@
-import './Drawer.js'
-import './ReCaptcha.js'
-import './Stimulus.js'
-export { default as Anchor } from './Anchor.js'
-export { default as CookieConsent } from './CookieConsent.js'
-export { default as Dialog } from './Dialog.js'
-export { default as NativeSlider } from './NativeSlider.js'
-export { default as Ripple } from './Ripple.js'
-export { default as Swup } from './Swup.js'
-export { default as Tabs } from './Tabs.js'
-export { default as Tippy } from './Tippy.js'
+import "./Drawer.js"
+import "./ReCaptcha.js"
+import "./Stimulus.js"
+export { default as Anchor } from "./Anchor.js"
+export { default as CookieConsent } from "./CookieConsent.js"
+export { default as Dialog } from "./Dialog.js"
+export { default as NativeSlider } from "./NativeSlider.js"
+export { default as Ripple } from "./Ripple.js"
+export { default as Swup } from "./Swup.js"
+export { default as Tabs } from "./Tabs.js"
+export { default as Tippy } from "./Tippy.js"
