@@ -1,7 +1,7 @@
 @import "../styles/Utils/theme/main.css";
 
 :root {
-  --width : 660px;
+  --width: 660px;
   --container: 30px;
 }
 
@@ -72,6 +72,6 @@ p {
 
 @media print {
   * {
-    -webkit-print-color-adjust:exact;
+    -webkit-print-color-adjust: exact;
   }
 }

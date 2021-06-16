@@ -3,6 +3,7 @@
   --ui-progress-radius: 9999px;
   --ui-progress-bg: var(--color-background-200);
   --ui-progress-bg-opacity: 1;
+
   -moz-appearance: none;
   appearance: none;
   box-shadow: none;
@@ -59,9 +60,10 @@
 
 @keyframes moveIndeterminate {
   from {
-    background-position: 200% 0
+    background-position: 200% 0;
   }
+
   to {
-    background-position: -200% 0
+    background-position: -200% 0;
   }
 }

@@ -17,7 +17,7 @@
     opacity: var(--ui-link-hover-opacity);
   }
 
-  &:after {
+  &::after {
     content: "";
     border-bottom: 1px solid currentColor;
     opacity: 0;

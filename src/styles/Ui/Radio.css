@@ -1,8 +1,8 @@
 .ui-radio {
   & input {
     border-radius: 50%;
-    
-    &:before {
+
+    &::before {
       content: var(--icon-radio-filled);
     }
   }

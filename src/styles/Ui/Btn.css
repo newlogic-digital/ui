@@ -9,7 +9,8 @@
   --ui-btn-hover-opacity: 0.2;
   --ui-btn-outline-opacity: 0.5;
   --ui-btn-icon-size: 1.125rem;
-  --ui-btn-icon-offset: calc((var(--ui-btn-py) / 1)  * -1);
+  --ui-btn-icon-offset: calc((var(--ui-btn-py) / 1) * -1);
+
   display: inline-flex;
   align-items: center;
   text-align: center;
@@ -32,7 +33,7 @@
     --ui-btn-color: var(--color-dark);
   }
 
-  &:before {
+  &::before {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -73,7 +74,7 @@
   &[disabled] {
     pointer-events: none;
 
-    &:before {
+    &::before {
       opacity: 0.5;
     }
   }
@@ -83,7 +84,7 @@
     --ui-btn-color: var(--color-primary);
     --ui-btn-hover-opacity: 0.05;
 
-    &:after {
+    &::after {
       position: absolute;
       inset: 0;
       width: 100%;
@@ -99,6 +100,7 @@
 
   &[data-type^="square"], &[data-type^="circle"] {
     --ui-btn-py: var(--ui-btn-py);
+
     width: var(--ui-btn-width);
   }
 
@@ -119,7 +121,7 @@
       opacity: 0;
     }
 
-    &:before {
+    &::before {
       z-index: 1;
       width: 1rem;
       height: 1rem;
@@ -141,6 +143,7 @@
   @media (--media-400) {
     &[data-type*="m:square"], &[data-type*="m:circle"] {
       --ui-btn-py: var(--ui-btn-py);
+
       width: var(--ui-btn-width);
 
       & > span {
@@ -159,20 +162,20 @@
 
   & .ui-btn {
     &:not(:first-of-type) {
-      box-shadow: -1px 0 rgba(var(--ui-btn-color),var(--ui-btn-hover-opacity));
+      box-shadow: -1px 0 rgba(var(--ui-btn-color), var(--ui-btn-hover-opacity));
 
-      &, &:after {
+      &, &::after {
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
       }
 
-      &:after {
+      &::after {
         border-left: 0;
       }
     }
 
     &:not(:last-of-type) {
-      &, &:after {
+      &, &::after {
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
       }

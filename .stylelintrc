@@ -6,5 +6,5 @@
     "at-rule-no-unknown": [true, {"ignoreAtRules": ["mixin", "define-mixin", "layer", "variants"]}],
     "selector-list-comma-newline-after": "always-multi-line"
   },
-  "ignoreFiles": ["src/icons/*.css"]
+  "ignoreFiles": ["src/icons/*.css", "**/+.css"]
 }

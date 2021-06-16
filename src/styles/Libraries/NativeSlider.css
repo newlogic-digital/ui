@@ -19,6 +19,7 @@
     &, & * {
       cursor: grabbing;
     }
+
     & a {
       pointer-events: none;
     }

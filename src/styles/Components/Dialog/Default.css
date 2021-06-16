@@ -2,6 +2,7 @@
   --c-dialog-py: 1rem;
   --c-dialog-px: 1.5rem;
   --c-dialog-offset-y: 2rem;
+
   animation: 0.3s ease 0s backwards 1 fadeInDown;
   position: relative;
   z-index: var(--z-30);
@@ -22,6 +23,7 @@
 
   @media (--media-min-768) {
     --c-dialog-offset-y: 4rem;
+
     width: 100%;
     min-width: 18.75rem;
     max-width: 40rem;

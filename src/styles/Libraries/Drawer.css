@@ -1,5 +1,6 @@
 .lib-drawer {
   --drawerOpacity: 0;
+
   z-index: var(--z-30);
   width: 100%;
   height: 100%;
@@ -30,7 +31,7 @@
     }
   }
 
-  &:before {
+  &::before {
     position: fixed;
     top: 0;
     bottom: 0;
@@ -62,7 +63,7 @@
     }
   }
 
-  &:after {
+  &::after {
     content: "";
     display: block;
     min-width: 100vw;

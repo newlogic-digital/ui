@@ -3,7 +3,7 @@
   font-size: 1.25rem;
 
   &[class*="icon-"], & [class*="icon-"] {
-    &:before {
+    &::before {
       transition: var(--transition-opacity);
 
       @nest .no-touch [href]:hover&, .no-touch button:hover& {
