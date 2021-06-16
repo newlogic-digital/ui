@@ -1,61 +1,61 @@
 <!DOCTYPE html>
 <html class="no-js no-sw" lang="{{ lang }}">
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>{{ page.title }}</title>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{{ page.title }}</title>
 
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="author" content="" />
-    <meta name="viewport" content="width=device-width, user-scalable=0, initial-scale=1, viewport-fit=cover" />
-    <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
-    <meta name="format-detection" content="telephone=no">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="{{ page.title }}">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="keywords" content="">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <meta name="viewport" content="width=device-width, user-scalable=0, initial-scale=1, viewport-fit=cover"/>
+        <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE"/>
+        <meta name="format-detection" content="telephone=no">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-title" content="{{ page.title }}">
+        <meta name="apple-mobile-web-app-capable" content="yes">
 
-    {% for url in prefetch %}
-        <link rel="dns-prefetch" href="{{ url }}">
-    {% endfor %}
+        {% for url in prefetch %}
+            <link rel="dns-prefetch" href="{{ url }}">
+        {% endfor %}
 
-    {% for url in assets.css.all %}
-        <link rel="stylesheet" href="{{ url|asset }}">
-    {% endfor %}
+        {% for url in assets.css.all %}
+            <link rel="stylesheet" href="{{ url|asset }}">
+        {% endfor %}
 
-    {% if config.serve.mode == 'dev' %}
-    <link rel="stylesheet" href="{{ attribute(assets.css, 'tailwind.src') }}" >
-    {% endif %}
+        {% if config.serve.mode == 'dev' %}
+            <link rel="stylesheet" href="{{ attribute(assets.css, 'tailwind.src') }}">
+        {% endif %}
 
-    <script src="{{ assets.js.lazysizes }}" async></script>
+        <script src="{{ assets.js.lazysizes }}" async></script>
 
-    <script>
-        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark') }
-        document.documentElement.className = document.documentElement.className.replace('no-js', 'js'); matchMedia('(hover: hover) and (pointer: fine)').matches && document.documentElement.classList.add('no-touch');/Android|iPhone|iPad|iPod/i.test(navigator.userAgent) && document.documentElement.classList.add('mobile');document.documentElement.classList.add(navigator.platform.toLowerCase().replace(/ .*/, ''));!function(e) { var t; e.match(/(msie|trident)/i) ? document.documentElement.classList.add('ie') : e.match(/edge/) ? document.documentElement.classList.add('edge') : (t = e.match(/(chrome|safari|firefox)/i)) && document.documentElement.classList.add(t[0]) } (navigator.userAgent.toLowerCase());
-    </script>
-
-    {% if config.serve.mode == 'devoff' %}
-        <script src="{{ attribute(assets.js, 'es-module-shims') }}" defer></script>
-        <script type="importmap-shim">
-            {{ fetch (assets.js.importmap) }}
+        <script>
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark') }
+            document.documentElement.className = document.documentElement.className.replace('no-js', 'js'); matchMedia('(hover: hover) and (pointer: fine)').matches && document.documentElement.classList.add('no-touch');/Android|iPhone|iPad|iPod/i.test(navigator.userAgent) && document.documentElement.classList.add('mobile');document.documentElement.classList.add(navigator.platform.toLowerCase().replace(/ .*/, ''));!function(e) { var t; e.match(/(msie|trident)/i) ? document.documentElement.classList.add('ie') : e.match(/edge/) ? document.documentElement.classList.add('edge') : (t = e.match(/(chrome|safari|firefox)/i)) && document.documentElement.classList.add(t[0]) } (navigator.userAgent.toLowerCase());
         </script>
-        <script src="{{ assets.js.core|asset }}" type="module-shim"></script>
-    {% else %}
-        <script src="{{ assets.js.core|asset }}" type="module"></script>
-    {% endif %}
-</head>
 
-<body data-controller="lib lib-dialog lib-drawer lib-fetch">
-    <div class="l-default">
-        {% include '../Layout/Header.twig' %}
-        <main id="l-main" class="transition-fade">
-            {% include '../Utils/sections.twig' with {sections: page.body} %}
-        </main>
-        {% include '../Layout/Footer.twig' %}
-    </div>
+        {% if config.serve.mode == 'devoff' %}
+            <script src="{{ attribute(assets.js, 'es-module-shims') }}" defer></script>
+            <script type="importmap-shim">
+                {{ fetch (assets.js.importmap) }}
+            </script>
+            <script src="{{ assets.js.core|asset }}" type="module-shim"></script>
+        {% else %}
+            <script src="{{ assets.js.core|asset }}" type="module"></script>
+        {% endif %}
+    </head>
 
-    {% if layout.cookies %}
-        {% include '../Components/CookieConsent.twig' %}
-    {% endif %}
-</body>
+    <body data-controller="lib lib-dialog lib-drawer lib-fetch">
+        <div class="l-default">
+            {% include '../Layout/Header.twig' %}
+            <main id="l-main" class="transition-fade">
+                {% include '../Utils/sections.twig' with {sections: page.body} %}
+            </main>
+            {% include '../Layout/Footer.twig' %}
+        </div>
+
+        {% if layout.cookies %}
+            {% include '../Components/CookieConsent.twig' %}
+        {% endif %}
+    </body>
 </html>
