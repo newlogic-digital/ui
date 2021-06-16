@@ -1,6 +1,6 @@
 {
   "name": "@newlogic-digital/ui",
-  "version": "3.0.9",
+  "version": "3.0.10",
   "type": "module",
   "main": "gulpfile.js",
   "author": "New Logic Studio s.r.o.",
@@ -8,7 +8,9 @@
   "license": "GNU GPLv3",
   "scripts": {
     "utils:eslint": "eslint 'src/**/*.js'",
-    "utils:eslint-fix": "eslint 'src/**/*.js' --fix"
+    "utils:eslint-fix": "eslint 'src/**/*.js' --fix",
+    "utils:stylelint": "stylelint 'src/**/*.css'",
+    "utils:stylelint-fix": "eslint 'src/**/*.css' --fix"
   },
   "imports": {},
   "dependencies": {
@@ -22,7 +24,8 @@
   "devDependencies": {
     "@newlogic-digital/core": "~0.5.36",
     "postcss-mixins": "^8.1.0",
-    "eslint-config-standard": "^16.0.3"
+    "eslint-config-standard": "^16.0.3",
+    "stylelint-config-standard": "^22.0.0"
   },
   "files": [
     "src",

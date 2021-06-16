@@ -31,7 +31,7 @@ html {
   }
 
   &.no-touch, &.no-touch * {
-    scrollbar-color: rgba(var(--color-default),0.2) rgb(var(--color-background));
+    scrollbar-color: rgba(var(--color-default), 0.2) rgb(var(--color-background));
     scrollbar-width: thin;
 
     &::-webkit-scrollbar {
@@ -43,7 +43,7 @@ html {
     }
 
     &::-webkit-scrollbar-thumb {
-      background-color: rgba(var(--color-default),0.2);
+      background-color: rgba(var(--color-default), 0.2);
     }
   }
 }
@@ -57,7 +57,7 @@ body {
   background-color: rgb(var(--color-background));
   cursor: default;
 
-  &:before {
+  &::before {
     position: fixed;
     inset: 0;
     content: "";
@@ -102,14 +102,16 @@ body {
   &.transition-fade {
     @nest html.swup-enabled & {
       /* clean-css ignore:start */
-      transition: opacity .2s;
+      transition: opacity 0.2s;
       opacity: 1;
+
       /* clean-css ignore:end */
     }
 
     @nest html.is-animating & {
       /* clean-css ignore:start */
       opacity: 0;
+
       /* clean-css ignore:end */
     }
   }

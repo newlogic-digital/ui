@@ -1,5 +1,5 @@
 @define-mixin iconfont {
-  font-family: 'iconfont' !important;
+  font-family: "iconfont" !important;
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -16,7 +16,7 @@
 }
 
 ::-ms-input-placeholder {
-  color: rgba(var(--color-default),0.54) !important;
+  color: rgba(var(--color-default), 0.54) !important;
   opacity: initial !important;
 }
 
@@ -94,7 +94,7 @@ a, area, button, input, label, select, summary, textarea, [tabindex] {
 }
 
 [class^="icon"], [class*="icon"] {
-  &:before {
+  &::before {
     display: block;
   }
 }
@@ -110,7 +110,7 @@ a, area, button, input, label, select, summary, textarea, [tabindex] {
     background-color: rgb(var(--color-background-100));
   }
 
-  &:before {
+  &::before {
     content: "";
     display: block;
   }

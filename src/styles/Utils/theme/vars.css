@@ -1,6 +1,6 @@
 :root {
-  --font-primary: 'Poppins', sans-serif;
-  --font-secondary: 'Poppins', sans-serif;
+  --font-primary: "Poppins", sans-serif;
+  --font-secondary: "Poppins", sans-serif;
   --transition: 0.3s;
   --radius: 0.5rem;
   --container: 75rem;

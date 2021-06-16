@@ -1,6 +1,6 @@
 @import "Utils/vendor.css";
-@import 'Utils/theme/main.css';
-@import 'Utils/reference.css';
+@import "Utils/theme/main.css";
+@import "Utils/reference.css";
 @import "Utils/default.css";
 @import "Layout/+.css";
 @import "Components/+.css";

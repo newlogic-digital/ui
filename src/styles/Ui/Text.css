@@ -4,6 +4,7 @@
   --ui-text-weight-bold: var(--font-semibold);
   --ui-text-marker-color: var(--color-primary);
   --ui-text-link-color: var(--color-primary);
+
   font-weight: var(--ui-text-weight);
   font-size: var(--ui-text-size);
   line-height: 1.75;
@@ -72,7 +73,7 @@
       line-height: 1rem;
     }
 
-    &:after {
+    &::after {
       content: "\00a0";
     }
   }
@@ -153,11 +154,11 @@
   & code {
     margin: 0;
     border-radius: var(--radius);
-    padding: .25rem .5rem;
-    font-size: .85em;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.85em;
     color: #476582;
-    font-family: source-code-pro,Menlo,Monaco,Consolas,"Courier New",monospace;
-    background-color: rgba(27, 31, 35, .05);
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+    background-color: rgba(27, 31, 35, 0.05);
 
     @nest .dark & {
       background-color: rgb(var(--color-background-100));
@@ -179,7 +180,7 @@
         margin: 0 0 0.5rem;
       }
 
-      &:before {
+      &::before {
         width: 0.25rem;
         height: 0.25rem;
         position: absolute;
@@ -194,7 +195,7 @@
 
     &, &[style*="disc"] {
       & li {
-        &:before {
+        &::before {
           border-radius: 50%;
         }
       }
@@ -202,7 +203,7 @@
 
     &[style*="square"] {
       & li {
-        &:before {
+        &::before {
           border-radius: 0;
         }
       }
@@ -210,7 +211,7 @@
 
     &[style*="circle"] {
       & li {
-        &:before {
+        &::before {
           border-radius: 50%;
           background-color: transparent;
         }
@@ -244,7 +245,7 @@
     aspect-ratio: 16/9;
     position: relative;
 
-    &:before {
+    &::before {
       content: "";
       display: block;
     }

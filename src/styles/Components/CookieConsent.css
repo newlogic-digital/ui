@@ -13,13 +13,13 @@
     transform: translateY(100%);
 
     &.is-animate {
-      &:before {
+      &::before {
         transform: translateX(-50%) translateY(0);
       }
     }
 
     &.is-mobile-show {
-      &:before {
+      &::before {
         transform: translateY(125%) translateX(-50%);
         opacity: 0;
         z-index: -2;
@@ -27,12 +27,12 @@
     }
 
     &.is-background-light {
-      &:after {
+      &::after {
         background-color: rgb(var(--color-background));
       }
     }
 
-    &:after {
+    &::after {
       position: absolute;
       inset: 0;
       background-color: rgb(var(--color-default));
@@ -40,7 +40,7 @@
       z-index: -1;
     }
 
-    &:before {
+    &::before {
       color: rgb(var(--color-invert));
       font-size: 0.875rem;
       height: 2.625rem;
@@ -64,7 +64,7 @@
   &.is-background-light {
     color: rgb(var(--color-default));
     background-color: rgb(var(--color-background));
-    box-shadow: 0 1px 3px 0 rgba(60, 64, 67, .3), 0 4px 8px 3px rgba(60, 64, 67, .15);
+    box-shadow: 0 1px 3px 0 rgba(60, 64, 67, 0.3), 0 4px 8px 3px rgba(60, 64, 67, 0.15);
   }
 
   @media (--media-min-960) {
@@ -151,7 +151,7 @@
             font-size: 0.75rem;
           }
 
-          &:before {
+          &::before {
             border-color: rgb(var(--color-invert));
 
             @nest .is-background-light& {
@@ -162,7 +162,6 @@
       }
 
       & .ui-btn {
-
         @media (--media-min-768) {
           margin-left: auto;
           padding: 0.625rem 0.75rem;
@@ -184,7 +183,7 @@
           }
 
           &.icon-l {
-            &:before {
+            &::before {
               font-size: 1rem;
             }
           }

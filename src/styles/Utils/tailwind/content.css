@@ -5,18 +5,17 @@
     }
 
     .after-content {
-
       content: attr(data-content);
     }
 
     .before-none {
-      &:after {
+      &::after {
         content: none;
       }
     }
 
     .after-none {
-      &:after {
+      &::after {
         content: none;
       }
     }

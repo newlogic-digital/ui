@@ -19,61 +19,32 @@
 }
 
 @custom-media --media-1600 (max-width: 114.9375em);
-
 @custom-media --media-1408 (max-width: 99.9375em);
-
 @custom-media --media-1360 (max-width: 87.9375em);
-
 @custom-media --media-1216 (max-width: 84.9375em);
-
 @custom-media --media-1024 (max-width: 75.9375em);
-
 @custom-media --media-960 (max-width: 63.9375em);
-
 @custom-media --media-768 (max-width: 59.9375em);
-
 @custom-media --media-400 (max-width: 47.9375em);
-
 @custom-media --media-360 (max-width: 24.9375em);
-
 @custom-media --media-320 (max-width: 22.4375em);
-
 @custom-media --media-min-2000 (min-width: 125em);
-
 @custom-media --media-min-1600 (min-width: 100em);
-
 @custom-media --media-min-1408 (min-width: 88em);
-
 @custom-media --media-min-1360 (min-width: 85em);
-
 @custom-media --media-min-1216 (min-width: 76em);
-
 @custom-media --media-min-1024 (min-width: 64em);
-
 @custom-media --media-min-960 (min-width: 60em);
-
 @custom-media --media-min-768 (min-width: 48em);
-
 @custom-media --media-min-400 (min-width: 25em);
-
 @custom-media --media-min-360 (min-width: 22.5em);
-
 @custom-media --media-min-320 (min-width: 20em);
-
 @custom-media --media-only-1024 (max-width: 75.9375em) and (min-width: 60em);
-
 @custom-media --media-only-960 (max-width: 63.9375em) and (min-width: 60em);
-
 @custom-media --media-only-768 (max-width: 59.9375em) and (min-width: 60em);
-
 @custom-media --media-m (max-width: 47.9375em);
-
 @custom-media --media-t (min-width: 48em);
-
 @custom-media --media-d (min-width: 60em);
-
 @custom-media --media-w (min-width: 76em);
-
 @custom-media --media-hd (min-width: 88em);
-
 @custom-media --media-touch (max-width: 59.9375em);

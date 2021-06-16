@@ -1,6 +1,6 @@
 /* TODO asi předělat do tailwindu */
 .animate {
-  animation-duration: .5s;
+  animation-duration: 0.5s;
   animation-fill-mode: both;
 }
 
@@ -15,11 +15,11 @@
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
 }
-
 
 @keyframes fadeInLeft {
   from {
@@ -47,23 +47,25 @@
 
 @keyframes fadeInUp {
   0% {
-    opacity:0;
-    transform:translateY(2rem)
+    opacity: 0;
+    transform: translateY(2rem);
   }
+
   to {
-    opacity:1;
-    transform:translateY(0)
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
 @keyframes fadeInDown {
   0% {
-    opacity:0;
-    transform:translateY(-2rem)
+    opacity: 0;
+    transform: translateY(-2rem);
   }
+
   to {
-    opacity:1;
-    transform:translateY(0)
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -93,23 +95,25 @@
 
 @keyframes fadeOutUp {
   0% {
-    opacity:1;
-    transform:translateY(0)
+    opacity: 1;
+    transform: translateY(0);
   }
+
   to {
-    opacity:0;
-    transform:translateY(-2rem)
+    opacity: 0;
+    transform: translateY(-2rem);
   }
 }
 
 @keyframes fadeOutDown {
   0% {
-    opacity:1;
-    transform:translateY(0)
+    opacity: 1;
+    transform: translateY(0);
   }
+
   to {
-    opacity:0;
-    transform:translateY(2rem)
+    opacity: 0;
+    transform: translateY(2rem);
   }
 }
 
@@ -135,37 +139,41 @@
 
 @keyframes slideInDown {
   0% {
-    transform: translateY(-100%)
+    transform: translateY(-100%);
   }
+
   100% {
-    transform: translateY(0)
+    transform: translateY(0);
   }
 }
 
 @keyframes slideOutUp {
   0% {
-    transform: translateY(0)
+    transform: translateY(0);
   }
+
   100% {
-    transform: translateY(-100%)
+    transform: translateY(-100%);
   }
 }
 
 @keyframes slideInUp {
   0% {
-    transform: translateY(100%)
+    transform: translateY(100%);
   }
+
   100% {
-    transform: translateY(0)
+    transform: translateY(0);
   }
 }
 
 @keyframes slideOutDown {
   0% {
-    transform: translateY(0)
+    transform: translateY(0);
   }
+
   100% {
-    transform: translateY(100%)
+    transform: translateY(100%);
   }
 }
 

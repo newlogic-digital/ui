@@ -5,6 +5,7 @@
   --ui-badge-weight: var(--font-normal);
   --ui-badge-bg: var(--color-primary);
   --ui-badge-color: var(--color-light);
+
   display: inline-flex;
   align-self: flex-start;
   align-items: center;
@@ -25,6 +26,7 @@
 
   &[data-type^="square"], &[data-type^="circle"] {
     --ui-badge-px: var(--ui-badge-py);
+
     width: calc(var(--ui-badge-size) + (2 * var(--ui-badge-py)));
   }
 
@@ -39,7 +41,6 @@
 
   &[data-size="md"] {
     --ui-badge-py: 0.5rem;
-    --ui-badge-py: 0.5rem;
   }
 }
 
@@ -48,18 +49,18 @@
 
   & .ui-badge {
     &:not(:first-of-type) {
-      &, &:after {
+      &, &::after {
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
       }
 
-      &:after {
+      &::after {
         border-left: 0;
       }
     }
 
     &:not(:last-of-type) {
-      &, &:after {
+      &, &::after {
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
       }

@@ -23,7 +23,8 @@
 
   &[data-state="invalid"] {
     --ui-checkbox-border-color: var(--color-error);
-    color: rgb(var(--color-error))
+
+    color: rgb(var(--color-error));
   }
 
   & input {
@@ -61,7 +62,7 @@
         background-color: rgb(var(--ui-checkbox-checked-bg));
       }
 
-      &:before {
+      &::before {
         opacity: 1;
         transform: scale(1);
       }
@@ -76,8 +77,9 @@
       }
     }
 
-    &:before {
+    &::before {
       @mixin iconfont;
+
       line-height: 1.125rem;
       font-size: 1.125rem;
       text-indent: 0;

@@ -1,8 +1,11 @@
+v3.0.10
+* Added: stylelint and reformat to standard
+
 v3.0.9
 * Remove: preload / bodyLoaded functionality
 
 v3.0.8
-* Added: eslint and reformat to standardjs
+* Added: eslint and reformat to standard
 
 v3.0.7
 * Added: tippy for interactive dropdowns

@@ -1,6 +1,7 @@
 .lib-dialog {
   --lib-dialog-bg: var(--color-dark);
   --lib-dialog-opacity: 0.8;
+
   animation: 0.3s ease 0s backwards 1 fadeIn;
   inset: 0;
   z-index: var(--z-30);
