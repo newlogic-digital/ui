@@ -23,7 +23,7 @@
         <link rel="stylesheet" href="{{ url|asset }}">
     {% endfor %}
 
-    {% if config.serve.mode == "dev" %}
+    {% if config.serve.mode == 'dev' %}
     <link rel="stylesheet" href="{{ attribute(assets.css, 'tailwind.src') }}" >
     {% endif %}
 
@@ -31,10 +31,10 @@
 
     <script>
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark') }
-        document.documentElement.className = document.documentElement.className.replace("no-js", "js"); matchMedia("(hover: hover) and (pointer: fine)").matches && document.documentElement.classList.add("no-touch");/Android|iPhone|iPad|iPod/i.test(navigator.userAgent) && document.documentElement.classList.add("mobile");document.documentElement.classList.add(navigator.platform.toLowerCase().replace(/ .*/, ""));!function(e) { var t; e.match(/(msie|trident)/i) ? document.documentElement.classList.add("ie") : e.match(/edge/) ? document.documentElement.classList.add("edge") : (t = e.match(/(chrome|safari|firefox)/i)) && document.documentElement.classList.add(t[0]) } (navigator.userAgent.toLowerCase());
+        document.documentElement.className = document.documentElement.className.replace('no-js', 'js'); matchMedia('(hover: hover) and (pointer: fine)').matches && document.documentElement.classList.add('no-touch');/Android|iPhone|iPad|iPod/i.test(navigator.userAgent) && document.documentElement.classList.add('mobile');document.documentElement.classList.add(navigator.platform.toLowerCase().replace(/ .*/, ''));!function(e) { var t; e.match(/(msie|trident)/i) ? document.documentElement.classList.add('ie') : e.match(/edge/) ? document.documentElement.classList.add('edge') : (t = e.match(/(chrome|safari|firefox)/i)) && document.documentElement.classList.add(t[0]) } (navigator.userAgent.toLowerCase());
     </script>
 
-    {% if config.serve.mode == "devoff" %}
+    {% if config.serve.mode == 'devoff' %}
         <script src="{{ attribute(assets.js, 'es-module-shims') }}" defer></script>
         <script type="importmap-shim">
             {{ fetch (assets.js.importmap) }}
@@ -47,15 +47,15 @@
 
 <body data-controller="lib lib-dialog lib-drawer lib-fetch">
     <div class="l-default">
-        {% include "../Layout/Header.twig" %}
+        {% include '../Layout/Header.twig' %}
         <main id="l-main" class="transition-fade">
-            {% include "../Utils/sections.twig" with {sections: page.body} %}
+            {% include '../Utils/sections.twig' with {sections: page.body} %}
         </main>
-        {% include "../Layout/Footer.twig" %}
+        {% include '../Layout/Footer.twig' %}
     </div>
 
     {% if layout.cookies %}
-        {% include "../Components/CookieConsent.twig" %}
+        {% include '../Components/CookieConsent.twig' %}
     {% endif %}
 </body>
 </html>
