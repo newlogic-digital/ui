@@ -7,10 +7,8 @@
   "description": "Modern and modular CSS framework with the best principles",
   "license": "GNU GPLv3",
   "scripts": {
-    "utils:eslint": "eslint 'src/**/*.js'",
-    "utils:eslint-fix": "eslint 'src/**/*.js' --fix",
-    "utils:stylelint": "stylelint 'src/**/*.css'",
-    "utils:stylelint-fix": "eslint 'src/**/*.css' --fix"
+    "utils:eslint": "eslint 'src/**/*.js' --fix",
+    "utils:stylelint": "eslint 'src/**/*.css' --fix"
   },
   "imports": {},
   "dependencies": {
