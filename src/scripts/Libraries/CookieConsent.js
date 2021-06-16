@@ -1,36 +1,36 @@
 const LibCookieConsent = {
     init: () => {
-        if (localStorage.getItem("cookieconsent") === "approve") {
-            const type = localStorage.getItem("cookieconsent_type")
+        if (localStorage.getItem('cookieconsent') === 'approve') {
+            const type = localStorage.getItem('cookieconsent_type')
 
             if (type !== null) {
-                if (type === "performance") {
-                    LibCookieConsent.append("performance")
-                } else if (type === "marketing") {
-                    LibCookieConsent.append("all")
+                if (type === 'performance') {
+                    LibCookieConsent.append('performance')
+                } else if (type === 'marketing') {
+                    LibCookieConsent.append('all')
                 }
             } else {
-                LibCookieConsent.append("all")
+                LibCookieConsent.append('all')
             }
-        } else if (localStorage.getItem("cookieconsent") === null) {
-            LibCookieConsent.append("all")
+        } else if (localStorage.getItem('cookieconsent') === null) {
+            LibCookieConsent.append('all')
         }
     },
     set: (type, callback) => {
-        if (type === "approve") {
-            localStorage.setItem("cookieconsent", "approve")
-            LibCookieConsent.append("all")
-        } else if (type === "performance") {
-            localStorage.setItem("cookieconsent", "approve")
-            localStorage.setItem("cookieconsent_type", "performance")
-            LibCookieConsent.append("performance")
-        } else if (type === "marketing") {
-            localStorage.setItem("cookieconsent", "approve")
-            localStorage.setItem("cookieconsent_type", "marketing")
-            LibCookieConsent.append("all")
-        } else if (type === "decline") {
-            localStorage.setItem("cookieconsent", "decline")
-            localStorage.removeItem("cookieconsent_type")
+        if (type === 'approve') {
+            localStorage.setItem('cookieconsent', 'approve')
+            LibCookieConsent.append('all')
+        } else if (type === 'performance') {
+            localStorage.setItem('cookieconsent', 'approve')
+            localStorage.setItem('cookieconsent_type', 'performance')
+            LibCookieConsent.append('performance')
+        } else if (type === 'marketing') {
+            localStorage.setItem('cookieconsent', 'approve')
+            localStorage.setItem('cookieconsent_type', 'marketing')
+            LibCookieConsent.append('all')
+        } else if (type === 'decline') {
+            localStorage.setItem('cookieconsent', 'decline')
+            localStorage.removeItem('cookieconsent_type')
             LibCookieConsent.remove()
 
             if (callback) {
@@ -39,19 +39,19 @@ const LibCookieConsent = {
         }
     },
     remove: () => {
-        document.cookie.split(";").forEach(c => {
-            document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/")
+        document.cookie.split(';').forEach(c => {
+            document.cookie = c.replace(/^ +/, '').replace(/=.*/, '=;expires=' + new Date().toUTCString() + ';path=/')
         })
     },
     append: (type) => {
-        document.querySelectorAll("[data-lib-cookieconsent]").forEach(elm => {
-            if (type === "all" || elm.getAttribute("data-lib-cookieconsent") === type) {
-                const script = document.createElement("script")
+        document.querySelectorAll('[data-lib-cookieconsent]').forEach(elm => {
+            if (type === 'all' || elm.getAttribute('data-lib-cookieconsent') === type) {
+                const script = document.createElement('script')
                 let delay = 0
 
                 ;[...elm.attributes].forEach((attribute) => {
                     if (attribute.specified) {
-                        if (attribute.name.indexOf("data-lib-cookieconsent") === -1 && attribute.name.indexOf("type") === -1) {
+                        if (attribute.name.indexOf('data-lib-cookieconsent') === -1 && attribute.name.indexOf('type') === -1) {
                             script.setAttribute(attribute.name, attribute.value)
                         }
                     }
@@ -59,14 +59,14 @@ const LibCookieConsent = {
 
                 script.innerHTML = elm.innerHTML
 
-                if (elm.getAttribute("data-lib-cookieconsent-delay")) {
-                    delay = parseInt(elm.getAttribute("data-lib-cookieconsent-delay"))
+                if (elm.getAttribute('data-lib-cookieconsent-delay')) {
+                    delay = parseInt(elm.getAttribute('data-lib-cookieconsent-delay'))
                 }
 
                 setTimeout(() => {
-                    if (elm.closest("body") !== null) {
+                    if (elm.closest('body') !== null) {
                         document.body.appendChild(script)
-                    } else if (elm.closest("head") !== null) {
+                    } else if (elm.closest('head') !== null) {
                         document.head.appendChild(script)
                     }
 

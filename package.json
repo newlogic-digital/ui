@@ -6,6 +6,10 @@
   "author": "New Logic Studio s.r.o.",
   "description": "Modern and modular CSS framework with the best principles",
   "license": "GNU GPLv3",
+  "scripts": {
+    "utils:eslint": "eslint 'src/**/*.js'",
+    "utils:eslint-fix": "eslint 'src/**/*.js' --fix"
+  },
   "imports": {},
   "dependencies": {
     "@stimulus/core": "2.0.0",
@@ -32,13 +36,5 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/newlogic-digital/ui.git"
-  },
-  "standard": {
-    "rules": {
-      "no-new": "off"
-    },
-    "env": {
-      "browser": true
-    }
   }
 }

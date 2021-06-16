@@ -1,10 +1,10 @@
-import { Application, Controller as DefaultController } from "@stimulus/core"
-import loadStimulus from "../Utils/Functions/loadStimulus.js"
+import { Application, Controller as DefaultController } from '@stimulus/core'
+import loadStimulus from '../Utils/Functions/loadStimulus.js'
 
 const LibStimulus = new Application(document.documentElement, {
-    controllerAttribute: "data-controller",
-    actionAttribute: "data-action",
-    targetAttribute: "data-ref"
+    controllerAttribute: 'data-controller',
+    actionAttribute: 'data-action',
+    targetAttribute: 'data-ref'
 })
 
 export const getController = (element, identifier) => LibStimulus.getControllerForElementAndIdentifier(element, identifier)

@@ -1,7 +1,7 @@
 const LibAnchor = {
     animation: (element) => {
         let offset
-        const attr = "data-offset"
+        const attr = 'data-offset'
 
         if (window.innerWidth > 960) {
             offset = 0
@@ -15,38 +15,38 @@ const LibAnchor = {
             }
         }
 
-        document.documentElement.scroll({ top: element.offsetTop - offset, behavior: "smooth" })
+        document.documentElement.scroll({ top: element.offsetTop - offset, behavior: 'smooth' })
     },
     action: (element) => {
-        let href = element.getAttribute("href")
+        let href = element.getAttribute('href')
 
         if (href === null) {
-            href = element.getAttribute("data-action-href")
+            href = element.getAttribute('data-action-href')
         }
 
-        const id = document.querySelector(`[id="${href.replace("#", "")}"]`)
-        let options = element.getAttribute("data-action-options")
+        const id = document.querySelector(`[id="${href.replace('#', '')}"]`)
+        let options = element.getAttribute('data-action-options')
 
         if (options === null) {
-            options = ""
+            options = ''
         }
 
         if (id !== null) {
-            if (!(options.indexOf("mobile") > -1 && window.innerWidth > 960)) {
+            if (!(options.indexOf('mobile') > -1 && window.innerWidth > 960)) {
                 LibAnchor.animation(id)
 
-                if (options.indexOf("hash") > -1) {
+                if (options.indexOf('hash') > -1) {
                     window.location.hash = id
                 }
             }
         }
     },
     init: () => {
-        const selector = [...document.querySelectorAll("[id]")]
+        const selector = [...document.querySelectorAll('[id]')]
 
         if (selector[0] !== null) {
             selector.forEach((element) => {
-                if (window.location.hash && element.getAttribute("id") === window.location.hash.replace("#", "")) {
+                if (window.location.hash && element.getAttribute('id') === window.location.hash.replace('#', '')) {
                     LibAnchor.animation(element)
                 }
             })

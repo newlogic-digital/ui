@@ -1,17 +1,17 @@
 export default function inView(element, callback, options) {
     let inView = false
 
-    if (typeof IntersectionObserver === "undefined" && callback) {
+    if (typeof IntersectionObserver === 'undefined' && callback) {
         callback()
         return false
     }
 
-    if (typeof options === "undefined") {
+    if (typeof options === 'undefined') {
         options = {}
     }
 
-    if (typeof options.rootMargin === "undefined") {
-        options.rootMargin = "100px"
+    if (typeof options.rootMargin === 'undefined') {
+        options.rootMargin = '100px'
     }
 
     new IntersectionObserver(
