@@ -27,12 +27,6 @@
     <link rel="stylesheet" href="{{ attribute(assets.css, 'tailwind.src') }}" >
     {% endif %}
 
-    {% if preload %}
-        <style data-loadcss>
-            {{ fetch (resolvePath ~ assets.css.preload|asset) }}
-        </style>
-    {% endif %}
-
     <script src="{{ assets.js.lazysizes }}" async></script>
 
     <script>
@@ -51,10 +45,7 @@
     {% endif %}
 </head>
 
-<body class="{% if preload %}is-body-preload{% else %}is-body-loaded{% endif %}" data-controller="lib lib-dialog lib-drawer lib-fetch">
-    {% if preload %}
-        <svg class="l-spinner" width="32" height="32" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path fill="rgb(var(--color-primary))" d="M256 511.998c-68.38 0-132.67-26.629-181.02-74.98C26.629 388.658 0 324.378 0 255.998c0-48.42 13.591-95.57 39.303-136.35 25-39.648 60.332-71.686 102.18-92.65l21.5 42.916c-34.02 17.044-62.74 43.095-83.074 75.334-20.873 33.11-31.906 71.4-31.906 110.75 0 114.69 93.309 208 208 208s208-93.309 208-208c0-39.346-11.033-77.641-31.905-110.74-20.34-32.249-49.06-58.299-83.08-75.342L370.518 27c41.846 20.964 77.179 53.002 102.18 92.65C498.409 160.429 512 207.577 512 256c0 68.38-26.629 132.67-74.98 181.02C388.667 485.371 324.38 512 256 512z"/></svg>
-    {% endif %}
+<body data-controller="lib lib-dialog lib-drawer lib-fetch">
     <div class="l-default">
         {% include "../Layout/Header.twig" %}
         <main id="l-main" class="transition-fade">

@@ -1,18 +1,18 @@
 export default function importStyle(url) {
     return new Promise((resolve, reject) => {
         if (document.querySelector(`link[href="${url}"]`) === null) {
-            const style = document.createElement('link');
+            const style = document.createElement('link')
 
-            style._importStyle = new Promise((load, error) => {
+            style._importStyle = new Promise((resolve, reject) => {
                 style.href = url
-                style.rel = "stylesheet"
-                style.onload = () => {load(); resolve()}
-                style.onerror = () => {error(); reject()}
-            });
+                style.rel = 'stylesheet'
+                style.onload = resolve
+                style.onerror = reject
+            }).then(resolve).catch(reject)
 
-            document.head.prepend(style);
+            document.head.prepend(style)
         } else {
-            document.querySelector(`link[href="${url}"]`)._importStyle.then(resolve);
+            document.querySelector(`link[href="${url}"]`)._importStyle.then(resolve)
         }
     })
 }
