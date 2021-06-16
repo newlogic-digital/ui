@@ -4,7 +4,7 @@ const dynamicActions = [['a[href^="#"]', 'click->lib#anchor'], ['.ui-btn', 'clic
 function loadControllers(parent, selectors) {
     if (parent !== null) {
         selectors.forEach(selector => {
-            parent.getElementsByClassName(selector).forEach(element => {
+            [...parent.getElementsByClassName(selector)].forEach(element => {
                 if (element.getAttribute('data-controller') === null) {
                     element.setAttribute('data-controller', selector)
                 }

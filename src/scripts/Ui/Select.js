@@ -28,7 +28,7 @@ LibStimulus.register('ui-select', class extends Controller {
     connect() {
         const self = this; const element = self.element
         const select = element.querySelector('select')
-        const option = [...element.querySelectorAll('[data-option]')]
+        const option = element.querySelectorAll('[data-option]')
 
         element.addEventListener('click', () => {
             if (!element._hasDataValue('state', 'focus')) {

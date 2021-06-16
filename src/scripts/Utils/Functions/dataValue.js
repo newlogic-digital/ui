@@ -1,4 +1,4 @@
-Element.prototype._addDataValue = (key, value) => {
+Element.prototype._addDataValue = function(key, value) {
     key = `data-${key}`
 
     let attribute = this.getAttribute(key)
@@ -15,7 +15,7 @@ Element.prototype._addDataValue = (key, value) => {
     }
 }
 
-Element.prototype._removeDataValue = (key, value) => {
+Element.prototype._removeDataValue = function(key, value) {
     const result = []
 
     key = `data-${key}`
@@ -33,7 +33,7 @@ Element.prototype._removeDataValue = (key, value) => {
     }
 }
 
-Element.prototype._hasDataValue = (key, value) => {
+Element.prototype._hasDataValue = function(key, value) {
     key = `data-${key}`
 
     const attribute = this.getAttribute(key)
