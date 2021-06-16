@@ -15,24 +15,3 @@ if ('serviceWorker' in navigator && location.protocol === 'https:') {
         }
     })
 }
-
-if (document.body.classList.contains('is-body-preload')) {
-    document.body.classList.remove('is-body-preload')
-    setTimeout(() => document.body.classList.add('is-body-loaded'), 300)
-}
-
-if (document.querySelector('[data-loadcss]') !== null) {
-    if (typeof document.fonts !== 'undefined') {
-        document.fonts.ready.then(() => {
-            document.documentElement.classList.add('wf-active')
-        })
-
-        setTimeout(() => {
-            if (!document.documentElement.classList.contains('wf-active')) {
-                document.documentElement.classList.add('wf-active')
-            }
-        }, 500)
-    } else {
-        document.documentElement.classList.add('wf-active')
-    }
-}

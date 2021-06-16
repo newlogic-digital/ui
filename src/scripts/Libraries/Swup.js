@@ -74,9 +74,6 @@ LibSwup.on('contentReplaced', () => {
     if (typeof LibCookieConsent !== 'undefined') {
         LibCookieConsent.init()
     }
-
-    document.body.classList.remove('is-body-preload')
-    document.body.classList.add('is-body-loaded')
 })
 
 export default LibSwup

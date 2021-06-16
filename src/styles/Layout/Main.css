@@ -30,41 +30,6 @@ html {
     overflow: hidden;
   }
 
-  &.no-js {
-    & .l-default {
-      opacity: 1;
-    }
-
-    & .l-spinner {
-      display: none;
-    }
-  }
-
-  &[class*="wf-"] {
-    & body {
-      & .l-default {
-        transition: var(--transition-opacity);
-      }
-
-      &:not(.is-body-preload) {
-        & .l-default {
-          opacity: 1;
-        }
-
-        & .l-spinner {
-          opacity: 0;
-          transition: var(--transition-opacity)
-        }
-      }
-
-      &.is-body-loaded {
-        & .l-spinner {
-          display: none;
-        }
-      }
-    }
-  }
-
   &.no-touch, &.no-touch * {
     scrollbar-color: rgba(var(--color-default),0.2) rgb(var(--color-background));
     scrollbar-width: thin;
@@ -135,14 +100,9 @@ body {
   flex-direction: column;
 
   &.transition-fade {
-    @nest html.swup-enabled body.is-body-loaded & {
-      /* clean-css ignore:start */
-      transition: opacity .2s;
-      /* clean-css ignore:end */
-    }
-
     @nest html.swup-enabled & {
       /* clean-css ignore:start */
+      transition: opacity .2s;
       opacity: 1;
       /* clean-css ignore:end */
     }

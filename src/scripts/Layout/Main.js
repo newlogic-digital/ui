@@ -1,5 +1,5 @@
 import { LibStimulus, Controller, loadStimulus } from '../Libraries/Stimulus.js'
-import { bodyLoaded, importScript } from '../Utils/Functions/+.js'
+import { importScript } from '../Utils/Functions/+.js'
 import LibRipple from '../Libraries/Ripple.js'
 import LibAnchor from '../Libraries/Anchor.js'
 import LibDialog from '../Libraries/Dialog.js'
@@ -72,7 +72,7 @@ LibStimulus.register('lib-ns', class extends Controller {
             importScript(cdn.seamless).then(() => window.seamless.polyfill())
         }
 
-        bodyLoaded(() => LibNativeSlider(this.element.querySelector('[data-lib-ns]'), this.element))
+        LibNativeSlider(this.element.querySelector('[data-lib-ns]'), this.element)
     }
 })
 
