@@ -30,8 +30,8 @@
         <script src="{{ assets.js.lazysizes }}" async></script>
 
         <script>
-            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark') }
-            document.documentElement.className = document.documentElement.className.replace('no-js', 'js'); matchMedia('(hover: hover) and (pointer: fine)').matches && document.documentElement.classList.add('no-touch');/Android|iPhone|iPad|iPod/i.test(navigator.userAgent) && document.documentElement.classList.add('mobile');document.documentElement.classList.add(navigator.platform.toLowerCase().replace(/ .*/, ''));!function(e) { var t; e.match(/(msie|trident)/i) ? document.documentElement.classList.add('ie') : e.match(/edge/) ? document.documentElement.classList.add('edge') : (t = e.match(/(chrome|safari|firefox)/i)) && document.documentElement.classList.add(t[0]) } (navigator.userAgent.toLowerCase());
+            (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) && document.documentElement.classList.add('dark')
+            document.documentElement.className = document.documentElement.className.replace('no-js', 'js'); matchMedia('(hover: hover) and (pointer: fine)').matches && document.documentElement.classList.add('no-touch'); /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) && document.documentElement.classList.add('mobile'); document.documentElement.classList.add(navigator.platform.toLowerCase().replace(/ .*/, '')); !function(e) { let t; (t = e.match(/(chrome|safari|firefox)/i)) && document.documentElement.classList.add(t[0]) } (navigator.userAgent.toLowerCase());
         </script>
 
         {% if config.serve.mode == 'devoff' %}
