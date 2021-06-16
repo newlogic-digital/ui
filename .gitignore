@@ -6,7 +6,4 @@ temp/*
 /public/*.html
 /public/*.json
 /public/emails/*.html
-/src/templates/*.twig
-!/src/templates/dialog*
-!/src/templates/json*
 #!.gitkeep
