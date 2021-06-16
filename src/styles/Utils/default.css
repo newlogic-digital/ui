@@ -1,5 +1,5 @@
 @define-mixin iconfont {
-  font-family: 'iconfont' !important;
+  font-family: "iconfont" !important;
   speak: none;
   font-style: normal;
   font-weight: normal;
