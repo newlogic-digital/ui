@@ -5,7 +5,8 @@
     "font-family-no-missing-generic-family-keyword": [true, {"ignoreFontFamilies": ["iconfont"]}],
     "at-rule-no-unknown": [true, {"ignoreAtRules": ["mixin", "define-mixin", "layer", "variants"]}],
     "selector-list-comma-newline-after": "always-multi-line",
-    "string-quotes": "double"
+    "string-quotes": "double",
+    "comment-empty-line-before": ["always", {"except": ["first-nested"], "ignore": ["stylelint-commands"], "ignoreComments": ["/^clean-css/"]}]
   },
   "ignoreFiles": ["src/icons/*.css", "**/+.css"]
 }

@@ -104,14 +104,12 @@ body {
       /* clean-css ignore:start */
       transition: opacity 0.2s;
       opacity: 1;
-
       /* clean-css ignore:end */
     }
 
     @nest html.is-animating & {
       /* clean-css ignore:start */
       opacity: 0;
-
       /* clean-css ignore:end */
     }
   }
