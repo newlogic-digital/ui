@@ -7,22 +7,25 @@
   "description": "Modern and modular CSS framework with the best principles",
   "license": "GNU GPLv3",
   "scripts": {
+    "prepare": "husky install",
     "utils:eslint": "eslint 'src/**/*.js' --fix",
     "utils:stylelint": "eslint 'src/**/*.css' --fix"
   },
   "imports": {},
   "dependencies": {
-    "@stimulus/core": "2.0.0",
     "@simonwep/pickr": "^1.8.1",
-    "tippy.js": "^6.3.1",
+    "@stimulus/core": "2.0.0",
     "cleave.js": "^1.6.0",
     "swup": "2.0.14",
+    "tippy.js": "^6.3.1",
     "vanillajs-datepicker": "^1.1.4"
   },
   "devDependencies": {
+    "@commitlint/config-conventional": "^12.1.4",
     "@newlogic-digital/core": "~0.5.36",
-    "postcss-mixins": "^8.1.0",
     "eslint-config-standard": "^16.0.3",
+    "husky": "^6.0.0",
+    "postcss-mixins": "^8.1.0",
     "stylelint-config-standard": "^22.0.0"
   },
   "files": [
@@ -37,5 +40,8 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/newlogic-digital/ui.git"
+  },
+  "commitlint": {
+    "extends": ["@commitlint/config-conventional"]
   }
 }
