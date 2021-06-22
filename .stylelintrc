@@ -6,7 +6,8 @@
     "at-rule-no-unknown": [true, {"ignoreAtRules": ["mixin", "define-mixin", "layer", "variants"]}],
     "selector-list-comma-newline-after": "always-multi-line",
     "string-quotes": "double",
-    "comment-empty-line-before": ["always", {"except": ["first-nested"], "ignore": ["stylelint-commands"], "ignoreComments": ["/^clean-css/"]}]
+    "comment-empty-line-before": ["always", {"except": ["first-nested"], "ignore": ["stylelint-commands"], "ignoreComments": ["/^clean-css/"]}],
+    "length-zero-no-unit": [true, {"ignore": ["custom-properties"]}]
   },
   "ignoreFiles": ["src/icons/*.css", "**/+.css"]
 }

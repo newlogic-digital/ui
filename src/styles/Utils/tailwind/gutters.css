@@ -1,8 +1,8 @@
 @layer utilities {
   @variants responsive {
     .row {
-      --gx: 0;
-      --gy: 0;
+      --gx: 0rem;
+      --gy: 0rem;
 
       display: flex;
       margin: calc(var(--gy) / -2) calc(var(--gx) / -2) calc(var(--gy) / -2) calc(var(--gx) / -2);
@@ -13,7 +13,7 @@
     }
 
     .row-y {
-      --gy: 0;
+      --gy: 0rem;
 
       display: flex;
       margin-top: calc(var(--gy) / -2);
@@ -26,7 +26,7 @@
     }
 
     .row-x {
-      --gx: 0;
+      --gx: 0rem;
 
       display: flex;
       margin-left: calc(var(--gx) / -2);
@@ -47,8 +47,8 @@
     }
 
     .g-0 {
-      --gx: 0;
-      --gy: 0;
+      --gx: 0rem;
+      --gy: 0rem;
     }
 
     .g-1 {
