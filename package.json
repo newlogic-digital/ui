@@ -21,10 +21,8 @@
     "vanillajs-datepicker": "^1.1.4"
   },
   "devDependencies": {
-    "@commitlint/config-conventional": "^12.1.4",
     "@newlogic-digital/core": "~0.5.36",
     "eslint-config-standard": "^16.0.3",
-    "husky": "^6.0.0",
     "postcss-mixins": "^8.1.0",
     "stylelint-config-standard": "^22.0.0"
   },
