@@ -7,9 +7,8 @@
   "description": "Modern and modular CSS framework with the best principles",
   "license": "GNU GPLv3",
   "scripts": {
-    "prepare": "husky install",
     "utils:eslint": "eslint 'src/**/*.js' --fix",
-    "utils:stylelint": "eslint 'src/**/*.css' --fix"
+    "utils:stylelint": "stylelint 'src/**/*.css' --fix"
   },
   "imports": {},
   "dependencies": {
@@ -38,8 +37,5 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/newlogic-digital/ui.git"
-  },
-  "commitlint": {
-    "extends": ["@commitlint/config-conventional"]
   }
 }
