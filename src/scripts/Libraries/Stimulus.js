@@ -41,6 +41,6 @@ class Controller extends DefaultController {
 
 LibStimulus.start().then(() => loadStimulus(document))
 
-window.LibStimulus = LibStimulus
+window.LibStimulus = { instance: LibStimulus, Controller, loadStimulus }
 
 export { LibStimulus, Controller, loadStimulus }
