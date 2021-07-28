@@ -39,9 +39,9 @@
             <script type="importmap-shim">
                 {{ fetch (assets.js.importmap) }}
             </script>
-            <script src="{{ assets.js.core|asset }}" type="module-shim"></script>
+            <script src="{{ assets.js.main|asset }}" type="module-shim"></script>
         {% else %}
-            <script src="{{ assets.js.core|asset }}" type="module"></script>
+            <script src="{{ assets.js.main|asset }}" type="module"></script>
         {% endif %}
     </head>
 

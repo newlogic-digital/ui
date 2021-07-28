@@ -16,7 +16,7 @@
     },
     "js": {
       "importmap": "/public/importmap.json",
-      "core": "/src/scripts/main.js",
+      "main": "/src/scripts/main.js",
       "es-module-shims": "https://cdn.jsdelivr.net/npm/es-module-shims@0.10.4/dist/es-module-shims.js",
       "lazysizes": "https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"
     }
