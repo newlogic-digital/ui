@@ -20,7 +20,7 @@
     "vanillajs-datepicker": "^1.1.4"
   },
   "devDependencies": {
-    "@newlogic-digital/core": "~0.5.36",
+    "@newlogic-digital/core": "~0.6.3",
     "eslint-config-standard": "^16.0.3",
     "postcss-mixins": "^8.1.0",
     "stylelint-config-standard": "^22.0.0"
