@@ -1,20 +1,32 @@
+v3.0.13
+* feat: recaptcha enterprise
+
+v3.0.12
+* feat: eslint import extensions
+* feat: newlogic core update, es-module-shims update
+* fix: core->main js in twig
+
+v3.0.11
+* feat: stylint custom properties units
+* feat: stimulus window instance
+
 v3.0.10
-* Added: stylelint and reformat to standard
+* feat: stylelint and reformat to standard
 
 v3.0.9
-* Remove: preload / bodyLoaded functionality
+* remove: preload / bodyLoaded functionality
 
 v3.0.8
-* Added: eslint and reformat to standard
+* feat: eslint and reformat to standard
 
 v3.0.7
-* Added: tippy for interactive dropdowns
+* feat: tippy for interactive dropdowns
 
 v3.0.6
-* Added: improved form controls
+* feat: improved form controls
 
 v3.0.5
-* Improved: stimulus loaded as @stimulus/core
+* improved: stimulus loaded as @stimulus/core
 
 v3.0.0
-* Initial release
+* feat: initial release

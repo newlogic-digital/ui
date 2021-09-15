@@ -4,22 +4,16 @@ import cdn from '../Utils/cdn.js'
 
 LibStimulus.register('lib-recaptcha', class extends Controller {
     connect() {
-        setTimeout(() => this.captcha(), 2500)
-
-        this.interval = setInterval(() => this.captcha(), 150000)
+        importScript(cdn.recaptcha.replace('{apikey}', this.data.get('api')))
     }
 
-    captcha() {
-        importScript(cdn.recaptcha.replace('{apikey}', this.data.get('api'))).then(() => {
-            window.grecaptcha.ready(() => {
-                window.grecaptcha.execute(this.data.get('api'), { action: 'form' }).then(token => {
-                    this.element.querySelector('[name="gtoken"]').value = token
-                })
+    execute(e) {
+        e.preventDefault()
+
+        window.grecaptcha.enterprise.ready(() => {
+            window.grecaptcha.enterprise.execute(this.data.get('api'), { action: this.data.get('action') ? this.data.get('action') : 'form' }).then(token => {
+                this.element.querySelector('[name="gtoken"]').value = token
             })
         })
-    }
-
-    disconnect() {
-        clearInterval(this.interval)
     }
 })
