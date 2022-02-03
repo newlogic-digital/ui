@@ -1,69 +1,73 @@
+import { loadStimulus } from './Stimulus.js'
+
 const LibDialog = {
-    show: (content, callback) => {
-        if (document.querySelector('.lib-dialog > [class^="c-dialog"]') !== null) {
-            document.querySelector('.lib-dialog > [class^="c-dialog"]').remove()
-        }
-
-        if (document.querySelector('.lib-dialog') === null) {
-            document.body.insertAdjacentHTML('beforeend', '<div class="lib-dialog"></div>')
-        }
-
-        document.querySelector('.lib-dialog').insertAdjacentHTML('beforeend', content)
-        document.querySelector('.lib-dialog').style.display = 'flex'
-
-        function outerHeight(el) {
-            return el.offsetHeight + parseInt(getComputedStyle(el).marginTop) + parseInt(getComputedStyle(el).marginBottom)
-        }
-
-        if (outerHeight(document.querySelector('.lib-dialog > [class^="c-dialog"]')) > window.innerHeight) {
-            const offset = window.innerWidth - document.body.clientWidth
-
-            document.documentElement.style.paddingRight = `${offset}px`
-            document.documentElement.classList.add('is-overflow-hidden')
-
-            if (document.querySelector('#l-header') !== null) {
-                document.querySelector('#l-header').style.right = `${offset}px`
+    show: async(content) => {
+        return new Promise(resolve => {
+            if (document.querySelector('.lib-dialog > [class^="c-dialog"]') !== null) {
+                document.querySelector('.lib-dialog > [class^="c-dialog"]').remove()
             }
-        }
 
-        if (callback) {
-            callback()
-        }
-
-        document.querySelector('.lib-dialog').addEventListener('mousedown', e => {
-            if (e.target.classList.contains('lib-dialog')) {
-                document.documentElement.addEventListener('mouseup', function e() {
-                    LibDialog.hide()
-                    document.documentElement.removeEventListener('mouseup', e)
-                })
+            if (document.querySelector('.lib-dialog') === null) {
+                document.body.insertAdjacentHTML('beforeend', '<div class="lib-dialog"></div>')
             }
-        }, true)
-    },
-    hide: (callback) => {
-        if (document.querySelector('.lib-dialog') !== null) {
-            document.querySelector('.lib-dialog')._addDataValue('state', 'hiding')
-        }
 
-        setTimeout(() => {
-            if (document.querySelector('.lib-dialog') !== null) {
-                document.querySelector('.lib-dialog').style.display = 'none'
-                document.documentElement.classList.remove('is-overflow-hidden')
+            document.querySelector('.lib-dialog').insertAdjacentHTML('beforeend', content)
+            document.querySelector('.lib-dialog').style.display = 'flex'
+
+            function outerHeight(el) {
+                return el.offsetHeight + parseInt(getComputedStyle(el).marginTop) + parseInt(getComputedStyle(el).marginBottom)
+            }
+
+            if (outerHeight(document.querySelector('.lib-dialog > [class^="c-dialog"]')) > window.innerHeight) {
+                const offset = window.innerWidth - document.body.clientWidth
+
+                document.documentElement.style.paddingRight = `${offset}px`
+                document.documentElement.classList.add('overflow-hidden')
 
                 if (document.querySelector('#l-header') !== null) {
-                    document.querySelector('#l-header').style.right = ''
+                    document.querySelector('#l-header').style.right = `${offset}px`
+                }
+            }
+
+            loadStimulus(document.querySelector('.lib-dialog'))
+
+            resolve()
+
+            document.querySelector('.lib-dialog').addEventListener('mousedown', e => {
+                if (e.target.classList.contains('lib-dialog')) {
+                    document.documentElement.addEventListener('mouseup', function e() {
+                        LibDialog.hide()
+                        document.documentElement.removeEventListener('mouseup', e)
+                    })
+                }
+            }, true)
+        })
+    },
+    hide: async() => {
+        return new Promise(resolve => {
+            if (document.querySelector('.lib-dialog') !== null) {
+                document.querySelector('.lib-dialog')._addDataValue('state', 'hiding')
+            }
+
+            setTimeout(() => {
+                if (document.querySelector('.lib-dialog') !== null) {
+                    document.querySelector('.lib-dialog').style.display = 'none'
+                    document.documentElement.classList.remove('overflow-hidden')
+
+                    if (document.querySelector('#l-header') !== null) {
+                        document.querySelector('#l-header').style.right = ''
+                    }
+
+                    document.querySelector('.lib-dialog').remove()
                 }
 
-                document.querySelector('.lib-dialog').remove()
-            }
-
-            if (callback) {
-                callback()
-            }
-        }, 300)
+                resolve()
+            }, 300)
+        })
     },
-    action: (element, url, callback) => {
+    action: async(element, url) => {
         fetch(url, { headers: { 'X-Requested-With': 'XMLHttpRequest' } }).then(response => response.json()).then(({ dialog }) => {
-            LibDialog.show(dialog, callback)
+            LibDialog.show(dialog)
         })
     }
 }

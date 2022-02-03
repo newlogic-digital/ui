@@ -1,28 +1,28 @@
 import Swup from 'swup'
-import { LibStimulus, loadStimulus } from './Stimulus.js'
+import { getController, loadStimulus } from './Stimulus.js'
 import LibAnchor from './Anchor.js'
 import LibDialog from './Dialog.js'
 import LibCookieConsent from './CookieConsent.js'
 
 const LibSwup = new Swup({
-    containers: ['#l-main'],
-    linkSelector: `a[href^="${window.location.origin}"]:not([data-no-swup]):not([target="_blank"]), a[href^="/"]:not([data-no-swup]):not([target="_blank"]), a[href^="#"]:not([data-no-swup])`
+    containers: ['#l-main', '#l-header'].filter(element => document.querySelector(element)),
+    linkSelector: `:is(a[href^="${window.location.origin}"], a[href^="/"]):not([data-no-swup], [data-naja], [target="_blank"])`
 })
 
-LibSwup.on('clickLink', () => {
-    document.body.classList.remove('is-overflow-hidden')
+LibSwup.on('clickLink', async() => {
+    document.body.classList.remove('overflow-hidden')
 
-    if (document.querySelector('.is-lib-drawer-active') !== null) {
-        LibStimulus.getController(document.body, 'lib-drawer').hide()
+    if (document.querySelector('.lib-drawer[data-state~="active"]') !== null) {
+        getController(document.body, 'lib-drawer').hide()
     }
 
     if (document.querySelector('.lib-dialog') !== null) {
-        LibDialog.hide()
+        await LibDialog.hide()
     }
 })
 
 LibSwup.on('animationOutDone', () => {
-    window.scrollTo(0, 0)
+    document.documentElement.scroll({ top: 0, behavior: 'instant' })
 })
 
 LibSwup.on('contentReplaced', () => {
@@ -38,11 +38,11 @@ LibSwup.on('contentReplaced', () => {
         }
     })
 
+    LibAnchor.init()
+
     LibSwup.options.containers.forEach(selector => {
         loadStimulus(document.querySelector(selector))
     })
-
-    LibAnchor.init()
 
     if (typeof window.fbq !== 'undefined') {
         window.fbq('track', 'PageView')

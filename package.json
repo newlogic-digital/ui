@@ -1,29 +1,27 @@
 {
   "name": "@newlogic-digital/ui",
-  "version": "3.0.13",
+  "version": "3.1.0",
   "type": "module",
   "main": "gulpfile.js",
   "author": "New Logic Studio s.r.o.",
-  "description": "Modern and modular CSS framework with the best principles",
+  "description": "Lightweight, modern and modular CSS framework with the best principles",
   "license": "GNU GPLv3",
   "scripts": {
-    "utils:eslint": "eslint 'src/**/*.js' --fix",
-    "utils:stylelint": "stylelint 'src/**/*.css' --fix"
+    "utils:eslint": "eslint 'src/scripts/**/*.js' --fix",
+    "utils:stylelint": "stylelint 'src/styles/**/*.css' --fix"
   },
   "imports": {},
   "dependencies": {
-    "@simonwep/pickr": "^1.8.1",
-    "@stimulus/core": "2.0.0",
-    "cleave.js": "^1.6.0",
+    "@simonwep/pickr": "^1.8.2",
+    "@hotwired/stimulus": "3.0.1",
     "swup": "2.0.14",
-    "tippy.js": "^6.3.1",
-    "vanillajs-datepicker": "^1.1.4"
+    "tippy.js": "^6.3.7",
+    "vanillajs-datepicker": "^1.2.0"
   },
   "devDependencies": {
-    "@newlogic-digital/core": "~0.6.3",
+    "@newlogic-digital/core": "~0.9.5",
     "eslint-config-standard": "^16.0.3",
-    "postcss-mixins": "^8.1.0",
-    "stylelint-config-standard": "^22.0.0"
+    "stylelint-config-standard": "^24.0.0"
   },
   "files": [
     "src",

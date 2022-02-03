@@ -1,45 +1,58 @@
 .ui-badge {
+  --ui-badge-width: auto;
+  --ui-badge-height: 1.5rem;
   --ui-badge-py: 0.375rem;
   --ui-badge-px: 0.5rem;
   --ui-badge-size: 0.75rem;
+  --ui-badge-radius: var(--radius);
   --ui-badge-weight: var(--font-normal);
-  --ui-badge-bg: var(--color-primary);
-  --ui-badge-color: var(--color-light);
+  --ui-badge-bg-opacity: var(--tw-bg-opacity, 1);
+  --ui-badge-text-opacity: var(--tw-text-opacity, 1);
+  --ui-badge-bg: rgb(var(--color-accent) / var(--ui-badge-bg-opacity));
+  --ui-badge-color: rgb(var(--color-light) / var(--ui-badge-text-opacity));
+  --ui-badge-hover-opacity: 0.8;
 
   display: inline-flex;
   align-self: flex-start;
   align-items: center;
   text-align: center;
   justify-content: center;
+  flex-shrink: 0;
   font-size: var(--ui-badge-size);
   font-weight: var(--ui-badge-weight);
   padding: var(--ui-badge-py) var(--ui-badge-px);
-  border-radius: var(--radius);
-  background-color: rgb(var(--ui-badge-bg));
-  color: rgb(var(--ui-badge-color));
+  border-radius: var(--ui-badge-radius);
+  background-color: var(--ui-badge-bg);
+  color: var(--ui-badge-color);
+  width: var(--ui-badge-width);
+  height: var(--ui-badge-height);
   line-height: var(--ui-badge-size);
   transition: var(--transition-opacity);
 
-  @nest .no-touch [href]:hover&, .no-touch button:hover& {
-    opacity: 0.8;
+  @nest .no-touch &:is([href]:hover, button:hover) {
+    opacity: var(--ui-badge-hover-opacity);
   }
 
-  &[data-type^="square"], &[data-type^="circle"] {
+  & svg {
+    width: 1em;
+    height: 1em;
+  }
+
+  &:--type-square, &:--type-circle {
     --ui-badge-px: var(--ui-badge-py);
-
-    width: calc(var(--ui-badge-size) + (2 * var(--ui-badge-py)));
+    --ui-badge-width: var(--ui-badge-height);
   }
 
-  &[data-type^="circle"] {
+  &:--type-circle {
     border-radius: 50%;
   }
 
-  &[data-size="sm"] {
-    --ui-badge-py: 0.25rem;
-    --ui-badge-px: 0.5rem;
+  &:--size-sm {
+    --ui-badge-height: 1.25rem;
   }
 
-  &[data-size="md"] {
+  &:--size-md {
+    --ui-badge-height: 1.75rem;
     --ui-badge-py: 0.5rem;
   }
 }

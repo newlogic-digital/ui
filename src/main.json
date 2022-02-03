@@ -8,26 +8,29 @@
     "css": {
       "all": [
         "/src/styles/main.css",
-        "https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=block",
-        "/src/icons/iconfont.css"
+        "https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=block"
       ],
       "tailwind": "/temp/tailwind.css",
-      "tailwind.src": "/src/styles/tailwind.css"
+      "tailwind.src": "/src/styles/tailwind.css",
+      "ratio": "/temp/ratio.css"
     },
     "js": {
       "importmap": "/public/importmap.json",
       "main": "/src/scripts/main.js",
-      "es-module-shims": "https://cdn.jsdelivr.net/npm/es-module-shims@0.12.8/dist/es-module-shims.js",
-      "lazysizes": "https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"
+      "lazysizes": "https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"
     }
   },
   "layout": {
     "template": "Layout/Main.twig",
-    "cookies": true,
+    "cookies": false,
     "nav": [
       {
-        "name": "Domů",
+        "name": "Home",
         "url": "/"
+      },
+      {
+        "name": "Documentation",
+        "url": "/ui"
       }
     ]
   },

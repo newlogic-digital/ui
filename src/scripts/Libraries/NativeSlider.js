@@ -15,36 +15,38 @@ export default function LibNativeSlider(selector, parent) {
     if (!selector.classList.contains('is-fade')) {
         self.behavior = 'smooth'
 
-        const grabbing = () => {
-            self.isDown = false
-            self.paused = false
-            selector.classList.remove('is-grabbing')
-            selector.scrollLeft = selector.scrollLeft - 1
-        }
-
-        selector.addEventListener('mouseleave', grabbing)
-
-        selector.addEventListener('mouseup', grabbing)
-
-        selector.addEventListener('mousedown', e => {
-            self.isDown = true
-            self.startX = e.pageX - selector.offsetLeft
-            self.scrollLeft = selector.scrollLeft
-            self.paused = true
-        })
-
-        selector.addEventListener('mousemove', e => {
-            if (!self.isDown) return
-            e.preventDefault()
-            const x = e.pageX - selector.offsetLeft
-            const walk = (x - self.startX) * 1.25
-            selector.classList.add('is-grabbing')
-            selector.scrollLeft = self.scrollLeft - walk
-
-            selector.ondragstart = dragEvent => {
-                dragEvent.preventDefault()
+        if (!document.documentElement.classList.contains('safari')) {
+            const grabbing = () => {
+                self.isDown = false
+                self.paused = false
+                selector.classList.remove('is-grabbing')
+                selector.scrollLeft = selector.scrollLeft - 1
             }
-        })
+
+            selector.addEventListener('mouseleave', grabbing)
+
+            selector.addEventListener('mouseup', grabbing)
+
+            selector.addEventListener('mousedown', e => {
+                self.isDown = true
+                self.startX = e.pageX - selector.offsetLeft
+                self.scrollLeft = selector.scrollLeft
+                self.paused = true
+            })
+
+            selector.addEventListener('mousemove', e => {
+                if (!self.isDown) return
+                e.preventDefault()
+                const x = e.pageX - selector.offsetLeft
+                const walk = (x - self.startX) * 1.25
+                selector.classList.add('is-grabbing')
+                selector.scrollLeft = self.scrollLeft - walk
+
+                selector.ondragstart = dragEvent => {
+                    dragEvent.preventDefault()
+                }
+            })
+        }
     }
 
     if (self.ref.counterMax !== null) {

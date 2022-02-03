@@ -1,0 +1,23 @@
+.ui-image {
+  position: relative;
+
+  &:not(.bg-transparent) {
+    background-color: rgb(var(--color-background-100));
+  }
+
+  &::before {
+    content: "";
+    display: block;
+  }
+
+  & > * {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  @nest picture& > img {
+    object-fit: cover;
+  }
+}

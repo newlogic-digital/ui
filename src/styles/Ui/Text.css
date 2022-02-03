@@ -2,19 +2,17 @@
   --ui-text-size: 0.9375rem;
   --ui-text-weight: var(--font-normal);
   --ui-text-weight-bold: var(--font-semibold);
-  --ui-text-marker-color: var(--color-primary);
-  --ui-text-link-color: var(--color-primary);
 
   font-weight: var(--ui-text-weight);
   font-size: var(--ui-text-size);
-  line-height: 1.75;
+  line-height: calc(var(--ui-text-size) + 0.75rem);
 
   & a {
     text-decoration: underline;
     transition: var(--transition-opacity);
 
     &:not([class*="text-"]) {
-      color: rgb(var(--ui-text-link-color));
+      color: rgb(var(--color-accent));
 
       @nest .no-touch &[href]:hover {
         opacity: 0.8;
@@ -34,7 +32,7 @@
   & figure {
     margin: 1rem 0;
 
-    @media (--media-min-768) {
+    @media (--media-t) {
       margin: 2rem 0;
     }
 
@@ -49,17 +47,17 @@
     max-width: 100%;
     height: auto !important;
 
-    @media (--media-400) {
+    @media (--media-m) {
       display: block;
       float: none !important;
     }
 
-    @media (--media-min-768) {
+    @media (--media-t) {
       &[style*="right"], &.float-right {
         margin: 0 0 2rem 4rem;
       }
 
-      &[style="left"], &.float-left {
+      &[style*="left"], &.float-left {
         margin: 0 2rem 4rem 0;
       }
     }
@@ -79,44 +77,33 @@
   }
 
   & hr {
-    margin: 1.125rem 0;
+    margin: 1.25rem 0;
   }
 
   & :is(h1, h2, h3, h4, h5, h6) {
     font-weight: var(--ui-text-weight-bold);
     font-family: var(--font-secondary);
-    line-height: 1.15;
-    margin: 0 0 1.125rem;
+    font-size: var(--ui-text-heading-size, 1rem);
+    line-height: calc(var(--ui-text-heading-size) + 0.5rem);
+    margin: 0 0 1.25rem;
   }
 
   & h1 {
-    font-size: 2rem;
+    --ui-text-heading-size: 2.25rem;
   }
 
   & h2 {
-    font-size: 1.5rem;
+    --ui-text-heading-size: 1.75rem;
   }
 
-  & h3 {
-    font-size: 1.125rem;
-  }
-
-  & h4 {
-    font-size: 1.125rem;
-  }
-
-  & h5 {
-    font-size: 1rem;
-  }
-
-  & h6 {
-    font-size: 1rem;
+  & h3, & h4 {
+    --ui-text-heading-size: 1.25rem;
   }
 
   & table {
     border: 0;
 
-    @media (--media-400) {
+    @media (--media-m) {
       min-width: 100%;
     }
 
@@ -127,13 +114,13 @@
 
     & thead {
       font-weight: var(--ui-text-weight-bold);
-      border-bottom: 1px solid rgb(var(--color-background-200));
+      border-bottom: 1px solid rgb(var(--color-current) / 0.075);
     }
 
     & tbody {
       & tr {
         &:nth-of-type(even) {
-          background-color: rgb(var(--color-background-100));
+          background-color: rgb(var(--color-current) / 0.05);
         }
       }
     }
@@ -144,8 +131,8 @@
   }
 
   & blockquote {
-    background-color: rgb(var(--color-background-100));
-    border-left: 0.3125rem solid rgb(var(--color-background-200));
+    background-color: rgb(var(--color-current) / 0.075);
+    border-left: 0.3125rem solid rgb(var(--color-accent) / 1);
     padding: 1.25em 1.5em;
     margin: 0;
     font-size: inherit;
@@ -158,17 +145,30 @@
     font-size: 0.85em;
     color: #476582;
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
-    background-color: rgba(27, 31, 35, 0.05);
+    background-color: rgb(27 31 35 / 0.05);
 
     @nest .dark & {
       background-color: rgb(var(--color-background-100));
-      color: #da1039;
+      color: rgb(var(--color-primary));
+    }
+  }
+
+  & ol {
+    margin: 0 0 1.5rem;
+    padding: 0 0 0 1rem;
+
+    & li {
+      padding-left: 0.5rem;
+
+      &::marker {
+        color: rgb(var(--color-accent));
+      }
     }
   }
 
   & ul {
     list-style-type: none !important;
-    margin: 0;
+    margin: 0 0 1.5rem;
     padding: 0;
 
     & li {
@@ -185,19 +185,12 @@
         height: 0.25rem;
         position: absolute;
         content: "";
-        border: 1px solid rgb(var(--ui-text-marker-color));
-        background-color: rgb(var(--ui-text-marker-color));
+        border: 1px solid rgb(var(--color-accent));
+        background-color: rgb(var(--color-accent));
         left: 0;
         top: 0.625rem;
         text-indent: 0;
-      }
-    }
-
-    &, &[style*="disc"] {
-      & li {
-        &::before {
-          border-radius: 50%;
-        }
+        border-radius: 50%;
       }
     }
 
@@ -219,23 +212,10 @@
     }
   }
 
-  & ol {
-    margin: 0;
-    padding: 0 0 0 1rem;
-
-    & li {
-      padding-left: 0.5rem;
-
-      &::marker {
-        color: rgb(var(--ui-text-marker-color));
-      }
-    }
-  }
-
   & .elm_text_table {
     display: block;
 
-    @media (--media-400) {
+    @media (--media-m) {
       max-width: 100%;
       overflow: auto;
     }

@@ -3,7 +3,7 @@ import { LibStimulus, Controller } from '../Libraries/Stimulus.js'
 import { importStyle } from '../Utils/Functions/+.js'
 
 LibStimulus.register('ui-input', class extends Controller {
-    connect() {
+    async connect() {
         const element = this.element
 
         this.validate(element, false)
@@ -14,13 +14,11 @@ LibStimulus.register('ui-input', class extends Controller {
 
         this.typeNumber(element)
 
-        this.typeTime(element)
-
-        this.typeDatetime(element)
-
-        this.typeColor(element)
-
         this.typeFile(element)
+
+        await this.typeDatetime(element)
+
+        await this.typeColor(element)
     }
 
     validate(element, validate) {
@@ -42,15 +40,15 @@ LibStimulus.register('ui-input', class extends Controller {
 
                 if (input.checkValidity()) {
                     element._addDataValue('state', 'valid')
-
-                    // if (element.querySelector(`[class^="icon"][class*="valid"]`) === null) {
-                    //     element.insertAdjacentHTML("beforeend", `<span class="icon-r icon-valid text-success"></span>`)
-                    // }
                 } else {
                     element._addDataValue('state', 'invalid')
 
                     if (element.querySelector('[class^="icon"][class*="valid"]') === null) {
-                        element.insertAdjacentHTML('beforeend', `<span class="icon-r icon-invalid text-error"><span tabindex="0" class="lib-hint-top lib-hint-error" aria-label="${validationMessage}"></span></span>`)
+                        const icon = element.querySelector('.icon-r')
+                        const elm = icon || element
+                        const where = icon ? 'afterend' : 'beforeend'
+
+                        elm.insertAdjacentHTML(where, `<div class="icon-r icon-invalid text-error lib-hint-top lib-hint-error" tabindex="0" aria-label="${validationMessage}"><svg><use href="#icon-exclamation-circle"></use></svg></div>`)
                     }
                 }
             }
@@ -103,7 +101,7 @@ LibStimulus.register('ui-input', class extends Controller {
         const date = element.querySelector('[type^="date"]')
 
         if (date !== null && !document.documentElement.classList.contains('mobile')) {
-            const lang = await import(`/* @vite-ignore */https://cdn.esm.sh/v41/vanillajs-datepicker/locales/${document.documentElement.lang === 'en' ? 'cs' : document.documentElement.lang}.js`)
+            const lang = await import(`/* @vite-ignore */https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.2.0/js/i18n/locales/${document.documentElement.lang === 'en' ? 'cs' : document.documentElement.lang}.min.js`)
             const { Datepicker } = await import('vanillajs-datepicker')
 
             await importStyle(cdn.datepicker)
@@ -116,8 +114,7 @@ LibStimulus.register('ui-input', class extends Controller {
             let currentDate; let currentTime = null
 
             date.setAttribute('type', 'hidden')
-            element.insertAdjacentHTML('beforeend', `<input type="text" inputmode="none" ${required ? 'required' : ''} ${placeholder ? 'placeholder' : ''}>`)
-            element.querySelector('[type="text"]').addEventListener('keydown', (e) => e.preventDefault())
+            element.insertAdjacentHTML('beforeend', `<input type="text" inputmode="none" ${required ? 'required' : ''} ${placeholder ? `placeholder="${date.getAttribute('placeholder')}"` : ''}>`)
 
             const hidden = element.querySelector('[type="hidden"]')
 
@@ -126,31 +123,51 @@ LibStimulus.register('ui-input', class extends Controller {
             }
 
             const datepicker = new Datepicker(element.querySelector('[type="text"]'), Object.assign({
-                autohide: true,
+                autohide: !datetime,
                 language: document.documentElement.lang,
+                format: 'dd.mm.yyyy',
+                clearBtn: true,
+                todayBtn: true,
+                todayBtnMode: 1,
                 minDate: Datepicker.parseDate(hidden.getAttribute('min'), 'yyyy-mm-dd'),
                 maxDate: Datepicker.parseDate(hidden.getAttribute('max'), 'yyyy-mm-dd')
             }, JSON.parse(element.getAttribute('data-lib-datepicker'))))
-
             datepicker.setDate(Datepicker.parseDate(hidden.value, 'yyyy-mm-dd'))
 
             if (datetime && hidden.value) {
-                element.insertAdjacentHTML('afterbegin', `<span class="input" ${placeholder ? 'placeholder' : ''}>${datepicker.getDate('dd.mm.yyyy') + ' ' + hidden.dataset.time}</span>`)
+                element.insertAdjacentHTML('afterbegin', `<span class="input" ${placeholder ? 'placeholder' : ''}><span>${datepicker.getDate('dd.mm.yyyy') + '</span>&nbsp;' + hidden.dataset.time}</span>`)
+            }
+
+            if (datetime) {
+                datepicker.element.addEventListener('keydown', e => {
+                    if (e.key === 'Backspace' || e.key === 'Delete') {
+                        datepicker.setDate({ clear: true })
+                    } else {
+                        e.preventDefault()
+                    }
+                })
             }
 
             datepicker.element.addEventListener('changeDate', () => {
                 if (typeof hidden.dataset.time !== 'undefined') {
-                    hidden.value = datepicker.getDate('yyyy-mm-dd') + 'T' + hidden.dataset.time
+                    if (typeof datepicker.getDate('yyyy-mm-dd') !== 'undefined') {
+                        hidden.value = datepicker.getDate('yyyy-mm-dd') + 'T' + hidden.dataset.time
 
-                    const value = datepicker.getDate('dd.mm.yyyy') + ' ' + hidden.dataset.time
+                        const value = '<span>' + datepicker.getDate('dd.mm.yyyy') + '</span>&nbsp;' + hidden.dataset.time
 
-                    if (element.querySelector('.input') === null) {
-                        element.insertAdjacentHTML('afterbegin', `<span class="input" ${placeholder ? 'placeholder' : ''}>${value}</span>`)
+                        if (element.querySelector('.input') === null) {
+                            element.insertAdjacentHTML('afterbegin', `<span class="input" ${placeholder ? 'placeholder' : ''}>${value}</span>`)
+                        } else {
+                            element.querySelector('.input').innerHTML = value
+                        }
                     } else {
-                        element.querySelector('.input').textContent = value
+                        hidden.value = ''
+                        element.querySelector('.input').textContent = ''
                     }
-                } else {
+                } else if (datepicker.getDate()) {
                     hidden.value = datepicker.getDate('yyyy-mm-dd')
+                } else {
+                    hidden.value = ''
                 }
 
                 hidden.dispatchEvent(new Event('change', { bubbles: true }))
@@ -172,18 +189,29 @@ LibStimulus.register('ui-input', class extends Controller {
 
                     currentTime = time
 
-                    footer.insertAdjacentHTML('beforeend', `<div class="datepicker-time"><input type="time" value="${time}" aria-label="Text"></div>`)
-
-                    this.typeTime(footer)
+                    footer.querySelector('.datepicker-controls').insertAdjacentHTML('beforeend', `<input type="time" value="${time}" aria-label="Text"><button type="button" data-ok class="button ok-btn" style="width: auto;">Ok</button>`)
 
                     footer.querySelector('[type="time"]').addEventListener('change', e => {
                         hidden.setAttribute('data-time', e.target.value)
                     })
 
-                    footer.querySelector('[type="time"]').addEventListener('click', e => {
+                    footer.querySelector('[type="time"]').addEventListener('mousedown', e =>
+                        e.stopPropagation()
+                    )
+
+                    footer.querySelector('[type="time"]').addEventListener('blur', e => {
                         e.stopPropagation()
                         e.preventDefault()
-                        e.target.focus()
+                        datepicker.element.focus()
+                    })
+
+                    footer.querySelector('[data-ok]').addEventListener('click', e => {
+                        if (hidden.value === '') {
+                            footer.querySelector('.today-btn').click()
+                        }
+
+                        datepicker.element.focus()
+                        datepicker.hide()
                     })
                 } else if (datetime) {
                     currentTime = hidden.dataset.time
@@ -193,33 +221,15 @@ LibStimulus.register('ui-input', class extends Controller {
             datepicker.element.addEventListener('hide', element => {
                 if (hidden.value === '') {
                     this.element._removeDataValue('state', 'active')
-                }
+                } else {
+                    if (datetime) {
+                        element.detail.datepicker.picker.element.querySelector('[type="time"]').dispatchEvent(new Event('change', { bubbles: true }))
 
-                if (datetime) {
-                    element.detail.datepicker.picker.element.querySelector('[type="time"]').dispatchEvent(new Event('change', { bubbles: true }))
-
-                    if (currentDate === datepicker.getDate('yyyy-mm-dd') && currentTime.toString() !== hidden.dataset.time.toString()) {
-                        datepicker.element.dispatchEvent(new Event('changeDate', { bubbles: true }))
+                        if (currentDate !== datepicker.getDate('yyyy-mm-dd') || currentTime.toString() !== hidden.dataset.time.toString()) {
+                            datepicker.element.dispatchEvent(new Event('changeDate', { bubbles: true }))
+                        }
                     }
                 }
-            })
-        }
-    }
-
-    async typeTime(element) {
-        if (element.querySelector('[type="time"]') !== null && element.querySelector('[type="time"]').type !== 'time') {
-            const Cleave = (await import('cleave.js')).default
-
-            element.querySelector('[type="time"]').setAttribute('placeholder', '--:--')
-            element.querySelector('[type="time"]').classList.add('polyfill')
-
-            if (element.querySelector('label') !== null) {
-                element.querySelector('[type="time"]').classList.add('is-label')
-            }
-
-            new Cleave(element.querySelector('[type="time"]'), {
-                time: true,
-                timePattern: ['h', 'm']
             })
         }
     }

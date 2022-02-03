@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js no-sw" lang="{{ lang }}">
+<html class="no-js sw" lang="{{ lang }}">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -34,15 +34,7 @@
             document.documentElement.className = document.documentElement.className.replace('no-js', 'js'); matchMedia('(hover: hover) and (pointer: fine)').matches && document.documentElement.classList.add('no-touch'); /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) && document.documentElement.classList.add('mobile'); document.documentElement.classList.add(navigator.platform.toLowerCase().replace(/ .*/, '')); !function(e) { let t; (t = e.match(/(chrome|safari|firefox)/i)) && document.documentElement.classList.add(t[0]) } (navigator.userAgent.toLowerCase());
         </script>
 
-        {% if config.serve.mode == 'devoff' %}
-            <script src="{{ attribute(assets.js, 'es-module-shims') }}" defer></script>
-            <script type="importmap-shim">
-                {{ fetch (assets.js.importmap) }}
-            </script>
-            <script src="{{ assets.js.main|asset }}" type="module-shim"></script>
-        {% else %}
-            <script src="{{ assets.js.main|asset }}" type="module"></script>
-        {% endif %}
+        <script src="{{ assets.js.main|asset }}" type="module"></script>
     </head>
 
     <body data-controller="lib lib-dialog lib-drawer lib-fetch">
@@ -57,5 +49,7 @@
         {% if layout.cookies %}
             {% include '../Components/CookieConsent.twig' %}
         {% endif %}
+
+        {{ fetch ('/src/icons.svg') }}
     </body>
 </html>

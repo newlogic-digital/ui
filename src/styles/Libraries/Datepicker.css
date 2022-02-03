@@ -1,16 +1,20 @@
 .datepicker-dropdown {
+  --color-current: var(--color-default);
+
   z-index: 9999;
   transition: var(--transition-opacity), var(--transition-transform);
   will-change: transform;
+  color: rgb(var(--color-current));
 
   @nest html:not(.no-pointer-events) & {
     display: block;
   }
 
   & .datepicker-picker {
-    box-shadow: 0 0.15em 1.5em 0 rgba(var(--color-dark), 0.05), 0 0 1em 0 rgba(var(--color-dark), 0.05);
+    box-shadow: 0 0.15em 1.5em 0 rgb(var(--color-dark) / 0.05), 0 0 1em 0 rgb(var(--color-dark) / 0.05);
     overflow: hidden;
     display: block;
+    border-radius: var(--radius);
   }
 
   &.datepicker-orient-top {
@@ -19,7 +23,7 @@
 
     &::after, &::before {
       top: 100%;
-      left: 1.25rem;
+      left: 1.3125rem;
       border: solid transparent;
       content: "";
       height: 0;
@@ -52,7 +56,7 @@
 
     &::after, &::before {
       bottom: 100%;
-      left: 1.25rem;
+      left: 1.3125rem;
       border: solid transparent;
       content: "";
       height: 0;
@@ -88,7 +92,7 @@
   font-size: 0.75rem;
   font-weight: var(--font-semibold);
   text-transform: uppercase;
-  color: rgb(var(--color-primary));
+  color: rgb(var(--color-accent));
 }
 
 .datepicker-cell {
@@ -96,34 +100,57 @@
 }
 
 .datepicker-cell.selected, .datepicker-cell.selected:hover {
-  background-color: rgb(var(--color-primary));
+  background-color: rgb(var(--color-accent));
 }
 
-.datepicker-time {
-  padding: 0.5rem;
+.datepicker-controls {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0.125rem;
+
+  & .ok-btn {
+    background: rgb(var(--color-accent));
+    color: rgb(var(--color-light)) !important;
+    border-color: rgb(var(--color-accent)) !important;
+    font-weight: var(--font-medium);
+  }
+
+  & :is(.button, input) {
+    margin-left: 0.125rem !important;
+    margin-right: 0.125rem !important;
+  }
 
   & input {
-    height: 1.875rem;
-    color: rgb(var(--color-default));
-    font-size: 0.875rem;
-    border: 0;
-    max-width: 4.375rem;
-    font-weight: var(--font-medium);
+    color: rgb(var(--color-current));
+    font-size: 0.8125rem;
+    min-width: 4.5rem;
+    max-width: 4.5rem;
+    font-weight: var(--font-normal);
     background-color: transparent;
+    border: 1px solid #dbdbdb;
+    height: 1.6875rem;
+    border-radius: var(--radius) !important;
+    padding: 0 0.1875rem !important;
 
-    &.polyfill {
-      max-width: 2.25rem;
+    @nest .chrome & {
+      padding: 0 0.125rem 0 0.25rem !important;
+      min-width: 3.75rem;
+    }
+
+    @nest .safari & {
+      min-width: 3rem;
+    }
+
+    &::-webkit-calendar-picker-indicator {
+      padding: 0;
+      margin: 0;
     }
   }
 }
 
-.datepicker-footer {
-  background-color: rgb(var(--color-background));
-  box-shadow: none;
-  border-top: 1px solid rgba(var(--color-default), 0.05);
+.datepicker-input.in-edit:active, .datepicker-input.in-edit:focus {
+  box-shadow: inherit;
 }
 
 .button {
@@ -132,22 +159,24 @@
     height: 2.25rem;
 
     &::before {
-      @mixin iconfont;
-
+      width: 1em;
+      height: 1em;
       font-size: 1rem;
       display: block;
+      background-color: currentColor;
+      content: "";
     }
   }
 
   &.prev-btn {
     &::before {
-      content: var(--icon-chevron-left);
+      mask: var(--icon-chevron-left);
     }
   }
 
   &.next-btn {
     &::before {
-      content: var(--icon-chevron-right);
+      mask: var(--icon-chevron-right);
     }
   }
 
@@ -157,8 +186,24 @@
   }
 }
 
+.datepicker-footer {
+  background-color: rgb(var(--color-background));
+  box-shadow: none;
+  border-top: 1px solid rgb(var(--color-current) / 0.05);
+
+  & .datepicker-controls {
+    & + .datepicker-time {
+      padding-top: 0.25rem;
+    }
+  }
+
+  & .button {
+    border-radius: var(--radius) !important;
+  }
+}
+
 .dark {
-  & .datepicker-picker, & .datepicker-time {
+  & :is(.datepicker-picker, .datepicker-time) {
     background-color: rgb(var(--color-background-100));
   }
 
@@ -177,7 +222,7 @@
   & .datepicker-controls .button {
     border-color: transparent;
     background-color: rgb(var(--color-background-100));
-    color: rgb(var(--color-default)) !important;
+    color: rgb(var(--color-current)) !important;
   }
 
   & .datepicker-header .datepicker-controls {
@@ -185,16 +230,16 @@
 
     & .button {
       &:hover {
-        background-color: rgba(var(--color-light), 0.1);
+        background-color: rgb(var(--color-light) / 0.1);
       }
     }
   }
 
   & .datepicker-cell:not(.disabled):hover {
-    background-color: rgba(var(--color-light), 0.1);
+    background-color: rgb(var(--color-light) / 0.1);
   }
 
   & .datepicker-cell.focused:not(.selected) {
-    background-color: rgba(var(--color-light), 0.2);
+    background-color: rgb(var(--color-light) / 0.2);
   }
 }

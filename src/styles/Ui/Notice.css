@@ -1,4 +1,7 @@
 .ui-notice {
+  --color-current: var(--color-accent);
+  --ui-notice-bg: rgb(var(--color-accent));
+  --ui-notice-outline-opacity: 0.1;
   --ui-notice-size: 0.875rem;
   --ui-notice-py: 1.25rem;
   --ui-notice-px: 1.5rem;
@@ -8,6 +11,7 @@
   padding: var(--ui-notice-py) var(--ui-notice-px);
   font-size: var(--ui-notice-size);
   border-radius: var(--radius);
+  color: rgb(var(--color-current));
 
   &:not([class*="bg-"]) {
     &::before, &::after {
@@ -21,27 +25,20 @@
     }
 
     &::before {
-      background-color: currentColor;
-      opacity: 0.1;
+      background-color: var(--ui-notice-bg);
+      opacity: var(--ui-notice-outline-opacity);
     }
 
     &::after {
-      box-shadow: inset 0 0 0 1px currentColor;
-      opacity: 0.1;
+      box-shadow: inset 0 0 0 1px var(--ui-notice-bg);
+      opacity: var(--ui-notice-outline-opacity);
     }
-  }
-
-  & hr {
-    opacity: 0.1;
   }
 
   & a {
     text-decoration: underline;
     transition: var(--transition-opacity);
-
-    &:not([class*="text-"]) {
-      color: currentColor !important;
-    }
+    color: currentColor !important;
 
     @nest .no-touch &[href]:hover {
       opacity: 0.8;

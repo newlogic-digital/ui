@@ -7,11 +7,11 @@
 
   & [data-lib-tabs-area] {
     & > [data-lib-tabs-item] {
-      animation: 0.3s ease 0s backwards 1 fadeOut;
+      animation: 0.3s ease 0s backwards 1 fade-out;
       display: none;
 
-      &[data-state="active"] {
-        animation: 0.3s ease 0s backwards 1 fadeIn;
+      &:--state-active {
+        animation: 0.3s ease 0s backwards 1 fade-in;
         display: block;
       }
     }

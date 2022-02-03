@@ -5,5 +5,3 @@ temp/*
 /public/assets/
 /public/*.html
 /public/*.json
-/public/emails/*.html
-#!.gitkeep

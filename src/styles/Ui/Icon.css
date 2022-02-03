@@ -1,14 +1,33 @@
 .ui-icon {
+  --ui-icon-hover-opacity: 0.7;
+  --ui-icon-size: 1.25rem;
+
   display: inline-flex;
-  font-size: 1.25rem;
+  position: relative;
+  font-size: var(--ui-icon-size);
 
-  &[class*="icon-"], & [class*="icon-"] {
-    &::before {
-      transition: var(--transition-opacity);
+  &, & svg {
+    width: 1em;
+    height: 1em;
+  }
 
-      @nest .no-touch [href]:hover&, .no-touch button:hover& {
-        opacity: 0.8;
-      }
+  & > * {
+    transition: var(--transition-opacity);
+
+    @nest .no-touch :is([href]:hover, button:hover)& {
+      opacity: var(--ui-icon-hover-opacity);
     }
+  }
+}
+
+.ui-icon-text {
+  --ui-icon-hover-opacity: 0.7;
+
+  display: inline-flex;
+  align-items: center;
+  transition: var(--transition-opacity), var(--transition-color);
+
+  @nest .no-touch &:is([href]:hover, button:hover) {
+    opacity: var(--ui-icon-hover-opacity);
   }
 }

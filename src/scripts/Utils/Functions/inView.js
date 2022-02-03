@@ -1,28 +1,25 @@
-export default function inView(element, callback, options) {
+export default function inView(element, options) {
     let inView = false
 
-    if (typeof IntersectionObserver === 'undefined' && callback) {
-        callback()
-        return false
-    }
+    return new Promise((resolve) => {
+        if (typeof IntersectionObserver === 'undefined') {
+            resolve()
+            return false
+        }
 
-    if (typeof options === 'undefined') {
-        options = {}
-    }
+        if (typeof options === 'undefined') {
+            options = {}
+        }
 
-    if (typeof options.rootMargin === 'undefined') {
-        options.rootMargin = '100px'
-    }
+        if (typeof options.rootMargin === 'undefined') {
+            options.rootMargin = '100px'
+        }
 
-    new IntersectionObserver(
-        entries => {
+        new IntersectionObserver(entries => {
             if (entries[0].isIntersecting && inView === false) {
                 inView = entries[0].isIntersecting
-
-                if (callback) {
-                    callback()
-                }
+                resolve()
             }
-        }, options
-    ).observe(element)
+        }, options).observe(element)
+    })
 }

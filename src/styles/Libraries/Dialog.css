@@ -2,18 +2,18 @@
   --lib-dialog-bg: var(--color-dark);
   --lib-dialog-opacity: 0.8;
 
-  animation: 0.3s ease 0s backwards 1 fadeIn;
+  animation: 0.3s ease 0s backwards 1 fade-in;
   inset: 0;
   z-index: var(--z-30);
   position: fixed;
   display: none;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
-  background-color: rgba(var(--lib-dialog-bg), var(--lib-dialog-opacity));
+  background-color: rgb(var(--lib-dialog-bg) / var(--lib-dialog-opacity));
   overscroll-behavior: contain;
 
-  &[data-state="hiding"] {
-    animation: 0.3s ease 0s forwards 1 fadeOut;
+  &:--state-hiding {
+    animation: 0.3s ease 0s forwards 1 fade-out;
     pointer-events: none;
   }
 }

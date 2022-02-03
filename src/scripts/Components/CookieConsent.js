@@ -1,81 +1,82 @@
 import { LibStimulus, Controller } from '../Libraries/Stimulus.js'
 import LibCookieConsent from '../Libraries/CookieConsent.js'
 
-LibCookieConsent.init()
-
 LibStimulus.register('c-cookieconsent', class extends Controller {
     connect() {
         const selector = this.element
 
-        if (localStorage.getItem('cookieconsent') === null) {
+        if (document.querySelector('.c-form-cookieconsent') !== null) {
+            return
+        }
+
+        if (localStorage.getItem('lib-cookieconsent') === null || parseInt(localStorage.getItem('lib-cookieconsent-expire')) < Date.now()) {
             setTimeout(() => {
                 selector._addDataValue('state', 'active')
                 selector.classList.add('is-animate')
             }, 1500)
         }
 
-        selector.addEventListener('click', () => {
-            selector.classList.add('is-mobile-show')
+        selector._hasDataValue('type', 'closable') &&
+        selector.addEventListener('click', e => {
+            if (e.target.closest('.c-cookieconsent > .wrp') === null) {
+                this.hide([])
+            }
         })
 
         selector.querySelector('[data-lib-cookieconsent-approve]').addEventListener('click', () => {
-            LibCookieConsent.set('approve')
-            selector.classList.remove('is-animate')
-
-            setTimeout(() => {
-                selector._removeDataValue('state', 'active')
-                selector.remove()
-            }, 500)
+            this.hide(['performance', 'marketing'])
         })
+    }
 
-        selector.querySelector('[data-lib-cookieconsent-decline]').addEventListener('click', () => {
-            LibCookieConsent.set('performance')
-            selector.classList.remove('is-animate')
+    hide(type) {
+        LibCookieConsent.set(type)
+        this.element.classList.remove('is-animate')
 
-            setTimeout(() => {
-                selector._removeDataValue('state', 'active')
-                selector.remove()
-            }, 500)
-        })
+        setTimeout(() => {
+            this.element._removeDataValue('state', 'active')
+            this.element.remove()
+        }, 500)
     }
 })
 
 LibStimulus.register('c-form-cookieconsent', class extends Controller {
     connect() {
         const selector = this.element
+        const type = localStorage.getItem('lib-cookieconsent')
 
-        if (localStorage.getItem('cookieconsent') !== null) {
-            if (localStorage.getItem('cookieconsent') === 'approve') {
-                const type = localStorage.getItem('cookieconsent_type')
+        document.querySelector('.c-cookieconsent').classList.remove('is-animate')
+        document.querySelector('.c-cookieconsent')._removeDataValue('state', 'active')
 
-                if (type !== null) {
-                    if (type === 'performance') {
-                        selector.querySelector('input[value="performance"]').checked = true
-                    } else {
-                        selector.querySelector('input[value="approve"]').checked = true
-                    }
-                } else {
-                    selector.querySelector('input[value="approve"]').checked = true
+        if (type !== null) {
+            this.element.querySelectorAll('input:not([disabled])').forEach(input => {
+                input.checked = false
+            })
+
+            JSON.parse(type).forEach(type => {
+                if (selector.querySelector(`input[value="${type}"]`) !== null) {
+                    selector.querySelector(`input[value="${type}"]`).checked = true
                 }
-            } else if (localStorage.getItem('cookieconsent') === 'decline') {
-                selector.querySelector('input[value="decline"]').checked = true
-            }
+            })
         }
 
         selector.addEventListener('submit', e => {
             e.preventDefault()
 
-            const value = (new FormData(e.target)).get('cookies')
+            const type = []
 
-            if (value === 'approve') {
-                LibCookieConsent.set('marketing')
-                location.reload()
-            } else if (value === 'performance') {
-                LibCookieConsent.set('performance')
-                location.reload()
-            } else if (value === 'decline') {
-                LibCookieConsent.set('decline', () => location.reload())
-            }
+            this.element.querySelectorAll('input:not([disabled])').forEach(input => {
+                input.checked && type.push(input.value)
+            })
+
+            LibCookieConsent.set(type)
+            location.reload()
         })
+    }
+
+    disconnect() {
+        if (localStorage.getItem('lib-cookieconsent') === null || parseInt(localStorage.getItem('lib-cookieconsent-expire')) < Date.now()) {
+            document.querySelector('.c-cookieconsent')._addDataValue('state', 'active')
+            document.querySelector('.c-cookieconsent').classList.add('is-animate')
+        }
     }
 })

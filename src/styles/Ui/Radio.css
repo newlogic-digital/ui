@@ -1,9 +1,4 @@
 .ui-radio {
-  & input {
-    border-radius: 50%;
-
-    &::before {
-      content: var(--icon-radio-filled);
-    }
-  }
+  --ui-checkbox-icon: var(--icon-radio);
+  --ui-checkbox-radius: 50%;
 }

@@ -9,8 +9,14 @@ import LibNativeSlider from '../Libraries/NativeSlider.js'
 import cdn from '../Utils/cdn.js'
 
 LibStimulus.register('lib', class extends Controller {
+    connect() {
+        if (!('scrollBehavior' in document.documentElement.style)) {
+            importScript(cdn.seamless).then(() => window.seamless.polyfill())
+        }
+    }
+
     ripple(e) {
-        LibRipple(e.currentTarget, e)
+        LibRipple(e)
     }
 
     anchor(e) {
@@ -18,45 +24,38 @@ LibStimulus.register('lib', class extends Controller {
         LibAnchor.action(e.currentTarget)
     }
 
-    darkMode(e) {
-        const currentTarget = e.currentTarget
-
+    darkMode() {
         if (document.documentElement.classList.contains('dark')) {
             localStorage.theme = 'light'
             document.documentElement.classList.remove('dark')
-            currentTarget.classList.remove('icon-light')
         } else {
             localStorage.theme = 'dark'
             document.documentElement.classList.add('dark')
-            currentTarget.classList.add('icon-light')
         }
     }
 })
 
 LibStimulus.register('lib-dialog', class extends Controller {
-    connect() {
-        const element = this.element
-
-        if (typeof element.dataset.libDialogOpen !== 'undefined') {
-            const url = element.getAttribute('data-action-url')
+    async connect() {
+        if (this.element.getAttribute('data-lib-dialog-open')) {
+            const url = this.element.getAttribute('data-action-url')
 
             if (url) {
-                LibDialog.action(element, url, () => loadStimulus(document.querySelector('.lib-dialog')))
+                await LibDialog.action(this.element, url, () => loadStimulus(document.querySelector('.lib-dialog')))
             } else {
-                LibDialog.show(document.querySelector(element.dataset.libDialogOpen).innerHTML, () => loadStimulus(document.querySelector('.lib-dialog')))
+                await LibDialog.show(document.querySelector(this.element.getAttribute('data-lib-dialog-open')).innerHTML, () => loadStimulus(document.querySelector('.lib-dialog')))
             }
         }
     }
 
-    show(e) {
-        const element = e.currentTarget
-        const url = element.getAttribute('data-action-url')
+    async show({ currentTarget }) {
+        const url = currentTarget.getAttribute('data-action-url')
 
-        LibDialog.action(element, url, () => loadStimulus(document.querySelector('.lib-dialog')))
+        await LibDialog.action(currentTarget, url)
     }
 
-    hide() {
-        LibDialog.hide()
+    async hide() {
+        await LibDialog.hide()
     }
 })
 
@@ -68,10 +67,6 @@ LibStimulus.register('lib-tabs', class extends Controller {
 
 LibStimulus.register('lib-ns', class extends Controller {
     connect() {
-        if (!('scrollBehavior' in document.documentElement.style)) {
-            importScript(cdn.seamless).then(() => window.seamless.polyfill())
-        }
-
         LibNativeSlider(this.element.querySelector('[data-lib-ns]'), this.element)
     }
 })

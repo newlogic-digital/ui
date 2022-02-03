@@ -1,41 +1,20 @@
 const LibCookieConsent = {
     init: () => {
-        if (localStorage.getItem('cookieconsent') === 'approve') {
-            const type = localStorage.getItem('cookieconsent_type')
+        const type = localStorage.getItem('lib-cookieconsent')
 
-            if (type !== null) {
-                if (type === 'performance') {
-                    LibCookieConsent.append('performance')
-                } else if (type === 'marketing') {
-                    LibCookieConsent.append('all')
-                }
-            } else {
-                LibCookieConsent.append('all')
-            }
-        } else if (localStorage.getItem('cookieconsent') === null) {
-            LibCookieConsent.append('all')
+        if (type !== null) {
+            JSON.parse(type).forEach(type => LibCookieConsent.append(type))
         }
     },
-    set: (type, callback) => {
-        if (type === 'approve') {
-            localStorage.setItem('cookieconsent', 'approve')
-            LibCookieConsent.append('all')
-        } else if (type === 'performance') {
-            localStorage.setItem('cookieconsent', 'approve')
-            localStorage.setItem('cookieconsent_type', 'performance')
-            LibCookieConsent.append('performance')
-        } else if (type === 'marketing') {
-            localStorage.setItem('cookieconsent', 'approve')
-            localStorage.setItem('cookieconsent_type', 'marketing')
-            LibCookieConsent.append('all')
-        } else if (type === 'decline') {
-            localStorage.setItem('cookieconsent', 'decline')
-            localStorage.removeItem('cookieconsent_type')
-            LibCookieConsent.remove()
+    set: (type) => {
+        localStorage.setItem('lib-cookieconsent', JSON.stringify(type))
+        localStorage.setItem('lib-cookieconsent-expire', (Date.now() + 31556926 * 1000).toString())
 
-            if (callback) {
-                callback()
-            }
+        if (type.length > 0) {
+            type.forEach(type => LibCookieConsent.append(type))
+        } else {
+            localStorage.setItem('lib-cookieconsent', JSON.stringify([]))
+            LibCookieConsent.remove()
         }
     },
     remove: () => {
@@ -76,5 +55,7 @@ const LibCookieConsent = {
         })
     }
 }
+
+LibCookieConsent.init()
 
 export default LibCookieConsent

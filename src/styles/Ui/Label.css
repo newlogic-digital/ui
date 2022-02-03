@@ -1,9 +1,14 @@
 .ui-label {
-  font-size: 0.875rem;
+  --ui-label-size: 0.875rem;
+  --ui-label-size-line: 0.5rem;
+  --ui-label-spacing: 0.05rem;
+
   display: block;
+  font-size: var(--ui-title-size);
+  line-height: calc(var(--ui-title-size) + var(--ui-title-size-line));
   font-weight: var(--font-medium);
 
-  &:not(:last-child) {
-    margin-bottom: 0.5rem;
+  & ~ :is([class^="ui-"]:not(&), [class^="c-"]) {
+    margin-top: 0.5rem;
   }
 }

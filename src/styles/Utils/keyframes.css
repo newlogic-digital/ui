@@ -1,17 +1,4 @@
-/* TODO asi předělat do tailwindu */
-.animate {
-  animation-duration: 0.5s;
-  animation-fill-mode: both;
-}
-
-.animate-load {
-  animation-name: load;
-  animation-iteration-count: infinite;
-  animation-duration: 1.5s;
-  animation-fill-mode: both;
-}
-
-@keyframes load {
+@keyframes spin {
   0% {
     transform: rotate(0deg);
   }
@@ -21,10 +8,20 @@
   }
 }
 
-@keyframes fadeInLeft {
+@keyframes move-indeterminate {
+  from {
+    background-position: 200% 0;
+  }
+
+  to {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes fade-in-left {
   from {
     opacity: 0;
-    transform: translate3d(-5rem, 0, 0);
+    transform: translateX(-5rem);
   }
 
   to {
@@ -33,10 +30,10 @@
   }
 }
 
-@keyframes fadeInRight {
+@keyframes fade-in-right {
   from {
     opacity: 0;
-    transform: translate3d(5rem, 0, 0);
+    transform: translateX(5rem);
   }
 
   to {
@@ -45,7 +42,7 @@
   }
 }
 
-@keyframes fadeInUp {
+@keyframes fade-in-up {
   0% {
     opacity: 0;
     transform: translateY(2rem);
@@ -57,7 +54,7 @@
   }
 }
 
-@keyframes fadeInDown {
+@keyframes fade-in-down {
   0% {
     opacity: 0;
     transform: translateY(-2rem);
@@ -69,7 +66,7 @@
   }
 }
 
-@keyframes fadeOutLeft {
+@keyframes fade-out-left {
   from {
     opacity: 1;
     transform: none;
@@ -77,11 +74,11 @@
 
   to {
     opacity: 0;
-    transform: translate3d(-5rem, 0, 0);
+    transform: translateX(-5rem);
   }
 }
 
-@keyframes fadeOutRight {
+@keyframes fade-out-right {
   from {
     opacity: 1;
     transform: none;
@@ -89,11 +86,11 @@
 
   to {
     opacity: 0;
-    transform: translate3d(5rem, 0, 0);
+    transform: translateX(5rem);
   }
 }
 
-@keyframes fadeOutUp {
+@keyframes fade-out-up {
   0% {
     opacity: 1;
     transform: translateY(0);
@@ -105,7 +102,7 @@
   }
 }
 
-@keyframes fadeOutDown {
+@keyframes fade-out-down {
   0% {
     opacity: 1;
     transform: translateY(0);
@@ -117,7 +114,7 @@
   }
 }
 
-@keyframes fadeIn {
+@keyframes fade-in {
   from {
     opacity: 0;
   }
@@ -127,7 +124,7 @@
   }
 }
 
-@keyframes fadeOut {
+@keyframes fade-out {
   from {
     opacity: 1;
   }
@@ -137,7 +134,7 @@
   }
 }
 
-@keyframes slideInDown {
+@keyframes slide-in-down {
   0% {
     transform: translateY(-100%);
   }
@@ -147,7 +144,7 @@
   }
 }
 
-@keyframes slideOutUp {
+@keyframes slide-out-up {
   0% {
     transform: translateY(0);
   }
@@ -157,7 +154,7 @@
   }
 }
 
-@keyframes slideInUp {
+@keyframes slide-in-up {
   0% {
     transform: translateY(100%);
   }
@@ -167,7 +164,7 @@
   }
 }
 
-@keyframes slideOutDown {
+@keyframes slide-out-down {
   0% {
     transform: translateY(0);
   }
@@ -180,13 +177,6 @@
 @keyframes ripple {
   100% {
     transform: scale(2.5);
-    opacity: 0;
-  }
-}
-
-@keyframes rippleSmall {
-  100% {
-    transform: scale(0.5);
     opacity: 0;
   }
 }

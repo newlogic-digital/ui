@@ -27,12 +27,12 @@ export default class LibTippy {
                 options.content = document.querySelector('#' + template).innerHTML
             } else {
                 options.content = `
-          <div class="ui-dropdown">
-            <div class="wrp_dropdown_body">
-              ${element.getAttribute('aria-label')}
-            </div>
-          </div>
-        `
+                  <div class="ui-dropdown">
+                    <div class="wrp_dropdown_body">
+                      ${element.getAttribute('aria-label')}
+                    </div>
+                  </div>
+                `
             }
         }
 
@@ -64,7 +64,7 @@ export default class LibTippy {
 
                 if (this.type.includes('-full')) {
                     instance.popper.classList.add('is-full')
-                    document.documentElement.classList.add('m:is-overlay')
+                    document.documentElement.classList.add('m:is-body-overlay')
                 }
 
                 if (typeof name === 'undefined') {
@@ -77,7 +77,7 @@ export default class LibTippy {
             },
             onHide: () => {
                 if (this.type.includes('-full')) {
-                    setTimeout(() => document.documentElement.classList.remove('m:is-overlay'), 50)
+                    setTimeout(() => document.documentElement.classList.remove('m:is-body-overlay'), 50)
                 }
             }
         }

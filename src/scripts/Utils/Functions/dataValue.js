@@ -41,3 +41,12 @@ Element.prototype._hasDataValue = function(key, value) {
     if (attribute === null) return false
     return attribute.split(' ').includes(value)
 }
+
+Element.prototype._getDataValue = function(key) {
+    key = `data-${key}`
+
+    const attribute = this.getAttribute(key)
+
+    if (attribute === null) return ''
+    return attribute
+}

@@ -1,3 +1,12 @@
+v3.1.0
+* feat: tailwind v3 update
+* feat: stimulus v3 update
+* feat: iconfont replaced with svg icons
+* feat: updated lib-cookieconsent
+* feat: improved lib-anchor
+* feat: most of callbacks replaced with promises
+* feat: complete refactor of CSS and JS
+
 v3.0.13
 * feat: recaptcha enterprise
 

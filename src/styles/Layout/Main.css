@@ -1,6 +1,8 @@
 html {
   font-family: sans-serif;
-  scroll-padding-top: 0;
+  scroll-padding-top: var(--l-scroll-padding-top, 0);
+  scroll-behavior: smooth;
+  accent-color: rgb(var(--color-accent));
 
   @media (--media-min-400) {
     font-size: 95%;
@@ -22,16 +24,8 @@ html {
     font-size: 90%;
   }
 
-  &.is-overlay {
-    overflow: hidden;
-  }
-
-  &.is-lib-drawer-active {
-    overflow: hidden;
-  }
-
   &.no-touch, &.no-touch * {
-    scrollbar-color: rgba(var(--color-default), 0.2) rgb(var(--color-background));
+    scrollbar-color: rgb(var(--color-current) / 0.2) rgb(var(--color-background));
     scrollbar-width: thin;
 
     &::-webkit-scrollbar {
@@ -43,14 +37,14 @@ html {
     }
 
     &::-webkit-scrollbar-thumb {
-      background-color: rgba(var(--color-default), 0.2);
+      background-color: rgb(var(--color-current) / 0.2);
     }
   }
 }
 
 body {
   font-family: var(--font-primary);
-  color: rgb(var(--color-default));
+  color: rgb(var(--color-current));
   font-weight: var(--font-normal);
   line-height: 1.5;
   position: relative;
@@ -61,13 +55,13 @@ body {
     position: fixed;
     inset: 0;
     content: "";
-    background-color: rgba(var(--color-dark), 0.6);
+    background-color: rgb(var(--color-dark) / 0.6);
     z-index: var(--z-30);
     transition: var(--transition-opacity);
     opacity: 0;
     pointer-events: none;
 
-    @nest .m\:is-overlay & {
+    @nest .m\:is-body-overlay & {
       @media (--media-m) {
         pointer-events: auto;
         opacity: 1;
@@ -76,20 +70,9 @@ body {
   }
 
   & .l-default {
-    overflow: visible !important;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-  }
-
-  & a {
-    color: inherit;
-    text-decoration: none;
-
-    &:active,
-    &:hover {
-      outline-width: 0;
-    }
   }
 }
 
@@ -102,7 +85,7 @@ body {
   &.transition-fade {
     @nest html.swup-enabled & {
       /* clean-css ignore:start */
-      transition: opacity 0.2s;
+      transition: opacity 0.15s;
       opacity: 1;
       /* clean-css ignore:end */
     }
@@ -118,11 +101,11 @@ body {
 .container {
   margin-left: auto;
   margin-right: auto;
-  max-width: var(--container);
+  max-width: var(--container-width);
   padding-left: var(--container-padding);
   padding-right: var(--container-padding);
 
-  &[data-size="sm"] {
-    --container: var(--container-sm);
+  &:--size-sm {
+    --container: var(--container-width-sm);
   }
 }

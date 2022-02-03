@@ -1,0 +1,43 @@
+#l-nav {
+  & > .wrp_nav {
+    min-width: 22.5rem;
+    background-color: rgb(var(--color-background));
+    height: 100vh;
+
+    @nest .is-transition& {
+      transition: var(--transition-transform);
+    }
+  }
+
+  & .wrp_nav_head {
+    padding: 2rem 3rem;
+
+    & .elm_header_logo {
+      font-size: 1.875rem;
+
+      & .icon {
+        &, &::before {
+          display: block;
+        }
+      }
+    }
+  }
+
+  & .wrp_nav_body {
+    & .elm_header_nav {
+      display: block;
+    }
+
+    & .col {
+      margin: 0.75rem 0;
+    }
+
+    & a {
+      font-size: 1.5rem;
+      padding: 0 3rem;
+      font-weight: var(--font-medium);
+      text-align: left;
+      display: block;
+    }
+  }
+}

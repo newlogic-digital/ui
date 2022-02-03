@@ -20,13 +20,17 @@ LibStimulus.register('ui-select', class extends Controller {
             element._addDataValue('state', 'invalid')
 
             if (element.querySelector('[class^="icon"][class*="valid"]') === null) {
-                element.insertAdjacentHTML('beforeend', `<span class="icon-r icon-invalid text-error"><span tabindex="0" class="lib-hint-top lib-hint-error" aria-label="${validationMessage}"></span></span>`)
+                const icon = element.querySelector('.icon-r')
+                const elm = icon || element
+                const where = icon ? 'afterend' : 'beforeend'
+
+                elm.insertAdjacentHTML(where, `<div class="icon-r icon-invalid text-error lib-hint-top lib-hint-error" tabindex="0" aria-label="${validationMessage}"><svg><use href="#icon-exclamation-circle"></use></svg></div>`)
             }
         }
     }
 
     connect() {
-        const self = this; const element = self.element
+        const element = this.element
         const select = element.querySelector('select')
         const option = element.querySelectorAll('[data-option]')
 

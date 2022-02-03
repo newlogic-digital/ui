@@ -1,5 +1,9 @@
-const dynamicControllers = ['ui-input', 'ui-select', 'ui-wsw', 'ui-checkbox', 'ui-radio', 'c-cookieconsent', 'c-form-cookieconsent']
-const dynamicActions = [['a[href^="#"]', 'click->lib#anchor'], ['.ui-btn', 'click->lib#ripple']]
+const dynamicControllers = ['ui-input', 'ui-select', 'ui-text', 'ui-checkbox', 'ui-radio', 'c-cookieconsent', 'c-form-cookieconsent']
+const dynamicActions = [['.ui-btn', 'click->lib#ripple']]
+
+if (!('scrollBehavior' in document.documentElement.style)) {
+    dynamicActions.push(['a[href^="#"]', 'click->lib#anchor'])
+}
 
 function loadControllers(parent, selectors) {
     if (parent !== null) {

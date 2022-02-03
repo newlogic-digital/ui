@@ -26,7 +26,7 @@
     transition: var(--transition-opacity), var(--transition-transform);
     transform: translateY(-0.25rem);
 
-    @nest .no-touch :hover:not([href^="tel:"]):not([href^="mailto:"])& {
+    @nest .no-touch :not([href^="tel:"], [href^="mailto:"]):hover& {
       transform: none;
       opacity: var(--ui-link-underline-opacity);
     }

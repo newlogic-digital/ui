@@ -27,11 +27,7 @@ LibStimulus.register('c-form', class extends Controller {
     }
 
     connect() {
-        const element = this.element
-
-        if (typeof HTMLFormElement.prototype.reportValidity !== 'undefined') {
-            element.setAttribute('novalidate', '')
-            element.addEventListener('submit', e => this.validate(element, e), false)
-        }
+        this.element.setAttribute('novalidate', '')
+        this.element.addEventListener('submit', e => this.validate(this.element, e))
     }
 })

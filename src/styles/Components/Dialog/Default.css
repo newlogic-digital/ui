@@ -3,7 +3,7 @@
   --c-dialog-px: 1.5rem;
   --c-dialog-offset-y: 2rem;
 
-  animation: 0.3s ease 0s backwards 1 fadeInDown;
+  animation: 0.3s ease 0s backwards 1 fade-in-down;
   position: relative;
   z-index: var(--z-30);
   display: flex;
@@ -17,11 +17,11 @@
   border-bottom: var(--c-dialog-offset-y) solid transparent;
   width: calc(100% - 2rem);
 
-  @nest [data-state*="hiding"] & {
-    animation: 0.3s ease 0s forwards 1 fadeOutUp;
+  @nest :--state-hiding & {
+    animation: 0.3s ease 0s forwards 1 fade-out-up;
   }
 
-  @media (--media-min-768) {
+  @media (--media-t) {
     --c-dialog-offset-y: 4rem;
 
     width: 100%;
@@ -29,20 +29,20 @@
     max-width: 40rem;
   }
 
-  &[data-size="sm"] {
+  &:--size-sm {
     max-width: 31.25rem;
   }
 
-  &[data-size="base"] {
+  &:--size-base {
     max-width: none;
     width: auto;
   }
 
-  &[data-size="lg"] {
+  &:--size-lg {
     max-width: 80rem;
   }
 
-  &[data-type="scrollable"] {
+  &:--type-scrollable {
     height: 100%;
 
     & .wrp_dialog_body {
@@ -65,7 +65,7 @@
     flex-direction: column;
     max-height: 100%;
 
-    @media (--media-min-768) {
+    @media (--media-t) {
       --c-dialog-py: 1.25rem;
     }
   }
@@ -74,10 +74,5 @@
     position: absolute;
     right: 1rem;
     top: 1rem;
-    transition: var(--transition-opacity);
-
-    &:hover {
-      opacity: 0.8;
-    }
   }
 }

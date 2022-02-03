@@ -1,188 +1,65 @@
-.ui-input {
+.ui-input, .ui-select {
   --ui-input-height: 3rem;
-  --ui-input-py: 0.25rem;
+  --ui-input-height-textarea: 8rem;
+  --ui-input-py: 0.75rem;
   --ui-input-px: 1rem;
   --ui-input-size: 0.875rem;
   --ui-input-icon-size: 1.25rem;
+  --ui-input-icon-spacing: 0.5rem;
   --ui-input-weight: var(--font-medium);
-  --ui-input-border-color: var(--color-default);
+  --ui-input-border-color: var(--color-current);
   --ui-input-border-opacity: 0.15;
   --ui-input-radius: var(--radius);
 
   position: relative;
-  display: block;
+  display: flex;
+  flex-direction: column;
   font-size: var(--ui-input-size);
 
-  @nest .text-light & {
-    --ui-input-border-color: var(--color-light);
+  @media (--media-d) {
+    --ui-input-height-textarea: 12rem;
   }
 
-  & .icon-l, & .icon-r {
-    font-weight: var(--font-medium);
+  &:--size-lg {
+    --ui-input-height: 3rem;
+  }
+
+  & svg {
+    width: 1em;
+    height: 1em;
+    display: block;
+  }
+
+  & > label {
+    display: block;
     position: absolute;
-    z-index: 10;
-    transition: var(--transition-opacity);
-    right: calc(var(--ui-input-px) / 1.25);
-    content: "";
-    top: calc(var(--ui-input-height) / 2);
-    margin-top: calc(var(--ui-input-icon-size) / -2);
-    font-size: var(--ui-input-icon-size);
-
-    &[aria-label] {
-      &.icon-r ~ [class*="valid"] {
-        right: calc(var(--ui-input-icon-size) + calc(var(--ui-input-px) / 0.75));
-      }
-
-      &::after {
-        content: attr(aria-label);
-        font-size: var(--ui-input-size);
-        display: block;
-      }
-    }
-
-    &.icon-l {
-      right: auto;
-      left: calc(var(--ui-input-px) / 1.25);
-    }
-
-    & .lib-hint-top {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-
-      &::after {
-        white-space: normal;
-        line-height: 1.5;
-        word-wrap: normal;
-        width: 10rem;
-        font-weight: var(--font-normal);
-        font-size: 0.75rem;
-      }
-    }
-
-    &[class*="valid"] {
-      &::after {
-        position: absolute;
-        inset: 0.375rem;
-        background-color: rgb(var(--color-light));
-        content: "";
-        z-index: 0;
-      }
-
-      &::before {
-        position: relative;
-        z-index: 1;
-      }
-    }
-
-    &.icon-valid {
-      @nest [data-icon*="right"]& {
-        display: none;
-      }
-    }
-  }
-
-  &[data-type="number"] {
-    width: 6rem;
-
-    & [class*="valid"] {
-      display: none;
-    }
-
-    & input {
-      padding-right: 1.875rem;
-      font-size: 1rem;
-      font-weight: var(--font-semibold);
-      text-align: center;
-    }
-
-    &::after {
-      content: normal;
-    }
-
-    &[data-title] {
-      & input {
-        padding-left: 0.375rem;
-        padding-right: 2.5rem;
-      }
-
-      &::after {
-        color: rgb(var(--color-default));
-        content: attr(data-title);
-        position: absolute;
-        display: block;
-        opacity: 1;
-        font-size: 0.75rem;
-        letter-spacing: -0.01875rem;
-        margin-top: -0.5625rem;
-        right: 2.125rem;
-        top: 50%;
-      }
-    }
-  }
-
-  &[data-type="color"] {
-    & .color {
-      width: 1.125rem;
-      height: 1.125rem;
-      border-radius: 50%;
-      top: 50%;
-      left: 0.875rem;
-      overflow: hidden;
-      position: absolute;
-      display: block;
-      margin-top: -0.5625rem;
-      border: 1px solid rgba(0, 0, 0, 0.15);
-    }
-
-    & input {
-      padding-left: 2.5rem;
-    }
-  }
-
-  &[data-type="file"] {
-    color: rgb(var(--color-default));
-    font-weight: var(--font-normal);
-    border-radius: var(--ui-input-radius);
-    transition: var(--transition-border);
-    position: relative;
-    width: 100%;
-    display: flex;
-    line-height: normal;
-    height: var(--ui-input-height);
-    background-color: rgb(var(--color-background));
-    border: 1px solid rgba(var(--color-default), 0.15);
-
-    &[data-state*="invalid"] {
-      border-color: rgb(var(--color-error));
-    }
-
-    & input {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 10;
-    }
-
-    &:focus-within {
-      border-color: rgba(var(--color-default), 0.25);
-    }
-  }
-
-  & .input {
-    position: absolute;
-    inset: 0;
+    z-index: 1;
     pointer-events: none;
-    display: flex;
-    align-items: center;
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), var(--transition-color);
+    transform-origin: 0 50%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    transform: perspective(100px);
+    will-change: transform;
+    font-weight: var(--ui-input-weight);
+    left: var(--ui-input-px);
+    right: var(--ui-input-px);
+    top: calc(var(--ui-input-height) / 2);
+    line-height: var(--ui-input-size);
+    margin-top: calc(var(--ui-input-size) / 2 * -1);
+    order: -1;
 
-    & ~ input {
-      font-size: 0;
+    @nest [data-has~="icon-l"]& {
+      left: calc(var(--ui-input-px) + var(--ui-input-icon-size) + calc(var(--ui-input-px) / 1.75));
+    }
+
+    @nest [data-has~="icon-r"]& {
+      right: calc(var(--ui-input-px) + var(--ui-input-icon-size) + calc(var(--ui-input-px) / 1.75));
     }
   }
 
-  & input, & textarea, & .input {
+  & > :is(input, textarea, select, .input) {
     width: 100%;
     transition: var(--transition-border), var(--transition-shadow);
     box-shadow: none;
@@ -192,38 +69,13 @@
     height: var(--ui-input-height);
     font-weight: var(--ui-input-weight);
     border-radius: var(--ui-input-radius);
-    padding: calc(var(--ui-input-height) / 2.5) var(--ui-input-px) var(--ui-input-py);
+    padding: calc(var(--ui-input-py) * 1.75) var(--ui-input-px) calc(var(--ui-input-py) * 0.5);
     color: inherit;
-    border: 1px solid rgba(var(--ui-input-border-color), var(--ui-input-border-opacity));
-    background-clip: padding-box;
+    border: 1px solid rgb(var(--ui-input-border-color) / var(--ui-input-border-opacity));
 
-    @nest [data-icon*="left"]& {
-      padding-left: calc(var(--ui-input-px) + var(--ui-input-icon-size) + calc(var(--ui-input-px) / 1.75));
-    }
-
-    @nest [data-icon*="right"]&, [data-state*="valid"]& {
-      padding-right: calc(var(--ui-input-px) + var(--ui-input-icon-size) + calc(var(--ui-input-px) / 1.75));
-    }
-
-    @nest :not([data-state*="placeholder"])& {
-      &[placeholder] {
-        padding-top: var(--ui-input-py);
-      }
-    }
-  }
-
-  & input, & textarea {
     &[disabled] {
       cursor: default;
       background-color: rgb(var(--color-background-100));
-    }
-
-    &:invalid {
-      box-shadow: none;
-    }
-
-    &:focus {
-      --ui-input-border-opacity: 0.3;
     }
 
     &[required] {
@@ -235,27 +87,59 @@
       }
     }
 
-    @nest [data-state*="invalid"]& {
+    &:focus {
+      --ui-input-border-opacity: 1;
+      --ui-input-border-color: var(--color-accent);
+
+      box-shadow:
+        0 0 0 0 rgb(var(--color-current)),
+        0 0 0 3px rgb(var(--color-accent) / 0.15),
+        0 1px 2px 0 rgb(var(--color-current) / 0.05);
+
+      @nest .dark & {
+        box-shadow:
+          0 0 0 0 rgb(var(--color-current)),
+          0 0 0 3px rgb(var(--color-accent) / 0.3),
+          0 1px 2px 0 rgb(var(--color-current) / 0.05);
+      }
+    }
+
+    @nest :--state-invalid& {
       border-color: rgb(var(--color-error));
       box-shadow: none;
 
       &:focus {
-        box-shadow: 0 0 0 0 rgb(var(--color-default)), 0 0 0 3px rgba(var(--color-error), 0.1), 0 1px 2px 0 rgba(var(--color-default), 0.05);
+        box-shadow:
+          0 0 0 0 rgb(var(--color-current)),
+          0 0 0 3px rgb(var(--color-error) / 0.1),
+          0 1px 2px 0 rgb(var(--color-current) / 0.05);
 
         @nest .dark & {
-          box-shadow: 0 0 0 0 rgb(var(--color-default)), 0 0 0 3px rgba(var(--color-error), 0.2), 0 1px 2px 0 rgba(var(--color-default), 0.05);
+          box-shadow:
+            0 0 0 0 rgb(var(--color-current)),
+            0 0 0 3px rgb(var(--color-error) / 0.2),
+            0 1px 2px 0 rgb(var(--color-current) / 0.05);
         }
       }
     }
 
-    @nest [data-state*="active"]&, [data-state*="placeholder"]&, &:focus {
-      & ~ label {
-        transform: translateY(calc(var(--ui-input-size) / 1.4 * -1)) scale(0.8);
+    @nest [data-has~="icon-l"]& {
+      padding-left: calc(var(--ui-input-px) + var(--ui-input-icon-size) + calc(var(--ui-input-px) / 1.75));
+    }
+
+    @nest [data-has~="icon-r"]&, :--state-invalid& {
+      padding-right: calc(var(--ui-input-px) + var(--ui-input-icon-size) + calc(var(--ui-input-px) / 1.75));
+    }
+
+    @nest :not(:--state-placeholder)& {
+      &:is([placeholder], [data-placeholder]) {
+        padding-top: var(--ui-input-py);
+        padding-bottom: var(--ui-input-py);
       }
     }
   }
 
-  & input {
+  & > input {
     &::-ms-clear {
       display: none;
     }
@@ -270,65 +154,212 @@
 
       & ~ .icon {
         position: absolute;
-        right: 0;
+        right: calc(var(--ui-input-height) / 4 - 0.25rem);
         color: rgb(var(--color-primary));
-        padding: 0 0.4375rem;
         cursor: pointer;
         user-select: none;
         font-size: 1.25rem;
         top: auto;
         margin-top: auto;
-
-        &::before {
-          position: relative;
-        }
+        width: 1em;
+        height: 1em;
+        background-color: rgb(var(--color-accent));
 
         &.icon-angle-up {
-          top: 0;
-          padding-top: 0.25rem;
-
-          &::before {
-            top: 0.3125rem;
-          }
+          top: calc((var(--ui-input-height) / 2) - 1.25rem + 0.1875rem);
+          mask: var(--icon-angle-up);
         }
 
         &.icon-angle-down {
-          bottom: 0;
-          padding-bottom: 0.25rem;
-
-          &::before {
-            bottom: 0.3125rem;
-          }
+          top: calc((var(--ui-input-height) / 2) - 0.1875rem);
+          mask: var(--icon-angle-down);
         }
       }
 
       & ~ .icon-r {
-        right: calc(var(--ui-input-icon-size) + calc(var(--ui-input-px) / 1.25));
+        margin-right: calc(var(--ui-input-height) / 4 + var(--ui-input-icon-spacing));
       }
     }
 
-    &[type="color"] {
-      opacity: 0;
+    &[type^="date"] {
+      appearance: none;
+
+      &::-webkit-date-and-time-value {
+        text-align: left;
+      }
+
+      @nest :not(:--state-active)&, html:not(.mobile) & {
+        font-size: 0;
+      }
+
+      @nest html.mobile:not(.safari) & {
+        padding-left: calc(var(--ui-input-px) - 0.3125rem);
+      }
     }
 
-    &[type="file"] {
+    &[type="time"] {
+      &::-webkit-calendar-picker-indicator {
+        display: none;
+      }
+
+      @nest :not(:--state-active)& {
+        &:not([placeholder]):not(:focus) {
+          font-size: 0;
+        }
+      }
+
+      @nest html.mobile:not(.safari) & {
+        padding-left: calc(var(--ui-input-px) - 0.3125rem);
+        appearance: none;
+      }
+    }
+  }
+
+  & > textarea {
+    resize: vertical;
+    overflow: hidden;
+    min-height: var(--ui-input-height-textarea);
+  }
+
+  & > input, & > textarea {
+    background-clip: padding-box;
+    cursor: text;
+
+    &:invalid {
+      box-shadow: none;
+    }
+
+    @nest :is(:--state-active, :--state-placeholder)&, &:focus {
+      & ~ label {
+        transform: translateY(calc(var(--ui-input-size) / 1.4 * -1)) scale(0.8);
+      }
+    }
+  }
+
+  & > .input {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+
+    & span {
+      color: transparent;
+    }
+  }
+
+  & > [class^="icon-"] {
+    font-weight: var(--font-medium);
+    position: absolute;
+    z-index: 10;
+    transition: var(--transition-opacity);
+    content: "";
+    top: calc(var(--ui-input-height) / 2);
+    margin-top: calc(var(--ui-input-icon-size) / -2);
+    font-size: var(--ui-input-icon-size);
+    width: 1em;
+    height: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &.icon-r {
+      right: calc(var(--ui-input-px));
+
+      & + .icon-r {
+        right: calc(var(--ui-input-px) + var(--ui-input-icon-size) + var(--ui-input-icon-spacing));
+      }
+    }
+
+    &.icon-l {
+      left: calc(var(--ui-input-px));
+
+      & + .icon-l {
+        left: calc(var(--ui-input-px) + var(--ui-input-icon-size) + var(--ui-input-icon-spacing));
+      }
+    }
+
+    &[aria-label]:not([class*="lib-hint"]) {
+      &::after {
+        content: attr(aria-label);
+        font-size: var(--ui-input-size);
+        display: block;
+        margin-top: -1px;
+      }
+    }
+
+    &[class*="lib-hint"] {
+      &::after {
+        white-space: normal;
+        line-height: 1.5;
+        word-wrap: normal;
+        width: 10rem;
+        font-weight: var(--font-normal);
+        font-size: 0.75rem;
+      }
+    }
+  }
+
+  &:--type-color {
+    & .color {
+      width: var(--ui-input-icon-size);
+      height: var(--ui-input-icon-size);
+      border-radius: 50%;
+      left: calc(var(--ui-input-px) / 1.25);
+      overflow: hidden;
+      position: absolute;
+      display: block;
+      top: calc(var(--ui-input-height) / 2);
+      margin-top: calc(var(--ui-input-icon-size) / -2);
+      border: 1px solid rgb(0 0 0 / 0.15);
+    }
+
+    & input {
+      padding-left: calc(var(--ui-input-px) + var(--ui-input-icon-size) + calc(var(--ui-input-px) / 1.75));
+    }
+  }
+
+  &:--type-file {
+    color: rgb(var(--color-current));
+    font-weight: var(--font-normal);
+    border-radius: var(--ui-input-radius);
+    transition: var(--transition-border);
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    line-height: normal;
+    height: var(--ui-input-height);
+    background-color: rgb(var(--color-background));
+    border: 1px solid rgb(var(--color-current) / 0.15);
+
+    &:--state-invalid {
+      border-color: rgb(var(--color-error));
+    }
+
+    & [type="file"] {
       cursor: pointer;
       opacity: 0;
       font-size: 0;
       display: block;
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
 
       & + .icon {
         font-size: var(--ui-input-size);
         display: flex;
         align-items: center;
         padding: 0.5625rem 1.25rem 0.5625rem 2.75rem;
-        color: rgba(var(--color-default), 0.75);
+        color: rgb(var(--color-current) / 0.75);
         white-space: nowrap;
-        background-color: rgba(var(--color-default), 0.05);
+        background-color: rgb(var(--color-current) / 0.05);
         border-top-left-radius: var(--ui-input-radius);
         border-bottom-left-radius: var(--ui-input-radius);
 
-        @media (--media-768) {
+        @media (--media-t) {
           padding-top: 0.875rem;
           padding-bottom: 0.875rem;
           line-height: 1rem;
@@ -340,6 +371,11 @@
           top: 50%;
           font-size: 1.125rem;
           margin-top: -0.5625rem;
+          content: "";
+          width: 1em;
+          height: 1em;
+          mask: var(--icon-upload);
+          background-color: currentColor;
         }
       }
 
@@ -358,78 +394,27 @@
 
         &[data-placeholder]::before {
           content: attr(data-placeholder);
-          color: rgba(var(--color-default), 0.6);
+          color: rgb(var(--color-current) / 0.6);
         }
       }
     }
 
-    &[type^="date"] {
-      appearance: none;
-
-      @nest :not([data-state*="active"])&, html:not(.mobile) & {
-        font-size: 0;
-      }
-
-      @nest html.android & {
-        padding-left: calc(var(--ui-input-px) - 0.3125rem);
-      }
-    }
-
-    &[type="time"] {
-      & ~ label {
-        background-color: rgb(var(--color-background));
-        padding-bottom: 0.1875rem;
-      }
-
-      &.is-label {
-        padding-top: 1.25rem;
-      }
-
-      @nest html.mobile & {
-        appearance: none;
-      }
-
-      @nest html.android & {
-        padding-left: calc(var(--ui-input-px) - 0.3125rem);
-      }
+    &:focus-within {
+      border-color: rgb(var(--color-current) / 0.25);
     }
   }
+}
 
-  & textarea {
-    resize: vertical;
-    overflow: hidden;
-    min-height: 8.75rem;
+.pcr-app {
+  border-radius: var(--radius);
+  overflow: hidden;
 
-    @media (--media-min-960) {
-      min-height: 13.125rem;
-    }
-  }
+  @nest .dark & {
+    background: rgb(var(--color-background-200));
 
-  & label {
-    display: block;
-    position: absolute;
-    z-index: 1;
-    pointer-events: none;
-    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), var(--transition-color);
-    transform-origin: 0 50%;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    transform: perspective(100px);
-    will-change: transform;
-    font-weight: var(--ui-input-weight);
-    left: var(--ui-input-px);
-    right: var(--ui-input-px);
-    top: calc(var(--ui-input-height) / 2);
-    line-height: var(--ui-input-size);
-    margin-top: calc(var(--ui-input-size) / 2 * -1);
-
-    @nest [data-icon*="left"]& {
-      left: calc(var(--ui-input-px) + var(--ui-input-icon-size) + calc(var(--ui-input-px) / 1.75));
-    }
-
-    @nest [data-icon*="right"]& {
-      right: calc(var(--ui-input-px) + var(--ui-input-icon-size) + calc(var(--ui-input-px) / 1.75));
+    & .pcr-interaction input {
+      background: rgb(var(--color-background-100));
+      box-shadow: none !important;
     }
   }
 }

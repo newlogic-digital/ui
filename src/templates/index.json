@@ -1,5 +1,12 @@
 {
+  "headerNormal": true,
   "page": {
-    "title": "Newlogic UI"
+    "title": "Newlogic UI",
+    "body": [
+      {
+        "src": "Sections/Ui",
+        "intro": true
+      }
+    ]
   }
 }

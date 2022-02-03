@@ -1,38 +1,24 @@
-export default function LibRipple(element, e) {
-    const init = (container) => {
-        if (container.querySelector('.lib-ripple-inner') === null) {
-            container.insertAdjacentHTML('beforeend', "<div class='lib-ripple-inner'></div>")
-        }
+const LibRipple = ({ currentTarget, layerX, layerY }) => {
+    const container = currentTarget
 
-        const ink = container.querySelector('.lib-ripple-inner')
-
-        ink.classList.remove('animation')
-
-        if (ink.clientWidth === 0 && ink.clientHeight === 0) {
-            const d = Math.max(element.offsetWidth, element.offsetHeight)
-
-            ink.style.width = d + 'px'
-            ink.style.height = d + 'px'
-        }
-
-        let x, y
-
-        if (container === document.body) {
-            x = e.clientX - container.offsetLeft - (ink.clientWidth / 2)
-            y = e.clientY - container.offsetTop - (ink.clientHeight / 2)
-        } else {
-            x = e.pageX - container.offsetLeft - (ink.clientWidth / 2)
-            y = e.pageY - container.offsetTop - (ink.clientHeight / 2)
-        }
-
-        ink.style.top = y + 'px'
-        ink.style.left = x + 'px'
-        ink.classList.add('animation')
+    if (container.querySelector('.lib-ripple') === null) {
+        container.insertAdjacentHTML('beforeend', "<div class='lib-ripple'></div>")
     }
 
-    if (element.getAttribute('data-action-ripple') === 'body') {
-        init(document.body)
-    } else {
-        init(element)
+    const ink = container.querySelector('.lib-ripple')
+
+    ink.classList.remove('animation')
+
+    if (ink.clientWidth === 0 && ink.clientHeight === 0) {
+        const d = Math.max(container.offsetWidth, container.offsetHeight)
+
+        ink.style.width = d + 'px'
+        ink.style.height = d + 'px'
     }
+
+    ink.style.top = layerY - (ink.clientHeight / 2) + 'px'
+    ink.style.left = layerX - (ink.clientWidth / 2) + 'px'
+    ink.classList.add('animation')
 }
+
+export default LibRipple

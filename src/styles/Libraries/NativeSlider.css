@@ -6,6 +6,20 @@
   scrollbar-width: none !important;
   -ms-overflow-style: none;
 
+  & > * {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+
+    @nest .is-fade& {
+      opacity: 0;
+      transition: var(--transition-opacity);
+
+      &[data-state="active"] {
+        opacity: 1;
+      }
+    }
+  }
+
   &::-webkit-scrollbar {
     display: none !important;
   }
@@ -24,29 +38,15 @@
       pointer-events: none;
     }
   }
-
-  & > div, & > picture {
-    flex: 0 0 auto;
-    scroll-snap-align: start;
-
-    @nest .is-fade& {
-      opacity: 0;
-      transition: var(--transition-opacity);
-
-      &[data-state="active"] {
-        opacity: 1;
-      }
-    }
-  }
 }
 
 [data-lib-ns-nav-item] {
   width: 0.75rem;
   height: 0.75rem;
-  border: 0.125rem solid rgb(var(--color-default));
+  border: 0.125rem solid rgb(var(--color-current));
   border-radius: 50%;
 
   &[data-state*="active"] {
-    background-color: rgb(var(--color-default));
+    background-color: rgb(var(--color-current));
   }
 }

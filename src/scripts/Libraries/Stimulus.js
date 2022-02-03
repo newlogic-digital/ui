@@ -1,13 +1,9 @@
-import { Application, Controller as DefaultController } from '@stimulus/core'
+import { Application, Controller as DefaultController } from '@hotwired/stimulus'
 import loadStimulus from '../Utils/Functions/loadStimulus.js'
 
-const LibStimulus = new Application(document.documentElement, {
-    controllerAttribute: 'data-controller',
-    actionAttribute: 'data-action',
-    targetAttribute: 'data-ref'
-})
+const LibStimulus = new Application(document.documentElement)
 
-export const getController = (element, identifier) => LibStimulus.getControllerForElementAndIdentifier(element, identifier)
+const getController = (element, identifier) => LibStimulus.getControllerForElementAndIdentifier(element, identifier)
 
 class Controller extends DefaultController {
     getValue(value) {
@@ -39,8 +35,8 @@ class Controller extends DefaultController {
     }
 }
 
-LibStimulus.start().then(() => loadStimulus(document))
+LibStimulus.start().then(() => loadStimulus(document.body))
 
-window.LibStimulus = { instance: LibStimulus, Controller, loadStimulus }
+window.LibStimulus = { default: LibStimulus, Controller, loadStimulus }
 
-export { LibStimulus, Controller, loadStimulus }
+export { LibStimulus, Controller, loadStimulus, getController }

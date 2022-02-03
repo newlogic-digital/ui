@@ -4,29 +4,26 @@
   --ui-progress-bg: var(--color-background-200);
   --ui-progress-bg-opacity: 1;
 
-  -moz-appearance: none;
   appearance: none;
   box-shadow: none;
   border: 0;
   height: var(--ui-progress-height);
   border-radius: var(--ui-progress-radius);
-  background-color: rgba(var(--ui-progress-bg), var(--ui-progress-bg-opacity));
-  color: currentColor;
+  background-color: rgb(var(--ui-progress-bg) / var(--ui-progress-bg-opacity));
+  color: rgb(var(--color-accent));
   width: 100%;
 
   @nest .bg-dark & {
-    background-color: rgba(var(--color-light), 0.1);
-
-    &::-webkit-progress-bar {
-      background-color: rgba(var(--color-light), 0.1);
+    &, &::-webkit-progress-bar {
+      background-color: rgb(var(--color-light) / 0.1);
     }
   }
 
-  &[data-size="sm"] {
+  &:--size-sm {
     --ui-progress-height: 0.5rem;
   }
 
-  &[data-size="lg"] {
+  &:--size-lg {
     --ui-progress-height: 1.5rem;
   }
 
@@ -45,25 +42,15 @@
   }
 
   &:indeterminate {
-    animation: 1.5s ease 0s forwards infinite moveIndeterminate;
-    background-image: linear-gradient(to right, currentColor 30%, rgba(var(--ui-progress-bg), var(--ui-progress-bg-opacity)) 30%);
+    animation: 1.5s linear 0s forwards infinite move-indeterminate;
+    background-image: linear-gradient(to right, currentColor 30%, rgb(var(--ui-progress-bg) / var(--ui-progress-bg-opacity)) 30%);
     background-position: top left;
     background-repeat: no-repeat;
     background-size: 150% 150%;
-    border-radius: 999px;
+    border-radius: var(--ui-progress-radius);
 
     &::-moz-progress-bar {
       background-color: transparent;
     }
-  }
-}
-
-@keyframes moveIndeterminate {
-  from {
-    background-position: 200% 0;
-  }
-
-  to {
-    background-position: -200% 0;
   }
 }

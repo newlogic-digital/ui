@@ -8,9 +8,9 @@
   &[data-theme~="light-border"] {
     background-color: rgb(var(--color-background));
     background-clip: padding-box;
-    border: 1px solid rgba(0, 8, 16, 0.05);
-    color: rgb(var(--color-default));
-    box-shadow: 0 3px 14px -0.5px rgba(0, 8, 16, 0.08);
+    border: 1px solid rgb(0 8 16 / 0.05);
+    color: rgb(var(--color-current));
+    box-shadow: 0 3px 14px -0.5px rgb(0 8 16 / 0.08);
     border-radius: var(--radius);
     left: 0.1875rem;
 
@@ -77,7 +77,7 @@
         transition-timing-function: ease !important;
         transition-duration: 300ms !important;
 
-        &[data-state=hidden] {
+        &[data-state="hidden"] {
           transform: translateY(100%);
           opacity: 0;
         }

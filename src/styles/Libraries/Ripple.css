@@ -1,15 +1,16 @@
-[data-lib-ripple] {
+[data-action*="lib#ripple"] {
+  --lib-ripple-bg: rgb(var(--color-background));
+
   position: relative;
   user-select: none;
 }
 
-.lib-ripple-inner {
+.lib-ripple {
   position: absolute;
-  background: rgb(var(--color-background));
+  background: var(--lib-ripple-bg);
   border-radius: 50%;
   transform: scale(0);
   opacity: 0.4;
-  animation-duration: 1s;
   pointer-events: none;
 
   @nest body > & {
@@ -22,5 +23,7 @@
 
   &.animation {
     animation-name: ripple;
+    animation-duration: 1s;
+    animation-fill-mode: both;
   }
 }

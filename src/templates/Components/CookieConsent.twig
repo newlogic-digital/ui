@@ -1,12 +1,30 @@
-<div class="c-cookieconsent is-background-light" data-title="Informace o cookies">
-    <div class="wrp">
-        <div class="wrp_c_text">
-            <p>Webové stránky používají k poskytování služeb, personalizaci reklam a analýze návštěvnosti soubory cookies. Následující volbou souhlasíte s využíváním cookies a použití údajů o vašem chování na webu pro zobrazení cílené reklamy. Personalizaci a cílenou reklamu si můžete kdykoliv vypnout nebo upravit.</p>
+{% set center = true %}
+{% set closable = false %}
+
+<div class="c-cookieconsent" data-type="{% if center %}center{% endif %} {% if closable %}closable{% endif %}">
+    <div class="wrp bg-background">
+        <div class="wrp_c_head mt-2">
+            {% if true %}
+                <div class="ui-image w-40 mb-6">
+                    <img src="{{ placeholder(160, 46) }}">
+                </div>
+            {% endif %}
+            <div class="ui-heading">Privacy settings and&nbsp;cookies&nbsp;🍪</div>
         </div>
-        <div class="wrp_c_options">
-            <a href="/gdpr-cookies" class="ui-link" title="více informací & nastavení"><span>více informací & nastavení</span></a>
-            <button class="ui-link" aria-label="vypnout personalizaci" data-lib-cookieconsent-decline><span>vypnout personalizaci</span></button>
-            <button class="ui-btn" aria-label="Souhlasím s použitím cookies" data-lib-cookieconsent-approve><span class="icon-l icon-checkbox-filled"></span><span>Souhlasím s použitím cookies</span></button>
+        <div class="wrp_c_body">
+            <div class="ui-text">
+                <p>The Website uses cookies to provide services, personalize ads and analyze traffic.</p>
+                <p></p>
+                <p>By the following option, you agree to the use of cookies and the use of data about your behavior on the website to display targeted&nbsp;advertising. </p>
+            </div>
+        </div>
+        <div class="wrp_c_foot {% if center %}flex-col space-y-6{% else %}space-x-10{% endif %}">
+            <div class="col w-full">
+                <button class="ui-btn w-full" data-size="lg" aria-label="Souhlasím s použitím cookies" data-lib-cookieconsent-approve>Yes, I agree</button>
+            </div>
+            <div class="col {% if not center %}pr-6{% endif %}">
+                <a href="/gdpr" class="ui-link" title="více informací & nastavení"><span>Information and settings</span></a>
+            </div>
         </div>
     </div>
 </div>
