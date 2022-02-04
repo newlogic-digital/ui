@@ -1,0 +1,54 @@
+:root {
+  --l-header-height: 4rem;
+  --l-scroll-padding-top: calc(var(--l-header-height) + 1rem);
+}
+
+#l-header {
+  z-index: var(--z-20);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 0 2rem;
+  background-color: rgb(var(--color-dark));
+  color: rgb(var(--color-light));
+
+  @nest .dark & {
+    background-color: rgb(var(--color-background-100));
+  }
+
+  &.is-l-header-normal {
+    & ~ #l-main {
+      padding-top: var(--l-header-height);
+    }
+  }
+
+  & .wrp_header_body {
+    align-items: center;
+    height: var(--l-header-height);
+  }
+
+  & .elm_header_logo {
+    font-size: 1.5rem;
+    margin-right: 3rem;
+  }
+
+  & .elm_header_menu {
+    position: relative;
+    font-size: 1.75rem;
+
+    &::after {
+      position: absolute;
+      inset: -0.5rem;
+      content: "";
+    }
+  }
+
+  & .elm_header_nav {
+    --gx: 2rem;
+
+    & .ui-link {
+      padding: 1.25rem 0;
+    }
+  }
+}
