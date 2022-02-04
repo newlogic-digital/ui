@@ -1,12 +1,6 @@
 import { defineConfig } from '@newlogic-digital/core'
-import cms from "./src/module.cms.js"
 
 export default defineConfig({
-    config: true,
-    modules: {cms},
-    serve: {
-        https: true
-    },
     scripts: {
         importResolution: {
             directories: ['Components', 'Sections', 'Layout', 'Libraries', 'Utils/Functions', 'Ui']
@@ -18,8 +12,7 @@ export default defineConfig({
     },
     styles: {
         purge: {
-            enabled: true,
-            content: ['src/scripts/**/*.js', 'src/templates/**/*.twig', 'www/templates/**/*.tpl', 'temp/cdn/*.js', 'admin_ex/js/templates/*.html', 'index.html'],
+            content: ['src/scripts/**/*.js', 'src/templates/**/*.twig', 'www/templates/**/*.tpl', 'temp/cdn/*.js'],
             options: {
                 safelist: {
                     standard: [/(class|is-|to-|grecaptcha)/],
