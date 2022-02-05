@@ -51,17 +51,17 @@ $ npx gulp production
 ___
 Or in any other environment
 ```sh
-$ npm i @newlogic-newlogic/ui
+$ npm i @newlogic-digital/ui
 ```
 
 ```css
 /* main.css or individual modules */
-@import "node_modules/@newlogic/ui/src/styles/main.css"
+@import "node_modules/@newlogic-digital/ui/src/styles/main.css"
 ```
 
 ```js
 /* main.js or individual modules */
-import "node_modules/@newlogic/ui/src/scripts/main.js"
+import "node_modules/@newlogic-digital/ui/src/scripts/main.js"
 ```
 
 ### Requirements
