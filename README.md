@@ -50,7 +50,7 @@ or
 $ vituum build
 ```
 ___
-Or in any other frontend tool
+Or in any other environment
 ```sh
 $ npm i @newlogic-digital/ui
 ```

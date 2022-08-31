@@ -443,19 +443,19 @@
                         <div class="col-12" style="padding-top: 0">
                             <h1 class="ui-heading">Get started</h1>
                             <div class="ui-text">
-                                <p>Minimal version <b>Node.js 14+</b> and <b>NPM 7+</b></p>
+                                <p>Minimal version <b>Node.js 16+</b>, <b>NPM 7+</b> or any other package manager.</p>
                             </div>
                         </div>
                         <div class="col-12" id="instalation">
-                            <h1 class="ui-title uppercase text-primary mb-5">Instalation</h1>
+                            <h1 class="ui-title uppercase text-primary mb-5">Installation</h1>
                             <div class="ui-text">
-                                <p>In existing project (with <b>Newlogic Core</b>)</p>
+                                <p>In existing project (with <b>Vituum and Newlogic Core</b>)</p>
                             </div>
                             {% code "bash" %}
                                 $ npm i
                             {% endcode %}
                             <div class="ui-text">
-                                <p>Creating a new project  (with <b>Newlogic Core</b>)</p>
+                                <p>Creating a new project  (with <b>Vituum and Newlogic Core</b>)</p>
                             </div>
                             {% code "bash" %}
                                 $ git clone --depth 1 https://github.com/newlogic-digital/ui.git .
@@ -479,7 +479,7 @@
                         <div class="col-12" id="core">
                             <h1 class="ui-title uppercase text-primary mb-5">Core</h1>
                             <div class="ui-text">
-                                <p><b>Newlogic Core</b> is used as the main toolset, the complete documentation is at  <a href="https://core.newlogic.cz" target="_blank">core.newlogic.cz</a></p>
+                                <p><b>Vituum</b> with Newlogic Core is used as the main toolset, the complete documentation is at  <a href="https://vituum.dev" target="_blank">vituum.dev</a></p>
                                 <p>Framework can also be used with other tools, more information is in the section <a href="#build" title="">Build</a></p>
                             </div>
                         </div>
@@ -1994,7 +1994,9 @@
                             </div>
                             {% code "html:mirror" %}
                                 <button class="ui-btn" type="button" data-type="square" data-controller="lib-tippy" data-lib-tippy="dropdown-full, /json-tippy.json" data-lib-tippy-slot='{ "edit": "Upravit položku", "delete": "Smazat položku" }'>
-                                    <span class="icon icon-chevron-down"></span>
+                                    <svg class="icon">
+                                        <use href="#icon-angle-down"></use>
+                                    </svg>
                                 </button>
                             {% endcode %}
                             <div class="ui-text mb-5">
@@ -2071,7 +2073,7 @@
                         <div class="col-12" id="build">
                             <h1 class="ui-title uppercase text-primary mb-5">Build</h1>
                             <div class="ui-text">
-                                <p>Newlogic UI can be used with other tools, without the need to use Newlogic Core or in a completely different environment than NodeJS</p>
+                                <p>Newlogic UI can be used with other tools, without the need to use Vituum and Newlogic Core or in a completely different environment than NodeJS</p>
                                 <p></p>
                                 <p>Following PostCSS plugins are used:</p>
                                 {% code "json" %}
@@ -2089,10 +2091,10 @@
                                 <p></p>
                                 <p>Tailwind config is located at root in <code>tailwind.config.cjs</code></p>
                                 <p></p>
-                                <p>The CSS framework can then be configured for use in modern build tools such as Vite or Snowpack. </p>
+                                <p>The CSS framework can then be configured for use in any modern build tools such as Vite, Webpack, Parcel, etc.</p>
                                 <p>Theoretically it is even possible to build outside the NodeJS environment in <a href="https://deno.land/manual/tools/bundler" target="_blank">Deno</a> with <a href="https://github.com/postcss/postcss-deno" target="_blank">PostCSS</a></p>
                                 <p></p>
-                                <p>Without use of Newlogic Core you can't use compilation of twig templates from <code>src/templates</code></p>
+                                <p>Without use of Vituum you can't use compilation of twig templates from <code>src/templates</code></p>
                             </div>
                             <hr/>
                         </div>
