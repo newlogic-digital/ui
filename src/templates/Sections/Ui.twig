@@ -369,11 +369,6 @@
                                 </a>
                             </li>
                             <li class="col col-12">
-                                <a href="#fetch" class="ui-link" title="">
-                                    <span>Fetch</span>
-                                </a>
-                            </li>
-                            <li class="col col-12">
                                 <a href="#hint" class="ui-link" title="">
                                     <span>Hint</span>
                                 </a>
@@ -1677,14 +1672,6 @@
                                 <p>The content is being prepared ...</p>
                             </div>
                         </div>
-                        <div class="col-12" id="fetch">
-                            <h1 class="ui-title uppercase text-primary mb-5">Fetch</h1>
-                            <div class="ui-text">
-                                <p>Located in <code>src/scripts/Libraries/Fetch.js</code></p>
-                                <p></p>
-                                <p>The content is being prepared ...</p>
-                            </div>
-                        </div>
                         <div class="col-12" id="hint">
                             <h1 class="ui-title uppercase text-primary mb-5">Hint</h1>
                             <div class="ui-text">
@@ -1807,7 +1794,7 @@
                                 <p>It can be evaluated upon submitting the form, with attribute <code>data-action="submit->lib-recaptcha#submit"</code></p>
                             </div>
                             {% code "html" %}
-                                <form data-controller="lib-recaptcha" data-lib-recaptcha-api="RECAPTCHA_KEY" data-lib-recaptcha-action="contact" data-action="submit->lib-fetch#form">
+                                <form data-controller="lib-recaptcha" data-lib-recaptcha-api="RECAPTCHA_KEY" data-lib-recaptcha-action="contact" data-action="submit->lib-recaptcha#submit">
                                     <input name="gtoken" type="hidden">
                                     <button>Send</button>
                                 </form>
