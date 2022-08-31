@@ -1,4 +1,4 @@
-const { tailwindColors, tailwindVariables, tailwindColorsAccent, tailwindColorsCurrent, tailwindAnimations } = require('@newlogic-digital/core/modules/tailwind/index.cjs')
+const { tailwindColors, tailwindVariables, tailwindColorsAccent, tailwindColorsCurrent, tailwindAnimations } = require('@vituum/tailwind/helpers.cjs')
 const plugin = require('tailwindcss/plugin')
 
 const colors = [
@@ -56,5 +56,5 @@ module.exports = {
     plugin(({ addUtilities }) => {
       addUtilities(tailwindAnimations(animations))
     })
-  ],
+  ]
 }

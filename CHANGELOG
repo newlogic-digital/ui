@@ -1,3 +1,10 @@
+v3.2.0
+* feat(bc): changed gulp to vituum
+* feat: stimulus v3.1 update
+* feat: cookieconsent improvements
+* feat: changed c-form to lib-form
+* feat: added lib-script controller
+
 v3.1.0
 * feat: tailwind v3 update
 * feat: stimulus v3 update

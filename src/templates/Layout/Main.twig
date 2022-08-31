@@ -31,7 +31,7 @@
 
         <script>
             (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) && document.documentElement.classList.add('dark')
-            document.documentElement.className = document.documentElement.className.replace('no-js', 'js'); matchMedia('(hover: hover) and (pointer: fine)').matches && document.documentElement.classList.add('no-touch'); /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) && document.documentElement.classList.add('mobile'); document.documentElement.classList.add(navigator.platform.toLowerCase().replace(/ .*/, '')); !function(e) { let t; (t = e.match(/(chrome|safari|firefox)/i)) && document.documentElement.classList.add(t[0]) } (navigator.userAgent.toLowerCase());
+            document.documentElement.className = document.documentElement.className.replace('no-js', 'js');matchMedia('(hover: hover) and (pointer: fine)').matches && document.documentElement.classList.add('no-touch');/Android|iPhone|iPad|iPod/i.test(navigator.userAgent) && document.documentElement.classList.add('mobile');(p => document.documentElement.classList.add(p.includes('macintel') && navigator.maxTouchPoints > 2 ? 'ipad' : p))(navigator.platform.toLowerCase().replace(/ .*/, ''));(u => document.documentElement.classList.add(u && u[0]))(navigator.userAgent.toLowerCase().match(/chrome|safari|firefox/i))
         </script>
 
         <script src="{{ assets.js.main|asset }}" type="module"></script>

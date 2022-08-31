@@ -1,19 +1,25 @@
 const LibCookieConsent = {
+    setItem: (key, value) => {
+        localStorage.setItem(key, value)
+    },
+    getItem: (key) => {
+        return localStorage.getItem(key)
+    },
     init: () => {
-        const type = localStorage.getItem('lib-cookieconsent')
+        const type = LibCookieConsent.getItem('lib-cookieconsent')
 
         if (type !== null) {
             JSON.parse(type).forEach(type => LibCookieConsent.append(type))
         }
     },
     set: (type) => {
-        localStorage.setItem('lib-cookieconsent', JSON.stringify(type))
-        localStorage.setItem('lib-cookieconsent-expire', (Date.now() + 31556926 * 1000).toString())
+        LibCookieConsent.setItem('lib-cookieconsent', JSON.stringify(type))
+        LibCookieConsent.setItem('lib-cookieconsent-expire', (Date.now() + 31556926 * 1000).toString())
 
         if (type.length > 0) {
             type.forEach(type => LibCookieConsent.append(type))
         } else {
-            localStorage.setItem('lib-cookieconsent', JSON.stringify([]))
+            LibCookieConsent.setItem('lib-cookieconsent', JSON.stringify([]))
             LibCookieConsent.remove()
         }
     },

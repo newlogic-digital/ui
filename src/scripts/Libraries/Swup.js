@@ -3,6 +3,7 @@ import { getController, loadStimulus } from './Stimulus.js'
 import LibAnchor from './Anchor.js'
 import LibDialog from './Dialog.js'
 import LibCookieConsent from './CookieConsent.js'
+import replaceTag from '../Utils/Functions/replaceTag.js'
 
 const LibSwup = new Swup({
     containers: ['#l-main', '#l-header'].filter(element => document.querySelector(element)),
@@ -28,15 +29,7 @@ LibSwup.on('animationOutDone', () => {
 LibSwup.on('contentReplaced', () => {
     const content = new DOMParser().parseFromString(LibSwup.cache.getCurrentPage().originalContent, 'text/html')
 
-    content.head.querySelectorAll('[data-lib-swup-replace]').forEach(element => {
-        const tag = document.querySelector(`[data-lib-swup-replace=${element.dataset.libSwupReplace}]`)
-
-        if (tag !== null) {
-            tag.outerHTML = element.outerHTML
-        } else {
-            document.head.insertAdjacentHTML('beforeend', element.outerHTML)
-        }
-    })
+    replaceTag(content)
 
     LibAnchor.init()
 

@@ -1,4 +1,5 @@
 {
+  "template": "templates/Layout/Main.twig",
   "prefetch": [
     "https://cdn.jsdelivr.net",
     "https://fonts.gstatic.com",
@@ -21,7 +22,6 @@
     }
   },
   "layout": {
-    "template": "Layout/Main.twig",
     "cookies": false,
     "nav": [
       {

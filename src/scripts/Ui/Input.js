@@ -77,9 +77,9 @@ LibStimulus.register('ui-input', class extends Controller {
 
             element.querySelector('[data-action="plus"]').addEventListener('click', () => {
                 const input = this.element.querySelector('input')
-                const num = parseInt(input.value === '' ? 0 : input.value) + parseInt(input.step)
+                const num = parseInt(input.value === '' ? 0 : input.value) + parseInt(input.step === '' ? 1 : input.step)
 
-                if (num <= input.max) {
+                if (num <= input.max || input.max === '') {
                     input.value = num
                     input.dispatchEvent(new Event('change', { bubbles: true }))
                 }
@@ -87,9 +87,9 @@ LibStimulus.register('ui-input', class extends Controller {
 
             element.querySelector('[data-action="minus"]').addEventListener('click', () => {
                 const input = this.element.querySelector('input')
-                const num = parseInt(input.value) - parseInt(input.step)
+                const num = parseInt(input.value) - parseInt(input.step === '' ? 1 : input.step)
 
-                if (num >= input.min) {
+                if (num >= input.min || input.min === '') {
                     input.value = num
                     input.dispatchEvent(new Event('change', { bubbles: true }))
                 }
@@ -101,7 +101,7 @@ LibStimulus.register('ui-input', class extends Controller {
         const date = element.querySelector('[type^="date"]')
 
         if (date !== null && !document.documentElement.classList.contains('mobile')) {
-            const lang = await import(`/* @vite-ignore */https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.2.0/js/i18n/locales/${document.documentElement.lang === 'en' ? 'cs' : document.documentElement.lang}.min.js`)
+            const lang = await import(`/* @vite-ignore */ https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.2.0/js/i18n/locales/${document.documentElement.lang === 'en' ? 'cs' : document.documentElement.lang}.min.js`)
             const { Datepicker } = await import('vanillajs-datepicker')
 
             await importStyle(cdn.datepicker)

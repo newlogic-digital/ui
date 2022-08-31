@@ -24,7 +24,7 @@
     display: none !important;
   }
 
-  &:not(.is-fade):not(.is-grabbing) {
+  &:not(.is-fade, .is-grabbing) {
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
   }

@@ -1,36 +1,42 @@
 {
   "name": "@newlogic-digital/ui",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "type": "module",
-  "main": "gulpfile.js",
+  "main": "vite.config.js",
   "author": "New Logic Studio s.r.o.",
   "description": "Lightweight, modern and modular CSS framework with the best principles",
   "license": "GNU GPLv3",
   "scripts": {
-    "utils:eslint": "eslint 'src/scripts/**/*.js' --fix",
-    "utils:stylelint": "stylelint 'src/styles/**/*.css' --fix"
+    "dev": "vite",
+    "preview": "vite preview",
+    "build": "vituum build",
+    "build:headless": "vituum headless",
+    "cleanup": "vituum cleanup",
+    "eslint": "eslint 'src/scripts/**/*.js'",
+    "eslint:fix": "eslint 'src/scripts/**/*.js' --fix",
+    "stylelint": "stylelint 'src/styles/**/*.css'",
+    "stylelint:fix": "stylelint 'src/styles/**/*.css' --fix"
   },
-  "imports": {},
   "dependencies": {
     "@simonwep/pickr": "^1.8.2",
-    "@hotwired/stimulus": "3.0.1",
-    "swup": "2.0.14",
+    "@hotwired/stimulus": "3.1.0",
+    "swup": "2.0.19",
     "tippy.js": "^6.3.7",
     "vanillajs-datepicker": "^1.2.0"
   },
   "devDependencies": {
-    "@newlogic-digital/core": "~0.9.5",
-    "eslint-config-standard": "^16.0.3",
-    "stylelint-config-standard": "^24.0.0"
+    "@newlogic-digital/core": "^1.0.0",
+    "vituum": "^0.0.28",
+    "eslint-config-standard": "^17.0.0",
+    "stylelint-config-standard": "^28.0.0"
   },
   "files": [
     "src",
     "gulpfile.js"
   ],
   "engines": {
-    "node": ">=14.0.0",
-    "npm": ">=7.10.0",
-    "yarn": ">=2.3.0"
+    "node": ">=16.0.0",
+    "npm": ">=7.10.0"
   },
   "repository": {
     "type": "git",

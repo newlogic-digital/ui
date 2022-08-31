@@ -48,7 +48,7 @@
     transform: translateY(2rem);
   }
 
-  to {
+  100% {
     opacity: 1;
     transform: translateY(0);
   }
@@ -60,7 +60,7 @@
     transform: translateY(-2rem);
   }
 
-  to {
+  100% {
     opacity: 1;
     transform: translateY(0);
   }
@@ -96,7 +96,7 @@
     transform: translateY(0);
   }
 
-  to {
+  100% {
     opacity: 0;
     transform: translateY(-2rem);
   }
@@ -108,7 +108,7 @@
     transform: translateY(0);
   }
 
-  to {
+  100% {
     opacity: 0;
     transform: translateY(2rem);
   }

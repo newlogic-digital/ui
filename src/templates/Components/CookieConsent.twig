@@ -20,10 +20,10 @@
         </div>
         <div class="wrp_c_foot {% if center %}flex-col space-y-6{% else %}space-x-10{% endif %}">
             <div class="col w-full">
-                <button class="ui-btn w-full" data-size="lg" aria-label="Souhlasím s použitím cookies" data-lib-cookieconsent-approve>Yes, I agree</button>
+                <button class="ui-btn w-full" data-size="lg" aria-label="Yes, I agree" data-lib-cookieconsent-approve>Yes, I agree</button>
             </div>
             <div class="col {% if not center %}pr-6{% endif %}">
-                <a href="/gdpr" class="ui-link" title="více informací & nastavení"><span>Information and settings</span></a>
+                <button class="ui-link" aria-label="I disagree" data-lib-cookieconsent-decline><span>I disagree</span></button>
             </div>
         </div>
     </div>

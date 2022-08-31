@@ -1,6 +1,11 @@
-import { LibStimulus, Controller, getController } from '../Libraries/Stimulus.js'
+import { LibStimulus, Controller, getController } from './Stimulus.js'
 
-LibStimulus.register('c-form', class extends Controller {
+LibStimulus.register('lib-form', class extends Controller {
+    connect() {
+        this.element.setAttribute('novalidate', '')
+        this.element.addEventListener('submit', e => this.validate(this.element, e))
+    }
+
     validate(element, e) {
         if (element.reportValidity() === false) {
             e.preventDefault()
@@ -26,8 +31,7 @@ LibStimulus.register('c-form', class extends Controller {
         })
     }
 
-    connect() {
-        this.element.setAttribute('novalidate', '')
-        this.element.addEventListener('submit', e => this.validate(this.element, e))
+    submitForm({ currentTarget }) {
+        currentTarget.form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }))
     }
 })

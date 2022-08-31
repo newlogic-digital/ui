@@ -9,22 +9,19 @@ LibStimulus.register('c-cookieconsent', class extends Controller {
             return
         }
 
-        if (localStorage.getItem('lib-cookieconsent') === null || parseInt(localStorage.getItem('lib-cookieconsent-expire')) < Date.now()) {
+        if (LibCookieConsent.getItem('lib-cookieconsent') === null || parseInt(LibCookieConsent.getItem('lib-cookieconsent-expire')) < Date.now()) {
             setTimeout(() => {
                 selector._addDataValue('state', 'active')
                 selector.classList.add('is-animate')
             }, 1500)
         }
 
-        selector._hasDataValue('type', 'closable') &&
-        selector.addEventListener('click', e => {
-            if (e.target.closest('.c-cookieconsent > .wrp') === null) {
-                this.hide([])
-            }
-        })
-
         selector.querySelector('[data-lib-cookieconsent-approve]').addEventListener('click', () => {
             this.hide(['performance', 'marketing'])
+        })
+
+        selector.querySelector('[data-lib-cookieconsent-decline]').addEventListener('click', () => {
+            this.hide([])
         })
     }
 
@@ -42,10 +39,13 @@ LibStimulus.register('c-cookieconsent', class extends Controller {
 LibStimulus.register('c-form-cookieconsent', class extends Controller {
     connect() {
         const selector = this.element
-        const type = localStorage.getItem('lib-cookieconsent')
+        const type = LibCookieConsent.getItem('lib-cookieconsent')
+        const modal = document.querySelector('.c-cookieconsent')
 
-        document.querySelector('.c-cookieconsent').classList.remove('is-animate')
-        document.querySelector('.c-cookieconsent')._removeDataValue('state', 'active')
+        if (modal) {
+            modal.classList.remove('is-animate')
+            modal._removeDataValue('state', 'active')
+        }
 
         if (type !== null) {
             this.element.querySelectorAll('input:not([disabled])').forEach(input => {
@@ -74,9 +74,11 @@ LibStimulus.register('c-form-cookieconsent', class extends Controller {
     }
 
     disconnect() {
-        if (localStorage.getItem('lib-cookieconsent') === null || parseInt(localStorage.getItem('lib-cookieconsent-expire')) < Date.now()) {
-            document.querySelector('.c-cookieconsent')._addDataValue('state', 'active')
-            document.querySelector('.c-cookieconsent').classList.add('is-animate')
+        const modal = document.querySelector('.c-cookieconsent')
+
+        if (modal && (LibCookieConsent.getItem('lib-cookieconsent') === null || parseInt(LibCookieConsent.getItem('lib-cookieconsent-expire')) < Date.now())) {
+            modal._addDataValue('state', 'active')
+            modal.classList.add('is-animate')
         }
     }
 })
