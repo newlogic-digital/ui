@@ -1,6 +1,6 @@
 {
   "name": "@newlogic-digital/ui",
-  "version": "3.2.0",
+  "version": "3.3.0",
   "type": "module",
   "main": "vite.config.js",
   "author": "New Logic Studio s.r.o.",
@@ -10,7 +10,9 @@
     "dev": "vite",
     "preview": "vite preview",
     "build": "vituum build",
+    "build:emails": "vituum build && vituum emails",
     "build:headless": "vituum headless",
+    "emails": "vituum emails",
     "cleanup": "vituum cleanup",
     "eslint": "eslint 'src/scripts/**/*.js'",
     "eslint:fix": "eslint 'src/scripts/**/*.js' --fix",
@@ -19,20 +21,21 @@
   },
   "dependencies": {
     "@simonwep/pickr": "^1.8.2",
-    "@hotwired/stimulus": "3.1.0",
-    "swup": "2.0.19",
+    "@hotwired/stimulus": "^3.1.1",
+    "swup": "^2.0.19",
     "tippy.js": "^6.3.7",
-    "vanillajs-datepicker": "^1.2.0"
+    "vanillajs-datepicker": "^1.2.0",
+    "css-has-pseudo": "^4.0.1"
   },
   "devDependencies": {
-    "@newlogic-digital/core": "^1.0.0",
-    "vituum": "^0.0.28",
+    "@newlogic-digital/core": "^1.0.10",
+    "@types/grecaptcha": "^3.0.4",
+    "vituum": "^0.0.35",
     "eslint-config-standard": "^17.0.0",
-    "stylelint-config-standard": "^28.0.0"
+    "stylelint-config-standard": "^29.0.0"
   },
   "files": [
-    "src",
-    "gulpfile.js"
+    "src"
   ],
   "engines": {
     "node": ">=16.0.0",

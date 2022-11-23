@@ -1,11 +1,20 @@
 .ui-text {
-  --ui-text-size: 0.9375rem;
+  --ui-text-size: 0.875rem;
+  --ui-text-size-line: 0.75rem;
   --ui-text-weight: var(--font-normal);
   --ui-text-weight-bold: var(--font-semibold);
 
   font-weight: var(--ui-text-weight);
   font-size: var(--ui-text-size);
-  line-height: calc(var(--ui-text-size) + 0.75rem);
+  line-height: calc(var(--ui-text-size) + var(--ui-text-size-line));
+
+  &:--size-base {
+    --ui-text-size: 1rem;
+  }
+
+  &:--size-lg {
+    --ui-text-size: 1.125rem;
+  }
 
   & a {
     text-decoration: underline;
@@ -14,7 +23,7 @@
     &:not([class*="text-"]) {
       color: rgb(var(--color-accent));
 
-      @nest .no-touch &[href]:hover {
+      @nest .no-touch &[href]:is(:hover, :focus-visible) {
         opacity: 0.8;
       }
     }
@@ -65,7 +74,7 @@
 
   & p {
     line-height: inherit;
-    margin: 0;
+    margin: 0 0 0.25rem;
 
     &:empty {
       line-height: 1rem;

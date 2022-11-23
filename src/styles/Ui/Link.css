@@ -1,7 +1,8 @@
 .ui-link {
   --ui-link-size: 0.875rem;
-  --ui-link-weight: var(--font-medium);
+  --ui-link-weight: var(--font-normal);
   --ui-link-hover-opacity: 0.8;
+  --ui-link-hover-color: rgb(var(--color-accent));
   --ui-link-underline-opacity: 0.5;
 
   display: inline-flex;
@@ -9,15 +10,21 @@
   cursor: pointer;
   font-size: var(--ui-link-size);
   font-weight: var(--ui-link-weight);
-  transition: var(--transition-opacity);
+  transition: var(--transition-opacity), var(--transition-color);
   position: relative;
   white-space: nowrap;
+  line-height: 1.5;
 
-  @nest .no-touch &:hover {
-    opacity: var(--ui-link-hover-opacity);
+  &:--size-sm {
+    --ui-link-size: 0.75rem;
   }
 
-  &::after {
+  @nest &:focus-visible, .no-touch &:is([href], button):hover {
+    opacity: var(--ui-link-hover-opacity);
+    color: var(--ui-link-hover-color);
+  }
+
+  &[data-type~="underline"]::after {
     content: "";
     border-bottom: 1px solid currentColor;
     opacity: 0;
@@ -26,7 +33,7 @@
     transition: var(--transition-opacity), var(--transition-transform);
     transform: translateY(-0.25rem);
 
-    @nest .no-touch :not([href^="tel:"], [href^="mailto:"]):hover& {
+    @nest .no-touch :not([href^="tel:"], [href^="mailto:"]):is(:hover, :focus-visible)& {
       transform: none;
       opacity: var(--ui-link-underline-opacity);
     }

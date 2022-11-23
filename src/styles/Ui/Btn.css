@@ -32,12 +32,13 @@
   height: var(--ui-btn-height);
   padding: var(--ui-btn-py) var(--ui-btn-px);
   border-radius: var(--ui-btn-radius);
-  transition: var(--transition-opacity), var(--transition-background);
+  transition: var(--transition-opacity), var(--transition-background), var(--transition-color);
   background-color: var(--ui-btn-bg);
   color: var(--ui-btn-color);
 
-  @nest .dark &.bg-default {
+  @nest .dark &.accent-dark {
     --ui-btn-color: rgb(var(--color-dark));
+    --color-accent: var(--color-light);
   }
 
   &:--theme-light {
@@ -59,7 +60,7 @@
     opacity: 0;
     transition: var(--transition-opacity);
 
-    @nest .no-touch :is(:hover, :focus)&, :is(:--state-active)& {
+    @nest .no-touch :is(:hover, :focus-visible)&, :is(:--state-active)& {
       opacity: var(--ui-btn-hover-opacity);
     }
   }
@@ -97,8 +98,16 @@
     }
   }
 
+  &:--type-text {
+    @nest :not(:hover, :focus-visible, :--state-active)& {
+      --ui-btn-color: currentColor;
+
+      background-color: transparent;
+    }
+  }
+
   &:--type-outline {
-    --ui-btn-color: currentColor;
+    --ui-btn-color: rgb(var(--color-current));
     --ui-btn-hover-opacity: 0.1;
 
     background-color: transparent;
@@ -130,6 +139,11 @@
     border-radius: 50%;
   }
 
+  &:--size-sm {
+    --ui-btn-height: 2.25rem;
+    --ui-btn-px: 1rem;
+  }
+
   &:--size-lg {
     --ui-btn-icon-size: 1.5rem;
     --ui-btn-height: 3rem;
@@ -138,7 +152,11 @@
 
   &:--state-loading {
     pointer-events: none;
-    color: var(--ui-btn-bg);
+    color: transparent;
+
+    & > * {
+      opacity: 0;
+    }
 
     &::before {
       z-index: 1;
@@ -155,7 +173,7 @@
       margin-top: -0.625rem;
       left: 50%;
       top: 50%;
-      opacity: 1;
+      opacity: 1 !important;
     }
   }
 

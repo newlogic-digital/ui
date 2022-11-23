@@ -45,6 +45,14 @@
   height: 0.75rem;
   border: 0.125rem solid rgb(var(--color-current));
   border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+
+  &::after {
+    position: absolute;
+    inset: -0.5rem;
+    content: "";
+  }
 
   &[data-state*="active"] {
     background-color: rgb(var(--color-current));

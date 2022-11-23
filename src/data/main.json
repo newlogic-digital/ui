@@ -1,4 +1,5 @@
 {
+  "lang": "en",
   "template": "templates/Layout/Main.twig",
   "prefetch": [
     "https://cdn.jsdelivr.net",
@@ -31,6 +32,10 @@
       {
         "name": "Documentation",
         "url": "/ui"
+      },
+      {
+        "name": "Icons",
+        "url": "/ui-icons"
       }
     ]
   },

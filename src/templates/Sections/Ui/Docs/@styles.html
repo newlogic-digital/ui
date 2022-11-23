@@ -1,0 +1,100 @@
+<style>
+  pre {
+    margin: 1rem 0 2rem !important;
+    padding: 1.25rem 1.5rem !important;
+    border-radius: 0.5rem !important;
+    background: #282c34 none repeat scroll 0 0 !important;
+    max-width: 100%;
+    font-size: 14px !important;
+    overflow: auto;
+  }
+
+  .dark pre {
+    background: rgb(var(--color-background-100)) none repeat scroll 0% 0% !important;
+  }
+
+  @media all and (min-width: 48rem) {
+    pre {
+      max-width: 63vw;
+    }
+  }
+
+  @media all and (min-width: 60rem) {
+    pre {
+      max-width: 90vw;
+    }
+  }
+
+  .ui-heading + .ui-text {
+    margin-top: 1rem;
+  }
+
+  code {
+    margin-left: 0;
+  }
+
+  .col-12 > hr {
+    margin: 2rem 0 1rem;
+  }
+
+  @media all and (min-width: 60rem) {
+    .ui-text code {
+      white-space: nowrap;
+    }
+  }
+
+  @media all and (max-width: 767px) {
+    .wrp_s_body > .t\:col-9 {
+      padding-left: 0 !important;
+      border-left: 0 !important;
+    }
+  }
+
+  .s-ui .wrp_s_body > .col-left {
+    width: 15rem;
+  }
+
+  .s-ui .wrp_s_body > .col-left .col {
+    padding-bottom: 0.375rem;
+  }
+
+  .s-ui .wrp_s_body > .col-left > .sticky {
+    height: calc(100vh - 4rem);
+    overflow-y: hidden;
+    overflow-x: hidden;
+    top: 4rem;
+    padding: 2rem;
+  }
+
+  .s-ui .wrp_s_body > .col-left > .sticky:hover {
+    overflow-y: auto;
+  }
+
+  .s-ui .wrp_s_body > .col-right {
+    padding-top: 1.625rem;
+    border-left: 1px solid #ddd;
+    overflow: hidden;
+  }
+
+  .dark .s-ui .wrp_s_body > .col-right {
+    border-left: 1px solid rgb(var(--color-light) / 0.1);
+  }
+
+  @media all and (min-width: 60rem) {
+    .s-ui .wrp_s_body > .col-right {
+      padding-left: 4rem;
+      padding-top: 4rem;
+    }
+  }
+
+  @media all and (max-width: 59.9375rem) {
+    .s-ui .wrp_s_body > .col-right {
+      display: block;
+    }
+    .s-ui .wrp_s_body > .col-right > .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.26.0/themes/prism-tomorrow.min.css"/>

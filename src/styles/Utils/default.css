@@ -114,13 +114,6 @@ a {
   border-color: rgb(var(--color-current) / var(--tw-text-opacity, 1));
 }
 
-[class*="aspect-"] {
-  &::before {
-    content: "";
-    display: block;
-  }
-}
-
 [hidden] {
   display: none;
 }

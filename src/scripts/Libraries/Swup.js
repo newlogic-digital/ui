@@ -10,7 +10,7 @@ const LibSwup = new Swup({
     linkSelector: `:is(a[href^="${window.location.origin}"], a[href^="/"]):not([data-no-swup], [data-naja], [target="_blank"])`
 })
 
-LibSwup.on('clickLink', async() => {
+LibSwup.on('clickLink', async({ target }) => {
     document.body.classList.remove('overflow-hidden')
 
     if (document.querySelector('.lib-drawer[data-state~="active"]') !== null) {
@@ -19,6 +19,10 @@ LibSwup.on('clickLink', async() => {
 
     if (document.querySelector('.lib-dialog') !== null) {
         await LibDialog.hide()
+    }
+
+    if (window.location.href === target.closest('a').href) {
+        document.documentElement.scroll({ top: 0 })
     }
 })
 

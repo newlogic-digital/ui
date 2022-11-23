@@ -1,3 +1,19 @@
+v3.3.0
+* feat: added email posthtml examples
+* feat(bc): removed stimulus helpers - queryTarget, getValue etc.
+* feat: improved form validation
+* feat(bc): changed ui-dropdown to c-dropdown
+* feat: minor js and css refactor
+* feat: added types for reCatpcha
+* feat: added focus-visible on all hover elements
+* feat: removed absolute positioning on ui-image
+* feat: added css properties for border-radius (--rounded-*) and spacing (--spacing-*)
+* feat: added tailwind helpers for --rounded-* and --spacing-*
+* feat: improved responsive breakpoints
+* feat: added icons docs page
+* feat: added :has postcss plugin
+* fix: native slider counterMax
+
 v3.2.0
 * feat(bc): changed gulp to vituum
 * feat: stimulus v3.1 update

@@ -11,7 +11,8 @@
     "property-no-vendor-prefix": [true, { "ignoreProperties": "appearance" }],
     "number-max-precision": [4, { "ignoreProperties": "letter-spacing" }],
     "max-line-length": 140,
-    "selector-class-pattern": null
+    "selector-class-pattern": null,
+    "import-notation": "string"
   },
-  "ignoreFiles": ["**/+.css", "src/styles/Utils/normalize.css", "src/styles/Ui/Input.css"]
+  "ignoreFiles": ["**/+.css", "src/styles/Utils/normalize.css"]
 }

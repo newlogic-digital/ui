@@ -1,9 +1,10 @@
 .ui-heading {
   --ui-heading-size: 1.5rem;
+  --ui-heading-weight: var(--font-bold);
   --ui-heading-size-line: 0.5rem;
 
   display: block;
-  font-weight: var(--font-bold);
+  font-weight: var(--ui-heading-weight);
   font-size: var(--ui-heading-size);
   line-height: calc(var(--ui-heading-size) + var(--ui-heading-size-line));
 

@@ -4,8 +4,8 @@
   --ui-label-spacing: 0.05rem;
 
   display: block;
-  font-size: var(--ui-title-size);
-  line-height: calc(var(--ui-title-size) + var(--ui-title-size-line));
+  font-size: var(--ui-label-size);
+  line-height: calc(var(--ui-label-size-line) + var(--ui-label-size-line));
   font-weight: var(--font-medium);
 
   & ~ :is([class^="ui-"]:not(&), [class^="c-"]) {

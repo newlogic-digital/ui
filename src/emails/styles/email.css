@@ -1,4 +1,4 @@
-@import "../styles/Utils/theme/main.css";
+@import "../../styles/Utils/theme/main.css";
 
 :root {
   --width: 660px;

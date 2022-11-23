@@ -1,7 +1,4 @@
 .ui-select {
-  cursor: pointer;
-  user-select: none;
-
   &:--state-active {
     & label {
       transform: translateY(calc(var(--ui-input-size) / 1.4 * -1)) scale(0.8);
@@ -35,9 +32,10 @@
     position: relative;
     z-index: 1;
     text-overflow: ellipsis;
-    cursor: pointer;
     -webkit-appearance: none;
     -moz-appearance: none;
+    cursor: pointer;
+    user-select: none;
 
     @nest [tabindex]& {
       pointer-events: none;
@@ -131,7 +129,7 @@
       font-size: var(--ui-input-size);
       border-radius: var(--radius);
 
-      @nest .no-touch &:is(:hover, :focus) {
+      @nest .no-touch &:is(:hover, :focus-visible) {
         background-color: rgb(var(--color-accent) / 0.1);
       }
     }

@@ -29,7 +29,7 @@
   line-height: var(--ui-badge-size);
   transition: var(--transition-opacity);
 
-  @nest .no-touch &:is([href]:hover, button:hover) {
+  @nest .no-touch &:is([href], button):is(:hover, :focus-visible) {
     opacity: var(--ui-badge-hover-opacity);
   }
 

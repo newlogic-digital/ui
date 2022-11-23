@@ -19,9 +19,9 @@ LibStimulus.register('lib', class extends Controller {
         LibRipple(e)
     }
 
-    anchor(e) {
-        e.preventDefault()
-        LibAnchor.action(e.currentTarget)
+    anchor({ currentTarget }) {
+        arguments[0].preventDefault()
+        LibAnchor.action(currentTarget)
     }
 
     darkMode() {

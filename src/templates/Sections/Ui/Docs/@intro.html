@@ -1,0 +1,97 @@
+<div class="row g-8 flex-wrap">
+    <div class="col-12" style="padding-top: 0">
+        <h1 class="ui-heading">Get started</h1>
+        <div class="ui-text">
+            <p>Minimal version <b>Node.js 14+</b> and <b>NPM 7+</b></p>
+        </div>
+    </div>
+    <div class="col-12" id="installation">
+        <h1 class="ui-title uppercase text-primary mb-5">Instalation</h1>
+        <div class="ui-text">
+            <p>In existing project (with <b>Vituum and Newlogic Core</b>)</p>
+        </div>
+        <pre><code class="language-bash">
+            npm i
+        </code></pre>
+        <div class="ui-text">
+            <p>Creating a new project (with <b>Vituum and Newlogic Core</b>)</p>
+        </div>
+        <pre><code class="language-bash">
+            $ git clone --depth 1 https://github.com/newlogic-digital/ui.git . && rm -r .git
+            $ npm i
+        </code></pre>
+        <div class="ui-text">
+            <p>Use with in any other environment</p>
+        </div>
+        <pre><code class="language-bash">
+            $ npm i @newlogic-digital/ui
+        </code></pre>
+        <pre><code class="language-bash">
+            /* main.css or separate modules */
+            @import "node_modules/@newlogic-digital/ui/src/styles/main.css"
+        </code></pre>
+        <pre><code class="language-bash">
+            /* main.js or separate modules */
+            import "node_modules/@newlogic-digital/ui/src/scripts/main.js"
+        </code></pre>
+    </div>
+    <div class="col-12" id="core">
+        <h1 class="ui-title uppercase text-primary mb-5">Core</h1>
+        <div class="ui-text">
+            <p><b>Vituum and Newlogic Core</b> is used as the main toolset, the complete documentation is at <a href="https://vituum.dev" target="_blank">vituum.dev</a>.</p>
+            <p>Newlogic Core is predefined config with plugins, filters etc. - <a href="https://vituum.dev" target="_blank">https://github.com/newlogic-digital/core</a></p>
+            <p>Framework can also be used with other tools, more information is in the section <a href="#build" title="">Build</a></p>
+        </div>
+    </div>
+    <div class="col-12" id="theme">
+        <h1 class="ui-title uppercase text-primary mb-5">Theme</h1>
+        <div class="ui-text">
+            <p>Main CSS variables can be configured in <code>styles/Utils/theme/main.css</code> a <code>styles/Utils/vars.css</code>,
+                you can also create any number of color variations.
+            </p>
+            <p></p>
+            <p>Keyframes can be added in <code>styles/Utils/keyframes.css</code>, print styles in <code>styles/Utils/print.css</code>,
+                import of external css in <code>styles/Utils/vendor.css</code> and tailwind styles can be extended
+                in<code>styles/Utils/tailwind</code>
+            </p>
+        </div>
+    </div>
+    <div class="col-12" id="layout">
+        <h1 class="ui-title uppercase text-primary mb-5">Layout</h1>
+        <div class="ui-text">
+            <p>Global styles are located at <code>styles/Layout/Main.css</code>, others layout styles are for eg. <code>Header.css</code>,
+                <code>Footer.css</code> and naming should be done in following format <code>#l-header</code>, <code>#l-footer</code>
+            </p>
+            <p></p>
+            <p>Global scripts are located at <code>scripts/Layout/Main.js</code></p>
+            <p></p>
+            <p>Example of basic layout in HTML:</p>
+        </div>
+        <pre><code class="language-html">
+            <html class="no-js no-sw" lang="cs">
+                <head>
+                    <title></title>
+                    <link rel="stylesheet" href="/src/styles/main.css">
+                    <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"
+                            async></script>
+
+                    <script>'dark' !== localStorage.theme && ('theme' in localStorage || !window.matchMedia('(prefers-color-scheme: dark)').matches) || document.documentElement.classList.add('dark'), document.documentElement.className = document.documentElement.className.replace('no-js', 'js'), matchMedia('(hover: hover) and (pointer: fine)').matches && document.documentElement.classList.add('no-touch'), /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) && document.documentElement.classList.add('mobile'), document.documentElement.classList.add(navigator.platform.toLowerCase().replace(/ .*/, '')), function (e) {
+                        var t
+                        e.match(/(msie|trident)/i) ? document.documentElement.classList.add('ie') : e.match(/edge/) ? document.documentElement.classList.add('edge') : (t = e.match(/(chrome|safari|firefox)/i)) && document.documentElement.classList.add(t[0])
+                    }(navigator.userAgent.toLowerCase())</script>
+
+                    <script src="/src/scripts/main.js" type="module"></script>
+                </head>
+                <body data-controller="lib lib-dialog lib-drawer">
+                    <div class="l-default">
+                        <header id="l-header" data-controller="l-header"></header>
+                        <main id="l-main" class="transition-fade">
+                            <!--PAGE CONTENT-->
+                        </main>
+                        <footer id="l-footer"></footer>
+                    </div>
+                </body>
+            </html>
+        </code></pre>
+    </div>
+</div>

@@ -72,11 +72,7 @@ import "node_modules/@newlogic-digital/ui/src/scripts/main.js"
 
 ### Config
 
-Each Vituum project has to have config via `vite.config.js`, docs - [vituum.dev](https://vituum.dev)
-
-## 📌 Future plans
-- support for new modern web features `:has`, `<dialog>`
-- performance optimization
+Each Vituum project has to have config via `vite.config.js`, docs - [vituum.dev](https://vituum.dev
 
 ## Licence
 GNU GPLv3

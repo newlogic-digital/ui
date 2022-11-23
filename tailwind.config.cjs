@@ -1,10 +1,12 @@
-const { tailwindColors, tailwindVariables, tailwindColorsAccent, tailwindColorsCurrent, tailwindAnimations } = require('@vituum/tailwind/helpers.cjs')
+const { tailwindColors, tailwindVariables, tailwindColorsAccent, tailwindColorsCurrent, tailwindAnimations, tailwindRadius } = require('@vituum/tailwind/helpers.cjs')
 const plugin = require('tailwindcss/plugin')
 
 const colors = [
   'background', 'default', 'invert', 'light', 'dark', 'primary', 'secondary',
-  'warning', 'error', 'info', 'success'
+  'warning', 'error', 'info', 'success', 'accent'
 ]
+
+const radius = ['xs', 'sm', 'base', 'md', 'lg', 'xl', '2xl', '3xl', 'full']
 
 const animations = [
   'fade-in', 'fade-out'
@@ -25,7 +27,8 @@ module.exports = {
     ringOffsetColor: false,
     gradientColorStops: false,
     backgroundImage: false,
-    accentColor: false
+    accentColor: false,
+    borderRadius: false
   },
   theme: {
     extend: {
@@ -36,12 +39,15 @@ module.exports = {
         0: 0,
         auto: 'auto'
       }),
+      spacing: tailwindVariables('spacing', ['xs', 'sm', 'base', 'md', 'lg', 'xl', '2xl', '3xl', 'section']),
       screens: {
         m: { max: '47.9375em' },
         t: '48em',
         d: '60em',
         w: '76em',
-        hd: '88em',
+        hd: '85em',
+        mhd: '88em',
+        fhd: '100em',
         touch: { max: '59.9375em' }
       }
     },
@@ -55,6 +61,9 @@ module.exports = {
     }),
     plugin(({ addUtilities }) => {
       addUtilities(tailwindAnimations(animations))
+    }),
+    plugin(({ addUtilities }) => {
+      addUtilities(tailwindRadius(radius))
     })
-  ]
+  ],
 }

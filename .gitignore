@@ -3,5 +3,7 @@ temp/*
 .DS_Store
 /node_modules/
 /public/assets/
-/public/*.html
-/public/*.json
+/public/**/*.html
+/public/**/*.json
+/public/emails/*.html
+#!.gitkeep

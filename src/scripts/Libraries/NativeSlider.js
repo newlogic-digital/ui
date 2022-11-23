@@ -49,8 +49,9 @@ export default function LibNativeSlider(selector, parent) {
         }
     }
 
+    self.counterMax = parseInt(((selector.scrollWidth - selector.clientWidth) / selector.children[0].clientWidth + 1).toFixed(0))
+
     if (self.ref.counterMax !== null) {
-        self.counterMax = parseInt(((selector.scrollWidth - selector.clientWidth) / selector.children[0].clientWidth + 1).toFixed(0))
         self.ref.counterMax.textContent = self.counterMax
     }
 

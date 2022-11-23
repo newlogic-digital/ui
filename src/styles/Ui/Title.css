@@ -1,12 +1,13 @@
 .ui-title {
   --ui-title-size: 0.875rem;
-  --ui-title-size-line: 0.5rem;
+  --ui-title-size-line: 0.25rem;
   --ui-title-spacing: 0.05rem;
+  --ui-title-weight: var(--font-semibold);
 
   display: block;
   font-size: var(--ui-title-size);
   line-height: calc(var(--ui-title-size) + var(--ui-title-size-line));
-  font-weight: var(--font-semibold);
+  font-weight: var(--ui-title-weight);
 
   &[class*="uppercase"] {
     letter-spacing: var(--ui-title-spacing);

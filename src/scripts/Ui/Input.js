@@ -1,62 +1,20 @@
 import cdn from '../Utils/cdn.js'
 import { LibStimulus, Controller } from '../Libraries/Stimulus.js'
-import { importStyle } from '../Utils/Functions/+.js'
+import { importStyle, checkValidity } from '../Utils/Functions/+.js'
 
 LibStimulus.register('ui-input', class extends Controller {
     async connect() {
-        const element = this.element
+        checkValidity(this.element, { validate: false })
 
-        this.validate(element, false)
+        this.element.addEventListener('change', () => checkValidity(this.element))
 
-        element.addEventListener('change', () => {
-            this.validate(element, true)
-        })
+        this.typeNumber(this.element)
 
-        this.typeNumber(element)
+        this.typeFile(this.element)
 
-        this.typeFile(element)
+        await this.typeDatetime(this.element)
 
-        await this.typeDatetime(element)
-
-        await this.typeColor(element)
-    }
-
-    validate(element, validate) {
-        const input = element.querySelectorAll('input, textarea')
-
-        input.forEach(input => {
-            let validationMessage = input.validationMessage
-
-            if (typeof input.dataset.validationMessage !== 'undefined') {
-                validationMessage = input.dataset.validationMessage
-            }
-
-            if (input.outerHTML.match(/(data-novalidate|readonly|hidden|data-state="invalid")/) === null && validate) {
-                element._removeDataValue('state', 'valid invalid active')
-
-                if (element.querySelector('[class^="icon"][class*="valid"]') !== null) {
-                    element.querySelector('[class^="icon"][class*="valid"]').remove()
-                }
-
-                if (input.checkValidity()) {
-                    element._addDataValue('state', 'valid')
-                } else {
-                    element._addDataValue('state', 'invalid')
-
-                    if (element.querySelector('[class^="icon"][class*="valid"]') === null) {
-                        const icon = element.querySelector('.icon-r')
-                        const elm = icon || element
-                        const where = icon ? 'afterend' : 'beforeend'
-
-                        elm.insertAdjacentHTML(where, `<div class="icon-r icon-invalid text-error lib-hint-top lib-hint-error" tabindex="0" aria-label="${validationMessage}"><svg><use href="#icon-exclamation-circle"></use></svg></div>`)
-                    }
-                }
-            }
-
-            if (input.value !== '') {
-                element._addDataValue('state', 'active')
-            }
-        })
+        await this.typeColor(this.element)
     }
 
     typeNumber(element) {
@@ -80,7 +38,7 @@ LibStimulus.register('ui-input', class extends Controller {
                 const num = parseInt(input.value === '' ? 0 : input.value) + parseInt(input.step === '' ? 1 : input.step)
 
                 if (num <= input.max || input.max === '') {
-                    input.value = num
+                    input.value = num.toString()
                     input.dispatchEvent(new Event('change', { bubbles: true }))
                 }
             })
@@ -90,7 +48,7 @@ LibStimulus.register('ui-input', class extends Controller {
                 const num = parseInt(input.value) - parseInt(input.step === '' ? 1 : input.step)
 
                 if (num >= input.min || input.min === '') {
-                    input.value = num
+                    input.value = num.toString()
                     input.dispatchEvent(new Event('change', { bubbles: true }))
                 }
             })
@@ -119,7 +77,7 @@ LibStimulus.register('ui-input', class extends Controller {
             const hidden = element.querySelector('[type="hidden"]')
 
             if (datetime && hidden.value.indexOf(':') !== -1) {
-                hidden.setAttribute('data-time', hidden.value.substr(hidden.value.indexOf(':') - 2, hidden.value.length))
+                hidden.setAttribute('data-time', hidden.value.substring(hidden.value.indexOf(':') - 2, hidden.value.length))
             }
 
             const datepicker = new Datepicker(element.querySelector('[type="text"]'), Object.assign({
@@ -205,7 +163,7 @@ LibStimulus.register('ui-input', class extends Controller {
                         datepicker.element.focus()
                     })
 
-                    footer.querySelector('[data-ok]').addEventListener('click', e => {
+                    footer.querySelector('[data-ok]').addEventListener('click', () => {
                         if (hidden.value === '') {
                             footer.querySelector('.today-btn').click()
                         }
@@ -236,20 +194,16 @@ LibStimulus.register('ui-input', class extends Controller {
 
     async typeColor(element) {
         if (element.querySelector('[type="color"]') !== null) {
+            const Pickr = (await import('@simonwep/pickr')).default
+            const input = element.querySelector('input')
+
+            await importStyle(cdn.pickrCss)
+
             element.setAttribute('data-type', 'color')
             element.querySelector('[type="color"]').setAttribute('inputmode', 'none')
             element.querySelector('[type="color"]').setAttribute('type', 'text')
             element.insertAdjacentHTML('afterbegin', '<span class="color"></span>')
 
-            await importStyle(cdn.pickr_css)
-
-            let Pickr = (await import('@simonwep/pickr')).default
-
-            if (typeof Pickr.default !== 'undefined') {
-                Pickr = Pickr.default
-            }
-
-            const input = element.querySelector('input')
             input.setAttribute('maxlength', '9')
             input.setAttribute('pattern', '^#?([a-fA-F0-9]{8}|[a-fA-F0-9]{6}|[a-fA-F0-9]{3})$')
 
@@ -278,8 +232,8 @@ LibStimulus.register('ui-input', class extends Controller {
                 input.dispatchEvent(new Event('change', { bubbles: true }))
             })
 
-            input.addEventListener('change', e => {
-                pickr.setColor(e.target.value)
+            input.addEventListener('change', ({ target }) => {
+                pickr.setColor(target.value)
             })
         }
     }

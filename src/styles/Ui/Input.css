@@ -1,4 +1,4 @@
-.ui-input, .ui-select {
+:is(.ui-input, .ui-select) {
   --ui-input-height: 3rem;
   --ui-input-height-textarea: 8rem;
   --ui-input-py: 0.75rem;
@@ -50,16 +50,16 @@
     margin-top: calc(var(--ui-input-size) / 2 * -1);
     order: -1;
 
-    @nest [data-has~="icon-l"]& {
+    @nest :has(.icon-l)& {
       left: calc(var(--ui-input-px) + var(--ui-input-icon-size) + calc(var(--ui-input-px) / 1.75));
     }
 
-    @nest [data-has~="icon-r"]& {
+    @nest :has(.icon-r)& {
       right: calc(var(--ui-input-px) + var(--ui-input-icon-size) + calc(var(--ui-input-px) / 1.75));
     }
   }
 
-  & > :is(input, textarea, select, .input) {
+  & > :where(input, textarea, select, .input) {
     width: 100%;
     transition: var(--transition-border), var(--transition-shadow);
     box-shadow: none;
@@ -69,9 +69,14 @@
     height: var(--ui-input-height);
     font-weight: var(--ui-input-weight);
     border-radius: var(--ui-input-radius);
-    padding: calc(var(--ui-input-py) * 1.75) var(--ui-input-px) calc(var(--ui-input-py) * 0.5);
+    padding: var(--ui-input-py) var(--ui-input-px);
     color: inherit;
     border: 1px solid rgb(var(--ui-input-border-color) / var(--ui-input-border-opacity));
+
+    @nest :has(label)& {
+      padding-top: calc(var(--ui-input-py) * 1.75);
+      padding-bottom: calc(var(--ui-input-py) * 0.5);
+    }
 
     &[disabled] {
       cursor: default;
@@ -123,19 +128,12 @@
       }
     }
 
-    @nest [data-has~="icon-l"]& {
+    @nest :has(.icon-l)& {
       padding-left: calc(var(--ui-input-px) + var(--ui-input-icon-size) + calc(var(--ui-input-px) / 1.75));
     }
 
-    @nest [data-has~="icon-r"]&, :--state-invalid& {
+    @nest :has(.icon-r)&, :--state-invalid& {
       padding-right: calc(var(--ui-input-px) + var(--ui-input-icon-size) + calc(var(--ui-input-px) / 1.75));
-    }
-
-    @nest :not(:--state-placeholder)& {
-      &:is([placeholder], [data-placeholder]) {
-        padding-top: var(--ui-input-py);
-        padding-bottom: var(--ui-input-py);
-      }
     }
   }
 
@@ -203,7 +201,7 @@
       }
 
       @nest :not(:--state-active)& {
-        &:not([placeholder]):not(:focus) {
+        &:not([placeholder], :focus) {
           font-size: 0;
         }
       }
@@ -221,7 +219,7 @@
     min-height: var(--ui-input-height-textarea);
   }
 
-  & > input, & > textarea {
+  & > :where(input, textarea) {
     background-clip: padding-box;
     cursor: text;
 
@@ -229,7 +227,7 @@
       box-shadow: none;
     }
 
-    @nest :is(:--state-active, :--state-placeholder)&, &:focus {
+    @nest &:focus, :--state-active&, :has([placeholder] ~ label)& {
       & ~ label {
         transform: translateY(calc(var(--ui-input-size) / 1.4 * -1)) scale(0.8);
       }
@@ -387,7 +385,7 @@
         text-overflow: ellipsis;
         overflow: hidden;
 
-        @media (--media-768) {
+        @media (--media-touch) {
           padding-top: 0.875rem;
           padding-bottom: 0.875rem;
         }
@@ -401,6 +399,55 @@
 
     &:focus-within {
       border-color: rgb(var(--color-current) / 0.25);
+    }
+  }
+}
+
+:is(.ui-input, .ui-select, .ui-input-group) {
+  --ui-input-validity-size: 0.875rem;
+  --ui-input-validity-offset: 0.375rem;
+
+  & em {
+    display: block;
+    font-size: var(--ui-input-validity-size);
+    color: rgb(var(--color-error));
+    font-style: normal;
+    margin-top: var(--ui-input-validity-offset);
+  }
+}
+
+.ui-input-group {
+  display: flex;
+
+  & .ui-btn {
+    height: auto;
+
+    & + .ui-input {
+      z-index: 1;
+    }
+  }
+
+  & > * {
+    & + :is(.ui-input, .ui-select) {
+      margin-left: -1px;
+
+      & :is(input, select):not(:focus) {
+        border-left-color: transparent;
+      }
+    }
+
+    &:not(:first-child) {
+      &, & :is(input, select) {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
+
+    &:not(:last-child) {
+      &, & :is(input, select) {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
     }
   }
 }

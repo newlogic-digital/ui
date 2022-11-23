@@ -1,34 +1,7 @@
 import { LibStimulus, Controller } from '../Libraries/Stimulus.js'
+import { checkValidity } from '../Utils/Functions/+.js'
 
 LibStimulus.register('ui-select', class extends Controller {
-    validate(element, select) {
-        element._removeDataValue('state', 'invalid valid focus')
-
-        if (element.querySelector('[class^="icon"][class*="valid"]') !== null) {
-            element.querySelector('[class^="icon"][class*="valid"]').remove()
-        }
-
-        let validationMessage = select.validationMessage
-
-        if (typeof select.dataset.validationMessage !== 'undefined') {
-            validationMessage = select.dataset.validationMessage
-        }
-
-        if (select.checkValidity()) {
-            element._addDataValue('state', 'valid')
-        } else {
-            element._addDataValue('state', 'invalid')
-
-            if (element.querySelector('[class^="icon"][class*="valid"]') === null) {
-                const icon = element.querySelector('.icon-r')
-                const elm = icon || element
-                const where = icon ? 'afterend' : 'beforeend'
-
-                elm.insertAdjacentHTML(where, `<div class="icon-r icon-invalid text-error lib-hint-top lib-hint-error" tabindex="0" aria-label="${validationMessage}"><svg><use href="#icon-exclamation-circle"></use></svg></div>`)
-            }
-        }
-    }
-
     connect() {
         const element = this.element
         const select = element.querySelector('select')
@@ -44,8 +17,8 @@ LibStimulus.register('ui-select', class extends Controller {
             element.addEventListener('blur', function e() {
                 element._removeDataValue('state', 'focus')
                 element.removeEventListener('blur', e)
-            }, true)
-        }, true)
+            })
+        })
 
         element.addEventListener('click', e => {
             if ((element._hasDataValue('state', 'focus') && e.timeStamp === 0) || e.target.tagName === 'OPTION') {
@@ -54,13 +27,8 @@ LibStimulus.register('ui-select', class extends Controller {
         })
 
         select.addEventListener('change', () => {
-            this.validate(element, select)
-
-            if (select.value === '') {
-                element._removeDataValue('state', 'active')
-            } else {
-                element._addDataValue('state', 'active')
-            }
+            checkValidity(element)
+            this.valueCheck(select)
         })
 
         if (option[0] !== null) {
@@ -72,10 +40,14 @@ LibStimulus.register('ui-select', class extends Controller {
             })
         }
 
+        this.valueCheck(select)
+    }
+
+    valueCheck(select) {
         if (select.value === '') {
-            element._removeDataValue('state', 'active')
+            this.element._removeDataValue('state', 'active')
         } else {
-            element._addDataValue('state', 'active')
+            this.element._addDataValue('state', 'active')
         }
     }
 })

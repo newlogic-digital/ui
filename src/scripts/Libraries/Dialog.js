@@ -8,7 +8,7 @@ const LibDialog = {
             }
 
             if (document.querySelector('.lib-dialog') === null) {
-                document.body.insertAdjacentHTML('beforeend', '<div class="lib-dialog"></div>')
+                document.body.insertAdjacentHTML('beforeend', '<div class="lib-dialog" tabindex="0"></div>')
             }
 
             document.querySelector('.lib-dialog').insertAdjacentHTML('beforeend', content)
@@ -30,6 +30,8 @@ const LibDialog = {
             }
 
             loadStimulus(document.querySelector('.lib-dialog'))
+
+            document.querySelector('.lib-dialog').focus()
 
             resolve()
 
@@ -66,8 +68,13 @@ const LibDialog = {
         })
     },
     action: async(element, url) => {
+        element._addDataValue('state', 'loading')
+        element.classList.add('cursor-wait')
+
         fetch(url, { headers: { 'X-Requested-With': 'XMLHttpRequest' } }).then(response => response.json()).then(({ dialog }) => {
             LibDialog.show(dialog)
+            element._removeDataValue('state', 'loading')
+            element.classList.remove('cursor-wait')
         })
     }
 }

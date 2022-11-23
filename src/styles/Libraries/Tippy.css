@@ -9,7 +9,7 @@
     background-color: rgb(var(--color-background));
     background-clip: padding-box;
     border: 1px solid rgb(0 8 16 / 0.05);
-    color: rgb(var(--color-current));
+    color: rgb(var(--color-default));
     box-shadow: 0 3px 14px -0.5px rgb(0 8 16 / 0.08);
     border-radius: var(--radius);
     left: 0.1875rem;

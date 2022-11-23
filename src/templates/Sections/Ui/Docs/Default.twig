@@ -1,0 +1,1600 @@
+<section class="s-ui" data-controller="s-ui">
+    <div class="wrp_s_body row">
+        {% include '@nav.html' %}
+        <div class="col col-right t:col-9 m:col-12">
+            <div class="container">
+                {% include '@intro.html' %}
+                <div class="row g-8 flex-wrap" style="padding-top: 4rem">
+                    <div class="col-12">
+                        <h1 class="ui-heading">Components</h1>
+                        <div class="ui-text">
+                            <p>List of basic components used in Newlogic UI</p>
+                        </div>
+                    </div>
+                    <div class="col-12" id="headings">
+                        <h1 class="ui-title uppercase text-primary mb-5">Headings</h1>
+                        <div class="ui-text mb-5">
+                            <h3>Attributes</h3>
+                            <ul>
+                                <li>data-size: <code>lg</code> <code>sm</code></li>
+                            </ul>
+                        </div>
+                         {% code "html:mirror" %}
+                            <h2 class="ui-heading" data-size="lg">Big heading</h2>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <h2 class="ui-heading" data-size="lg">Big heading</h2>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <h2 class="ui-heading">Normal heading</h2>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <h2 class="ui-heading" data-size="sm">Small heading</h2>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <strong class="ui-title uppercase">Title</strong>
+                         {% endcode %}
+                        <hr/>
+                    </div>
+                    <div class="col-12 items-start" id="buttons">
+                        <h1 class="ui-title uppercase text-primary mb-5">Buttons</h1>
+                        <div class="ui-text mb-5">
+                            <p>Button can be extended with <code>svg</code> icon</p>
+                            <p>Position of the icon can be done with class&nbsp;<code>icon-r</code>&nbsp;(to right) or
+                                <code>icon-l</code> (to left)</p>
+                            <p>CSS properties can be adjusted with <code>--ui-btn</code> prefix</p>
+                            <p>You can change the button color with following tailwind classes - <code>accent-*</code>, <code>bg-*</code>, <code>text-*</code></p>
+                            <p></p>
+                            <h3>Attributes</h3>
+                            <ul>
+                                <li>data-size: <code>lg</code></li>
+                                <li>data-type: <code>outline</code>, <code>square</code>, <code>m:square</code>, <code>circle</code>, <code>m:circle</code></li>
+                                <li>data-state: <code>active</code>, <code>loading</code></li>
+                            </ul>
+                        </div>
+                         {% code "html:mirror" %}
+                            <button class="ui-btn">
+                                Flat button
+                            </button>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <button class="ui-btn" data-type="outline">
+                                Outline button
+                            </button>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <button class="ui-btn text-primary" data-type="outline" style="--ui-btn-outline-opacity: 0.3">
+                                Outline button - primary color
+                            </button>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <button class="ui-btn" data-type="m:square">
+                                <svg class="icon-l">
+                                    <use href="#icon-at-symbol"></use>
+                                </svg>
+                                <span class="m:hidden">Button with icon</span>
+                            </button>
+                         {% endcode %}
+                             {% code "html:mirror" %}
+                            <button class="ui-btn bg-default">
+                                <svg class="icon-r">
+                                    <use href="#icon-chevron-right"></use>
+                                </svg>
+                                Next
+                            </button>
+                         {% endcode %}
+                             {% code "html:mirror" %}
+                            <button class="ui-btn bg-secondary">
+                                <svg class="icon-l">
+                                    <use href="#icon-chevron-left"></use>
+                                </svg>
+                                Previous
+                            </button>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <button class="ui-btn">
+                                <svg class="icon-r">
+                                    <use href="#icon-angle-down"></use>
+                                </svg>
+                                Continue
+                            </button>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <button class="ui-btn bg-secondary" data-type="square">
+                                <svg class="icon">
+                                    <use href="#icon-at-symbol"></use>
+                                </svg>
+                            </button>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <button class="ui-btn bg-secondary" data-type="circle">
+                                <svg class="icon">
+                                    <use href="#icon-at-symbol"></use>
+                                </svg>
+                            </button>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <button class="ui-btn bg-secondary" data-size="lg" data-type="circle" style="--ui-btn-height: 4rem">
+                                <svg class="icon">
+                                    <use href="#icon-at-symbol"></use>
+                                </svg>
+                            </button>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <button class="ui-btn" data-size="lg">
+                                Large flat button
+                            </button>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <button class="ui-btn" data-size="lg" style="background-color: rgb(var(--color-facebook))">
+                                <svg class="icon-l">
+                                    <use href="#icon-at-symbol"></use>
+                                </svg>
+                                Large flat button
+                            </button>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <button class="ui-btn" data-state="loading">
+                                Loading state
+                            </button>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <div class="ui-btn-group">
+                                <button class="ui-btn">
+                                    Flat button
+                                </button>
+                                <button class="ui-btn" data-state="active">
+                                    Flat button
+                                </button>
+                                <button class="ui-btn">
+                                    Flat button
+                                </button>
+                                <button class="ui-btn">
+                                    Flat button
+                                </button>
+                            </div>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <div class="ui-btn-group">
+                                <button class="ui-btn">
+                                    Flat button
+                                </button>
+                                <button class="ui-btn" data-type="square" style="--ui-btn-icon-size: 1.5rem">
+                                    <svg class="icon">
+                                        <use href="#icon-angle-down"></use>
+                                    </svg>
+                                </button>
+                            </div>
+                         {% endcode %}
+                        <hr/>
+                    </div>
+                    <div class="col-12 items-start" id="links">
+                        <h1 class="ui-title uppercase text-primary mb-5">Links</h1>
+                        <div class="ui-text mb-5">
+                            <p>CSS properties can be adjusted with  <code>--ui-link</code> prefix</p>
+                        </div>
+                         {% code "html:mirror" %}
+                            <a href="#" class="ui-link accent-default" title="">
+                                Show more
+                            </a>
+                         {% endcode %}
+                             {% code "html:mirror" %}
+                            <a href="#" class="ui-link text-primary" title="" data-type="underline">
+                                With underline
+                            </a>
+                         {% endcode %}
+                        <hr/>
+                    </div>
+                    <div class="col-12 items-start" id="icons">
+                        <h1 class="ui-title uppercase text-primary mb-5">Icons</h1>
+                        <div class="ui-text mb-5">
+                            <p>Icons can be added to <code>src/icons.svg</code> as symbols. They are inlined into HTML and used as with <code>href</code> linking.</p>
+                            <p>We use few icons from <a href="https://heroicons.com" target="_blank">heroicons.com</a></p>
+                        </div>
+                         {% code "html:mirror" %}
+                            <button class="ui-icon lib-hint-top" aria-label="Show menu">
+                                <svg>
+                                    <use href="#icon-menu"></use>
+                                </svg>
+                            </button>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <svg class="ui-icon text-4xl" style="color: rgb(var(--color-twitter))">
+                                <use href="#icon-sun"></use>
+                            </svg>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <a href="#" class="ui-icon text-4xl" style="color: rgb(var(--color-youtube))">
+                                <svg>
+                                    <use href="#icon-moon"></use>
+                                </svg>
+                            </a>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <button class="ui-icon-text space-x-2 text-primary">
+                                <svg class="ui-icon">
+                                    <use href="#icon-menu"></use>
+                                </svg>
+                                <span class="ui-title font-medium">Show menu</span>
+                            </button>
+                         {% endcode %}
+                        <hr/>
+                    </div>
+                    <div class="col-12" id="form">
+                        <h1 class="ui-title uppercase text-primary mb-5">Forms</h1>
+                        <div class="ui-text mb-5">
+                            <p><code>label</code> is animated upon interaction, if you add it after select, input or textarea</p>
+                            <p>You can also use variant without label with attribute <code>placeholder</code> and <code>data-placeholder</code> for select</p>
+                            <p></p>
+                            <p>Forms elements have visual validation for invalid items</p>
+                            <p>This functionality can be turned off with attribute <code>data-novalidate</code> on element</p>
+                            <p>CSS properties can be adjusted with  <code>--ui-input</code> and <code>--ui-checkbox</code> prefix</p>
+                            <p></p>
+                            <h3>Attributes</h3>
+                            <ul>
+                                <li>data-state: <code>active</code> (element is not empty), <code>valid</code>, <code>invalid</code>, <code>placeholder</code> (label is always up)</li>
+                            </ul>
+                        </div>
+                         {% code "html:mirror" %}
+                            <div class="ui-select">
+                                <select>
+                                    <option selected value="">- select option -</option>
+                                    <option value="1">Option 1</option>
+                                    <option value="2">Option 2</option>
+                                    <option value="3">Option 3</option>
+                                </select>
+                                <label>How are you?</label>
+                            </div>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <div class="ui-select" data-has="icon-l">
+                                <select>
+                                    <option selected value="">- select option -</option>
+                                    <option value="1">Option 1</option>
+                                    <option value="2">Option 2</option>
+                                    <option value="3">Option 3</option>
+                                </select>
+                                <label>With icon</label>
+                                <svg class="icon-l">
+                                    <use href="#icon-at-symbol"></use>
+                                </svg>
+                            </div>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <div class="ui-select">
+                                <select data-placeholder>
+                                    <option selected value="">- select option -</option>
+                                    <option value="1">Option 1</option>
+                                    <option value="2">Option 2</option>
+                                    <option value="3">Option 3</option>
+                                </select>
+                            </div>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <div class="ui-select" tabindex="-1">
+                                <select>
+                                    <option selected value="">- select option -</option>
+                                    <option value="1">Option 1</option>
+                                    <option value="2">Option 2</option>
+                                    <option value="3">Option 3</option>
+                                </select>
+                                <label>Javascript select</label>
+                                <div aria-hidden="true">
+                                    <div data-option="">- select option -</div>
+                                    <div data-option="1">Option 1</div>
+                                    <div data-option="2">Option 2</div>
+                                    <div data-option="3">Option 3</div>
+                                </div>
+                            </div>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <div class="ui-select">
+                                <select data-placeholder disabled>
+                                    <option selected value="">Disabled state</option>
+                                    <option value="1">Option 1</option>
+                                    <option value="2">Option 2</option>
+                                    <option value="3">Option 3</option>
+                                </select>
+                            </div>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <div class="ui-input">
+                                <input type="email" required>
+                                <label>E-mail</label>
+                            </div>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <div class="ui-input">
+                                <input type="tel" placeholder="Tel" />
+                            </div>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <div class="ui-input" data-has="icon-r" data-state="placeholder">
+                                <input type="text" required placeholder="Please fill">
+                                <label>Amount</label>
+                                <span class="icon-r" aria-label="Kč"></span>
+                            </div>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <div class="ui-input">
+                                <input type="tel" disabled>
+                                <label>Disabled state</label>
+                            </div>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <div class="ui-input">
+                                <textarea></textarea>
+                                <label>Message</label>
+                            </div>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <div class="ui-input">
+                                <input type="color" placeholder="Select color">
+                            </div>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <div class="ui-input">
+                                <input type="file" multiple="multiple" title="Upload files" placeholder="Select or drag file(s)">
+                            </div>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <div class="ui-input">
+                                <input type="number" min="1" max="99" step="1">
+                                <label>Select number</label>
+                            </div>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <div class="ui-input">
+                                <input type="datetime-local">
+                                <label>Select date and time</label>
+                            </div>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <div class="ui-input">
+                                <input type="date">
+                                <label>Select date</label>
+                            </div>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <div class="ui-input">
+                                <input type="time" placeholder="Select time">
+                            </div>
+                         {% endcode %}
+                    </div>
+                    <div class="col-12 items-start">
+                         {% code "html:mirror" %}
+                            <div class="ui-input w-28" data-has="icon-r">
+                                <input type="number" placeholder="" value="1" min="1" max="99" step="1">
+                                <span class="icon-r" aria-label="ks"></span>
+                            </div>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <div class="p-5 bg-gray-200 dark:bg-dark rounded-lg">
+                                <label class="ui-checkbox">
+                                    <input type="checkbox">
+                                    <span>I agree to the <a href="#">processing of personal data</a></span>
+                                </label>
+                            </div>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <div class="p-5 text-light bg-dark rounded-lg">
+                                <label class="ui-checkbox accent-light" data-theme="dark">
+                                    <input type="checkbox">
+                                    <span>I agree to the <a href="#">processing of personal data</a></span>
+                                </label>
+                            </div>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <div class="p-5 text-light bg-dark rounded-lg">
+                                <label class="ui-checkbox accent-info">
+                                    <input type="checkbox">
+                                    <span>I agree to the <a href="#">processing of personal data</a></span>
+                                </label>
+                            </div>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <label class="ui-checkbox flex-row-reverse">
+                                <input type="checkbox" class="checked:border-primary" style="--ui-checkbox-checked-bg: transparent; --ui-checkbox-checked-fg: var(--color-primary);" />
+                                <span>I agree to the <a href="#">processing of personal data</a></span>
+                            </label>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <label class="ui-radio">
+                                <input type="radio" name="radio">
+                                <span>Click on this radio button</span>
+                            </label>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <label class="ui-checkbox">
+                                <input type="checkbox" class="mr-3" />
+                                Without inner span
+                            </label>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <label class="ui-checkbox">
+                                <input type="checkbox">
+                            </label>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <label class="ui-radio">
+                                <input type="radio" name="radio">
+                            </label>
+                         {% endcode %}
+                    </div>
+                    <div class="col-12">
+                        <div class="ui-text mb-5">
+                            <p>Example form, for javascript form validation upon send you can add attribute <code>data-controller="lib-form"</code></p>
+                        </div>
+                         {% code "html:mirror" %}
+                            <form class="c-form" data-controller="lib-form">
+                                <div class="wrp_form_body grid gap-3">
+                                    <div class="ui-select">
+                                        <select required>
+                                            <option selected disabled value="">- select option -</option>
+                                            <option>Czechia</option>
+                                            <option>Slovakia</option>
+                                        </select>
+                                        <label>Select country</label>
+                                    </div>
+                                    <div class="ui-input">
+                                        <textarea required></textarea>
+                                        <label>Message</label>
+                                    </div>
+                                </div>
+                                <div class="wrp_form_info grid gap-3 py-4">
+                                    <div class="text-sm">Protected with reCAPTCHA <small>(<a href="https://www.google.com/intl/en/policies/privacy/" title="Privacy policy" target="_blank" rel="noopener">Privacy policy</a> - <a href="https://www.google.com/intl/en/policies/terms/" title="Terms of use" target="_blank" rel="noopener">Terms of use</a>)</small></div>
+                                    <label class="ui-checkbox">
+                                        <input type="checkbox" required>
+                                        <span>I agree with <a href="#">terms of use</a> and <a href="#">privacy policy</a></span>
+                                    </label>
+                                </div>
+                                <div class="wrp_form_foot">
+                                    <button class="ui-btn" aria-label="Send">Send</button>
+                                </div>
+                            </form>
+                         {% endcode %}
+                        <hr/>
+                    </div>
+                    <div class="col col-12" id="notice">
+                        <h1 class="ui-title uppercase text-primary mb-5">Notice</h1>
+                        <div class="ui-text mb-5">
+                            <p>Notice is an easy notice frame that you can combine with text or button and change the accent color as you need.</p>
+                        </div>
+                         {% code "html:mirror" %}
+                            <div class="ui-notice accent-warning">
+                                Warning notice
+                            </div>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <div class="ui-notice accent-success">
+                                Success notice
+                            </div>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <div class="ui-notice accent-info">
+                                Info notice
+                            </div>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <div class="ui-notice accent-error">
+                                Error notice
+                            </div>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <div class="ui-notice accent-error">
+                                Error notice
+                                <hr/>
+                                <button class="ui-btn">
+                                    <span>Button</span>
+                                </button>
+                            </div>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <div class="ui-notice accent-success">
+                                <div class="ui-text">
+                                    <h4>Nicely done!</h4>
+                                    <p>Lorem ipsum dolor sit amet, <a href="#">consectetur adipiscing elit</a>. Nullam in elit iaculis, tristique nisi ut, mollis tellus. Nunc venenatis elit vel placerat commodo. Vestibulum odio neque, hendrerit nec venenatis at, tincidunt ut magna. Etiam hendrerit ultrices pharetra.</p>
+                                </div>
+                                <hr/>
+                                <button class="ui-btn">
+                                    <span>Button</span>
+                                </button>
+                            </div>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <div class="ui-notice accent-info">
+                                Info notice
+                                <hr/>
+                                <button class="ui-btn">
+                                    <span>Button</span>
+                                </button>
+                            </div>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <div class="ui-notice accent-warning">
+                                Warning notice
+                                <hr/>
+                                <button class="ui-btn">
+                                    <span>Button</span>
+                                </button>
+                            </div>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <div class="ui-notice bg-error text-light">
+                                <div class="ui-text">
+                                    <h4>Badly done!</h4>
+                                    <p>Lorem ipsum dolor sit amet, <a href="#">consectetur adipiscing elit</a>. Nullam in elit iaculis, tristique nisi ut, mollis tellus. Nunc venenatis elit vel placerat commodo. Vestibulum odio neque, hendrerit nec venenatis at, tincidunt ut magna. Etiam hendrerit ultrices pharetra.</p>
+                                </div>
+                                <hr/>
+                                <button class="ui-btn bg-light bg-opacity-20">
+                                    <span>Button</span>
+                                </button>
+                            </div>
+                         {% endcode %}
+                    </div>
+                    <div class="col-12" id="badge">
+                        <h1 class="ui-title uppercase text-primary mb-5">Badge</h1>
+                        <div class="ui-text mb-5">
+                            <p>CSS properties can be adjusted with  <code>--ui-badge</code> prefix</p>
+                            <p></p>
+                            <h3>Attributes</h3>
+                            <ul>
+                                <li>data-size: <code>sm</code>, <code>md</code>, <code>lg</code></li>
+                                <li>data-type: <code>square</code>, <code>circle</code></li>
+                            </ul>
+                        </div>
+                         {% code "html:mirror" %}
+                            <div class="ui-badge" data-size="sm">
+                                Default
+                            </div>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <div class="ui-badge bg-dark">
+                                Dark
+                            </div>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <div class="ui-badge bg-light text-dark">
+                                Light
+                            </div>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <div class="ui-badge bg-primary rounded-full">
+                                <span>Primary</span>
+                            </div>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <a href="#" class="ui-badge bg-secondary">
+                                Secondary
+                            </a>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <button class="ui-badge bg-secondary" data-type="circle">
+                                9
+                            </button>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <button class="ui-badge bg-secondary" data-type="square" data-size="md">
+                                99
+                            </button>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <button class="ui-badge bg-secondary" data-type="circle">
+                                <svg class="icon">
+                                    <use href="#icon-x"></use>
+                                </svg>
+                            </button>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <div class="ui-badge-group">
+                                <div class="ui-badge bg-dark">
+                                    <span>npm</span>
+                                </div>
+                                <div class="ui-badge bg-info">
+                                    <span>7.1.2</span>
+                                </div>
+                            </div>
+                         {% endcode %}
+                        <hr/>
+                    </div>
+                    <div class="col-12" id="progress">
+                        <h1 class="ui-title uppercase text-primary mb-5">Progress</h1>
+                        <div class="ui-text mb-5">
+                            <p>Progress bar is easy UI element, which uses native <code>&lt;progress&gt;</code> tag</p>
+                            <p>If you skip <code>value</code> attribute, the bar is animated as intermediate</p>
+                            <p>CSS properties can be adjusted with  <code>--ui-progress</code></p>
+                            <p></p>
+                            <h3>Attributes</h3>
+                            <ul>
+                                <li>data-size: <code>sm</code>, <code>lg</code></li>
+                            </ul>
+                        </div>
+                        <div>
+                             {% code "html:mirror" %}
+                                <progress class="ui-progress" value="15" max="100">15%</progress>
+                             {% endcode %}
+                             {% code "html:mirror" %}
+                                <progress class="ui-progress text-primary" value="50" max="100">15%</progress>
+                             {% endcode %}
+                             {% code "html:mirror" %}
+                                <progress class="ui-progress text-secondary" value="35" max="100" data-size="lg">15%</progress>
+                             {% endcode %}
+                             {% code "html:mirror" %}
+                                <progress class="ui-progress text-error" value="75" max="100" data-size="sm">15%</progress>
+                             {% endcode %}
+                             {% code "html:mirror" %}
+                                <progress class="ui-progress text-error" max="100">15%</progress>
+                             {% endcode %}
+                        </div>
+                        <hr/>
+                    </div>
+                    <div class="col col-12" id="text">
+                        <h1 class="ui-title uppercase text-primary mb-5">Texty</h1>
+                        <div class="ui-text mb-5">
+                            <p>Into text element you can add all elements as <code>h1-6</code>, <code>p</code>, <code>ul</code>, <code>ul</code>, <code>table</code> etc.</p>
+                        </div>
+                         {% code "html:mirror" %}
+                            <div class="ui-text">
+                                <h1>h1 heading</h1>
+                                <h2>h2 heading</h2>
+                                <h3>h3 heading</h3>
+                                <h4>h4 heading</h4>
+                                <h5>h5 heading</h5>
+                                <h6>h6 heading</h6>
+                                <p>Lorem ipsum dolor</p>
+                                <hr>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget efficitur
+                                    metus. In bibendum nisi et dui <a href="#">sagittis efficitur</a>. Proin porttitor diam at quam
+                                    finibus, quis porttitor turpis ullamcorper. Quisque iaculis imperdiet nunc in
+                                    hendrerit. Nulla facilisi. Sed at sodales ex. Vivamus ornare auctor ligula et
+                                    lobortis. Nunc metus augue, tristique vitae sagittis ac, interdum eu nisl.
+                                    Curabitur aliquet, lectus ut interdum commodo, ipsum elit gravida libero, in
+                                    laoreet lectus nisl a erat. Sed consequat justo pulvinar turpis pharetra mattis.
+                                    Phasellus non pretium libero.</p>
+                                <p></p>
+                                <ul style="max-width: 400px">
+                                    <li>Lorem ipsum dolor sit amet, consectetur. Donec eget efficitur metus In
+                                        bibendum nisi et dui
+                                    </li>
+                                    <li>Donec eget efficitur metus</li>
+                                </ul>
+                                <p></p>
+                                <ul style="max-width: 400px; list-style: square">
+                                    <li>Lorem ipsum dolor sit amet, consectetur. Donec eget efficitur metus In
+                                        bibendum nisi et dui
+                                    </li>
+                                    <li>Donec eget efficitur metus</li>
+                                </ul>
+                                <p></p>
+                                <ul style="max-width: 400px; list-style: circle">
+                                    <li>Lorem ipsum dolor sit amet, consectetur. Donec eget efficitur metus In
+                                        bibendum nisi et dui
+                                    </li>
+                                    <li>Donec eget efficitur metus</li>
+                                </ul>
+                                <p></p>
+                                <ol style="max-width: 400px;">
+                                    <li>Lorem ipsum dolor sit amet, consectetur. Donec eget efficitur metus In
+                                        bibendum nisi et dui
+                                    </li>
+                                    <li>Donec eget efficitur metus</li>
+                                </ol>
+                                <ol type="1">
+                                    <li>Coffee</li>
+                                    <li>Tea</li>
+                                    <li>Milk</li>
+                                </ol>
+                                <ol type="A">
+                                    <li>Coffee</li>
+                                    <li>Tea</li>
+                                    <li>Milk</li>
+                                </ol>
+                                <ol type="a">
+                                    <li>Coffee</li>
+                                    <li>Tea</li>
+                                    <li>Milk</li>
+                                </ol>
+                                <ol type="I">
+                                    <li>Coffee</li>
+                                    <li>Tea</li>
+                                    <li>Milk</li>
+                                </ol>
+                                <ol type="i">
+                                    <li>Coffee</li>
+                                    <li>Tea</li>
+                                    <li>Milk</li>
+                                </ol>
+                                <p></p>
+                                <blockquote>Ut venenatis, nisl scelerisque sollicitudin fermentum, quam libero hendrerit ipsum, ut blandit est tellus sit amet turpis.</blockquote>
+                                <p></p>
+                                <figure>
+                                    <img src="https://bulma.io/images/placeholders/256x256.png">
+                                    <figcaption>
+                                        Figure 1: Some beautiful placeholders
+                                    </figcaption>
+                                </figure>
+                                <h2>Heading</h2>
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">First</th>
+                                        <th scope="col">Last</th>
+                                        <th scope="col">Handle</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>@mdo</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td>Jacob</td>
+                                        <td>Thornton</td>
+                                        <td>@fat</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td>Larry</td>
+                                        <td>the Bird</td>
+                                        <td>@twitter</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <p></p>
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                         {% endcode %}
+                    </div>
+                </div>
+                <div class="row g-8 flex-wrap" style="padding-top: 3rem;">
+                    <div class="col-12" style="padding-top: 0">
+                        <h1 class="ui-heading">Tailwind</h1>
+                    </div>
+                    <div class="ui-text">
+                        <p>Newlogic UI uses <a href="https://tailwindcss.com/docs/" target="_blank">Tailwind CSS</a> for all utility classes. It is extednded by CSS properties, custom colors, flex grid and alternative responsive classes</p>
+                    </div>
+                    <div class="col-12 items-start" id="colors">
+                        <h1 class="ui-title uppercase text-primary mb-5">Colors</h1>
+                        <div class="ui-text">
+                            <p>Colors are defined as CSS properties, so you can refer the colors in code as <code>var(--color-primary)</code> and you can use other colors from <a href="https://tailwindcss.com/docs/customizing-colors" target="_blank">Tailwind</a></p>
+                            <p></p>
+                            <h3>Use for text</h3>
+                        </div>
+                         {% code "html:mirror" %}
+                            <div class="current-primary">text-primary</div>
+                            <div class="text-primary">text-primary</div>
+                            <div class="text-secondary mb-2">text-secondary</div>
+                            <div class="text-success mb-2">text-success</div>
+                            <div class="text-error mb-2">text-error</div>
+                            <div class="text-info mb-2">text-info</div>
+                            <div class="text-warning mb-2">text-warning</div>
+                            <div class="text-default mb-2">text-default</div>
+                            <div class="text-invert bg-default py-1 px-2 mb-2 rounded-md inline-flex">text-invert</div><br>
+                            <div class="text-light bg-dark py-1 px-2 mb-2 rounded-md inline-flex">text-light</div><br>
+                            <div class="text-dark bg-light py-1 px-2 mb-2 rounded-md inline-flex">text-dark</div>
+                         {% endcode %}
+                            <div class="ui-text">
+                                <h3>Use as background</h3>
+                            </div>
+                         {% code "html:mirror" %}
+                            <div class="bg-primary p-4 mb-2 rounded-md">bg-primary</div>
+                            <div class="bg-secondary p-4 mb-2 rounded-md">bg-secondary</div>
+                            <div class="bg-success p-4 mb-2 rounded-md">bg-success</div>
+                            <div class="bg-error p-4 mb-2 rounded-md">bg-error</div>
+                            <div class="bg-info p-4 mb-2 rounded-md">bg-info</div>
+                            <div class="bg-warning p-4 mb-2 rounded-md">bg-warning</div>
+                            <div class="bg-default text-invert p-4 mb-2 rounded-md">bg-default</div>
+                            <div class="bg-invert text-default p-4 mb-2 border border-dashed border-default rounded-md">bg-invert</div>
+                            <div class="bg-light text-dark p-4 mb-2 border border-dashed border-dark rounded-md">bg-light</div>
+                            <div class="bg-dark text-light p-4 rounded-md border border-dashed border-default">bg-dark</div>
+                         {% endcode %}
+                            <div class="ui-text">
+                                <h3>Use as accent</h3>
+                                <p>You can change accent of any element globally with <code>accent-</code> color</p>
+                                <p></p>
+                            </div>
+                         {% code "html:mirror" %}
+                            <div class="accent-error space-y-3">
+                                <div class="ui-input">
+                                    <input type="text">
+                                    <label>Inherited accent input</label>
+                                </div>
+                                <div class="ui-notice">
+                                    Notice with inherited accent
+                                </div>
+                                <button class="ui-btn">Inherited accent button</button>
+                            </div>
+                         {% endcode %}
+                    </div>
+                    <div class="col-12 items-start" id="responsive">
+                        <h1 class="ui-title uppercase text-primary mb-5">Responsive</h1>
+                        <div class="ui-text">
+                            <p>Newlogic UI is <b>mobile-first</b> and has 7 main breakpoints, these breakpoints are used instead of Tailwind syntax as <code>lg</code>, <code>sm</code> etc.</p>
+                            <p></p>
+                            <ul>
+                                <li><code>m:</code> mobile <small>(&lt;768)</small></li>
+                                <li><code>t:</code> tablet <small>(&gt;768)</small></li>
+                                <li><code>d:</code> desktop <small>(&gt;960)</small></li>
+                                <li><code>w:</code> widescreen <small>(&gt;1216)</small></li>
+                                <li><code>hd:</code> hd <small>(&gt;1360)</small></li>
+                                <li><code>mhd:</code> midhd <small>(&gt;1408)</small></li>
+                                <li><code>fhd:</code> fullhd <small>(&gt;1600)</small></li>
+                                <li><code>touch:</code> touch <small>(&lt;960)</small></li>
+                            </ul>
+                            <p></p>
+                            <table class="w-full">
+                                <thead>
+                                <tr>
+                                    <th style="width: 20%;">
+                                        <code>&lt;768px</code>
+                                    </th>
+                                    <th style="width: 20%;">
+                                        <code>768-959px</code>
+                                    </th>
+                                    <th style="width: 20%;">
+                                        <code>960-1215px</code>
+                                    </th>
+                                    <th style="width: 20%;">
+                                        <code>1216-1360px</code>
+                                    </th>
+                                    <th style="width: 20%;">
+                                        <code>1360-1408px</code>
+                                    </th>
+                                    <th style="width: 20%;">
+                                        <code>1408-1600px</code>
+                                    </th>
+                                    <th style="width: 20%;">
+                                        <code>&gt;1600px</code>
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <span class="block rounded-md text-white font-extrabold text-center bg-primary p-3">m:</span>
+                                    </td>
+                                    <td colspan="6">
+                                        <span class="block rounded-md text-white font-extrabold text-center bg-black bg-opacity-10 p-3">-</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="block rounded-md text-white font-extrabold text-center bg-black bg-opacity-10 p-3">-</span>
+                                    </td>
+                                    <td colspan="6">
+                                        <span class="block rounded-md text-white font-extrabold text-center bg-primary p-3">t:</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <span class="block rounded-md text-white font-extrabold text-center bg-black bg-opacity-10 p-3">-</span>
+                                    </td>
+                                    <td colspan="5">
+                                        <span class="block rounded-md text-white font-extrabold text-center bg-primary p-3">d:</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <span class="block rounded-md text-white font-extrabold text-center bg-black bg-opacity-10 p-3">-</span>
+                                    </td>
+                                    <td colspan="4">
+                                        <span class="block rounded-md text-white font-extrabold text-center bg-primary p-3">w:</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4">
+                                        <span class="block rounded-md text-white font-extrabold text-center bg-black bg-opacity-10 p-3">-</span>
+                                    </td>
+                                    <td colspan="3">
+                                        <span class="block rounded-md text-white font-extrabold text-center bg-primary p-3">hd:</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5">
+                                        <span class="block rounded-md text-white font-extrabold text-center bg-black bg-opacity-10 p-3">-</span>
+                                    </td>
+                                    <td colspan="2">
+                                        <span class="block rounded-md text-white font-extrabold text-center bg-primary p-3">shd:</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6">
+                                        <span class="block rounded-md text-white font-extrabold text-center bg-black bg-opacity-10 p-3">-</span>
+                                    </td>
+                                    <td>
+                                        <span class="block rounded-md text-white font-extrabold text-center bg-primary p-3">fhd:</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <span class="block rounded-md text-white font-extrabold text-center bg-primary p-3">touch:</span>
+                                    </td>
+                                    <td colspan="5">
+                                        <span class="block rounded-md text-white font-extrabold text-center bg-black bg-opacity-10 p-3">-</span>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <hr/>
+                    </div>
+                    <div class="col-12" id="container" data-offset="128">
+                        <h1 class="ui-title uppercase text-primary mb-5">Container</h1>
+                        <div class="ui-text mb-5">
+                            <p>Container aligns content to center with maximum width of <code>1200px</code></p>
+                            <p>You can adjust following CSS properties <code>--container-width</code> <code>--container-width-sm</code>, <code>--container-padding</code></p>
+                            <p></p>
+                            <h3>Attributes</h3>
+                            <ul>
+                                <li>data-size: <code>sm</code> <small>(=800px)</small></li>
+                            </ul>
+                        </div>
+                        <div class="col-container">
+                             {% code "html:mirror" %}
+                                <div class="w-full h-2 my-2 bg-default bg-opacity-10 rounded"></div>
+                                <div class="container">
+                                    <div class="h-16 text-white text-2xl font-extrabold rounded-md flex items-center justify-center bg-blue-500">container</div>
+                                </div>
+                             {% endcode %}
+                        </div>
+                        <hr/>
+                    </div>
+                    <div class="col-12 col-grid" id="grid">
+                        <h1 class="ui-title uppercase text-primary mb-5">Grid</h1>
+                        <div class="ui-text">
+                            <p>For grid system you can use native <a href="https://tailwindcss.com/docs/grid-column" target="_blank">Tailwind Grid</a>, but Newlogic UI has also its own flex grid system similiar to Boostrap grid</p>
+                            <p></p>
+                            <h3>Features</h3>
+                            <ul>
+                                <li>classes: <code>row</code>, <code>row-x</code>, <code>row-y</code></li>
+                                <li>
+                                    spacing: <a href="https://tailwindcss.com/docs/customizing-spacing#default-spacing-scale" target="_blank">https://tailwindcss.com/docs/customizing-spacing#default-spacing-scale</a>
+                                    <ul>
+                                        <li>vertical & horizontal: <code>g-4</code></li>
+                                        <li>horizontal: <code>gx-6</code></li>
+                                        <li>vertical: <code>gy-6</code></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    column width <small>(0% - 100%)</small>: <code>col-1</code> - <code>col-12</code>
+                                    (same principle as Bootstrap - <a href="https://getbootstrap.com/docs/5.0/layout/grid/" target="_blank">https://getbootstrap.com/docs/5.0/layout/grid/</a>)
+                                </li>
+                                <li>column width can be defined also with Tailwind classes: <code>w-1/5</code>, <code>w-3/6</code> (<a href="https://tailwindcss.com/docs/width" target="_blank">https://tailwindcss.com/docs/width</a>)</li>
+                            </ul>
+                            <p></p>
+                            <p>You can use following responsive prefixes for all classes: <code>m:</code> <small>(&lt;768)</small>, <code>t:</code> <small>(&gt;768)</small>, <code>d:</code> <small>(&gt;960)</small>, <code>w:</code> <small>(&gt;1216)</small>, <code>hd:</code> <small>(&gt;1408)</small></p>
+                            <p>Rows are not wrapped by default, for wrapping you have to use <code>flex-wrap</code></p>
+                            <p></p>
+                        </div>
+                         {% code "html:mirror" %}
+                            <div class="row g-4">
+                                <div class="col col-6">
+                                    <div class="h-16 text-white text-2xl font-extrabold rounded-md flex items-center justify-center bg-blue-500">1</div>
+                                </div>
+                                <div class="col col-6">
+                                    <div class="h-16 text-white text-2xl font-extrabold rounded-md flex items-center justify-center bg-blue-500">2</div>
+                                </div>
+                            </div>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <div class="row g-4 justify-between">
+                                <div class="col col-4 items-end">
+                                    <div class="w-full h-2 my-2 bg-default bg-opacity-10 rounded"></div>
+                                    <div class="h-16 w-20 text-white text-2xl font-extrabold rounded-md flex items-center justify-center bg-green-500">1</div>
+                                </div>
+                                <div class="col col-4">
+                                    <div class="w-full h-2 my-2 bg-default bg-opacity-10 rounded"></div>
+                                    <div class="h-16 text-white text-2xl font-extrabold rounded-md flex items-center justify-center bg-green-500">2</div>
+                                </div>
+                            </div>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <div class="row g-4">
+                                <div class="col col-12 t:col-auto flex-grow items-center">
+                                    <div class="w-full h-2 my-2 bg-default bg-opacity-10 rounded"></div>
+                                    <div class="h-16 w-20 text-white text-2xl font-extrabold rounded-md flex items-center justify-center bg-red-500">1</div>
+                                </div>
+                                <div class="col col-12 t:col-4 items-center justify-center">
+                                    <div class="w-full h-2 my-2 bg-default bg-opacity-10 rounded"></div>
+                                    <div class="h-16  w-20 text-white text-2xl font-extrabold rounded-md flex items-center justify-center bg-red-500">2</div>
+                                </div>
+                            </div>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <div class="h-2 my-2 bg-light bg-opacity-10 rounded"></div>
+                            <div class="row t:gx-6">
+                                <div class="col col-12 t:col-6">
+                                    <div class="h-16 text-white text-2xl font-extrabold rounded-md flex items-center justify-center bg-blue-500">1</div>
+                                </div>
+                                <div class="col col-12 t:col-6">
+                                    <div class="h-16 text-white text-2xl font-extrabold rounded-md flex items-center justify-center bg-green-500">2</div>
+                                </div>
+                            </div>
+                            <div class="h-2 my-2 bg-light bg-opacity-10 rounded"></div>
+                            <div class="row t:g-6 flex-wrap">
+                                <div class="col col-12 t:col-6 flex-row space-x-6">
+                                    <div class="col col-6 flex-row space-x-6">
+                                        <div class="col col-6">
+                                            <div class="h-16 text-white text-2xl font-extrabold rounded-md flex items-center justify-center bg-blue-500">1</div>
+                                        </div>
+                                        <div class="col col-6">
+                                            <div class="h-16 text-white text-2xl font-extrabold rounded-md flex items-center justify-center bg-red-500">2</div>
+                                        </div>
+                                    </div>
+                                    <div class="col col-6">
+                                        <div class="h-16 text-white text-2xl font-extrabold rounded-md flex items-center justify-center bg-green-500">2</div>
+                                    </div>
+                                </div>
+                                <div class="col col-12 t:col-6">
+                                    <div class="h-16 text-white text-2xl font-extrabold rounded-md flex items-center justify-center bg-blue-500">2</div>
+                                </div>
+                                <div class="col col-12 t:col-6">
+                                    <div class="h-16 text-white text-2xl font-extrabold rounded-md flex items-center justify-center bg-blue-500">1</div>
+                                </div>
+                                <div class="col col-12 t:col-6 flex-row space-x-6">
+                                    <div class="col col-6 flex-row space-x-6">
+                                        <div class="col col-6">
+                                            <div class="h-16 text-white text-2xl font-extrabold rounded-md flex items-center justify-center bg-blue-500">1</div>
+                                        </div>
+                                        <div class="col col-6">
+                                            <div class="h-16 text-white text-2xl font-extrabold rounded-md flex items-center justify-center bg-red-500">2</div>
+                                        </div>
+                                    </div>
+                                    <div class="col col-6">
+                                        <div class="h-16 text-white text-2xl font-extrabold rounded-md flex items-center justify-center bg-green-500">2</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="h-2 my-2 bg-light bg-opacity-10 rounded"></div>
+                            <div class="row t:g-6">
+                                <div class="col col-12 t:col-6 space-y-6">
+                                    <div class="col col-12">
+                                        <div class="row gx-6">
+                                            <div class="col col-6">
+                                                <div class="h-16 text-white text-2xl font-extrabold rounded-md flex items-center justify-center bg-indigo-500">1</div>
+                                            </div>
+                                            <div class="col col-6">
+                                                <div class="h-16 text-white text-2xl font-extrabold rounded-md flex items-center justify-center bg-blue-500">2</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col col-12">
+                                        <div class="h-16 text-white text-2xl font-extrabold rounded-md flex items-center justify-center bg-green-500">2</div>
+                                    </div>
+                                </div>
+                                <div class="col col-12 t:col-6 space-y-6">
+                                    <div class="col col-12">
+                                        <div class="h-16 text-white text-2xl font-extrabold rounded-md flex items-center justify-center bg-green-500">1</div>
+                                    </div>
+                                    <div class="col col-12">
+                                        <div class="h-16 text-white text-2xl font-extrabold rounded-md flex items-center justify-center bg-red-500">2</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="h-2 my-2 bg-light bg-opacity-10 rounded"></div>
+                            <div class="row-y flex-col t:gy-6">
+                                <div class="row-x gx-6">
+                                    <div class="col col-6">
+                                        <div class="h-16 text-white text-2xl font-extrabold rounded-md flex items-center justify-center bg-blue-500">1</div>
+                                    </div>
+                                    <div class="col col-6">
+                                        <div class="h-16 text-white text-2xl font-extrabold rounded-md flex items-center justify-center bg-indigo-500">2</div>
+                                    </div>
+                                </div>
+                                <div class="row-x gx-6">
+                                    <div class="col col-6">
+                                        <div class="h-16 text-white text-2xl font-extrabold rounded-md flex items-center justify-center bg-red-500">1</div>
+                                    </div>
+                                    <div class="col col-6">
+                                        <div class="h-16 text-white text-2xl font-extrabold rounded-md flex items-center justify-center bg-green-500">2</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="h-2 my-2 bg-light bg-opacity-10 rounded"></div>
+                         {% endcode %}
+                    </div>
+                </div>
+                <div class="row g-8 flex-wrap" style="padding-top: 3rem;">
+                    <div class="col-12" style="padding-top: 0">
+                        <h1 class="ui-heading">Libraries</h1>
+                    </div>
+                    <div class="col-12" id="anchor">
+                        <h1 class="ui-title uppercase text-primary mb-5">Anchor</h1>
+                        <div class="ui-text">
+                            <p>Located in <code>src/scripts/Libraries/Anchor.js</code></p>
+                            <p>Anchors works native by default and are defined normally as always in the browser</p>
+                            <p></p>
+                            <p>For adding extra functionality you can add following attributes <code>data-action="click->lib#anchor"</code> and <code>data-lib-anchor="silent mobile"</code></p>
+                            <p></p>
+                            <p>Silent determines if we want to hide the hash and mobile if the anchor should only work on the phone. If we do not want either, we do not specify the attribute</p>
+                            <p></p>
+                            <p>Offset is calculated automatically with CSS property <code>--l-scroll-padding-top</code></p>
+                            <p></p>
+                            <p></p>
+                            <p><b>Examples:</b></p>
+                        </div>
+                         {% code "html:mirror" %}
+                            <a href="#section">Link to anchor</a>
+                            <div id="section"></div>
+                         {% endcode %}
+                         {% code "html:mirror" %}
+                            <button data-action="click->lib#anchor" data-action-href="#sekce" data-lib-anchor="mobile">Link to anchor</button>
+                            <div id="sekce"></div>
+                         {% endcode %}
+                        <hr/>
+                    </div>
+                    <div class="col-12" id="cookieconsent">
+                        <h1 class="ui-title uppercase text-primary mb-5">CookieConsent</h1>
+                        <div class="ui-text">
+                            <p>Located in <code>src/scripts/Libraries/CookieConsent.js</code>, <code>src/styles/Components/CookieConsent.css</code>, <code>src/styles/Components/Form/CookieConsent.css</code></p>
+                            <p></p>
+                            <p>The content is being prepared ...</p>
+                        </div>
+                    </div>
+                    <div class="col-12" id="datepicker">
+                        <h1 class="ui-title uppercase text-primary mb-5">Datepicker</h1>
+                        <div class="ui-text">
+                            <p>Mainlly used for <code>ui-input</code> for <code>type="date"</code> and <code>type="datetime-local"</code></p>
+                            <p>Located in <code>src/styles/Libraries/Datepicker.css</code> and <a href="https://github.com/mymth/vanillajs-datepicker" target="_blank">Vanilla JS Datepicker</a> is used as library</p>
+                            <p></p>
+                            <p>The content is being prepared ...</p>
+                        </div>
+                    </div>
+                    <div class="col col-12 items-start" id="dialog">
+                        <h1 class="ui-title uppercase text-primary mb-5">Dialog</h1>
+                        <div class="ui-text mb-5">
+                            <p>On any element you can add <code>data-action="click->lib-dialog#show"</code> with attribute <code>data-action-url</code> which is url to <code>*.json</code> file or url request which contains html. For closing the dialog window, you can add <code>data-action="click->lib-dialog#hide"</code> to any element</p>
+                            <p></p>
+                            <p>Adding <code>data-lib-dialog-open</code> attribute on <code>data-controller="lib-dialog"</code> (by default located on body), then the dialog gets open upon page load</p>
+                            <p>Url is passed the same way as normal, you can also add selector to <code>data-lib-dialog-open</code> and HTML content of that selector opens as dialog.</p>
+                            <p></p>
+                            <p></p>
+                            <h3>Methods</h3>
+                            <ul>
+                                <li>open dialog with dialog with fetch request: <code>LibDialog.action(url)</code></li>
+                                <li>open dialog with any content: <code>LibDialog.show(content)</code></li>
+                                <li>close dialog: <code>LibDialog.hide()</code></li>
+                            </ul>
+                            <p>All methods returns promise</p>
+                            <p></p>
+                            <p></p>
+                            <h3>Attributes (c-dialog)</h3>
+                            <ul>
+                                <li>data-size: <code>sm</code>, <code>base</code>, <code>lg</code></li>
+                                <li>data-type: <code>scrollable</code> - scroll inside dialog</li>
+                                <li>class: <code>justify-center</code> - vertical align to center</li>
+                            </ul>
+                        </div>
+                         {% code "html:mirror" %}
+                            <button class="ui-btn" data-action="click->lib-dialog#show" data-action-url="/dialog/basic.json">
+                                Open dialog window
+                            </button>
+                         {% endcode %}
+                    </div>
+                    <div class="col-12" id="drawer">
+                        <h1 class="ui-title uppercase text-primary mb-5">Drawer</h1>
+                        <div class="ui-text">
+                            <p>Located in <code>src/scripts/Libraries/Drawer.js</code>, <code>src/styles/Libraries/Drawer.css</code></p>
+                            <p></p>
+                            <p>The content is being prepared ...</p>
+                        </div>
+                    </div>
+                    <div class="col-12" id="hint">
+                        <h1 class="ui-title uppercase text-primary mb-5">Hint</h1>
+                        <div class="ui-text">
+                            <p>Located in <code>src/styles/Libraries/Hint.css</code></p>
+                            <p></p>
+                            <p>The content is being prepared ...</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-images" id="lazyload">
+                        <h1 class="ui-title uppercase text-primary mb-5">Lazyload</h1>
+                        <div class="ui-text mb-5">
+                            <p>Images should be wrapped insude <code>.ui-image</code> class and as <code>div</code> or <code>picture</code></p>
+                            <p>You can add lazyload for the images with <code>loading="lazy"</code> attribute.</p>
+                            <p>To maintain ratio of the images you have to add ratio class from Tailwind, for example <code>aspect-[4/3]</code></p>
+                        </div>
+                        <style>
+                          .col-images .ui-image {
+                            max-width: 10rem;
+                          }
+                        </style>
+                        <div>
+                             {% code "html:mirror" %}
+                                <div class="ui-image aspect-[3/2]">
+                                    <img src="https://via.placeholder.com/300x200" alt="" loading="lazy" />
+                                </div>
+                             {% endcode %}
+                        </div>
+                        <div>
+                             {% code "html:mirror" %}
+                                <picture class="ui-image aspect-[3/2]">
+                                    <source srcset="https://via.placeholder.com/300x200" />
+                                    <img src="https://via.placeholder.com/300x200" alt=""  loading="lazy" />
+                                </picture>
+                             {% endcode %}
+                        </div>
+                        <div class="ui-text mb-5">
+                            <p>Lazyload can be added also on <code>iframe</code></p>
+                        </div>
+                        <div>
+                             {% code "html:mirror" %}
+                                <div class="ui-image aspect-square">
+                                    <iframe loading="lazy" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10243.539317839937!2d14.3677486!3d50.0697185!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x66f5877a189baf0d!2sTvorba+webov%C3%BDch+str%C3%A1nek+-+New+Logic+Studio!5e0!3m2!1sen!2scz!4v1547215701439" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                </div>
+                             {% endcode %}
+                        </div>
+                        <hr/>
+                    </div>
+                    <div class="col-12" id="nativeslider">
+                        <h1 class="ui-title uppercase text-primary mb-5">NativeSlider</h1>
+                        <div class="ui-text mb-5">
+                            <p>Lightweight scroll based slider, which uses CSS <code>scroll-snap</code></p>
+                            <p>It is intended for a simple solution, for advanced sliders it is recommended to use sliders such as <a href="https://github.com/metafizzy/flickity" target="_blank">Flickity</a></p>
+                            <p></p>
+                            <p>Dot navigation can be generated with <code>data-lib-ns-nav</code> attribute or manually with each <code>data-lib-ns-nav-item</code> attribute</p>
+                            <p>Arrow control can be controlled with <code>data-lib-ns-prev</code> and <code>data-lib-ns-next</code> attributes</p>
+                            <p></p>
+                            <p>Slider area is defined with <code>data-lib-ns</code> attribute, you can set autoplay by entering a number in the attribute</p>
+                            <p>Other advanced params are <code>&lt;progress data-lib-ns-progress&gt;&lt;/progress&gt;</code>, <code>data-lib-ns-counter="min"</code> and <code>data-lib-ns-counter="max"</code></p>
+                            <p></p>
+                            <p>The sliders is initialized with <code>data-controller="lib-ns"</code> on parent element</p>
+                        </div>
+                        <div>
+                             {% code "html:mirror" %}
+                                <div data-controller="lib-ns">
+                                    <div class="row gx-3" data-lib-ns>
+                                        {% for i in 1..6 %}
+                                            <div class="col col-4">
+                                                <div class="ui-image rounded-md overflow-hidden aspect-[8/5]">
+                                                    <img src="{{ placeholder(1200, 750) }}" alt="" loading="lazy" />
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="row-x justify-between items-center mt-4">
+                                        <div class="col col-left">
+                                            <button class="ui-btn" data-type="square" aria-label="Previous" data-lib-ns-prev>
+                                                <svg class="icon">
+                                                    <use href="#icon-chevron-left"></use>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                        <div class="col col-counter m:hidden">
+                                            <div class="row py-3 gx-6 items-center justify-center">
+                                                <div class="col">
+                                                    <div class="flex" data-lib-ns-nav></div>
+                                                </div>
+                                                <div class="col">
+                                                    <div><span data-lib-ns-counter="min">1</span>/<span data-lib-ns-counter="max"></span></div>
+                                                </div>
+                                            </div>
+                                            <progress class="ui-progress" data-size="sm" value="50" max="100" data-lib-ns-progress></progress>
+                                        </div>
+                                        <div class="col col-right">
+                                            <button class="ui-btn" data-type="square" aria-label="Next" data-lib-ns-next>
+                                                <svg class="icon">
+                                                    <use href="#icon-chevron-right"></use>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                             {% endcode %}
+                        </div>
+                        <hr/>
+                    </div>
+                    <div class="col-12" id="recaptcha">
+                        <h1 class="ui-title uppercase text-primary mb-5">ReCaptcha</h1>
+                        <div class="ui-text">
+                            <p>Located in <code>src/scripts/Libraries/ReCaptcha.js</code></p>
+                            <p></p>
+                            <p>Uses Google's <a href="https://cloud.google.com/recaptcha-enterprise/docs/instrument-web-pages" target="_blank">recaptcha-enterprise</a></p>
+                            <p></p>
+                            <p>ReCaptcha can be added to various types of forms, which can be optionally distinguished with attribute <code>data-lib-recaptcha-action</code></p>
+                            <p>Api key has to be added with <code>data-lib-recaptcha-api</code> attribute</p>
+                            <p></p>
+                            <p>It can be evaluated upon submitting the form, with attribute <code>data-action="submit->lib-recaptcha#submit"</code></p>
+                        </div>
+                        <pre><code class="language-html">
+                                <form data-controller="lib-recaptcha" data-lib-recaptcha-api="RECAPTCHA_KEY" data-lib-recaptcha-action="contact" data-action="submit->lib-recaptcha#submit">
+                                    <input name="gtoken" type="hidden">
+                                    <button>Send</button>
+                                </form>
+                            </code></pre>
+                    </div>
+                    <div class="col-12 items-start" id="ripple">
+                        <h1 class="ui-title uppercase text-primary mb-5">Ripple</h1>
+                        <div class="ui-text">
+                            <p>The ripple effect is automatically applied to buttons and other components</p>
+                            <p>The effect is possible apply anywhere using the attribute <code>data-action="click->lib#ripple"</code></p>
+                            <p>Background color can be changed with CSS property <code>--lib-ripple-bg</code></p>
+                            <p></p>
+                            <h3>Methods</h3>
+                            <ul>
+                                <li>initialization to any selector: <code>LibRipple(element)</code></li>
+                            </ul>
+                            <p></p>
+                        </div>
+                         {% code "html:mirror" %}
+                            <div data-action="click->lib#ripple" class="cursor-pointer" style="--lib-ripple-bg: rgb(var(--color-primary))">Ripple me</div>
+                         {% endcode %}
+                        <hr/>
+                    </div>
+                    <div class="col-12" id="stimulus">
+                        <h1 class="ui-title uppercase text-primary mb-5">Stimulus</h1>
+                        <div class="ui-text">
+                            <p><a href="https://stimulusjs.org/" target="_blank" rel="noopener">Stimulus</a> is used for component definition, events and other JS interaction</p>
+                            <p>This library ensures the life of individual components and initializes them automatically when the content is redrawn</p>
+                            <p></p>
+                            <p>Stimulus uses three main attributes <code>data-controller</code> (component definition), <code>data-action</code> (event definition - click, change etc.), <code>data-target</code> (ref element in DOM)</p>
+                            <p></p>
+                            <p>Example usage of all attributes </p>
+                            <p></p>
+                        </div>
+                        <pre><code class="language-html">
+                                <div data-controller="lib-example" data-lib-example-active-class="active" data-lib-example-text-value="0">
+                                    <button data-action="click->lib-example#show" data-action-color="red"></button>
+                                    <div data-lib-example-target="itemTarget"></div>
+                                </div>
+                            </code></pre>
+                        <pre><code class="language-js">
+                                import { LibStimulus, Controller, getController } from "../Libraries/Stimulus.js";
+
+                                LibStimulus.register("lib-example", class extends Controller {
+                                    // alternative target definitions (you can also use this.queryTarget or this.queryTargetAll instead)
+                                    static targets = ['item']
+                                    static classes = [ 'active' ]
+                                    static values = {
+                                        text: Number
+                                    }
+
+                                    connect() {
+                                        // starts when the controller is loaded into DOM
+                                    }
+
+                                    disconnect() {
+                                        // starts when the controller is deleted from DOM, use mainly if event listeners that are outside the controller are created in connect
+                                    }
+
+                                    show(e) {
+                                        // specific action to which the event can be applied
+                                        let currentTarget = e.currentTarget;
+
+                                        // refer to a specific target element and add a class and color settings
+                                        this.itemTarget.classList.add(this.activeClass);
+                                        this.itemTarget.style.color = currentTarget.dataset.actionColor;
+
+                                        // extract custom text defined by the controller, this always refers to the controller
+                                        if (!this.hasTextValue) {
+                                            this.textValue = 1;
+                                        }
+
+                                        this.itemTarget.textContent = this.textValue;
+                                        this.textValue = 2;
+
+                                        // This method can be used to communicate with another controller
+                                        getController(document.querySelector(".other_controller"), "other_controller").doSomething()
+                                    }
+                                })
+                            </code></pre>
+                        <div class="ui-text">
+                            <p>To fully understand the functionality, we recommend studying <a href="https://stimulusjs.org/reference/controllers" target="_blank" rel="noopener">documentation</a></p>
+                        </div>
+                        <hr/>
+                    </div>
+                    <div class="col-12" id="swup">
+                        <h1 class="ui-title uppercase text-primary mb-5">Swup</h1>
+                        <div class="ui-text">
+                            <p>Full-page animations are used between pages using a library  <a href="https://github.com/gmrchk/swup" target="_blank" rel="noopener">Swup</a>
+                            </p>
+                            <p>Everything is automatic and if the JS is correctly defined via Stimulus, all JS is automatically reinitialized after site navigation</p>
+                            <p></p>
+                            <p>If you do not want to use Swup on a specific link, you can use the attribute <code>data-no-swup</code></p>
+                        </div>
+                        <hr/>
+                    </div>
+                    <div class="col col-12 items-start" id="tabs">
+                        <h1 class="ui-title uppercase text-primary mb-5">Tabs</h1>
+                        <div class="ui-text mb-5">
+                            <p>Tabs are divided into navigation section <code>data-lib-tabs-nav</code> and content section <code>data-lib-tabs-area</code></p>
+                            <p></p>
+                            <p>In the navigation section, select the items that will be switched by the attribute <code>data-lib-tabs-item="nav"</code>, in the content section, we mark individual items with an attribute <code>data-lib-tabs-item="area"</code></p>
+                            <p></p>
+                            <p>In order to define that these are switch tabs, it is necessary to define the element by an attribute <code>data-controller="lib-tabs"</code> or you can self-initialize on any selector with method</p>
+                            <p></p>
+                            <h3>Methods</h3>
+                            <ul>
+                                <li>initialization: <code>LibTabs(element)</code></li>
+                            </ul>
+                        </div>
+                         {% code "html:mirror" %}
+                            <div data-controller="lib-tabs">
+                                <div class="row gx-4" data-lib-tabs-nav>
+                                    <div class="col">
+                                        <button class="ui-btn" data-lib-tabs-item="nav" data-state="active">
+                                            <span>Tab 1</span>
+                                        </button>
+                                    </div>
+                                    <div class="col">
+                                        <button class="ui-btn" data-lib-tabs-item="nav">
+                                            <span>Tab 2</span>
+                                        </button>
+                                    </div>
+                                    <div class="col">
+                                        <button class="ui-btn" data-lib-tabs-item="nav">
+                                            <span>Tab 3</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="mt-4" data-lib-tabs-area>
+                                    <div data-lib-tabs-item="area" data-state="active">
+                                        <div class="ui-text">
+                                            <p>Lorem ipsum dolor sit amet, consectetur
+                                                adipiscing elit. Donec eget efficitur metus. In bibendum nisi et dui
+                                                sagittis efficitur. Proin porttitor diam at quam finibus, quis porttitor
+                                                turpis ullamcorper. 1</p>
+                                        </div>
+                                    </div>
+                                    <div data-lib-tabs-item="area">
+                                        <div class="ui-text">
+                                            <p>Lorem ipsum dolor sit amet, consectetur
+                                                adipiscing elit. Donec eget efficitur metus. In bibendum nisi et dui
+                                                sagittis efficitur. Proin porttitor diam at quam finibus, quis porttitor
+                                                turpis ullamcorper. 2</p>
+                                        </div>
+                                    </div>
+                                    <div data-lib-tabs-item="area">
+                                        <div class="ui-text">
+                                            <p>Lorem ipsum dolor sit amet, consectetur
+                                                adipiscing elit. Donec eget efficitur metus. In bibendum nisi et dui
+                                                sagittis efficitur. Proin porttitor diam at quam finibus, quis porttitor
+                                                turpis ullamcorper. 3</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                         {% endcode %}
+                    </div>
+                    <div class="col col-12 items-start" id="tippy">
+                        <h1 class="ui-title uppercase text-primary mb-5">Tippy</h1>
+                        <div class="ui-text mb-5">
+                            <p>For dropdowns and tooltips the <a href="https://atomiks.github.io/tippyjs/" target="_blank">Tippy.js</a> library is used</p>
+                            <p>Tippy properties can be freely modified using attributes <a href="https://atomiks.github.io/tippyjs/v6/customization/" target="_blank">data-tippy-*</a></p>
+                            <p>The basic properties are defined by  <code>data-lib-tippy="type, template"</code></p>
+                            <ul>
+                                <li><code>type</code> can be <code>dropdown</code> or <code>tooltip</code> with variants <code>-arrow</code> and <code>-full</code> (full width view on your phone)</li>
+                                <li><code>template</code> can be <code>id</code> section with html or url for <code>fetch</code> (the response must contain json with the key <code>content</code>)</li>
+                            </ul>
+                            <p></p>
+                            <h3>Methods</h3>
+                            <ul>
+                                <li>initialization: <code>new LibTippy(element, attributes)</code></li>
+                            </ul>
+                        </div>
+                        <div class="ui-text mb-5">
+                            <p>Loading tippy template from external file</p>
+                        </div>
+                         {% code "html:mirror" %}
+                            <button class="ui-btn" type="button" data-type="square" data-controller="lib-tippy" data-lib-tippy="dropdown-full, /dropdown/tippy.json" data-lib-tippy-slot='{ "edit": "Upravit položku", "delete": "Smazat položku" }'>
+                                <svg class="icon"><use href="#icon-at-symbol"></use></svg>
+                            </button>
+                         {% endcode %}
+                            <div class="ui-text mb-5">
+                                <p>Loading a tippy template from an inline template</p>
+                            </div>
+                        {% code "html:mirror" %}
+                            <button class="ui-btn" type="button" data-controller="lib-tippy" data-lib-tippy="tooltip-arrow, tippy-template" data-lib-tippy-slot='{ "edit": "Upravit položku", "delete": "Smazat položku" }'>
+                                Tooltip arrow
+                            </button>
+                            <template id="tippy-template">
+                                <div class="c-dropdown">
+                                    <ul class="wrp_c_list flex-col row-y gy-4">
+                                        <li class="col">
+                                            <button class="ui-link">
+                                                <span>{ edit }</span>
+                                            </button>
+                                        </li>
+                                        <li class="col">
+                                            <button class="ui-link">
+                                                <span>{ delete }</span>
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </template>
+                         {% endcode %}
+                            <div class="ui-text mb-5">
+                                <p>Classic tooltip</p>
+                            </div>
+                         {% code "html:mirror" %}
+                            <button class="ui-btn" type="button" data-controller="lib-tippy" aria-label="Hello world">
+                                Basic tooltip
+                            </button>
+                         {% endcode %}
+                    </div>
+                </div>
+                <div class="row g-8 flex-wrap" style="padding-top: 3rem;">
+                    <div class="col-12" style="padding-top: 0">
+                        <h1 class="ui-heading">Other</h1>
+                    </div>
+                    <div class="col-12" id="functions">
+                        <h1 class="ui-title uppercase text-primary mb-5">Functions</h1>
+                        <div class="ui-text mb-5">
+                            <p>Additional helper functions which you can use in JS </p>
+                            <p></p>
+                            <h3>checkValidity(element, options)</h3>
+                            <p>checks validity of ui-input, ui-select, ui-checkbox or ui-radio components</p>
+                            <p></p>
+                            <ul><li>options - <code>{ validate: true, message: false }</code></li></ul>
+                            <p></p>
+                            <h3>dataValue - working with data attributes</h3>
+                            <p><code>_addDataValue(key,value)</code> - adds value to data-key</p>
+                            <p><code>_removeDataValue(key,value)</code> - removes value from data-key</p>
+                            <p><code>_hasDataValue(key,value)</code> - if value exists in data-key, returns <code>true</code> or <code>false</code></p>
+                            <p></p>
+                            <h3>importScript</h3>
+                            <ul>
+                                <li>can be used to load scripts the old way into <code>window</code>with <code>importScript(url)</code> (returns promise)</li>
+                            </ul>
+                            <p></p>
+                            <h3>importStyle</h3>
+                            <ul>
+                                <li>can be used to load styles into <code>head</code>with <code>importStyle(url)</code> (returns promise)</li>
+                            </ul>
+                            <h3>inView - is the conent in viewport?</h3>
+                            <ul>
+                                <li>can be used to call code if the content is visible in the viewport  <code>inView(selector, options)</code> (returns promise)</li>
+                                <li>options are optional and you can add same params asi in <code>IntersectionObserver</code></li>
+                            </ul>
+                            <p></p>
+                            <h3>loadStimulus - dynamic load of stimulus elements</h3>
+                            <ul>
+                                <li>reload elements within a particular selector : <code>loadStimulus(selector)</code></li>
+                                <li>the definition of which elements are dynamically loaded is in the array: <code>dynamicControllers</code> and <code>dynamicActions</code></li>
+                            </ul>
+                            <p></p>
+                            <h3>replaceTag(documentElement) - used mainly for swup</h3>
+                            <ul>
+                                <li>checks documentElement (eg. previous swup page) and replaces all <code>[data-lib-replace-tag]</code> in current DOM with the same name.</li>
+                            </ul>
+                        </div>
+                        <hr/>
+                    </div>
+                    <div class="col-12" id="build">
+                        <h1 class="ui-title uppercase text-primary mb-5">Build</h1>
+                        <div class="ui-text">
+                            <p>Newlogic UI can be used with other tools, without the need to use Vituum, Newlogic Core or in a completely different environment than NodeJS</p>
+                            <p></p>
+                            <p>Following PostCSS plugins are used:</p>
+                            <pre><code class="language-json">
+                                {
+                                    "devDependencies": {
+                                        "autoprefixer": "*",
+                                        "tailwindcss": "*",
+                                        "postcss-custom-media": "*",
+                                        "postcss-custom-selectors": "*",
+                                        "postcss-import": "*",
+                                        "postcss-nesting": "*",
+                                    }
+                                }
+                                </code></pre>
+                            <p></p>
+                            <p>Tailwind config is located at root in <code>tailwind.config.cjs</code></p>
+                            <p></p>
+                            <p>The CSS framework can be configured for use in modern build tools such as Vite or any other. </p>
+                            <p>Theoretically it is even possible to build outside the NodeJS environment in <a href="https://deno.land/manual/tools/bundler" target="_blank">Deno</a> with <a href="https://github.com/postcss/postcss-deno" target="_blank">PostCSS</a></p>
+                            <p></p>
+                            <p>Without use of Vituum and Newlogic Core you can't use compilation of twig/latte templates from <code>src/templates</code></p>
+                        </div>
+                        <hr/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

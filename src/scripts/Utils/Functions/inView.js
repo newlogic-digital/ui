@@ -1,4 +1,4 @@
-export default function inView(element, options) {
+export default function inView(element, options = {}) {
     let inView = false
 
     return new Promise((resolve) => {
@@ -7,19 +7,18 @@ export default function inView(element, options) {
             return false
         }
 
-        if (typeof options === 'undefined') {
-            options = {}
-        }
-
-        if (typeof options.rootMargin === 'undefined') {
+        if (!options.rootMargin) {
             options.rootMargin = '100px'
         }
 
-        new IntersectionObserver(entries => {
+        const observer = new IntersectionObserver(entries => {
             if (entries[0].isIntersecting && inView === false) {
                 inView = entries[0].isIntersecting
+                observer.disconnect()
                 resolve()
             }
-        }, options).observe(element)
+        }, options || {})
+
+        observer.observe(element)
     })
 }

@@ -27,7 +27,7 @@ export default class LibTippy {
                 options.content = document.querySelector('#' + template).innerHTML
             } else {
                 options.content = `
-                  <div class="ui-dropdown">
+                  <div class="c-dropdown">
                     <div class="wrp_dropdown_body">
                       ${element.getAttribute('aria-label')}
                     </div>
@@ -99,12 +99,14 @@ export default class LibTippy {
             element.addEventListener(event, async function e() {
                 if (self.template.startsWith('/') && self.options.content === '') {
                     element.style.cursor = 'wait'
+                    element._addDataValue('state', 'loading')
 
                     fetch(self.template, { headers: { 'X-Requested-With': 'XMLHttpRequest' } }).then(response => {
                         return response.json()
                     }).then(async(data) => {
                         self.options.content = data.content
                         element.style.cursor = ''
+                        element._removeDataValue('state', 'loading')
                         await self.init(element, self.options, self.template)
                         element.removeEventListener(event, e)
                     })

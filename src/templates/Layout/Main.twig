@@ -23,12 +23,6 @@
             <link rel="stylesheet" href="{{ url|asset }}">
         {% endfor %}
 
-        {% if config.serve.mode == 'dev' %}
-            <link rel="stylesheet" href="{{ attribute(assets.css, 'tailwind.src') }}">
-        {% endif %}
-
-        <script src="{{ assets.js.lazysizes }}" async></script>
-
         <script>
             (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) && document.documentElement.classList.add('dark')
             document.documentElement.className = document.documentElement.className.replace('no-js', 'js');matchMedia('(hover: hover) and (pointer: fine)').matches && document.documentElement.classList.add('no-touch');/Android|iPhone|iPad|iPod/i.test(navigator.userAgent) && document.documentElement.classList.add('mobile');(p => document.documentElement.classList.add(p.includes('macintel') && navigator.maxTouchPoints > 2 ? 'ipad' : p))(navigator.platform.toLowerCase().replace(/ .*/, ''));(u => document.documentElement.classList.add(u && u[0]))(navigator.userAgent.toLowerCase().match(/chrome|safari|firefox/i))
