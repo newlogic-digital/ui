@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://ui.newlogic.cz/" target="_blank" rel="noopener noreferrer">
-    <img width="180" src="https://ui.devlogic.cz/assets/favicons/android-chrome-192x192.png" alt="Logo">
+    <img width="180" src="https://ui.newlogic.cz/favicons/android-chrome-192x192.png" alt="Logo">
   </a>
 </p>
 <p align="center">
