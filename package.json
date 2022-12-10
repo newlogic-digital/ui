@@ -35,7 +35,12 @@
     "stylelint-config-standard": "^29.0.0"
   },
   "files": [
-    "src"
+    "src",
+    "tailwind.config.cjs",
+    "vite.config.js",
+    ".eslintrc",
+    ".stylelintrc",
+    "public/sw.js"
   ],
   "engines": {
     "node": ">=16.0.0",
