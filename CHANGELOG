@@ -1,4 +1,4 @@
-v3.2.0
+v3.4.0
 * feat: added winduum native dialog with better accessibility
 * feat: added winduum tailwind plugin and new css breakpoints
 * feat: changed emails root to src/views/email
