@@ -114,14 +114,12 @@ a {
   border-color: rgb(var(--color-current) / var(--tw-text-opacity, 1));
 }
 
-[hidden] {
-  display: none;
+:where(dialog) {
+  all: unset;
 }
 
-@supports (-moz-appearance: none) {
-  select {
-    text-indent: -0.125rem;
-  }
+[hidden] {
+  display: none;
 }
 
 .grecaptcha-badge {

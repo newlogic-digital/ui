@@ -1,49 +1,35 @@
 .c-dialog {
-  --c-dialog-py: 1rem;
+  --c-dialog-py: 1.5rem;
   --c-dialog-px: 1.5rem;
-  --c-dialog-offset-y: 2rem;
+  --c-dialog-width: 40rem;
+  --c-dialog-animation-duration: 0.3s;
 
-  animation: 0.3s ease 0s backwards 1 fade-in-down;
+  animation: var(--c-dialog-animation-duration) ease 0s backwards 1 fade-in-down;
   position: relative;
-  z-index: var(--z-30);
-  display: flex;
-  flex-direction: column;
-  margin-left: auto;
-  margin-right: auto;
-  pointer-events: none;
-  min-height: 100%;
-  align-self: baseline;
-  border-top: var(--c-dialog-offset-y) solid transparent;
-  border-bottom: var(--c-dialog-offset-y) solid transparent;
-  width: calc(100% - 2rem);
+  z-index: var(--z-20);
+  margin: auto;
+  background-color: rgb(var(--color-background));
+  width: 100%;
+  max-width: var(--c-dialog-width);
+  border-radius: var(--rounded-md);
+  padding: var(--c-dialog-py) var(--c-dialog-px);
 
-  @nest :--state-hiding & {
-    animation: 0.3s ease 0s forwards 1 fade-out-up;
-  }
-
-  @media (--media-t) {
-    --c-dialog-offset-y: 4rem;
-
-    width: 100%;
-    min-width: 18.75rem;
-    max-width: 40rem;
+  @nest dialog:not([open]) & {
+    animation: var(--c-dialog-animation-duration) ease 0s forwards 1 fade-out-up;
   }
 
   &:--size-sm {
-    max-width: 31.25rem;
-  }
-
-  &:--size-base {
-    max-width: none;
-    width: auto;
+    --c-dialog-width: 32rem;
   }
 
   &:--size-lg {
-    max-width: 80rem;
+    --c-dialog-width: 80rem;
   }
 
   &:--type-scrollable {
     height: 100%;
+    display: flex;
+    flex-direction: column;
 
     & .wrp_dialog_body {
       flex: 1 1 auto;
@@ -53,26 +39,5 @@
       overscroll-behavior: contain;
       -webkit-overflow-scrolling: touch;
     }
-  }
-
-  & .wrp_dialog {
-    position: relative;
-    background-color: rgb(var(--color-background));
-    pointer-events: auto;
-    border-radius: var(--radius);
-    padding: var(--c-dialog-py) var(--c-dialog-px);
-    display: flex;
-    flex-direction: column;
-    max-height: 100%;
-
-    @media (--media-t) {
-      --c-dialog-py: 1.25rem;
-    }
-  }
-
-  & .elm_dialog_close {
-    position: absolute;
-    right: 1rem;
-    top: 1rem;
   }
 }

@@ -1,6 +1,6 @@
 import { LibStimulus, Controller } from './Stimulus.js'
 
-LibStimulus.register('lib-drawer', class extends Controller {
+LibStimulus.register('lib-drawer', class LibDrawer extends Controller {
     static targets = ['nav']
 
     init() {
@@ -17,10 +17,14 @@ LibStimulus.register('lib-drawer', class extends Controller {
         this.navTarget.style.setProperty('--lib-drawer-opacity', '1')
         this.navTarget.classList.add('is-opacity')
         this.navTarget._addDataValue('state', 'active')
+        this.navTarget.setAttribute('aria-hidden', 'false')
+        this.navTarget.removeAttribute('inert')
         document.documentElement.classList.add('overflow-hidden')
     }
 
     hide() {
+        this.navTarget.setAttribute('inert', '')
+        this.navTarget.setAttribute('aria-hidden', 'true')
         this.navTarget._removeDataValue('state', 'active')
         this.navTarget.classList.add('is-opacity')
         this.navTarget.style.setProperty('--lib-drawer-opacity', '0')

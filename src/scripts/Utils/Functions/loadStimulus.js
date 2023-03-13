@@ -1,3 +1,5 @@
+import naja from 'naja'
+
 const dynamicControllers = ['ui-input', 'ui-select', 'ui-text', 'ui-checkbox', 'ui-radio', 'c-cookieconsent', 'c-form-cookieconsent']
 const dynamicActions = [['.ui-btn', 'click->lib#ripple']]
 
@@ -33,7 +35,8 @@ function loadActions(parent, selectors) {
     }
 }
 
-export default function loadStimulus(selector) {
+export default function loadStimulus(selector, najaLoad = true) {
     loadControllers(selector, dynamicControllers)
     loadActions(selector, dynamicActions)
+    najaLoad && naja.uiHandler.bindUI(selector)
 }

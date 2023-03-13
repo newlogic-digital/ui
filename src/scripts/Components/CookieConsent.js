@@ -35,7 +35,6 @@ LibStimulus.register('c-cookieconsent', class extends Controller {
         }, 500)
     }
 })
-
 LibStimulus.register('c-form-cookieconsent', class extends Controller {
     connect() {
         const selector = this.element

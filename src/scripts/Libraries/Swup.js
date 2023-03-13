@@ -1,7 +1,7 @@
 import Swup from 'swup'
 import { getController, loadStimulus } from './Stimulus.js'
+import { closeDialog } from 'winduum/src/libraries/dialog.js'
 import LibAnchor from './Anchor.js'
-import LibDialog from './Dialog.js'
 import LibCookieConsent from './CookieConsent.js'
 import replaceTag from '../Utils/Functions/replaceTag.js'
 
@@ -14,11 +14,13 @@ LibSwup.on('clickLink', async({ target }) => {
     document.body.classList.remove('overflow-hidden')
 
     if (document.querySelector('.lib-drawer[data-state~="active"]') !== null) {
-        getController(document.body, 'lib-drawer').hide()
+        /** @type {LibDrawer} */
+        const LibDrawer = getController(document.body, 'lib-drawer')
+        LibDrawer.hide()
     }
 
     if (document.querySelector('.lib-dialog') !== null) {
-        await LibDialog.hide()
+        await closeDialog()
     }
 
     if (window.location.href === target.closest('a').href) {
@@ -30,47 +32,33 @@ LibSwup.on('animationOutDone', () => {
     document.documentElement.scroll({ top: 0, behavior: 'instant' })
 })
 
+/** @var {Array} dataLayer */
+/** @var {Function} rc */
+/** @var {Function} retargetingHit */
+/** @var {Function} conversionHit */
+/** @var {Object} retargetingConf */
+/** @var {Object} conversionConf */
+/** @var {Function} fbq */
 LibSwup.on('contentReplaced', () => {
     const content = new DOMParser().parseFromString(LibSwup.cache.getCurrentPage().originalContent, 'text/html')
 
     replaceTag(content)
 
     LibAnchor.init()
+    LibCookieConsent.init()
 
     LibSwup.options.containers.forEach(selector => {
         loadStimulus(document.querySelector(selector))
     })
 
-    if (typeof window.fbq !== 'undefined') {
-        window.fbq('track', 'PageView')
-    }
+    window.dataLayer && window.dataLayer.push({
+        event: 'page_view'
+    })
 
-    if (typeof gtag !== 'undefined') {
-        const configs = []
-        window.dataLayer.forEach(function(config) {
-            if (config[0] === 'config') {
-                if (typeof config[1] !== 'undefined' && !configs.includes(config[1])) {
-                    configs.push(config[1])
-                    window.gtag('config', config[1], {
-                        page_title: document.title,
-                        page_path: window.location.pathname + window.location.search
-                    })
-                }
-            }
-        })
-    }
+    window.rc?.retargetingHit && window.rc.retargetingHit(window.retargetingConf)
+    window.rc?.conversionHit && window.rc.conversionHit(window.conversionConf)
 
-    if (typeof window.dataLayer !== 'undefined') {
-        window.dataLayer.push({
-            event: 'VirtualPageview',
-            virtualPageURL: window.location.pathname + window.location.search,
-            virtualPageTitle: document.title
-        })
-    }
-
-    if (typeof LibCookieConsent !== 'undefined') {
-        LibCookieConsent.init()
-    }
+    window.fbq && window.fbq('track', 'PageView')
 })
 
 export default LibSwup

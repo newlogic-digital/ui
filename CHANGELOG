@@ -1,3 +1,22 @@
+v3.2.0
+* feat: added winduum native dialog with better accessibility
+* feat: added winduum tailwind plugin and new css breakpoints
+* feat: changed emails root to src/views/email
+* feat: added some missing type definitions
+* feat: remove inView function
+* feat: improved syntax of tracking events in LibSwup
+* feat(bc): lib-dialog now uses native stimulus attributes, see docs for more info
+* feat(bc): lib-dialog fetch expects "content" in response, instead of "dialog"
+* fix: dynamic imports with @vite-ignore
+
+v3.3.1
+* feat: swup v3 update
+* feat: dependencies update
+* feat: added loading before send to lib-form
+* feat: added naja submit to lib-recaptcha
+* feat: added sklik retargetingHit to swup
+* feat: added najaLoad to loadStimulus function
+
 v3.3.0
 * feat: added email posthtml examples
 * feat(bc): removed stimulus helpers - queryTarget, getValue etc.

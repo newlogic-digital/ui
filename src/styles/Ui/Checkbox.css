@@ -81,7 +81,6 @@
       content: "";
       background-color: currentColor;
       mask: var(--ui-checkbox-icon);
-      opacity: 0;
       transform: scale(0);
       will-change: transform;
       width: 1em;

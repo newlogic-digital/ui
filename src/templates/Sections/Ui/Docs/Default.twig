@@ -1147,32 +1147,32 @@
                     <div class="col col-12 items-start" id="dialog">
                         <h1 class="ui-title uppercase text-primary mb-5">Dialog</h1>
                         <div class="ui-text mb-5">
-                            <p>On any element you can add <code>data-action="click->lib-dialog#show"</code> with attribute <code>data-action-url</code> which is url to <code>*.json</code> file or url request which contains html. For closing the dialog window, you can add <code>data-action="click->lib-dialog#hide"</code> to any element</p>
+                            <p>On any element you can add <code>data-action="click->lib-dialog#show"</code> with attribute <code>data-lib-dialog-url-param</code> which is url to <code>*.json</code> file or url request which contains html. For closing the dialog window, you can add <code>data-action="click->lib-dialog#hide"</code> to any element</p>
                             <p></p>
-                            <p>Adding <code>data-lib-dialog-open</code> attribute on <code>data-controller="lib-dialog"</code> (by default located on body), then the dialog gets open upon page load</p>
-                            <p>Url is passed the same way as normal, you can also add selector to <code>data-lib-dialog-open</code> and HTML content of that selector opens as dialog.</p>
+                            <p>Adding <code>data-lib-dialog-open-option</code> attribute on <code>data-controller="lib-dialog"</code> (by default located on body), then the dialog gets open upon page load</p>
+                            <p>Url is passed the as <code>data-lib-dialog-url-option</code>, you can also add selector to <code>data-lib-dialog-open-option</code> and HTML content of that selector opens as a dialog.</p>
                             <p></p>
                             <p></p>
                             <h3>Methods</h3>
-                            <ul>
-                                <li>open dialog with dialog with fetch request: <code>LibDialog.action(url)</code></li>
-                                <li>open dialog with any content: <code>LibDialog.show(content)</code></li>
-                                <li>close dialog: <code>LibDialog.hide()</code></li>
-                            </ul>
-                            <p>All methods returns promise</p>
+                            <p>See docs at <a href="https://legendary-muffin-ebbe68.netlify.app/docs/lib/dialog.html">Winduum</a></p>
                             <p></p>
                             <p></p>
                             <h3>Attributes (c-dialog)</h3>
                             <ul>
-                                <li>data-size: <code>sm</code>, <code>base</code>, <code>lg</code></li>
-                                <li>data-type: <code>scrollable</code> - scroll inside dialog</li>
-                                <li>class: <code>justify-center</code> - vertical align to center</li>
+                                <li><code>data-size</code> - <code>sm</code>, <code>lg</code></li>
+                                <li><code>data-type</code> - <code>scrollable</code> - scroll inside dialog</li>
+                            </ul>
+                            <h3>Attributes (click->lib-dialog#show)</h3>
+                            <ul>
+                                <li><code>data-lib-dialog-url-param</code> - url of <code>*.json</code> file</li>
+                                <li><code>data-lib-dialog-remove-param</code> - <code>true/false</code> whenever to remove dialog element from dom after closing</li>
+                                <li><code>data-lib-dialog-append-param</code> - <code>true/false</code> whenever to append new dialog element after the previous dialog, otherwise the previous is replaced</li>
                             </ul>
                         </div>
                          {% code "html:mirror" %}
-                            <button class="ui-btn" data-action="click->lib-dialog#show" data-action-url="/dialog/basic.json">
-                                Open dialog window
-                            </button>
+                             <button class="ui-btn" data-action="click->lib-dialog#show" data-lib-dialog-url-param="/dialog/basic.json">
+                                 Open dialog window
+                             </button>
                          {% endcode %}
                     </div>
                     <div class="col-12" id="drawer">

@@ -4,23 +4,23 @@ html {
   scroll-behavior: smooth;
   accent-color: rgb(var(--color-accent));
 
-  @media (--media-min-400) {
+  @media (--media-sm) {
     font-size: 95%;
   }
 
-  @media (--media-min-768) {
+  @media (--media-md) {
     font-size: 90%;
   }
 
-  @media (--media-min-1360) {
+  @media (--media-2xl) {
     font-size: 100%;
   }
 
-  @media (--media-only-960) {
+  @media not all (max-width: 64em) and (--media-lg) {
     font-size: 80%;
   }
 
-  @media (--media-360) {
+  @media not all (--media-sm) {
     font-size: 90%;
   }
 

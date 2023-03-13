@@ -14,6 +14,8 @@ LibStimulus.register('lib-form', class extends Controller {
 
             this.element.querySelector(':invalid').scrollIntoView({ behavior: 'smooth', block: 'center' })
             this.element.querySelector(':invalid').focus()
+        } else {
+            this.element.querySelector('[type="submit"]')._addDataValue('state', 'loading')
         }
 
         this.element.querySelectorAll('.ui-input, [data-controller="ui-checkbox"], [data-controller="ui-radio"]').forEach(element => {

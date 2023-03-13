@@ -1,4 +1,5 @@
 import { LibStimulus, Controller } from './Stimulus.js'
+import naja from 'naja'
 import importScript from '../Utils/Functions/importScript.js'
 import cdn from '../Utils/cdn.js'
 
@@ -24,9 +25,23 @@ LibStimulus.register('lib-recaptcha', class extends Controller {
     }
 
     async submit() {
+        if (this.element.reportValidity() === false) {
+            return false
+        }
+
         arguments[0].preventDefault()
 
         await this.execute()
         this.element.submit()
+    }
+
+    async submitFetch() {
+        if (this.element.reportValidity() === false) {
+            return false
+        }
+
+        arguments[0].preventDefault()
+        await this.execute()
+        await naja.makeRequest(this.element.method, this.element.action, new FormData(this.element), { history: 'replace' })
     }
 })

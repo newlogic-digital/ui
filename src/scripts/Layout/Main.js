@@ -1,8 +1,7 @@
-import { LibStimulus, Controller, loadStimulus } from '../Libraries/Stimulus.js'
+import { LibStimulus, Controller } from '../Libraries/Stimulus.js'
 import { importScript } from '../Utils/Functions/+.js'
 import LibRipple from '../Libraries/Ripple.js'
 import LibAnchor from '../Libraries/Anchor.js'
-import LibDialog from '../Libraries/Dialog.js'
 import LibTippy from '../Libraries/Tippy.js'
 import LibTabs from '../Libraries/Tabs.js'
 import LibNativeSlider from '../Libraries/NativeSlider.js'
@@ -32,30 +31,6 @@ LibStimulus.register('lib', class extends Controller {
             localStorage.theme = 'dark'
             document.documentElement.classList.add('dark')
         }
-    }
-})
-
-LibStimulus.register('lib-dialog', class extends Controller {
-    async connect() {
-        if (this.element.getAttribute('data-lib-dialog-open')) {
-            const url = this.element.getAttribute('data-action-url')
-
-            if (url) {
-                await LibDialog.action(this.element, url, () => loadStimulus(document.querySelector('.lib-dialog')))
-            } else {
-                await LibDialog.show(document.querySelector(this.element.getAttribute('data-lib-dialog-open')).innerHTML, () => loadStimulus(document.querySelector('.lib-dialog')))
-            }
-        }
-    }
-
-    async show({ currentTarget }) {
-        const url = currentTarget.getAttribute('data-action-url')
-
-        await LibDialog.action(currentTarget, url)
-    }
-
-    async hide() {
-        await LibDialog.hide()
     }
 })
 
