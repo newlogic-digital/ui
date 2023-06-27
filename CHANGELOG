@@ -1,3 +1,13 @@
+v3.4.2
+* feat: vituum v1 update
+* feat: newlogic core v2 update
+* feat: deps update
+
+v3.4.1
+* feat: minor changes from winduum
+* feat: removed seamless polyfill
+* feat: update stylelint v32 and added stylelint-stylistic plugin
+
 v3.4.0
 * feat: added winduum native dialog with better accessibility
 * feat: added winduum tailwind plugin and new css breakpoints

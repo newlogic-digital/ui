@@ -1,21 +1,13 @@
+import { showRipple } from 'winduum/src/libraries/ripple.js'
 import { LibStimulus, Controller } from '../Libraries/Stimulus.js'
-import { importScript } from '../Utils/Functions/+.js'
-import LibRipple from '../Libraries/Ripple.js'
 import LibAnchor from '../Libraries/Anchor.js'
 import LibTippy from '../Libraries/Tippy.js'
 import LibTabs from '../Libraries/Tabs.js'
 import LibNativeSlider from '../Libraries/NativeSlider.js'
-import cdn from '../Utils/cdn.js'
 
 LibStimulus.register('lib', class extends Controller {
-    connect() {
-        if (!('scrollBehavior' in document.documentElement.style)) {
-            importScript(cdn.seamless).then(() => window.seamless.polyfill())
-        }
-    }
-
     ripple(e) {
-        LibRipple(e)
+        showRipple(e)
     }
 
     anchor({ currentTarget }) {

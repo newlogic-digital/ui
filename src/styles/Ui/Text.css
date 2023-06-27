@@ -166,6 +166,10 @@
     margin: 0 0 1.5rem;
     padding: 0 0 0 1rem;
 
+    &:not([type]) {
+      list-style: decimal;
+    }
+
     & li {
       padding-left: 0.5rem;
 
@@ -192,6 +196,7 @@
       &::before {
         width: 0.25rem;
         height: 0.25rem;
+        box-sizing: content-box;
         position: absolute;
         content: "";
         border: 1px solid rgb(var(--color-accent));

@@ -2,7 +2,6 @@ const offlineUrl = '/offline'
 
 self.addEventListener('install', function(event) {
     const offlineRequest = new Request(offlineUrl)
-
     event.waitUntil(
         fetch(offlineRequest).then(function(response) {
             return caches.open('offline').then(function(cache) {

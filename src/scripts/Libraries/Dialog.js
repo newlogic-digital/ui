@@ -1,5 +1,5 @@
 import { Controller, LibStimulus, loadStimulus } from './Stimulus.js'
-import { showDialog, closeDialog, fetchDialog, dialogSelector } from 'winduum/src/libraries/dialog.js'
+import { insertDialog, closeDialog, fetchDialog, dialogSelector } from 'winduum/src/libraries/dialog.js'
 
 LibStimulus.register('lib-dialog', class extends Controller {
     static values = {
@@ -11,11 +11,10 @@ LibStimulus.register('lib-dialog', class extends Controller {
         if (this.hasOpenValue) {
             if (this.hasUrlValue) {
                 await fetchDialog({
-                    url: this.urlValue, showOptions: { remove: true }
+                    url: this.urlValue, insertOptions: { remove: true }
                 })
             } else {
-                await showDialog({
-                    content: document.querySelector(this.openValue).innerHTML,
+                await insertDialog(document.querySelector(this.openValue).innerHTML, {
                     remove: true
                 })
             }
@@ -30,7 +29,7 @@ LibStimulus.register('lib-dialog', class extends Controller {
 
         await fetchDialog({
             url: params.url,
-            showOptions: {
+            insertOptions: {
                 remove: params.remove ?? true,
                 append: params.append ?? false
             }

@@ -1,29 +1,16 @@
 [data-action*="lib#ripple"] {
-  --lib-ripple-bg: rgb(var(--color-background));
-
   position: relative;
   user-select: none;
 }
 
 .lib-ripple {
+  --lib-ripple-animation-duration: 1s;
+  --lib-ripple-bg: rgb(var(--color-background) / var(--tw-bg-opacity, 0.4));
+
   position: absolute;
   background: var(--lib-ripple-bg);
   border-radius: 50%;
   transform: scale(0);
-  opacity: 0.4;
+  animation-duration: var(--lib-ripple-animation-duration);
   pointer-events: none;
-
-  @nest body > & {
-    position: fixed;
-  }
-
-  @nest html.ie & {
-    z-index: -1;
-  }
-
-  &.animation {
-    animation-name: ripple;
-    animation-duration: 1s;
-    animation-fill-mode: both;
-  }
 }

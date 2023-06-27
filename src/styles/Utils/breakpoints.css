@@ -1,0 +1,9 @@
+@custom-media --media-m (max-width: 47.9375em);
+@custom-media --media-t (min-width: 48em);
+@custom-media --media-d (min-width: 60em);
+@custom-media --media-w (min-width: 76em);
+@custom-media --media-hd (min-width: 85em);
+@custom-media --media-mhd (min-width: 88em);
+@custom-media --media-fhd (min-width: 100em);
+@custom-media --media-touch (max-width: 59.9375em);
+@custom-media --media-touch-only (max-width: 59.9375em) and (min-width: 47.9375em);

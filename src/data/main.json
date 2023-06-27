@@ -1,6 +1,5 @@
 {
   "lang": "en",
-  "template": "templates/Layout/Main.twig",
   "prefetch": [
     "https://cdn.jsdelivr.net",
     "https://fonts.gstatic.com",

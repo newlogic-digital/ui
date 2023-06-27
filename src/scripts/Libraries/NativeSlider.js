@@ -127,7 +127,7 @@ export default function LibNativeSlider(selector, parent) {
     if (!isNaN(parseInt(selector.getAttribute('data-lib-ns')))) {
         setInterval(() => {
             if (!self.paused) {
-                if (selector.scrollLeft <= selector.children[0].clientWidth) {
+                if (selector.scrollLeft < selector.children[0].clientWidth * (selector.children.length - 1)) {
                     selector.scroll({ left: selector.scrollLeft + selector.children[0].clientWidth, behavior: self.behavior })
                 } else {
                     selector.scroll({ left: 0, behavior: self.behavior })

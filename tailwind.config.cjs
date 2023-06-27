@@ -1,20 +1,13 @@
 module.exports = {
   darkMode: 'class',
   content: [
-    './src/**/*.{js,html,twig}'
+    './src/**/*.{js,html,twig}',
+    './node_modules/winduum/src/libraries/ripple.js'
   ],
-  corePlugins: {
-    ringWidth: false,
-    ringColor: false,
-    ringOpacity: false,
-    ringOffsetWidth: false,
-    ringOffsetColor: false,
-    gradientColorStops: false,
-    backgroundImage: false
-  },
   plugins: [
     require('winduum')({
       colors: ['invert'],
+      animations: ['ripple'],
       screens: {
         m: { max: '47.9375em' },
         t: '48em',
