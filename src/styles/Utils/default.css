@@ -1,37 +1,19 @@
-::selection {
-  color: rgb(var(--color-light));
-  background-color: rgb(var(--color-accent));
-}
-
-:where(*) {
-  outline: none;
-  -webkit-tap-highlight-color: rgb(255 255 255 / 0);
-}
-
-:where([hidden]) {
-  display: none;
-}
+@import "winduum/src/base/default.css";
 
 :where(svg) {
-  stroke-width: 1.5;
   display: block;
 }
 
-:where(hr) {
-  display: block;
-  border-top: 2px solid rgb(var(--color-current) / var(--tw-border-opacity, 0.15));
-  border-radius: var(--rounded);
+:where(use) {
+  stroke-width: 2;
 }
 
-:where(ol, ul) {
+:where(img) {
+  display: block;
+  font-size: 0;
+}
+
+:where(ol:not([type]), ul, menu) {
   padding: 0;
   margin: 0;
-}
-
-.grecaptcha-badge {
-  display: none;
-}
-
-.google-map * {
-  border-style: none;
 }

@@ -1,34 +1,10 @@
 [class*="lib-hint-"] {
-  --lib-hint-bg: var(--color-dark);
-  --lib-hint-fg: var(--color-light);
+  --color-accent: var(--color-body);
+  --color-current: var(--color-body-fg);
+  --lib-hint-font-size: 0.75rem;
+  --lib-hint-font-weight: var(--font-normal);
 
   position: relative;
-  text-align: center;
-
-  @nest .dark & {
-    --lib-hint-bg: var(--color-background-200);
-  }
-
-  &.lib-hint-light {
-    --lib-hint-bg: var(--color-light);
-    --lib-hint-fg: var(--color-dark);
-  }
-
-  &.lib-hint-error {
-    --lib-hint-bg: var(--color-error);
-  }
-
-  &.lib-hint-warning {
-    --lib-hint-bg: var(--color-warning);
-  }
-
-  &.lib-hint-info {
-    --lib-hint-bg: var(--color-info);
-  }
-
-  &.lib-hint-success {
-    --lib-hint-bg: var(--color-success);
-  }
 
   &::before, &::after {
     position: absolute;
@@ -36,16 +12,10 @@
     opacity: 0;
     z-index: var(--z-10);
     pointer-events: none;
-    transition: var(--transition) ease;
+    transition: var(--transition-duration) ease;
     transition-delay: 0ms;
     will-change: transform;
     backface-visibility: hidden;
-
-    @nest :is(:hover, :focus-visible)& {
-      visibility: visible;
-      opacity: 1;
-      transition-delay: 100ms;
-    }
   }
 
   &::before {
@@ -54,61 +24,22 @@
     background-color: transparent;
     border: 0.375rem solid transparent;
     z-index: var(--z-20);
-
-    @nest [class*="lib-hint-top"]& {
-      border-top-color: rgb(var(--lib-hint-bg));
-    }
-
-    @nest [class*="lib-hint-bottom"]& {
-      border-bottom-color: rgb(var(--lib-hint-bg));
-    }
-
-    @nest [class*="lib-hint-left"]& {
-      border-left-color: rgb(var(--lib-hint-bg));
-    }
-
-    @nest [class*="lib-hint-right"]& {
-      border-right-color: rgb(var(--lib-hint-bg));
-    }
   }
 
   &::after {
-    border-radius: var(--radius);
-    background-color: rgb(var(--lib-hint-bg));
-    color: rgb(var(--lib-hint-fg));
+    border-radius: var(--rounded);
+    background-color: var(--color-accent);
+    color: var(--color-current);
     padding: 0.75rem;
-    font-size: 0.875rem;
+    font-size: var(--lib-hint-font-size);
     font-family: inherit;
     line-height: 0.875rem;
     white-space: nowrap;
-    box-shadow: 0.25rem 0.25rem 0.5rem rgb(var(--lib-hint-bg) / 0.15);
-    font-weight: var(--font-normal);
-
-    @nest .lib-hint-light& {
-      box-shadow: 0.25rem 0.25rem 0.5rem rgb(var(--color-dark) / 0.15);
-    }
-
-    @nest [aria-label]& {
-      content: attr(aria-label);
-    }
-
-    @nest :is(.lib-hint-sm, .lib-hint-md, .lib-hint-lg)& {
-      white-space: normal;
-      line-height: 1.5;
-      word-wrap: break-word;
-    }
-
-    @nest .lib-hint-sm& {
-      width: 5rem;
-    }
-
-    @nest .lib-hint-md& {
-      width: 10rem;
-    }
-
-    @nest .lib-hint-lg& {
-      width: 15rem;
-    }
+    box-shadow:
+      0 0.15rem 1.5rem 0 rgb(var(--color-main-rgb) / 0.1),
+      0 0 1rem 0 rgb(var(--color-main-rgb) / 0.1);
+    font-weight: var(--lib-hint-font-weight);
+    text-align: center;
   }
 
   &.lib-hint-top {
@@ -120,16 +51,18 @@
     &::before {
       left: calc(50% - 0.375rem);
       margin-bottom: -0.6875rem;
-
-      @nest :is(:hover, :focus-visible)& {
-        transform: translateY(-0.5rem);
-      }
     }
 
     &::after {
       transform: translateX(-50%);
+    }
 
-      @nest :is(:hover, :focus-visible)& {
+    &:is(:hover, :focus-visible) {
+      &::before {
+        transform: translateY(-0.5rem);
+      }
+
+      &::after {
         transform: translateX(-50%) translateY(-0.5rem);
       }
     }
@@ -144,16 +77,18 @@
     &::before {
       left: calc(50% - 0.375rem);
       margin-top: -0.6875rem;
-
-      @nest :hover& {
-        transform: translateY(0.5rem);
-      }
     }
 
     &::after {
       transform: translateX(-50%);
+    }
 
-      @nest :hover& {
+    &:is(:hover, :focus-visible) {
+      &::before {
+        transform: translateY(0.5rem);
+      }
+
+      &::after {
         transform: translateX(-50%) translateY(0.5rem);
       }
     }
@@ -163,10 +98,6 @@
     &::before, &::after {
       left: 100%;
       bottom: 50%;
-
-      @nest :hover& {
-        transform: translateX(0.5rem);
-      }
     }
 
     &::before {
@@ -177,16 +108,18 @@
     &::after {
       margin-bottom: -1.1875rem;
     }
+
+    &:is(:hover, :focus-visible) {
+      &::before, &::after {
+        transform: translateX(0.5rem);
+      }
+    }
   }
 
   &.lib-hint-left {
     &::before, &::after {
       right: 100%;
       bottom: 50%;
-
-      @nest :hover& {
-        transform: translateX(-0.5rem);
-      }
     }
 
     &::before {
@@ -196,6 +129,58 @@
 
     &::after {
       margin-bottom: -1.1875rem;
+    }
+
+    &:is(:hover, :focus-visible) {
+      &::before, &::after {
+        transform: translateX(-0.5rem);
+      }
+    }
+  }
+
+  &[aria-label]::after {
+    content: attr(aria-label);
+  }
+
+  &[class*="lib-hint-top"]::before {
+    border-top-color: var(--color-accent);
+  }
+
+  &[class*="lib-hint-bottom"]::before {
+    border-bottom-color: var(--color-accent);
+  }
+
+  &[class*="lib-hint-left"]::before {
+    border-left-color: var(--color-accent);
+  }
+
+  &[class*="lib-hint-right"]::before {
+    border-right-color: var(--color-accent);
+  }
+
+  &:is(.lib-hint-sm, .lib-hint-md, .lib-hint-lg)::after {
+    white-space: normal;
+    line-height: 1.5;
+    word-wrap: break-word;
+  }
+
+  &.lib-hint-sm::after {
+    width: 5rem;
+  }
+
+  &.lib-hint-md::after {
+    width: 10rem;
+  }
+
+  &.lib-hint-lg::after {
+    width: 15rem;
+  }
+
+  &:is(:hover, :focus-visible) {
+    &::before, &::after {
+      visibility: visible;
+      opacity: 1;
+      transition-delay: 100ms;
     }
   }
 }

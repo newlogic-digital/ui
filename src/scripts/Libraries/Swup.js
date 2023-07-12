@@ -1,30 +1,50 @@
 import Swup from 'swup'
-import { getController, loadStimulus } from './Stimulus.js'
 import { closeDialog } from 'winduum/src/libraries/dialog.js'
-import LibAnchor from './Anchor.js'
+import { hideTippy } from '../Libraries/Tippy.js'
+import { getController, loadStimulus } from './Stimulus.js'
 import LibCookieConsent from './CookieConsent.js'
-import replaceTag from '../Utils/Functions/replaceTag.js'
+import { replaceTag, replaceScript } from '../Utils/Functions/+.js'
+
+document.addEventListener('click', ({ target }) => {
+    const noSwup = target.closest('[data-no-swup]')
+
+    if (!noSwup) {
+        return
+    }
+
+    if (noSwup.classList.contains('ui-btn')) {
+        noSwup.classList.add('loading')
+    } else {
+        noSwup.classList.add('cursor-wait')
+    }
+})
 
 const LibSwup = new Swup({
     containers: ['#l-main', '#l-header'].filter(element => document.querySelector(element)),
     linkSelector: `:is(a[href^="${window.location.origin}"], a[href^="/"]):not([data-no-swup], [data-naja], [target="_blank"])`
 })
 
-LibSwup.on('clickLink', async({ target }) => {
+LibSwup.on('clickLink', async ({ target }) => {
     document.body.classList.remove('overflow-hidden')
 
-    if (document.querySelector('.lib-drawer[data-state~="active"]') !== null) {
+    const LibDrawerSelector = document.querySelector('.lib-drawer.is-active')
+    const LibDialogSelector = document.querySelector('.lib-dialog')
+
+    hideTippy()
+
+    if (LibDrawerSelector) {
         /** @type {LibDrawer} */
-        const LibDrawer = getController(document.body, 'lib-drawer')
+        const LibDrawer = getController(LibDrawerSelector, 'lib-drawer')
+
         LibDrawer.hide()
     }
 
-    if (document.querySelector('.lib-dialog') !== null) {
-        await closeDialog()
+    if (LibDialogSelector) {
+        await closeDialog(LibDialogSelector)
     }
 
     if (window.location.href === target.closest('a').href) {
-        document.documentElement.scroll({ top: 0 })
+        document.documentElement.scroll({ top: 0, behavior: 'smooth' })
     }
 })
 
@@ -44,11 +64,15 @@ LibSwup.on('contentReplaced', () => {
 
     replaceTag(content)
 
-    LibAnchor.init()
+    if (window.location.hash) {
+        document.documentElement.scroll({ top: document.querySelector(`${window.location.hash}`)?.offsetTop, behavior: 'smooth' })
+    }
+
     LibCookieConsent.init()
 
     LibSwup.options.containers.forEach(selector => {
         loadStimulus(document.querySelector(selector))
+        replaceScript(document.querySelector(selector))
     })
 
     window.dataLayer && window.dataLayer.push({
@@ -60,5 +84,9 @@ LibSwup.on('contentReplaced', () => {
 
     window.fbq && window.fbq('track', 'PageView')
 })
+
+LibSwup.options.cache && setInterval(() => {
+    LibSwup.cache.empty()
+}, 90 * 1000)
 
 export default LibSwup

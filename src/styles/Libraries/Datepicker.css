@@ -1,245 +1,31 @@
-.datepicker-dropdown {
-  --color-current: var(--color-default);
+@import "air-datepicker/air-datepicker.css";
 
-  z-index: 9999;
-  transition: var(--transition-opacity), var(--transition-transform);
-  will-change: transform;
-  color: rgb(var(--color-current));
+.air-datepicker {
+  --adp-btn-color: var(--color-primary);
+  --adp-day-name-color: var(--color-primary);
+  --adp-color-current-date: var(--color-default);
+  --adp-cell-background-color-selected: var(--color-primary);
+  --adp-cell-background-color-selected-hover: var(--color-primary);
+  --adp-cell-border-radius: var(--rounded);
+  --adp-border-radius: var(--rounded);
 
-  @nest html:not(.no-pointer-events) & {
-    display: block;
-  }
+  font-family: inherit;
 
-  & .datepicker-picker {
-    box-shadow: 0 0.15em 1.5em 0 rgb(var(--color-dark) / 0.05), 0 0 1em 0 rgb(var(--color-dark) / 0.05);
-    overflow: hidden;
-    display: block;
-    border-radius: var(--radius);
-  }
+  .air-datepicker-cell {
+    &.-current- {
+      --sq: 0.25rem;
+      --bottom: 0.25rem;
 
-  &.datepicker-orient-top {
-    padding-bottom: 0;
-    margin-top: -0.75rem;
-
-    &::after, &::before {
-      top: 100%;
-      left: 1.3125rem;
-      border: solid transparent;
-      content: "";
-      height: 0;
-      width: 0;
-      position: absolute;
-      pointer-events: none;
-      margin-top: -1px;
-    }
-
-    &::after {
-      border-top-color: #fff;
-      border-width: 0.375rem;
-      margin-left: -0.375rem;
-    }
-
-    &::before {
-      border-top-color: #eee;
-      border-width: 0.4375rem;
-      margin-left: -0.4375rem;
-    }
-
-    &:not(.active) {
-      transform: translateY(0.75rem);
-    }
-  }
-
-  &.datepicker-orient-bottom {
-    padding-top: 0;
-    margin-top: 0.75rem;
-
-    &::after, &::before {
-      bottom: 100%;
-      left: 1.3125rem;
-      border: solid transparent;
-      content: "";
-      height: 0;
-      width: 0;
-      position: absolute;
-      pointer-events: none;
-    }
-
-    &::after {
-      border-bottom-color: #fff;
-      border-width: 0.375rem;
-      margin-left: -0.375rem;
-    }
-
-    &::before {
-      border-bottom-color: #eee;
-      border-width: 0.4375rem;
-      margin-left: -0.4375rem;
-    }
-
-    &:not(.active) {
-      transform: translateY(-0.75rem);
-    }
-  }
-
-  &:not(.active) {
-    opacity: 0;
-    pointer-events: none;
-  }
-}
-
-.datepicker-view .dow {
-  font-size: 0.75rem;
-  font-weight: var(--font-semibold);
-  text-transform: uppercase;
-  color: rgb(var(--color-accent));
-}
-
-.datepicker-cell {
-  font-size: 0.875rem;
-}
-
-.datepicker-cell.selected, .datepicker-cell.selected:hover {
-  background-color: rgb(var(--color-accent));
-}
-
-.datepicker-controls {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.125rem;
-
-  & .ok-btn {
-    background: rgb(var(--color-accent));
-    color: rgb(var(--color-light)) !important;
-    border-color: rgb(var(--color-accent)) !important;
-    font-weight: var(--font-medium);
-  }
-
-  & :is(.button, input) {
-    margin-left: 0.125rem !important;
-    margin-right: 0.125rem !important;
-  }
-
-  & input {
-    color: rgb(var(--color-current));
-    font-size: 0.8125rem;
-    min-width: 4.5rem;
-    max-width: 4.5rem;
-    font-weight: var(--font-normal);
-    background-color: transparent;
-    border: 1px solid #dbdbdb;
-    height: 1.6875rem;
-    border-radius: var(--radius) !important;
-    padding: 0 0.1875rem !important;
-
-    @nest .chrome & {
-      padding: 0 0.125rem 0 0.25rem !important;
-      min-width: 3.75rem;
-    }
-
-    @nest .safari & {
-      min-width: 3rem;
-    }
-
-    &::-webkit-calendar-picker-indicator {
-      padding: 0;
-      margin: 0;
-    }
-  }
-}
-
-.datepicker-input.in-edit:active, .datepicker-input.in-edit:focus {
-  box-shadow: inherit;
-}
-
-.button {
-  &.prev-btn, &.next-btn {
-    font-size: 0;
-    height: 2.25rem;
-
-    &::before {
-      width: 1em;
-      height: 1em;
-      font-size: 1rem;
-      display: block;
-      background-color: currentColor;
-      content: "";
-    }
-  }
-
-  &.prev-btn {
-    &::before {
-      mask: var(--icon-chevron-left);
-    }
-  }
-
-  &.next-btn {
-    &::before {
-      mask: var(--icon-chevron-right);
-    }
-  }
-
-  &.view-switch {
-    font-size: 0.875rem;
-    font-weight: var(--font-medium) !important;
-  }
-}
-
-.datepicker-footer {
-  background-color: rgb(var(--color-background));
-  box-shadow: none;
-  border-top: 1px solid rgb(var(--color-current) / 0.05);
-
-  & .datepicker-controls {
-    & + .datepicker-time {
-      padding-top: 0.25rem;
-    }
-  }
-
-  & .button {
-    border-radius: var(--radius) !important;
-  }
-}
-
-.dark {
-  & :is(.datepicker-picker, .datepicker-time) {
-    background-color: rgb(var(--color-background-100));
-  }
-
-  & .datepicker-dropdown.datepicker-orient-bottom {
-    &::before, &::after {
-      border-bottom-color: rgb(var(--color-background-100));
-    }
-  }
-
-  & .datepicker-dropdown.datepicker-orient-top {
-    &::before, &::after {
-      border-top-color: rgb(var(--color-background-100));
-    }
-  }
-
-  & .datepicker-controls .button {
-    border-color: transparent;
-    background-color: rgb(var(--color-background-100));
-    color: rgb(var(--color-current)) !important;
-  }
-
-  & .datepicker-header .datepicker-controls {
-    align-items: center;
-
-    & .button {
-      &:hover {
-        background-color: rgb(var(--color-light) / 0.1);
+      &::before {
+        content: "";
+        width: var(--sq);
+        height: var(--sq);
+        border-radius: var(--rounded-full);
+        background-color: var(--color-success);
+        position: absolute;
+        bottom: var(--bottom);
+        left: calc(50% - var(--sq) / 2);
       }
     }
-  }
-
-  & .datepicker-cell:not(.disabled):hover {
-    background-color: rgb(var(--color-light) / 0.1);
-  }
-
-  & .datepicker-cell.focused:not(.selected) {
-    background-color: rgb(var(--color-light) / 0.2);
   }
 }

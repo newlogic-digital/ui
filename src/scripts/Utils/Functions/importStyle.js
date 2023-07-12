@@ -1,4 +1,4 @@
-export default function importStyle(url) {
+export default function importStyle (url) {
     return new Promise((resolve, reject) => {
         if (document.querySelector(`link[href="${url}"]`) === null) {
             const style = document.createElement('link')

@@ -1,0 +1,34 @@
+@import "Utils/theme/main.css";
+@import "Utils/config.css";
+@import "Ui/Text.css";
+
+.ui-text {
+  & .row {
+    display: flex;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+
+    & > .col {
+      box-sizing: border-box;
+      padding-top: 0;
+      padding-bottom: 0;
+      border: 1px dotted rgb(0 0 0 / 0.5);
+
+      &.col-6 {
+        width: calc(6 / 12 * 100%);
+      }
+
+      &.col-8 {
+        width: calc(8 / 12 * 100%);
+      }
+
+      &.col-4 {
+        width: calc(4 / 12 * 100%);
+      }
+
+      &.col-3 {
+        width: calc(3 / 12 * 100%);
+      }
+    }
+  }
+}

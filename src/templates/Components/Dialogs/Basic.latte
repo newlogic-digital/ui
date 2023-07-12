@@ -1,0 +1,22 @@
+<form class="c-dialog c-dialog-basic sm scrollable">
+    <div class="c_dialog_head flex justify-between">
+        <h2 class="ui-heading">Info</h2>
+        <button class="ui-btn square ghosted accent-main" type="button" data-action="click->lib-dialog#close">
+            <svg>
+                <use href="#icon-x"></use>
+            </svg>
+        </button>
+    </div>
+    <div class="c_dialog_body py-4">
+        <div class="ui-text">
+            {foreach range(1, 44) as $i}
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget efficitur metus. In bibendum nisi et dui sagittis efficitur.</p>
+            {/foreach}
+        </div>
+    </div>
+    <div class="c_dialog_foot">
+        <div class="col max-md:w-full">
+            <button class="ui-btn" type="button" data-action="click->lib-dialog#close">Continue</button>
+        </div>
+    </div>
+</form>

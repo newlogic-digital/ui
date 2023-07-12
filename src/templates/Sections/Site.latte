@@ -1,0 +1,53 @@
+<div class="py-section">
+    <form class="container flex flex-col gap-4" data-controller="lib-form">
+        <div class="grid grid-cols-3 gap-md">
+            <div class="c-field">
+                <div class="ui-control floating">
+                    <input type="text" placeholder="Vyplňte pole">
+                    <label>Jméno</label>
+                </div>
+            </div>
+            <div class="c-field">
+                <div class="ui-control floating">
+                    <input type="text" required>
+                    <label>Příjmení</label>
+                </div>
+            </div>
+            <div class="c-field">
+                <div class="ui-control floating">
+                    <input type="email" required>
+                    <label>Email</label>
+                </div>
+            </div>
+            <div class="c-field">
+                <div class="ui-control floating">
+                    <select data-placeholder required>
+                        <option selected="" value="">- select an option -</option>
+                        <option value="1">Option 1</option>
+                        <option value="2" disabled>Option 2</option>
+                        <option value="3">Option 3</option>
+                    </select>
+                    <label>Select</label>
+                </div>
+            </div>
+            <div class="c-field">
+                <div class="ui-control floating">
+                    <select required>
+                        <option selected="" value="">- select an option -</option>
+                        <option value="1">Option 1</option>
+                        <option value="2" disabled>Option 2</option>
+                        <option value="3">Option 3</option>
+                    </select>
+                    <label>Select</label>
+                </div>
+            </div>
+        </div>
+        <div class="c-field">
+            <label class="ui-check">
+                <input type="checkbox" required>
+                <span>Souhlasím s odesláním osobních údajů na super místa</span>
+            </label>
+        </div>
+        <button class="ui-btn">Odeslat</button>
+    </form>
+</div>

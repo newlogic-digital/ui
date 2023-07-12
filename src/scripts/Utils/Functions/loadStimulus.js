@@ -1,13 +1,13 @@
 import naja from 'naja'
 
-const dynamicControllers = ['ui-input', 'ui-select', 'ui-text', 'ui-checkbox', 'ui-radio', 'c-cookieconsent', 'c-form-cookieconsent']
-const dynamicActions = [['.ui-btn', 'click->lib#ripple']]
+const dynamicControllers = ['ui-control', 'ui-text', 'ui-check']
+const dynamicActions = [['.ui-btn', 'click->lib-ripple#show'], ['.ui-check', 'change->ui-check#validity']]
 
 if (!('scrollBehavior' in document.documentElement.style)) {
     dynamicActions.push(['a[href^="#"]', 'click->lib#anchor'])
 }
 
-function loadControllers(parent, selectors) {
+function loadControllers (parent, selectors) {
     if (parent !== null) {
         selectors.forEach(selector => {
             [...parent.getElementsByClassName(selector)].forEach(element => {
@@ -19,7 +19,7 @@ function loadControllers(parent, selectors) {
     }
 }
 
-function loadActions(parent, selectors) {
+function loadActions (parent, selectors) {
     if (parent !== null) {
         selectors.forEach(selector => {
             parent.querySelectorAll(selector[0]).forEach(element => {
@@ -35,7 +35,7 @@ function loadActions(parent, selectors) {
     }
 }
 
-export default function loadStimulus(selector, najaLoad = true) {
+export default function loadStimulus (selector, najaLoad = true) {
     loadControllers(selector, dynamicControllers)
     loadActions(selector, dynamicActions)
     najaLoad && naja.uiHandler.bindUI(selector)

@@ -1,4 +1,4 @@
-!CSS.supports('selector(:has(*))') && (async() => (await import('css-has-pseudo/browser')).default(document))()
+!CSS.supports('selector(:has(*))') && (async () => (await import('css-has-pseudo/browser')).default(document))()
 
 if ('serviceWorker' in navigator && location.protocol === 'https:') {
     window.addEventListener('load', () => {

@@ -1,0 +1,5 @@
+{capture $dialog}
+    {include '../../templates/Components/Dialogs/Basic.latte'}
+{/capture}
+
+{$dialog|json('content')|noescape}

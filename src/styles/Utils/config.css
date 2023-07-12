@@ -1,0 +1,5 @@
+@import "winduum/src/base/config.css";
+
+:root {
+  --spacing-section: 3rem;
+}

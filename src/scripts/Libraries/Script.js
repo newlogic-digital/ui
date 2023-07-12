@@ -1,7 +1,7 @@
 import { LibStimulus, Controller } from './Stimulus.js'
 
 LibStimulus.register('lib-script', class extends Controller {
-    connect() {
+    connect () {
         const element = this.element
         const script = document.createElement('script')
 
@@ -12,7 +12,6 @@ LibStimulus.register('lib-script', class extends Controller {
         })
 
         script.innerHTML = element.innerHTML
-
         element.parentElement.appendChild(script)
         element.remove()
     }

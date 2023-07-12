@@ -1,10 +1,8 @@
 @import "breakpoints.css";
+@import "config.css";
 @import "default.css";
 @import "icons.css";
 @import "keyframes.css";
-@import "normalize.css";
 @import "print.css";
-@import "tailwind/+.css";
+@import "tailwind.css";
 @import "theme/+.css";
-@import "vars.css";
-@import "vendor.css";

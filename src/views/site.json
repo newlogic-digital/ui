@@ -1,0 +1,11 @@
+{
+  "headerNormal": true,
+  "page": {
+    "title": "Playground",
+    "body": [
+      {
+        "src": "Sections/Site.latte"
+      }
+    ]
+  }
+}

@@ -1,5 +1,8 @@
 .c-dropdown {
-  padding: 1.25rem 1.5rem;
-  overflow: hidden;
-  max-width: 22rem;
+  padding: 0.875rem 0.75rem;
+  max-width: 16rem;
+  display: flex;
+  background-color: rgb(var(--color-body-rgb));
+  border-radius: var(--rounded);
+  box-shadow: 0 3px 14px -0.5px rgb(0 8 16 / 0.08);
 }

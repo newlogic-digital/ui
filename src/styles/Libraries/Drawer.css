@@ -22,7 +22,7 @@
     scrollbar-width: none;
     -ms-overflow-style: none;
 
-    &:--state-active {
+    &.is-active {
       scroll-snap-type: x proximity;
     }
 
@@ -39,26 +39,6 @@
     background-color: rgb(var(--color-dark) / 0.6);
     content: "";
     opacity: var(--lib-drawer-opacity);
-
-    @nest .is-opacity& {
-      transition: var(--transition-opacity);
-    }
-
-    @nest :not(:--state-active)& {
-      opacity: 0;
-    }
-  }
-
-  &:not(:--state-active) {
-    pointer-events: none;
-
-    & > div {
-      transform: translateX(-28.125rem);
-
-      @media (--media-m) {
-        transform: translateX(-22.5rem);
-      }
-    }
   }
 
   &::after {
@@ -66,5 +46,19 @@
     display: block;
     min-width: 100vw;
     scroll-snap-align: end;
+  }
+
+  &.is-opacity {
+    &::before {
+      transition: var(--transition-opacity);
+    }
+  }
+
+  &:not(.is-active) {
+    pointer-events: none;
+
+    &::before {
+      opacity: 0;
+    }
   }
 }

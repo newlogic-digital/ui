@@ -1,4 +1,3 @@
-import './Checkbox.js'
-import './Input.js'
-import './Select.js'
+import './Check.js'
+import './Control.js'
 import './Text.js'

@@ -1,0 +1,42 @@
+@import "winduum/src/base/tailwind/utilities.css";
+@import "winduum/src/base/tailwind/gutters.css";
+
+@layer utilities {
+  .slider {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    user-select: none;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none;
+    display: flex;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    & > * {
+      flex: 0 0 auto;
+      scroll-snap-align: start;
+    }
+  }
+
+  .slider-edge-x {
+    margin-left: calc(var(--container-padding-calc) * -1);
+    margin-right: calc(var(--container-padding-calc) * -1);
+    padding-left: var(--container-padding-calc);
+    scroll-padding-left: var(--container-padding-calc);
+    scroll-padding-right: var(--container-padding-calc);
+
+    & > * {
+      flex: 0 0 auto;
+      scroll-snap-align: start;
+
+      &:last-child {
+        margin-right: var(--container-padding-calc);
+      }
+    }
+  }
+}

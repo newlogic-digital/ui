@@ -3,7 +3,6 @@
   "rules": {
     "indent": ["error", 4],
     "no-new": "off",
-    "space-before-function-paren": ["error", "never"],
     "import/extensions": ["error", "ignorePackages"]
   },
   "env": {

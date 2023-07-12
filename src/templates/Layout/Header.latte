@@ -1,0 +1,40 @@
+<header id="l-header" class="{if $headerNormal}is-l-header-normal{/if}" data-controller="l-header">
+    <div class="l_header_body flex flex-row">
+        <div class="col">
+            <a href="/" class="l_header_logo" title="Newlogic UI">
+                <svg class="w-auto h-6" fill="currentColor" viewBox="0 0 194 32">
+                    <path d="M121.152 0a2.813 2.813 0 0 0-2.805 2.626l.001.009a2.81 2.81 0 0 0 5.608-.009v-.008A2.81 2.81 0 0 0 121.151 0ZM70.216.103V25.34h4.628V.103Zm95.062 1.751v13.152c0 6.505 4.044 10.9 10.162 10.9 5.978 0 9.952-4.395 9.952-10.9V1.854h-3.763v13.152c0 4.395-2.496 7.279-6.189 7.279-3.868 0-6.4-2.884-6.4-7.28V1.856Zm24.077 0v23.56h3.763V1.855ZM0 1.854V25.34h4.767V10.268L17.773 25.34h3.996V1.854H17v15.494L3.996 1.854H0Zm105.945 5.448a8.498 8.498 0 0 0-.503 16.98h-.024.025a8.382 8.382 0 0 0 5.503-1.606v.28l-.001-.016a4.528 4.528 0 0 1-4.873 4.889h.011a5.358 5.358 0 0 1-4.778-2.524l-3.746 2.84c1.508 2.418 4.45 3.855 8.517 3.855 5.645 0 9.36-2.979 9.36-8.342l-.04-15.809h-4.45v1.08a8.46 8.46 0 0 0-5-1.627zm-73.61.011a9.28 9.28 0 1 0 .335 18.553l-.023-.001c.162.009.325.013.489.013 3.609 0 6.701-2.21 8.018-5.41l-4.138-.876-.011.023a4.467 4.467 0 0 1-4.335 2.29h-.007a4.532 4.532 0 0 1-4.373-4.066h13.32l-.002-1.576v-.017a9.28 9.28 0 0 0-9.273-8.933zm102.628.01-.137.002h.006-.117a9.273 9.273 0 1 0 .112 18.543h-.015c.097.003.195.005.292.005 4.059 0 7.473-2.757 8.486-6.562l-4.282-1.086-.006.03a4.447 4.447 0 0 1-4.475 3.371h-.01a5.033 5.033 0 0 1 .21-10.064 4.18 4.18 0 0 1 4.113 3.475l4.451-1.262-.016-.064a8.998 8.998 0 0 0-8.611-6.387zm-48.503.099c-.116 0-.231.002-.33.006h-.053a9.487 9.487 0 1 0 9.482 9.184v-.09a9.1 9.1 0 0 0-9.1-9.1zm-44.884.422 5.818 17.53h4.172l3.47-10.304 3.435 10.305h4.17l5.823-17.527h-4.59l-3.47 10.797-3.577-10.797h-3.613L49.64 18.61 46.167 7.844h-4.591zm77.265.01V25.34l4.628.005V7.853Zm-12.871 3.352c.099 0 .197.004.282.009l.121-.002a4.577 4.577 0 0 1 4.577 4.559l-.001-.002v.001a4.577 4.577 0 0 1-4.697 4.558 4.566 4.566 0 1 1-.282-9.123zm-73.075.147c1.95 0 3.578 1.37 3.982 3.226h-8.443l.008-.03a4.39 4.39 0 0 1 4.299-3.193h-.008l.162-.003zm53.184.48a5.002 5.002 0 0 1 4.994 4.779h-.001a5.046 5.046 0 0 1-4.94 5.219h-.053a5 5 0 0 1 0-9.999zm64.47 6.02-.066.001a3.945 3.945 0 1 0 3.945 3.965l.001-.085a3.88 3.88 0 0 0-3.88-3.88zm-.056.908a3.088 3.088 0 0 1 3.087 3.058v.039c0 1.7-1.378 3.078-3.078 3.078h-.02a3.087 3.087 0 0 1 .01-6.175zm-1.475 1.147v3.589h.907v-1.104h.494l.907 1.104h1.071l-1.006-1.204h-.001l.009-.003c.477-.17.82-.626.82-1.162v-.016c0-.71-.552-1.204-1.46-1.204h-1.74zm.92.77h.802c.374 0 .612.159.612.453 0 .295-.237.493-.612.493h-.803z"/>
+                </svg>
+            </a>
+        </div>
+        <div class="col ml-auto md:hidden">
+            <button class="l_header_menu" data-action="click->lib-drawer#show" aria-label="Menu">
+                <svg class="icon"><use href="#icon-menu"></use></svg>
+            </button>
+        </div>
+        <div class="col max-md:hidden">
+            <nav class="l_header_nav flex">
+                <div class="col" n:foreach="$layout->nav as $page">
+                    <a href="{$page->url}" title="{$page->name}" class="ui-link after:content-none">{$page->name}</a>
+                </div>
+            </nav>
+        </div>
+        <div class="col max-md:hidden flex-row items-center gap-x-6 ml-auto">
+            <div class="col">
+                <button class="ui-btn square ghosted accent-light" data-action="click->lib#darkMode">
+                    <svg class="icon-moon dark:hidden">
+                        <use href="#icon-moon"></use>
+                    </svg>
+                    <svg class="icon-sun hidden dark:block">
+                        <use href="#icon-sun"></use>
+                    </svg>
+                </button>
+            </div>
+            <div class="col">
+                <div class="l_header_cta">
+                    <a href="https://www.newlogic.cz" title="newlogic.cz" class="ui-btn accent-light" target="_blank" rel="noopener"><span>Newlogic.cz</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

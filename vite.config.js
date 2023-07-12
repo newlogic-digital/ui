@@ -5,15 +5,9 @@ import postcssCustomSelectors from 'postcss-custom-selectors'
 export default {
     plugins: [
         core({
-            format: ['twig'],
-            twig: {
+            latte: {
                 globals: {
-                    template: './src/templates/Layout/Main.twig'
-                }
-            },
-            tailwindcss: {
-                nesting: {
-                    noIsPseudoSelector: true
+                    template: './src/templates/Layout/Main.latte'
                 }
             }
         })
