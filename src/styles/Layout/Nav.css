@@ -1,4 +1,4 @@
-:where(#l-nav) {
+#l-nav {
   --l-nav-width: calc(100vw - 2.5rem);
 
   @media (--media-md) {
@@ -11,7 +11,7 @@
 
   > .l_nav {
     width: var(--l-nav-width);
-    background-color: rgb(var(--color-background));
+    background-color: var(--color-body);
     height: 100vh;
     flex-shrink: 0;
     padding: 2rem;

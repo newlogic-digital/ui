@@ -1,1 +1,8 @@
 @import "winduum/src/ui/text.css";
+
+.ui-text {
+  .c_text_table {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+}

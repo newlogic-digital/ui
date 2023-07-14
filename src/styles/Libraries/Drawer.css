@@ -22,7 +22,7 @@
     scrollbar-width: none;
     -ms-overflow-style: none;
 
-    &.is-active {
+    &.active {
       scroll-snap-type: x proximity;
     }
 
@@ -36,7 +36,7 @@
     position: fixed;
     inset: 0;
     z-index: -1;
-    background-color: rgb(var(--color-dark) / 0.6);
+    background-color: rgb(var(--color-dark-rgb) / 50%);
     content: "";
     opacity: var(--lib-drawer-opacity);
   }
@@ -54,7 +54,7 @@
     }
   }
 
-  &:not(.is-active) {
+  &:not(.active) {
     pointer-events: none;
 
     &::before {

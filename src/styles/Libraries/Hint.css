@@ -36,8 +36,8 @@
     line-height: 0.875rem;
     white-space: nowrap;
     box-shadow:
-      0 0.15rem 1.5rem 0 rgb(var(--color-main-rgb) / 0.1),
-      0 0 1rem 0 rgb(var(--color-main-rgb) / 0.1);
+      0 0.15rem 1.5rem 0 rgb(var(--color-main-rgb) / 10%),
+      0 0 1rem 0 rgb(var(--color-main-rgb) / 10%);
     font-weight: var(--lib-hint-font-weight);
     text-align: center;
   }

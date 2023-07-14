@@ -6,8 +6,10 @@
         </div>
     </div>
 </div>
-<script n:syntax="off" data-controller="lib-script">
-    window.LibStimulus.default.register('s-ui-icons', class extends window.LibStimulus.Controller {
+<noscript n:syntax="off" data-controller="lib-script">
+    window.LibStimulus.default.controllers.filter((controller) => {
+        return controller.context.module.definition.identifier === 's-ui-icons'
+    }).length === 0 && window.LibStimulus.default.register('s-ui-icons', class extends window.LibStimulus.Controller {
         connect() {
             document.querySelectorAll('body > svg').forEach((svg) => {
                 [...svg.children].forEach(symbol => {
@@ -25,4 +27,4 @@
             await navigator.clipboard.writeText(`<svg class="w-6 h-6"><use href="${currentTarget.querySelector('use').getAttribute('href')}"></use></svg>`)
         }
     })
-</script>
+</noscript>

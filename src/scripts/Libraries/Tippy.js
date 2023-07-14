@@ -4,6 +4,7 @@ import cdn from '../Utils/cdn.js'
 export default class LibTippy {
     async init (element, options, template) {
         const tippy = (await import('tippy.js')).default
+        const { roundArrow } = await import('tippy.js')
 
         await importStyle(cdn.tippy)
 
@@ -14,6 +15,10 @@ export default class LibTippy {
         if (this.type.includes('dropdown')) {
             this.options.placement = 'bottom-end'
             this.options.maxWidth = 'none'
+        }
+
+        if (this.type.includes('arrow')) {
+            options.arrow = roundArrow
         }
 
         if (!template.startsWith('/')) {

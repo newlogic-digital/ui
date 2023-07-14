@@ -1,53 +1,141 @@
+{import TEMPLATES_DIR . 'Ui/+.latte'}
+
 <div class="py-section">
     <form class="container flex flex-col gap-4" data-controller="lib-form">
         <div class="grid grid-cols-3 gap-md">
             <div class="c-field">
-                <div class="ui-control floating">
-                    <input type="text" placeholder="Vyplňte pole">
-                    <label>Jméno</label>
-                </div>
+                {embed UiControl}
+                    <label n:block=label>Jméno</label>
+                    <input n:block=body placeholder="Vyplňte pole">
+                {/embed}
             </div>
             <div class="c-field">
-                <div class="ui-control floating">
-                    <input type="text" required>
-                    <label>Příjmení</label>
-                </div>
+                {embed UiControl}
+                    <input n:block=body required>
+                    <label n:block=label>Příjmení</label>
+                {/embed}
             </div>
             <div class="c-field">
-                <div class="ui-control floating">
-                    <input type="email" required>
-                    <label>Email</label>
-                </div>
+                {embed UiControl}
+                    <input n:block=body type="email" required>
+                    <label n:block=label>Email</label>
+                {/embed}
             </div>
             <div class="c-field">
-                <div class="ui-control floating">
-                    <select data-placeholder required>
+                {embed UiControlSelect}
+                    <label n:block=label>Select</label>
+                    <select n:block=body required data-placeholder>
                         <option selected="" value="">- select an option -</option>
                         <option value="1">Option 1</option>
                         <option value="2" disabled>Option 2</option>
                         <option value="3">Option 3</option>
                     </select>
-                    <label>Select</label>
-                </div>
+                {/embed}
             </div>
             <div class="c-field">
-                <div class="ui-control floating">
+                {embed UiControlSelect}
+                    <select required n:block=body>
+                        <option selected="" value="">- select an option -</option>
+                        <option value="1">Option 1</option>
+                        <option value="2" disabled>Option 2</option>
+                        <option value="3">Option 3</option>
+                    </select>
+                    <label n:block=label>Select</label>
+                {/embed}
+            </div>
+            <div class="c-field">
+                {embed UiControl}
+                    <input n:block=body type="number" min="0" step="1" max="99" required>
+                    <div n:block=iconr class="icon-r">
+                        <div aria-label="Kč"></div>
+                    </div>
+                {/embed}
+            </div>
+            <div class="c-field">
+                {embed UiControl}
+                    <input n:block=body type="file" required>
+                {/embed}
+            </div>
+            <div class="c-field">
+                {var $disabledDays = '["2023-07-13"]'}
+                {embed UiControlDate, attributes: 'data-ui-control-date-disabled-value="' . ($disabledDays|escapeHtml) . '"'}
+                    <input n:block=body type="date" placeholder="dd.mm.rrrr" min="2023-07-12" required>
+                {/embed}
+            </div>
+            <div class="c-field">
+                {embed UiControlDate}
+                    <input n:block=body type="datetime-local" placeholder="dd.mm.rrrr" min="2023-07-12T10:00" step="12000" required>
+                {/embed}
+            </div>
+            <div class="c-field">
+                {embed UiControlDate}
+                    <input n:block=body type="datetime-local" required>
+                    <label n:block=label>Date</label>
+                {/embed}
+            </div>
+            <div class="c-field">
+                {embed UiControlTime}
+                    <input n:block=body type="time" required>
+                {/embed}
+            </div>
+            <div class="c-field">
+                <div class="ui-control" tabindex="-1" data-controller="ui-control-select">
                     <select required>
                         <option selected="" value="">- select an option -</option>
                         <option value="1">Option 1</option>
                         <option value="2" disabled>Option 2</option>
                         <option value="3">Option 3</option>
                     </select>
-                    <label>Select</label>
+                    <label>Floating</label>
+                    <div aria-hidden="true">
+                        <div data-option="" tabindex="0">- select option -</div>
+                        <div data-option="1" tabindex="0">Option 1</div>
+                        <div data-option="2" data-disabled>Option 2</div>
+                        <div data-option="3" tabindex="0">Option 3</div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="c-field">
-            <label class="ui-check">
-                <input type="checkbox" required>
-                <span>Souhlasím s odesláním osobních údajů na super místa</span>
-            </label>
+            {embed UiCheck}
+                <input n:block=body type="checkbox" required>
+                <label n:block=label>Souhlasím s odesláním osobních údajů na super místa</label>
+            {/embed}
+        </div>
+        <div class="c-field">
+            <div class="ui-switch">
+                <input type="checkbox" id="switch" required>
+                <label for="switch">Text</label>
+            </div>
         </div>
         <button class="ui-btn">Odeslat</button>
     </form>
+    <div class="container my-8" data-controller="lib-slider">
+        <div class="slider gap-4" data-lib-slider-target="slider">
+            <div class="ui-image w-[30rem] h-auto rounded-md overflow-hidden aspect-[8/5]">
+                <img src="{placeholder(1200, 750)}" alt="" loading="lazy" />
+            </div>
+            <div class="ui-image w-[30rem] h-auto rounded-md overflow-hidden aspect-[8/5]">
+                <img src="{placeholder(1200, 750)}" alt="" loading="lazy" />
+            </div>
+            <div class="ui-image w-[30rem] h-auto rounded-md overflow-hidden aspect-[8/5]">
+                <img src="{placeholder(1200, 750)}" alt="" loading="lazy" />
+            </div>
+            <div class="ui-image w-[30rem] h-auto rounded-md overflow-hidden aspect-[8/5]">
+                <img src="{placeholder(1200, 750)}" alt="" loading="lazy" />
+            </div>
+        </div>
+        <div class="dots flex gap-1.5 h-4 py-4" data-lib-slider-target="dots"></div>
+        <progress class="ui-progress sm" value="50" max="100" data-lib-slider-target="progress"></progress>
+        <div class="flex">
+            <div data-lib-slider-target="counterMin"></div>/
+            <div data-lib-slider-target="counterMax"></div>
+        </div>
+        <button class="ui-btn square" data-action="click->lib-slider#prev">Prev</button>
+        <button class="ui-btn square" data-action="click->lib-slider#next">Next</button>
+    </div>
+
+    <div class="container">
+        <div class="w-full h-32 skeleton rounded my-4"></div>
+    </div>
 </div>

@@ -1,10 +1,10 @@
 <section class="s-ui" data-controller="s-ui">
     <div class="wrp_s_body row">
         {include '@nav.html'}
-        <div class="col col-right t:col-9 m:col-12">
-            <div class="container">
+        <div class="col col-right t:col-9 m:col-12 py-12">
+            <div class="container max-4xl:!max-w-full">
                 {include '@intro.html'}
-                <div class="row g-8 flex-wrap" style="padding-top: 4rem">
+                <div class="row gap-8 flex-wrap" style="padding-top: 4rem">
                     <div class="col-12">
                         <h1 class="ui-title lg uppercase text-primary mb-4">Components</h1>
                         <div class="ui-text">
@@ -188,7 +188,7 @@
                             <p>See <a href="https://winduum.dev/docs/ui/control.html" target="_blank">ui/control</a> for more info.</p>
                         </div>
                         {capture $code}
-                            <div class="ui-control floating">
+                            <div class="ui-control">
                                 <select>
                                     <option selected value="">- select option -</option>
                                     <option value="1">Option 1</option>
@@ -199,7 +199,7 @@
                             </div>
                         {/capture}{$code|code('html', true)|noescape}
                         {capture $code}
-                            <div class="ui-control floating">
+                            <div class="ui-control">
                                 <select>
                                     <option selected value="">- select option -</option>
                                     <option value="1">Option 1</option>
@@ -223,19 +223,19 @@
                             </div>
                         {/capture}{$code|code('html', true)|noescape}
                         {capture $code}
-                            <div class="ui-control" tabindex="-1">
+                            <div class="ui-control" tabindex="-1" data-controller="ui-control-select">
                                 <select>
-                                    <option selected value="">- select option -</option>
+                                    <option selected="" value="">- select an option -</option>
                                     <option value="1">Option 1</option>
-                                    <option value="2">Option 2</option>
+                                    <option value="2" disabled>Option 2</option>
                                     <option value="3">Option 3</option>
                                 </select>
                                 <label>Javascript select</label>
                                 <div aria-hidden="true">
-                                    <div data-option="">- select option -</div>
-                                    <div data-option="1">Option 1</div>
-                                    <div data-option="2">Option 2</div>
-                                    <div data-option="3">Option 3</div>
+                                    <div data-option="" tabindex="0">- select option -</div>
+                                    <div data-option="1" tabindex="0">Option 1</div>
+                                    <div data-option="2" data-disabled>Option 2</div>
+                                    <div data-option="3" tabindex="0">Option 3</div>
                                 </div>
                             </div>
                         {/capture}{$code|code('html', true)|noescape}
@@ -250,8 +250,8 @@
                             </div>
                         {/capture}{$code|code('html', true)|noescape}
                         {capture $code}
-                            <div class="ui-control floating">
-                                <input type="email" required placeholder=" ">
+                            <div class="ui-control">
+                                <input type="email" required placeholder="Please fill..">
                                 <label>E-mail</label>
                             </div>
                         {/capture}{$code|code('html', true)|noescape}
@@ -261,20 +261,20 @@
                             </div>
                         {/capture}{$code|code('html', true)|noescape}
                         {capture $code}
-                            <div class="ui-control floating">
+                            <div class="ui-control">
                                 <input type="text" required placeholder="Please fill">
                                 <label>Amount</label>
                                 <span class="icon-r" aria-label="Kč"></span>
                             </div>
                         {/capture}{$code|code('html', true)|noescape}
                         {capture $code}
-                            <div class="ui-control floating">
+                            <div class="ui-control">
                                 <input type="tel" disabled>
                                 <label>Disabled state</label>
                             </div>
                         {/capture}{$code|code('html', true)|noescape}
                         {capture $code}
-                            <div class="ui-control floating">
+                            <div class="ui-control">
                                 <textarea></textarea>
                                 <label>Message</label>
                             </div>
@@ -290,19 +290,24 @@
                             </div>
                         {/capture}{$code|code('html', true)|noescape}
                         {capture $code}
-                            <div class="ui-control floating">
+                            <div class="ui-control">
                                 <input type="number" min="1" max="99" step="1">
                                 <label>Select number</label>
                             </div>
                         {/capture}{$code|code('html', true)|noescape}
                         {capture $code}
-                            <div class="ui-control floating">
+                            <div class="ui-control">
                                 <input type="datetime-local">
                                 <label>Select date and time</label>
+                                <div class="icon-r">
+                                    <svg data-action="click->ui-control#showDatepicker">
+                                        <use href="#icon-calendar"></use>
+                                    </svg>
+                                </div>
                             </div>
                         {/capture}{$code|code('html', true)|noescape}
                         {capture $code}
-                            <div class="ui-control floating">
+                            <div class="ui-control">
                                 <input type="date">
                                 <label>Select date</label>
                             </div>
@@ -310,12 +315,19 @@
                         {capture $code}
                             <div class="ui-control w-28">
                                 <input type="number" placeholder="" value="1" min="1" max="99" step="1">
-                                <span class="icon-r" aria-label="ks"></span>
+                                <div class="icon-r">
+                                    <div aria-label="Kč"></div>
+                                </div>
                             </div>
                         {/capture}{$code|code('html', true)|noescape}
                         {capture $code}
                             <div class="ui-control">
                                 <input type="time" placeholder="Select time">
+                                <div class="icon-r">
+                                    <svg data-action="click->ui-control#showPicker">
+                                        <use href="#icon-clock"></use>
+                                    </svg>
+                                </div>
                             </div>
                         {/capture}{$code|code('html', true)|noescape}
                     </div>
@@ -696,7 +708,7 @@
                         <hr/>
                     </div>
                 </div>
-                <div class="row g-8 flex-wrap" style="padding-top: 3rem;">
+                <div class="row gap-8 flex-wrap" style="padding-top: 3rem;">
                     <div class="col-12" style="padding-top: 0">
                         <h1 class="ui-title lg uppercase text-primary">Libraries</h1>
                     </div>
@@ -709,7 +721,7 @@
                             <form class="c-form" data-controller="lib-form">
                                 <div class="c_form_body grid gap-3">
                                     <div class="c-field">
-                                        <div class="ui-control floating">
+                                        <div class="ui-control">
                                             <select required>
                                                 <option selected disabled value="">- select option -</option>
                                                 <option>Czechia</option>
@@ -719,7 +731,7 @@
                                         </div>
                                     </div>
                                     <div class="c-field">
-                                        <div class="ui-control floating">
+                                        <div class="ui-control">
                                             <textarea required></textarea>
                                             <label>Message</label>
                                         </div>
@@ -811,23 +823,18 @@
                         <h1 class="ui-heading mb-4">Slider</h1>
                         <div class="ui-text mb-6">
                             <p>Lightweight scroll based slider, which uses CSS <code>scroll-snap</code></p>
-                            <p>It is intended for a simple solution, for advanced sliders it is recommended to use sliders such as <a href="https://github.com/metafizzy/flickity" target="_blank">Flickity</a></p>
-                            <p></p>
-                            <p>Dot navigation can be generated with <code>data-lib-ns-nav</code> attribute or manually with each <code>data-lib-ns-nav-item</code> attribute</p>
-                            <p>Arrow control can be controlled with <code>data-lib-ns-prev</code> and <code>data-lib-ns-next</code> attributes</p>
-                            <p></p>
-                            <p>Slider area is defined with <code>data-lib-ns</code> attribute, you can set autoplay by entering a number in the attribute</p>
-                            <p>Other advanced params are <code>&lt;progress data-lib-ns-progress&gt;&lt;/progress&gt;</code>, <code>data-lib-ns-counter="min"</code> and <code>data-lib-ns-counter="max"</code></p>
-                            <p></p>
-                            <p>The sliders is initialized with <code>data-controller="lib-ns"</code> on parent element</p>
+                            <h5>Files:</h5>
+                            <ul class="mt-0">
+                                <li><code>src/scripts/Libraries/Slider.js</code></li>
+                            </ul>
                         </div>
                         <div>
                             {capture $code}
-                                <div>
-                                    <div class="row gx-3" data-lib-ns>
+                                <div data-controller="lib-slider">
+                                    <div class="flex slider gap-3" data-lib-slider-target="slider">
                                         {foreach range(1, 6) as $i}
                                             <div class="col col-4">
-                                                <div class="ui-image rounded-md overflow-hidden aspect-[8/5]">
+                                                <div class="ui-image rounded overflow-hidden aspect-[8/5]">
                                                     <img src="{placeholder(1200, 750)}" alt="" loading="lazy" />
                                                 </div>
                                             </div>
@@ -835,7 +842,7 @@
                                     </div>
                                     <div class="row-x justify-between items-center mt-4">
                                         <div class="col col-left">
-                                            <button class="ui-btn square" aria-label="Previous" data-lib-ns-prev>
+                                            <button class="ui-btn square" aria-label="Previous" data-action="click->lib-slider#prev">
                                                 <svg class="icon">
                                                     <use href="#icon-chevron-left"></use>
                                                 </svg>
@@ -844,16 +851,16 @@
                                         <div class="col col-counter m:hidden">
                                             <div class="row py-3 gx-6 items-center justify-center">
                                                 <div class="col">
-                                                    <div class="flex" data-lib-ns-nav></div>
+                                                    <div class="flex gap-1.5 items-center" data-lib-slider-target="dots"></div>
                                                 </div>
                                                 <div class="col">
-                                                    <div><span data-lib-ns-counter="min">1</span>/<span data-lib-ns-counter="max"></span></div>
+                                                    <div><span data-lib-slider-target="counterMin">1</span>/<span data-lib-slider-target="counterMax"></span></div>
                                                 </div>
                                             </div>
-                                            <progress class="ui-progress sm" value="50" max="100" data-lib-ns-progress></progress>
+                                            <progress class="ui-progress sm" value="50" max="100" data-lib-slider-target="progress"></progress>
                                         </div>
                                         <div class="col col-right">
-                                            <button class="ui-btn square" aria-label="Next" data-lib-ns-next>
+                                            <button class="ui-btn square" aria-label="Next" data-action="click->lib-slider#next">
                                                 <svg class="icon">
                                                     <use href="#icon-chevron-right"></use>
                                                 </svg>
@@ -868,9 +875,13 @@
                     <div class="col-12" id="swup">
                         <h1 class="ui-heading mb-4">Swup</h1>
                         <div class="ui-text">
-                            <p>Full-page animations are used between pages using a library <a href="https://github.com/gmrchk/swup" target="_blank" rel="noopener">Swup</a></p>
+                            <p>Full-page animations between pages are done using <a href="https://github.com/gmrchk/swup" target="_blank" rel="noopener">Swup</a></p>
                             <p>Everything is automatic and if the JS is correctly defined via Stimulus, all JS is reinitialized after site navigation</p>
                             <p>If you do not want to use Swup on a specific link, you can use the attribute <code>data-no-swup</code></p>
+                            <h5>Files:</h5>
+                            <ul class="mt-0">
+                                <li><code>src/scripts/Libraries/Swup.js</code></li>
+                            </ul>
                         </div>
                         <hr/>
                     </div>
@@ -887,6 +898,10 @@
                             <h5>Methods</h5>
                             <ul>
                                 <li>initialization: <code>new LibTippy(element, attributes)</code></li>
+                            </ul>
+                            <h5>Files:</h5>
+                            <ul class="mt-0">
+                                <li><code>src/scripts/Libraries/Tippy.js</code></li>
                             </ul>
                             <p>Loading tippy template from external file:</p>
                         </div>

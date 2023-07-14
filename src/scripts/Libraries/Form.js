@@ -18,7 +18,7 @@ LibStimulus.register('lib-form', class extends Controller {
             this.element.querySelector('[type="submit"]').classList.add('loading')
         }
 
-        this.element.querySelectorAll('.ui-control, .ui-check').forEach(element => {
+        this.element.querySelectorAll('.ui-control, .ui-check, .ui-switch').forEach(element => {
             console.log(element)
             inputValidity(element, { message: true })
         })

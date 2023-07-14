@@ -1,3 +1,18 @@
+v3.5.0
+* feat(bc): added winduum 0.3.x and its components
+* feat(bc): added new winduum color pallet with `color-mix`, colors now have also `-rgb` variants for better compatibility
+* feat(bc): removed `Libraries/Anchor.js`
+* feat(bc): removed `Libraries/Tabs.js`
+* feat(bc): `Libraries/NativeSlider.js` changed to `Libraries/Slider.js` and uses Stimulus API now
+* feat(bc): removed submitFetch method in `Libraries/ReCaptcha.js`, param naja added instead
+* feat(bc): `ui-select` and `ui-input` were replaced with `ui-control`
+* feat(bc): `ui-radio` and `ui-checkbox` is now replaced with `ui-check`
+* feat(bc): `ui-input-group`,`ui-btn-group` and `ui-badge-group` is now replaced with `ui-group`
+* feat(bc): `Functions/checkValidity.js` renamed to `Functions/inputValidity.js`
+* feat: `vanilla-datepickerv replaced with `air-datepicker`
+* feat: added `replaceScript.js` function
+
+
 v3.4.2
 * feat: vituum v1 update
 * feat: newlogic core v2 update

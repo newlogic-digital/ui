@@ -3,16 +3,16 @@ import naja from 'naja'
 const dynamicControllers = ['ui-control', 'ui-text', 'ui-check']
 const dynamicActions = [['.ui-btn', 'click->lib-ripple#show'], ['.ui-check', 'change->ui-check#validity']]
 
-if (!('scrollBehavior' in document.documentElement.style)) {
-    dynamicActions.push(['a[href^="#"]', 'click->lib#anchor'])
-}
-
 function loadControllers (parent, selectors) {
     if (parent !== null) {
         selectors.forEach(selector => {
             [...parent.getElementsByClassName(selector)].forEach(element => {
-                if (element.getAttribute('data-controller') === null) {
+                const attribute = element.getAttribute('data-controller')
+
+                if (attribute === null) {
                     element.setAttribute('data-controller', selector)
+                } else {
+                    element.setAttribute('data-controller', `${attribute} ${selector}`)
                 }
             })
         })

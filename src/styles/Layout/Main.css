@@ -1,3 +1,8 @@
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--l-header-height);
+}
+
 body {
   background-color: var(--color-body);
   display: flex;
@@ -12,7 +17,7 @@ body {
 
   &.transition-fade {
     html.swup-enabled & {
-      transition: opacity 0.15s;
+      transition: opacity 0.1s;
       opacity: 1;
     }
 

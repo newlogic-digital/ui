@@ -1,0 +1,14 @@
+<div class="ui-control {ifset $classes}{$classes|noescape}{/ifset}"
+    {ifset $attributes}{$attributes|noescape}{/ifset}
+    n:define="UiControlDate"
+>
+    {block iconl}{/block}
+    {block body}{/block}
+    <div class="icon-r">
+        {block iconr}{/block}
+        <svg data-action="click->ui-control#showDatepicker">
+            <use href="#icon-calendar"></use>
+        </svg>
+    </div>
+    {block label}{/block}
+</div>

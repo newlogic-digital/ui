@@ -13,8 +13,6 @@
     "build": "vite build --mode development",
     "build-production": "vite build",
     "build-emails": "vite build --mode emails",
-    "emails": "vituum emails",
-    "cleanup": "vituum cleanup",
     "eslint": "eslint 'src/scripts/**/*.js'",
     "eslint-fix": "eslint 'src/scripts/**/*.js' --fix",
     "stylelint": "stylelint 'src/styles/**/*.css'",
@@ -23,7 +21,7 @@
   "dependencies": {
     "@simonwep/pickr": "^1.8.2",
     "@hotwired/stimulus": "^3.2.1",
-    "winduum": "^0.2.3-next.3",
+    "winduum": "^0.3.0",
     "swup": "^3.1.1",
     "naja": "^2.5.0",
     "tippy.js": "^6.3.7",
@@ -31,7 +29,7 @@
     "css-has-pseudo": "^6.0.0"
   },
   "devDependencies": {
-    "@newlogic-digital/core": "^2.0.0",
+    "@newlogic-digital/core": "^2.0.1",
     "@types/grecaptcha": "^3.0.4",
     "eslint-config-standard": "^17.1.0",
     "stylelint-config-standard": "^34.0.0",
@@ -41,6 +39,9 @@
   "files": [
     "src"
   ],
+  "exports": {
+    "./src/*": "./src/*"
+  },
   "engines": {
     "node": ">=16.0.0",
     "npm": ">=9.0.0"

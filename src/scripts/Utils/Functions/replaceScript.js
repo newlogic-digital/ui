@@ -1,4 +1,4 @@
 export default function replaceScript (selector) {
-    selector.querySelectorAll('script').forEach(script =>
+    selector.querySelectorAll('script:not([data-lib-cookieconsent])').forEach(script =>
         script.setAttribute('data-controller', 'lib-script'))
 }

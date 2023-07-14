@@ -3,13 +3,36 @@
 .air-datepicker {
   --adp-btn-color: var(--color-primary);
   --adp-day-name-color: var(--color-primary);
-  --adp-color-current-date: var(--color-default);
+  --adp-color-current-date: var(--color-main);
   --adp-cell-background-color-selected: var(--color-primary);
   --adp-cell-background-color-selected-hover: var(--color-primary);
   --adp-cell-border-radius: var(--rounded);
   --adp-border-radius: var(--rounded);
 
+  .dark & {
+    --adp-background-color: var(--color-body-tertiary);
+    --adp-background-color-hover: var(--color-body-secondary);
+    --adp-background-color-active: var(--color-body-secondary);
+    --adp-color: var(--color-main);
+    --adp-color-secondary: var(--color-main);
+    --adp-color-other-month: color-mix(in srgb, var(--color-main) 50%, var(--color-dark));
+    --adp-border-color: var(--color-body-secondary);
+    --adp-border-color-inner: var(--color-body-secondary);
+    --adp-border-color-inline: var(--color-body-secondary);
+  }
+
   font-family: inherit;
+
+  & input[type="range"] {
+    border: 0;
+    outline: 0;
+  }
+
+  .air-datepicker--pointer {
+    &::after {
+      background: var(--adp-background-color);
+    }
+  }
 
   .air-datepicker-cell {
     &.-current- {

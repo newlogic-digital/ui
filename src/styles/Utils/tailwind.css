@@ -10,8 +10,11 @@
     scrollbar-width: none !important;
     -ms-overflow-style: none;
     display: flex;
-    scroll-behavior: smooth;
-    scroll-snap-type: x mandatory;
+
+    &:not(.is-fade, .is-grabbing) {
+      scroll-behavior: smooth;
+      scroll-snap-type: x mandatory;
+    }
 
     &::-webkit-scrollbar {
       display: none;
@@ -20,6 +23,16 @@
     & > * {
       flex: 0 0 auto;
       scroll-snap-align: start;
+    }
+
+    &.is-grabbing {
+      &, & * {
+        cursor: grabbing;
+      }
+
+      & a {
+        pointer-events: none;
+      }
     }
   }
 
@@ -30,13 +43,8 @@
     scroll-padding-left: var(--container-padding-calc);
     scroll-padding-right: var(--container-padding-calc);
 
-    & > * {
-      flex: 0 0 auto;
-      scroll-snap-align: start;
-
-      &:last-child {
-        margin-right: var(--container-padding-calc);
-      }
+    & > *:last-child {
+      margin-right: var(--container-padding-calc);
     }
   }
 }

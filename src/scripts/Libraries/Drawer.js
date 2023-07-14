@@ -13,7 +13,7 @@ LibStimulus.register('lib-drawer', class LibDrawer extends Controller {
     show () {
         this.element.scrollLeft = 0
         this.element.style.setProperty('--lib-drawer-opacity', '1')
-        this.element.classList.add('is-opacity', 'is-active')
+        this.element.classList.add('is-opacity', 'active')
         this.element.setAttribute('aria-hidden', 'false')
         this.element.removeAttribute('inert')
         document.documentElement.classList.add('overflow-hidden')
@@ -22,7 +22,7 @@ LibStimulus.register('lib-drawer', class LibDrawer extends Controller {
     hide () {
         this.element.setAttribute('inert', '')
         this.element.setAttribute('aria-hidden', 'true')
-        this.element.classList.remove('is-active')
+        this.element.classList.remove('active')
         this.element.classList.add('is-opacity')
         this.element.style.setProperty('--lib-drawer-opacity', '0')
         document.documentElement.classList.remove('overflow-hidden')
@@ -35,7 +35,7 @@ LibStimulus.register('lib-drawer', class LibDrawer extends Controller {
         }
 
         if (target.scrollLeft === this.element.children[0].clientWidth) {
-            this.element.classList.remove('is-active')
+            this.element.classList.remove('active')
             document.documentElement.classList.remove('overflow-hidden')
         }
     }

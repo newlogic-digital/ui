@@ -1,6 +1,6 @@
 import Swup from 'swup'
 import { closeDialog } from 'winduum/src/libraries/dialog.js'
-import { hideTippy } from '../Libraries/Tippy.js'
+import { hideTippy } from './Tippy.js'
 import { getController, loadStimulus } from './Stimulus.js'
 import LibCookieConsent from './CookieConsent.js'
 import { replaceTag, replaceScript } from '../Utils/Functions/+.js'
@@ -27,7 +27,7 @@ const LibSwup = new Swup({
 LibSwup.on('clickLink', async ({ target }) => {
     document.body.classList.remove('overflow-hidden')
 
-    const LibDrawerSelector = document.querySelector('.lib-drawer.is-active')
+    const LibDrawerSelector = document.querySelector('.lib-drawer.active')
     const LibDialogSelector = document.querySelector('.lib-dialog')
 
     hideTippy()

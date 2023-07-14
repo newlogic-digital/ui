@@ -9,6 +9,10 @@ export default function inputValidity (element, options = {}) {
     const selectors = element.querySelectorAll('input, textarea, select')
 
     selectors.forEach(selector => {
+        if (selector.closest('.air-datepicker')) {
+            return
+        }
+
         const validationMessage = selector.dataset.validationMessage ?? selector.validationMessage
         const validityElement = element?.closest('.c-field')?.querySelector('.ui-info.validity')
 
@@ -37,7 +41,7 @@ export default function inputValidity (element, options = {}) {
                         element.insertAdjacentHTML('beforeend', '<div class="icon-r"></div>')
                     }
 
-                    element.querySelector('.icon-r').insertAdjacentHTML('beforeend', `
+                    element.querySelector('.icon-r').insertAdjacentHTML('afterbegin', `
                         <div class="invalid lib-hint-top" tabindex="0" aria-label="${validationMessage}">
                             <svg class="text-error"><use href="#icon-exclamation-circle"></use></svg>
                         </div>

@@ -12,7 +12,7 @@
       box-sizing: border-box;
       padding-top: 0;
       padding-bottom: 0;
-      border: 1px dotted rgb(0 0 0 / 0.5);
+      border: 1px dotted rgb(0 0 0 / 50%);
 
       &.col-6 {
         width: calc(6 / 12 * 100%);
