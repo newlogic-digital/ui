@@ -1,20 +1,22 @@
 <div class="py-section" data-controller="s-ui-icons">
-    <div class="container gap-12 flex flex-wrap" id="icons">
-        <h1 class="ui-heading w-full">Icons</h1>
-        <div class="ui-text w-full -mt-8">
+    <div class="container gap-6 flex flex-wrap" id="icons">
+        <h1 class="ui-heading lg w-full">Icons</h1>
+        <div class="ui-text w-full -mt-2">
             <p>Basic icon set from <a href="https://heroicons.com/" target="_blank">heroicons.com</a>. You can add more in your <code>body</code> as <code>symbol</code></p>
         </div>
     </div>
 </div>
-<script n:syntax="off" data-controller="lib-script">
-    window.LibStimulus.default.register('s-ui-icons', class extends window.LibStimulus.Controller {
+<noscript n:syntax="off" data-controller="lib-script">
+    window.LibStimulus.default.controllers.filter((controller) => {
+        return controller.context.module.definition.identifier === 's-ui-icons'
+    }).length === 0 && window.LibStimulus.default.register('s-ui-icons', class extends window.LibStimulus.Controller {
         connect() {
             document.querySelectorAll('body > svg').forEach((svg) => {
                 [...svg.children].forEach(symbol => {
                     this.element.querySelector('#icons').insertAdjacentHTML('beforeend', `
-                    <button class="flex flex-col justify-center items-center gap-2" data-action="click->s-ui-icons#copy">
-                        <svg class="ui-icon" style="font-size: 2rem"><use href="#${symbol.id}"></use></svg>
-                        ${symbol.id}
+                    <button class="flex flex-col justify-center items-center gap-2 p-4 bg-main/5 hover:bg-main/10 transition-all rounded min-w-[8rem] cursor-pointer" data-action="click->s-ui-icons#copy">
+                        <svg class="sq-6"><use href="#${symbol.id}"></use></svg>
+                        <div class="ui-title font-normal">${symbol.id}</div>
                     </button>
                 `)
                 })
@@ -25,4 +27,4 @@
             await navigator.clipboard.writeText(`<svg class="w-6 h-6"><use href="${currentTarget.querySelector('use').getAttribute('href')}"></use></svg>`)
         }
     })
-</script>
+</noscript>

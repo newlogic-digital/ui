@@ -9,11 +9,11 @@ LibStimulus.register('lib-recaptcha', class extends Controller {
         action: String
     }
 
-    connect() {
+    connect () {
         importScript(cdn.recaptcha.replace('{apikey}', this.apiValue))
     }
 
-    async execute() {
+    async execute () {
         return new Promise(resolve => {
             window.grecaptcha.enterprise.ready(() => {
                 window.grecaptcha.enterprise.execute(this.apiValue, { action: this.actionValue ?? 'form' }).then(token => {
@@ -24,7 +24,7 @@ LibStimulus.register('lib-recaptcha', class extends Controller {
         })
     }
 
-    async submit() {
+    async submit ({ params }) {
         if (this.element.reportValidity() === false) {
             return false
         }
@@ -32,16 +32,11 @@ LibStimulus.register('lib-recaptcha', class extends Controller {
         arguments[0].preventDefault()
 
         await this.execute()
-        this.element.submit()
-    }
 
-    async submitFetch() {
-        if (this.element.reportValidity() === false) {
-            return false
+        if (!params.naja) {
+            this.element.submit()
+        } else {
+            await naja.makeRequest(this.element.method, this.element.action, new FormData(this.element), { history: 'replace' })
         }
-
-        arguments[0].preventDefault()
-        await this.execute()
-        await naja.makeRequest(this.element.method, this.element.action, new FormData(this.element), { history: 'replace' })
     }
 })

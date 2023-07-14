@@ -1,4 +1,4 @@
-export default function importScript(url) {
+export default function importScript (url) {
     return new Promise((resolve, reject) => {
         if (document.querySelector(`script[src="${url}"]`) === null) {
             const script = document.createElement('script')

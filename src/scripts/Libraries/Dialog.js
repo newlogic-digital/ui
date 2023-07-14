@@ -1,5 +1,6 @@
 import { Controller, LibStimulus, loadStimulus } from './Stimulus.js'
 import { insertDialog, closeDialog, fetchDialog, dialogSelector } from 'winduum/src/libraries/dialog.js'
+import { replaceScript } from '../Utils/Functions/+.js'
 
 LibStimulus.register('lib-dialog', class extends Controller {
     static values = {
@@ -7,7 +8,7 @@ LibStimulus.register('lib-dialog', class extends Controller {
         url: String
     }
 
-    async connect() {
+    async connect () {
         if (this.hasOpenValue) {
             if (this.hasUrlValue) {
                 await fetchDialog({
@@ -23,9 +24,8 @@ LibStimulus.register('lib-dialog', class extends Controller {
         }
     }
 
-    async show({ currentTarget, params }) {
-        currentTarget._addDataValue('state', 'loading')
-        currentTarget.classList.add('cursor-wait')
+    async show ({ currentTarget, params }) {
+        currentTarget.classList.add('loading', 'cursor-wait')
 
         await fetchDialog({
             url: params.url,
@@ -33,13 +33,15 @@ LibStimulus.register('lib-dialog', class extends Controller {
                 remove: params.remove ?? true,
                 append: params.append ?? false
             }
-        }).then(() => loadStimulus(dialogSelector('.lib-dialog')))
+        }).then(() => {
+            loadStimulus(dialogSelector('.lib-dialog'))
+            replaceScript(dialogSelector('.lib-dialog'))
+        })
 
-        currentTarget._removeDataValue('state', 'loading')
-        currentTarget.classList.remove('cursor-wait')
+        currentTarget.classList.remove('loading', 'cursor-wait')
     }
 
-    async hide({ params }) {
-        await closeDialog({ remove: params.remove ?? false })
+    async close ({ currentTarget, params }) {
+        await closeDialog(currentTarget.closest('dialog'), { remove: params.remove ?? false })
     }
 })

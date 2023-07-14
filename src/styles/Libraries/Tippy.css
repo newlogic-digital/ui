@@ -3,39 +3,15 @@
 }
 
 .tippy-box {
-  --lib-tippy-bg: var(--color-dark);
-
-  &[data-theme~="light-border"] {
-    background-color: rgb(var(--color-background));
-    background-clip: padding-box;
-    border: 1px solid rgb(0 8 16 / 0.05);
-    color: rgb(var(--color-default));
-    box-shadow: 0 3px 14px -0.5px rgb(0 8 16 / 0.08);
-    border-radius: var(--radius);
-    left: 0.1875rem;
-
-    @nest .dark & {
-      --color-background: var(--color-background-200);
-    }
-
-    & .tippy-svg-arrow {
-      fill: rgb(var(--color-background));
-
-      &::after {
-        opacity: 0.3;
-      }
-    }
-  }
+  background-color: transparent;
+  color: inherit;
+  box-shadow: none;
+  font-size: inherit;
+  line-height: inherit;
 
   &[data-placement="bottom-end"] {
     &[data-animation="scale"] {
       transform-origin: top right;
-    }
-
-    & .tippy-svg-arrow {
-      left: auto !important;
-      right: 0.5rem;
-      transform: none !important;
     }
   }
 
@@ -46,41 +22,51 @@
   }
 }
 
-[data-controller*="lib-tippy"]:not([data-lib-tippy^="dropdown"]) {
-  cursor: default;
+.tippy-svg-arrow {
+  fill: var(--color-body);
 }
 
 [data-tippy-root] {
   &.is-full {
-    @media (--media-m) {
+    @media not all and (--media-md) {
       inset: 0 !important;
       width: 100% !important;
       height: 100% !important;
       position: fixed !important;
       transform: none !important;
+      visibility: visible !important;
       pointer-events: none;
       max-width: 100%;
+      background-color: color-mix(in srgb, var(--color-dark) 50%, transparent);
+      transition: var(--transition-opacity);
+      opacity: 0;
+
+      &:has(.tippy-content[data-state="visible"]) {
+        opacity: 1;
+      }
 
       & .tippy-content {
-        padding-bottom: env(safe-area-inset-bottom);
         pointer-events: auto;
       }
 
       & .tippy-box {
-        max-width: 100% !important;
         position: absolute;
-        border: 0 !important;
         bottom: 0;
-        left: 0 !important;
+        left: 0;
         right: 0;
-        border-radius: 2rem 2rem 0 0 !important;
-        transition-timing-function: ease !important;
-        transition-duration: 300ms !important;
+        transition-timing-function: ease;
+        transition-duration: 300ms;
 
         &[data-state="hidden"] {
           transform: translateY(100%);
           opacity: 0;
         }
+      }
+
+      .c-dropdown {
+        max-width: 100%;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
       }
     }
   }

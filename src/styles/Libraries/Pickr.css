@@ -1,0 +1,13 @@
+.pcr-app {
+  border-radius: var(--rounded);
+  overflow: hidden;
+
+  .dark & {
+    background: var(--color-body-secondary);
+
+    .pcr-interaction input {
+      background: var(--color-body-tertiary);
+      box-shadow: none;
+    }
+  }
+}

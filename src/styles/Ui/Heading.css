@@ -1,22 +1,3 @@
-.ui-heading {
-  --ui-heading-size: 1.5rem;
-  --ui-heading-weight: var(--font-bold);
-  --ui-heading-size-line: 0.5rem;
-
-  display: block;
-  font-weight: var(--ui-heading-weight);
-  font-size: var(--ui-heading-size);
-  line-height: calc(var(--ui-heading-size) + var(--ui-heading-size-line));
-
-  &:--size-lg {
-    --ui-heading-size: 1.75rem;
-
-    @media (--media-t) {
-      --ui-heading-size: 2rem;
-    }
-  }
-
-  &:--size-sm {
-    --ui-heading-size: 1.25rem;
-  }
-}
+@import "winduum/src/ui/heading/default.css";
+@import "winduum/src/ui/heading/sm.css";
+@import "winduum/src/ui/heading/lg.css";

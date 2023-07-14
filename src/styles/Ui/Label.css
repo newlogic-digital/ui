@@ -1,14 +1,1 @@
-.ui-label {
-  --ui-label-size: 0.875rem;
-  --ui-label-size-line: 0.5rem;
-  --ui-label-spacing: 0.05rem;
-
-  display: block;
-  font-size: var(--ui-label-size);
-  line-height: calc(var(--ui-label-size-line) + var(--ui-label-size-line));
-  font-weight: var(--font-medium);
-
-  & ~ :is([class^="ui-"]:not(&), [class^="c-"]) {
-    margin-top: 0.5rem;
-  }
-}
+@import "winduum/src/ui/label.css";

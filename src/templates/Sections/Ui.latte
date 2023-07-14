@@ -1,0 +1,8 @@
+{if isset($control->intro)}
+    {include 'Ui/Intro.html'}
+{elseif  isset($control->icons)}
+    {include 'Ui/Icons.html'}
+{else}
+    {include 'Ui/Docs/@styles.html'}
+    {include 'Ui/Docs/Default.latte'}
+{/if}

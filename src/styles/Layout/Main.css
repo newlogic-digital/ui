@@ -1,95 +1,28 @@
 html {
-  font-family: sans-serif;
-  scroll-padding-top: var(--l-scroll-padding-top, 0);
   scroll-behavior: smooth;
-  accent-color: rgb(var(--color-accent));
-
-  @media (--media-sm) {
-    font-size: 95%;
-  }
-
-  @media not all and (--media-sm), (--media-md) {
-    font-size: 90%;
-  }
-
-  @media (--media-2xl) {
-    font-size: 100%;
-  }
-
-  @media (max-width: 64em) and (--media-lg) {
-    font-size: 80%;
-  }
-
-  &.no-touch, &.no-touch * {
-    scrollbar-color: rgb(var(--color-current) / 0.2) rgb(var(--color-background));
-    scrollbar-width: thin;
-
-    &::-webkit-scrollbar {
-      width: 8px;
-    }
-
-    &::-webkit-scrollbar-track {
-      background-color: rgb(var(--color-background));
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background-color: rgb(var(--color-current) / 0.2);
-    }
-  }
+  scroll-padding-top: var(--l-header-height);
 }
 
 body {
-  font-family: var(--font-primary);
-  color: rgb(var(--color-current));
-  font-weight: var(--font-normal);
-  line-height: 1.5;
-  position: relative;
-  background-color: rgb(var(--color-background));
-  cursor: default;
-
-  &::before {
-    position: fixed;
-    inset: 0;
-    content: "";
-    background-color: rgb(var(--color-dark) / 0.6);
-    z-index: var(--z-30);
-    transition: var(--transition-opacity);
-    opacity: 0;
-    pointer-events: none;
-
-    @nest .m\:is-body-overlay & {
-      @media (--media-m) {
-        pointer-events: auto;
-        opacity: 1;
-      }
-    }
-  }
-
-  & .l-default {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
+  background-color: var(--color-body);
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
 }
 
 #l-main {
-  background-color: rgb(var(--color-background));
   flex-grow: 1;
   display: flex;
   flex-direction: column;
 
   &.transition-fade {
-    @nest html.swup-enabled & {
-      /* clean-css ignore:start */
-      transition: opacity 0.15s;
+    html.swup-enabled & {
+      transition: opacity 0.1s;
       opacity: 1;
-      /* clean-css ignore:end */
     }
 
-    @nest html.is-animating & {
-      /* clean-css ignore:start */
+    html.is-animating & {
       opacity: 0;
-      /* clean-css ignore:end */
     }
   }
 }

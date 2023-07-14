@@ -2,13 +2,13 @@ import naja from 'naja'
 import { Controller, LibStimulus, loadStimulus } from './Stimulus.js'
 
 LibStimulus.register('lib-naja', class extends Controller {
-    async connect() {
+    async connect () {
         naja.uiHandler.addEventListener('interaction', ({ detail }) => {
             const element = detail.element
 
             detail.options.target = element
 
-            element.dispatchEvent(new CustomEvent('naja-interaction', { bubbles: true, cancelable: true }))
+            element.dispatchEvent(new CustomEvent('naja:interaction', { bubbles: true, cancelable: true }))
 
             if (element?.form && !element.form.reportValidity()) {
                 arguments[0].preventDefault()
@@ -16,7 +16,7 @@ LibStimulus.register('lib-naja', class extends Controller {
         })
 
         naja.snippetHandler.addEventListener('afterUpdate', ({ detail }) => {
-            detail?.options.target.dispatchEvent(new CustomEvent('naja-afterUpdate', { bubbles: true, cancelable: true }))
+            detail?.options.target.dispatchEvent(new CustomEvent('naja:afterUpdate', { bubbles: true, cancelable: true }))
 
             loadStimulus(document.body, false)
         })
@@ -27,9 +27,7 @@ LibStimulus.register('lib-naja', class extends Controller {
         })
     }
 
-    async fetch({ currentTarget }) {
-        arguments[0].preventDefault()
-
-        await naja.makeRequest('GET', currentTarget.dataset.actionUrl, null, { history: false })
+    async get ({ params }) {
+        await naja.makeRequest('GET', params.url, params.data ? JSON.parse(params.data) : null, { history: params.history ?? false })
     }
 })

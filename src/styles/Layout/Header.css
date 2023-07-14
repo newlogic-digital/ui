@@ -4,17 +4,19 @@
 }
 
 #l-header {
+  --color-current: rgb(var(--color-light-rgb));
+
   z-index: var(--z-20);
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   padding: 0 2rem;
-  background-color: rgb(var(--color-dark));
-  color: rgb(var(--color-light));
+  background-color: rgb(var(--color-dark-rgb));
+  color: var(--color-current);
 
-  @nest .dark & {
-    background-color: rgb(var(--color-background-100));
+  .dark & {
+    background-color: var(--color-body-secondary);
   }
 
   &.is-l-header-normal {
@@ -23,31 +25,25 @@
     }
   }
 
-  & .wrp_header_body {
+  .l_header_body {
     align-items: center;
     height: var(--l-header-height);
   }
 
-  & .elm_header_logo {
+  .l_header_logo {
     font-size: 1.5rem;
     margin-right: 3rem;
   }
 
-  & .elm_header_menu {
+  .l_header_menu {
     position: relative;
-    font-size: 1.75rem;
-
-    &::after {
-      position: absolute;
-      inset: -0.5rem;
-      content: "";
-    }
+    font-size: 1.5rem;
   }
 
-  & .elm_header_nav {
-    --gx: 2rem;
+  .l_header_nav {
+    gap: 2rem;
 
-    & .ui-link {
+    .ui-link {
       padding: 1.25rem 0;
     }
   }

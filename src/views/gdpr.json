@@ -4,7 +4,7 @@
     "title": "Newlogic UI",
     "body": [
       {
-        "src": "Sections/Gdpr.twig",
+        "src": "Sections/Gdpr.latte",
         "intro": true
       }
     ]
