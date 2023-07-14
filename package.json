@@ -1,6 +1,6 @@
 {
   "name": "@newlogic-digital/ui",
-  "version": "3.5.0-next.1",
+  "version": "3.5.0",
   "type": "module",
   "main": "vite.config.js",
   "author": "New Logic Studio s.r.o.",
