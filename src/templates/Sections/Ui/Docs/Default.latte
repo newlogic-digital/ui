@@ -207,7 +207,7 @@
                                     <option value="3">Option 3</option>
                                 </select>
                                 <label>With icon</label>
-                                <svg class="start">
+                                <svg class="me-auto">
                                     <use href="#icon-at-symbol"></use>
                                 </svg>
                             </div>
@@ -264,7 +264,7 @@
                             <div class="ui-control">
                                 <input type="text" required placeholder="Please fill">
                                 <label>Amount</label>
-                                <span class="end">Kč</span>
+                                <span class="ms-auto">Kč</span>
                             </div>
                         {/capture}{$code|code('html', true)|noescape}
                         {capture $code}
@@ -299,7 +299,7 @@
                             <div class="ui-control">
                                 <input type="datetime-local">
                                 <label>Select date and time</label>
-                                <div class="end">
+                                <div class="ms-auto">
                                     <svg data-action="click->ui-control#showDatepicker">
                                         <use href="#icon-calendar"></use>
                                     </svg>
@@ -315,7 +315,7 @@
                         {capture $code}
                             <div class="ui-control w-28">
                                 <input type="number" placeholder="" value="1" min="1" max="99" step="1">
-                                <div class="end">
+                                <div class="ms-auto">
                                     <div>Kč</div>
                                 </div>
                             </div>
@@ -323,7 +323,7 @@
                         {capture $code}
                             <div class="ui-control">
                                 <input type="time" placeholder="Select time">
-                                <div class="end">
+                                <div class="ms-auto">
                                     <svg data-action="click->ui-control#showPicker">
                                         <use href="#icon-clock"></use>
                                     </svg>
@@ -415,7 +415,7 @@
                             </div>
                         {/capture}{$code|code('html', true)|noescape}
                         {capture $code}
-                            <div class="ui-notice accent-error">
+                            <div class="ui-notice accent-error flex-col gap-4">
                                 Error notice
                                 <hr>
                                 <button class="ui-btn">
@@ -424,7 +424,7 @@
                             </div>
                         {/capture}{$code|code('html', true)|noescape}
                         {capture $code}
-                            <div class="ui-notice accent-success">
+                            <div class="ui-notice accent-success flex-col gap-4">
                                 <div class="ui-text">
                                     <h4>Nicely done!</h4>
                                     <p>Lorem ipsum dolor sit amet, <a href="#">consectetur adipiscing elit</a>. Nullam in elit iaculis, tristique nisi ut, mollis tellus. Nunc venenatis elit vel placerat commodo. Vestibulum odio neque, hendrerit nec venenatis at, tincidunt ut magna. Etiam hendrerit ultrices pharetra.</p>
@@ -436,7 +436,7 @@
                             </div>
                         {/capture}{$code|code('html', true)|noescape}
                         {capture $code}
-                            <div class="ui-notice accent-info">
+                            <div class="ui-notice accent-info flex-col gap-4">
                                 Info notice
                                 <hr>
                                 <button class="ui-btn">
@@ -445,7 +445,7 @@
                             </div>
                         {/capture}{$code|code('html', true)|noescape}
                         {capture $code}
-                            <div class="ui-notice accent-warning">
+                            <div class="ui-notice accent-warning flex-col gap-4">
                                 Warning notice
                                 <hr>
                                 <button class="ui-btn">
@@ -454,7 +454,7 @@
                             </div>
                         {/capture}{$code|code('html', true)|noescape}
                         {capture $code}
-                            <div class="ui-notice bg-error accent-light">
+                            <div class="ui-notice bg-error accent-light flex-col gap-4">
                                 <div class="ui-text">
                                     <h4>Badly done!</h4>
                                     <p>Lorem ipsum dolor sit amet, <a href="#">consectetur adipiscing elit</a>. Nullam in elit iaculis, tristique nisi ut, mollis tellus. Nunc venenatis elit vel placerat commodo. Vestibulum odio neque, hendrerit nec venenatis at, tincidunt ut magna. Etiam hendrerit ultrices pharetra.</p>

@@ -1,4 +1,5 @@
 @import "winduum/src/components/dialog/content.css";
+@import "winduum/src/components/dialog/content-props.css";
 
 .c-dialog-content {
   --c-dialog-py: 1.5rem;

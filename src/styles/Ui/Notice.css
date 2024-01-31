@@ -1,4 +1,4 @@
-@import "winduum/src/ui/notice.css";
+@import "winduum/src/ui/notice/index.css";
 
 .ui-notice {
   align-items: flex-start;

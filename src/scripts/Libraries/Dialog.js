@@ -1,5 +1,5 @@
 import { Controller, LibStimulus, loadStimulus } from './Stimulus.js'
-import { insertDialog, closeDialog, fetchDialog, dialogSelector } from 'winduum/src/components/dialog.js'
+import { insertDialog, closeDialog, fetchDialog, dialogSelector } from 'winduum/src/components/dialog/index.js'
 import { replaceScript } from '../Utils/Functions/+.js'
 
 LibStimulus.register('lib-dialog', class extends Controller {

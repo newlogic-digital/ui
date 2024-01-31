@@ -1,4 +1,4 @@
-import { closeDialog } from 'winduum/src/components/dialog.js'
+import { closeDialog } from 'winduum/src/components/dialog/index.js'
 import { hideTippy } from './Tippy.js'
 import { getController, loadStimulus } from './Stimulus.js'
 import LibCookieConsent from './CookieConsent.js'

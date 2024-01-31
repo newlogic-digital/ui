@@ -1,5 +1,7 @@
 @import "winduum/src/ui/control/default.css";
 @import "winduum/src/ui/control/default-props.css";
+@import "winduum/src/ui/control/interactive.css";
+@import "winduum/src/ui/control/interactive-props.css";
 @import "winduum/src/ui/control/file.css";
 @import "winduum/src/ui/control/select.css";
 @import "winduum/src/ui/control/select-props.css";
@@ -7,6 +9,7 @@
 @import "winduum/src/ui/control/icon-props.css";
 @import "winduum/src/ui/control/floating.css";
 @import "winduum/src/ui/control/floating-props.css";
+@import "winduum/src/ui/control/invalid.css";
 
 .ui-control {
   --ui-control-font-size: var(--text-sm);

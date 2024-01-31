@@ -1,6 +1,5 @@
 [class*="lib-hint-"] {
   --color-accent: var(--color-body);
-  --color-current: var(--color-body-fg);
   --lib-hint-font-size: 0.75rem;
   --lib-hint-font-weight: var(--font-normal);
 
@@ -29,7 +28,7 @@
   &::after {
     border-radius: var(--rounded);
     background-color: var(--color-accent);
-    color: var(--color-current);
+    color: currentcolor;
     padding: 0.75rem;
     font-size: var(--lib-hint-font-size);
     font-family: inherit;

@@ -16,7 +16,7 @@
     inset-inline: 0;
     top: 100%;
     margin-top: 0.5rem;
-    border: 1px solid color-mix(in srgb, var(--color-current) 10%, transparent);
+    border: 1px solid color-mix(in srgb, currentcolor 10%, transparent);
     transform: scaleY(0);
     opacity: 0;
     transition: var(--transition-opacity), var(--transition-transform);
@@ -29,7 +29,7 @@
     overflow-y: auto;
     box-shadow: 0 0.15em 1.5em 0 color-mix(in srgb, var(--color-dark) 5%, transparent), 0 0 1em 0 color-mix(in srgb, var(--color-dark) 5%, transparent);
     padding: 0.375rem;
-    color: var(--color-current);
+    color: currentcolor;
     cursor: default;
 
     & [data-option] {

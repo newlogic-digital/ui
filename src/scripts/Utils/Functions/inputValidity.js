@@ -37,11 +37,11 @@ export default function inputValidity (element, options = {}) {
                 }
 
                 if (element.closest(iconElements) && element.querySelector('[class^="icon"] [class*="valid"]') === null) {
-                    if (!element.querySelector('.end')) {
-                        element.insertAdjacentHTML('beforeend', '<div class="end"></div>')
+                    if (!element.querySelector('.ms-auto')) {
+                        element.insertAdjacentHTML('beforeend', '<div class="ms-auto"></div>')
                     }
 
-                    element.querySelector('.end').insertAdjacentHTML('afterbegin', `
+                    element.querySelector('.ms-auto').insertAdjacentHTML('afterbegin', `
                         <div class="invalid lib-hint-top" tabindex="0" aria-label="${validationMessage}">
                             <svg class="text-error"><use href="#icon-exclamation-circle"></use></svg>
                         </div>

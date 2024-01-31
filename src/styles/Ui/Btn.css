@@ -1,9 +1,11 @@
 @import "winduum/src/ui/btn/default.css";
 @import "winduum/src/ui/btn/default-props.css";
 @import "winduum/src/ui/btn/interactive.css";
+@import "winduum/src/ui/btn/interactive-props.css";
 @import "winduum/src/ui/btn/sm.css";
 @import "winduum/src/ui/btn/lg.css";
 @import "winduum/src/ui/btn/loading.css";
+@import "winduum/src/ui/btn/loading-props.css";
 @import "winduum/src/ui/btn/wide.css";
 @import "winduum/src/ui/btn/bordered.css";
 @import "winduum/src/ui/btn/ghosted.css";

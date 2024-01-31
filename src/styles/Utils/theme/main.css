@@ -8,7 +8,6 @@
   --color-main-rgb: 17 19 21;
   --color-dark-rgb: 17 19 21;
   --color-accent-rgb: var(--color-primary-rgb);
-  --color-current-rgb: var(--color-main-rgb);
   --color-body-secondary-foreground: var(--color-main);
 
   &.dark {

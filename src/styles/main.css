@@ -14,6 +14,5 @@
 @import "./Utils/tailwind.css";
 @import "tailwindcss/base.css";
 @import "tailwindcss/components.css";
-@import "winduum/src/main-rgb.css" supports(not (color: color-mix(in srgb, red 0%, red)));
 @import "tailwindcss/utilities.css";
 @import "tailwindcss/variants.css";

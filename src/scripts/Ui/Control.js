@@ -121,7 +121,7 @@ LibStimulus.register('ui-control', class extends Controller {
             input.setAttribute('maxlength', '9')
             input.setAttribute('pattern', '^#?([a-fA-F0-9]{8}|[a-fA-F0-9]{6}|[a-fA-F0-9]{3})$')
 
-            this.element.insertAdjacentHTML('afterbegin', '<div class="start"><div class="color"></div></div>')
+            this.element.insertAdjacentHTML('afterbegin', '<div class="me-auto"><div class="color"></div></div>')
 
             const pickr = new Pickr({
                 el: input,
@@ -156,11 +156,11 @@ LibStimulus.register('ui-control', class extends Controller {
 
     typeNumber () {
         if (this.element.querySelector('[type="number"]') && !this.hasNumberTarget) {
-            if (!this.element.querySelector('.end')) {
-                this.element.insertAdjacentHTML('beforeend', '<div class="end"></div>')
+            if (!this.element.querySelector('.ms-auto')) {
+                this.element.insertAdjacentHTML('beforeend', '<div class="ms-auto"></div>')
             }
 
-            this.element.querySelector('.end').insertAdjacentHTML('beforeend', `
+            this.element.querySelector('.ms-auto').insertAdjacentHTML('beforeend', `
                 <div class="flex flex-col gap-0 justify-center -space-y-1 -me-0.5" data-ui-control-target="number">
                     <button class="focus-visible:text-accent" type="button" data-action="click->ui-control#stepUp">
                         <svg class="size-4"><use href="#icon-angle-up-solid"></use></svg>
