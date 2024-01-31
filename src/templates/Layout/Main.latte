@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js sw" lang="en">
+<html class="no-js" lang="en">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,28 +8,51 @@
         <meta name="keywords" content="">
         <meta name="description" content="">
         <meta name="author" content="">
-        <meta name="viewport" content="width=device-width, user-scalable=0, initial-scale=1, viewport-fit=cover"/>
-        <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE"/>
+        <meta name="viewport" content="width=device-width, user-scalable=0, initial-scale=1, viewport-fit=cover">
+        <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE">
         <meta name="format-detection" content="telephone=no">
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-title" content="{$page->title}">
         <meta name="apple-mobile-web-app-capable" content="yes">
 
-        {foreach $prefetch as $url}
-            <link rel="dns-prefetch" href="{$url}">
-        {/foreach}
+        {if isset($prefetch)}
+            {foreach $prefetch as $url}
+                <link rel="preconnect" href="{$url}" crossorigin>
+                <link rel="dns-prefetch" href="{$url}">
+            {/foreach}
+        {/if}
+
+        {if isset($preload)}
+            {foreach $preload as $url}
+                <link
+                    {if isset($url->rel)}rel="{$url->rel}"{else}rel="preload"{/if}
+                    href="{$url->href|asset}"
+                    {if isset($url->as)}as="{$url->as}"{/if}
+                    {if isset($url->type)}type="{$url->type}"{/if}
+                    {if isset($url->crossorigin)}crossorigin{/if}
+                >
+            {/foreach}
+        {/if}
 
         {foreach $assets->css->all as $url}
             <link rel="stylesheet" href="{$url|asset}">
         {/foreach}
 
+
+        {if isset($modulepreload)}
+            {foreach $modulepreload as $url}
+                <link rel="modulepreload" href="{$url|asset}">
+            {/foreach}
+        {/if}
+
         <script>
             (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) && document.documentElement.classList.add('dark')
-            document.documentElement.className = document.documentElement.className.replace('no-js', 'js');matchMedia('(hover: hover) and (pointer: fine)').matches && document.documentElement.classList.add('no-touch');/Android|iPhone|iPad|iPod/i.test(navigator.userAgent) && document.documentElement.classList.add('mobile');(p => document.documentElement.classList.add(p.includes('macintel') && navigator.maxTouchPoints > 2 ? 'ipad' : p))(navigator.platform.toLowerCase().replace(/ .*/, ''));(u => document.documentElement.classList.add(u && u[0]))(navigator.userAgent.toLowerCase().match(/chrome|safari|firefox/i))
+            document.documentElement.className = document.documentElement.className.replace('no-js', 'js');/Android|iPhone|iPad|iPod/i.test(navigator.userAgent) && document.documentElement.classList.add('mobile');(p => document.documentElement.classList.add(p.includes('macintel') && navigator.maxTouchPoints > 2 ? 'ipad' : p))(navigator.platform.toLowerCase().replace(/ .*/, ''));(u => document.documentElement.classList.add(u && u[0]))(navigator.userAgent.toLowerCase().match(/chrome|safari|firefox/i))
         </script>
 
         <script src="{$assets->js->main|asset}" type="module"></script>
 
+        <script defer data-domain="ui.newlogic.cz" src="https://plausible.newlogic.cz/js/script.js"></script>
         <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png?v=YAX2K07XnE">
         <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png?v=YAX2K07XnE">
         <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png?v=YAX2K07XnE">

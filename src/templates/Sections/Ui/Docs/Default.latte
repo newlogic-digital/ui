@@ -1,17 +1,17 @@
 <section class="s-ui" data-controller="s-ui">
-    <div class="wrp_s_body row">
+    <div class="wrp_s_body flex">
         {include '@nav.html'}
-        <div class="col col-right t:col-9 m:col-12 py-12">
+        <div class="flex-col col-right md:w-9/12 py-12">
             <div class="container max-4xl:!max-w-full">
                 {include '@intro.html'}
-                <div class="row gap-8 flex-wrap" style="padding-top: 4rem">
-                    <div class="col-12">
+                <div class="flex-col gap-8 flex-wrap" style="padding-top: 4rem">
+                    <div class="w-full">
                         <h1 class="ui-title lg uppercase text-primary mb-4">Components</h1>
                         <div class="ui-text">
                             <p>Examples of basic components that can be used in Newlogic UI, see <a href="https://winduum.dev" target="_blank">winduum.dev</a> for complete docs.</p>
                         </div>
                     </div>
-                    <div class="col-12" id="heading">
+                    <div class="w-full" id="heading">
                         <h1 class="ui-heading mb-4">Heading</h1>
                         <div class="ui-text mb-6">
                             <p>See <a href="https://winduum.dev/docs/ui/heading.html" target="_blank">ui/heading</a> for more info.</p>
@@ -27,9 +27,9 @@
                         {capture $code}
                             <h2 class="ui-heading sm">Small heading</h2>
                         {/capture}{$code|code('html', true)|noescape}
-                        <hr/>
+                        <hr>
                     </div>
-                    <div class="col-12" id="title">
+                    <div class="w-full" id="title">
                         <h1 class="ui-heading mb-4">Title</h1>
                         <div class="ui-text mb-6">
                             <p>See <a href="https://winduum.dev/docs/ui/title.html" target="_blank">ui/title</a> for more info.</p>
@@ -45,9 +45,9 @@
                         {capture $code}
                             <strong class="ui-title uppercase text-primary">Title</strong>
                         {/capture}{$code|code('html', true)|noescape}
-                        <hr/>
+                        <hr>
                     </div>
-                    <div class="col-12 items-start" id="button">
+                    <div class="w-full" id="button">
                         <h1 class="ui-heading mb-4">Button</h1>
                         <div class="ui-text mb-4">
                             <p>See <a href="https://winduum.dev/docs/ui/button.html" target="_blank">ui/button</a> for more info.</p>
@@ -95,7 +95,7 @@
                             <button class="ui-btn accent-main">
                                 Continue
                                 <svg>
-                                    <use href="#icon-angle-down"></use>
+                                    <use href="#icon-angle-down-solid"></use>
                                 </svg>
                             </button>
                         {/capture}{$code|code('html', true)|noescape}
@@ -153,36 +153,36 @@
                                 </button>
                                 <button class="ui-btn square bg-opacity-80">
                                     <svg class="icon">
-                                        <use href="#icon-angle-down"></use>
+                                        <use href="#icon-angle-down-solid"></use>
                                     </svg>
                                 </button>
                             </div>
                         {/capture}{$code|code('html', true)|noescape}
-                        <hr/>
+                        <hr>
                     </div>
-                    <div class="col-12 items-start" id="link">
+                    <div class="w-full" id="link">
                         <h1 class="ui-heading mb-4">Link</h1>
                         <div class="ui-text mb-6">
                             <p>See <a href="https://winduum.dev/docs/ui/link.html" target="_blank">ui/link</a> for more info.</p>
                         </div>
                         {capture $code}
-                            <a href="#" class="ui-link accent-primary" title="">
+                            <a href="#" class="ui-link" title="">
                                 Show more
                             </a>
                         {/capture}{$code|code('html', true)|noescape}
                         {capture $code}
-                            <a href="#" class="ui-link underlined text-primary" title="">
+                            <a href="#" class="ui-link underline decoration-transparent accent-primary" title="">
                                 With underline
                             </a>
                         {/capture}{$code|code('html', true)|noescape}
                         {capture $code}
-                            <a href="#" class="ui-link underlined-visible text-primary" title="">
+                            <a href="#" class="ui-link underline accent-primary" title="">
                                 With underline
                             </a>
                         {/capture}{$code|code('html', true)|noescape}
-                        <hr/>
+                        <hr>
                     </div>
-                    <div class="col-12" id="control">
+                    <div class="w-full" id="control">
                         <h1 class="ui-heading mb-4">Control</h1>
                         <div class="ui-text mb-6">
                             <p>See <a href="https://winduum.dev/docs/ui/control.html" target="_blank">ui/control</a> for more info.</p>
@@ -207,7 +207,7 @@
                                     <option value="3">Option 3</option>
                                 </select>
                                 <label>With icon</label>
-                                <svg class="icon-l">
+                                <svg class="start">
                                     <use href="#icon-at-symbol"></use>
                                 </svg>
                             </div>
@@ -257,14 +257,14 @@
                         {/capture}{$code|code('html', true)|noescape}
                         {capture $code}
                             <div class="ui-control">
-                                <input type="tel" placeholder="Tel" />
+                                <input type="tel" placeholder="Tel">
                             </div>
                         {/capture}{$code|code('html', true)|noescape}
                         {capture $code}
                             <div class="ui-control">
                                 <input type="text" required placeholder="Please fill">
                                 <label>Amount</label>
-                                <span class="icon-r" aria-label="Kč"></span>
+                                <span class="end">Kč</span>
                             </div>
                         {/capture}{$code|code('html', true)|noescape}
                         {capture $code}
@@ -299,7 +299,7 @@
                             <div class="ui-control">
                                 <input type="datetime-local">
                                 <label>Select date and time</label>
-                                <div class="icon-r">
+                                <div class="end">
                                     <svg data-action="click->ui-control#showDatepicker">
                                         <use href="#icon-calendar"></use>
                                     </svg>
@@ -315,15 +315,15 @@
                         {capture $code}
                             <div class="ui-control w-28">
                                 <input type="number" placeholder="" value="1" min="1" max="99" step="1">
-                                <div class="icon-r">
-                                    <div aria-label="Kč"></div>
+                                <div class="end">
+                                    <div>Kč</div>
                                 </div>
                             </div>
                         {/capture}{$code|code('html', true)|noescape}
                         {capture $code}
                             <div class="ui-control">
                                 <input type="time" placeholder="Select time">
-                                <div class="icon-r">
+                                <div class="end">
                                     <svg data-action="click->ui-control#showPicker">
                                         <use href="#icon-clock"></use>
                                     </svg>
@@ -331,7 +331,7 @@
                             </div>
                         {/capture}{$code|code('html', true)|noescape}
                     </div>
-                    <div class="col-12 items-start" id="check">
+                    <div class="w-full" id="check">
                         <h1 class="ui-heading mb-4">Check</h1>
                         <div class="ui-text mb-6">
                             <p>See <a href="https://winduum.dev/docs/ui/check.html" target="_blank">ui/check</a> for more info.</p>
@@ -362,7 +362,7 @@
                         {/capture}{$code|code('html', true)|noescape}
                         {capture $code}
                             <label class="ui-check flex-row-reverse">
-                                <input type="checkbox" class="checked:border-primary" style="--ui-checkbox-checked-bg: transparent; --ui-checkbox-checked-fg: var(--color-primary);" />
+                                <input type="checkbox" class="checked:border-primary" style="--ui-checkbox-checked-bg: transparent; --ui-checkbox-checked-fg: var(--color-primary);">
                                 <span>I agree to the <a href="#">processing of personal data</a></span>
                             </label>
                         {/capture}{$code|code('html', true)|noescape}
@@ -374,7 +374,7 @@
                         {/capture}{$code|code('html', true)|noescape}
                         {capture $code}
                             <label class="ui-check">
-                                <input type="checkbox" class="mr-3" />
+                                <input type="checkbox" class="mr-3">
                                 Without inner span
                             </label>
                         {/capture}{$code|code('html', true)|noescape}
@@ -389,7 +389,7 @@
                             </label>
                         {/capture}{$code|code('html', true)|noescape}
                     </div>
-                    <div class="col col-12" id="notice">
+                    <div class="w-full" id="notice">
                         <h1 class="ui-heading mb-4">Notice</h1>
                         <div class="ui-text mb-6">
                             <p>See <a href="https://winduum.dev/docs/ui/notice.html" target="_blank">ui/notice</a> for more info.</p>
@@ -417,7 +417,7 @@
                         {capture $code}
                             <div class="ui-notice accent-error">
                                 Error notice
-                                <hr/>
+                                <hr>
                                 <button class="ui-btn">
                                     <span>Button</span>
                                 </button>
@@ -429,7 +429,7 @@
                                     <h4>Nicely done!</h4>
                                     <p>Lorem ipsum dolor sit amet, <a href="#">consectetur adipiscing elit</a>. Nullam in elit iaculis, tristique nisi ut, mollis tellus. Nunc venenatis elit vel placerat commodo. Vestibulum odio neque, hendrerit nec venenatis at, tincidunt ut magna. Etiam hendrerit ultrices pharetra.</p>
                                 </div>
-                                <hr/>
+                                <hr>
                                 <button class="ui-btn">
                                     <span>Button</span>
                                 </button>
@@ -438,7 +438,7 @@
                         {capture $code}
                             <div class="ui-notice accent-info">
                                 Info notice
-                                <hr/>
+                                <hr>
                                 <button class="ui-btn">
                                     <span>Button</span>
                                 </button>
@@ -447,7 +447,7 @@
                         {capture $code}
                             <div class="ui-notice accent-warning">
                                 Warning notice
-                                <hr/>
+                                <hr>
                                 <button class="ui-btn">
                                     <span>Button</span>
                                 </button>
@@ -459,14 +459,14 @@
                                     <h4>Badly done!</h4>
                                     <p>Lorem ipsum dolor sit amet, <a href="#">consectetur adipiscing elit</a>. Nullam in elit iaculis, tristique nisi ut, mollis tellus. Nunc venenatis elit vel placerat commodo. Vestibulum odio neque, hendrerit nec venenatis at, tincidunt ut magna. Etiam hendrerit ultrices pharetra.</p>
                                 </div>
-                                <hr/>
+                                <hr>
                                 <button class="ui-btn accent-light muted">
                                     <span>Button</span>
                                 </button>
                             </div>
                         {/capture}{$code|code('html', true)|noescape}
                     </div>
-                    <div class="col-12" id="badge">
+                    <div class="w-full" id="badge">
                         <h1 class="ui-heading mb-4">Badge</h1>
                         <div class="ui-text mb-6">
                             <p>See <a href="https://winduum.dev/docs/ui/badge.html" target="_blank">ui/badge</a> for more info.</p>
@@ -509,7 +509,7 @@
                         {capture $code}
                             <button class="ui-badge circle accent-main">
                                 <svg>
-                                    <use href="#icon-x"></use>
+                                    <use href="#icon-x-mark"></use>
                                 </svg>
                             </button>
                         {/capture}{$code|code('html', true)|noescape}
@@ -523,9 +523,9 @@
                                 </div>
                             </div>
                         {/capture}{$code|code('html', true)|noescape}
-                        <hr/>
+                        <hr>
                     </div>
-                    <div class="col-12" id="progress">
+                    <div class="w-full" id="progress">
                         <h1 class="ui-heading mb-4">Progress</h1>
                         <div class="ui-text mb-6">
                             <p>See <a href="https://winduum.dev/docs/ui/progress.html" target="_blank">ui/progress</a> for more info.</p>
@@ -545,9 +545,9 @@
                                 <progress class="ui-progress accent-error" max="100">15%</progress>
                             {/capture}{$code|code('html', true)|noescape}
                         </div>
-                        <hr/>
+                        <hr>
                     </div>
-                    <div class="col col-12" id="text">
+                    <div class="w-full" id="text">
                         <h1 class="ui-heading mb-4">Text</h1>
                         <div class="ui-text mb-6">
                             <p>See <a href="https://winduum.dev/docs/ui/text.html" target="_blank">ui/text</a> for more info.</p>
@@ -668,30 +668,25 @@
                             </div>
                         {/capture}{$code|code('html', true)|noescape}
                     </div>
-                    <div class="col-12 col-images" id="image">
+                    <div class="w-full col-images" id="image">
                         <h1 class="ui-heading mb-4">Image</h1>
                         <div class="ui-text mb-6">
                             <p>Images should be wrapped inside <code>.ui-image</code> class and as <code>div</code> or <code>picture</code></p>
                             <p>You can add lazyload for the images with <code>loading="lazy"</code> attribute.</p>
                             <p>To maintain ratio of the images you have to add ratio class from TailwindCSS, for example <code>aspect-[4/3]</code> or add <code>width</code> and <code>height</code> attributes to image.</p>
                         </div>
-                        <style>
-                          .col-images .ui-image {
-                            max-width: 10rem;
-                          }
-                        </style>
                         <div>
                             {capture $code}
                                 <div class="ui-image aspect-[3/2]">
-                                    <img src="https://via.placeholder.com/300x200" alt="" loading="lazy" />
+                                    <img src="https://via.placeholder.com/300x200" alt="" loading="lazy">
                                 </div>
                             {/capture}{$code|code('html', true)|noescape}
                         </div>
                         <div>
                             {capture $code}
                                 <picture class="ui-image aspect-[3/2]">
-                                    <source srcset="https://via.placeholder.com/300x200" />
-                                    <img src="https://via.placeholder.com/300x200" alt=""  loading="lazy" />
+                                    <source srcset="https://via.placeholder.com/300x200">
+                                    <img src="https://via.placeholder.com/300x200" alt=""  loading="lazy">
                                 </picture>
                             {/capture}{$code|code('html', true)|noescape}
                         </div>
@@ -705,20 +700,20 @@
                                 </div>
                             {/capture}{$code|code('html', true)|noescape}
                         </div>
-                        <hr/>
+                        <hr>
                     </div>
                 </div>
-                <div class="row gap-8 flex-wrap" style="padding-top: 3rem;">
-                    <div class="col-12" style="padding-top: 0">
+                <div class="flex-col gap-8 flex-wrap" style="padding-top: 3rem;">
+                    <div class="w-full" style="padding-top: 0">
                         <h1 class="ui-title lg uppercase text-primary">Libraries</h1>
                     </div>
-                    <div class="col-12" id="form">
+                    <div class="w-full" id="form">
                         <h1 class="ui-heading mb-4">Form</h1>
                         <div class="ui-text mb-6">
                             <p>Provides javascript form validation upon send via <code>data-controller="lib-form"</code> attribute.</p>
                         </div>
                         {capture $code}
-                            <form class="c-form" data-controller="lib-form">
+                            <form class="c-form" data-controller="lib-form lib-naja" data-action="submit->lib-naja#makeRequest" action="/">
                                 <div class="c_form_body grid gap-3">
                                     <div class="c-field">
                                         <div class="ui-control">
@@ -751,9 +746,9 @@
                                 </div>
                             </form>
                         {/capture}{$code|code('html', true)|noescape}
-                        <hr/>
+                        <hr>
                     </div>
-                    <div class="col-12 items-start" id="dialog">
+                    <div class="w-full" id="dialog">
                         <h1 class="ui-heading mb-4">Dialog</h1>
                         <div class="ui-text mb-6">
                             <h5>Usage on click</h5>
@@ -779,9 +774,9 @@
                                 Open dialog window
                             </button>
                         {/capture}{$code|code('html', true)|noescape}
-                        <hr/>
+                        <hr>
                     </div>
-                    <div class="col-12 items-start" id="ripple">
+                    <div class="w-full" id="ripple">
                         <h1 class="ui-heading mb-4">Ripple</h1>
                         <div class="ui-text mb-6">
                             <p>The ripple effect is automatically applied to buttons and other components</p>
@@ -795,9 +790,9 @@
                         {capture $code}
                             <div class="ui-btn" data-action="click->lib-ripple#show">Ripple me</div>
                         {/capture}{$code|code('html', true)|noescape}
-                        <hr/>
+                        <hr>
                     </div>
-                    <div class="col-12" id="drawer">
+                    <div class="w-full" id="drawer">
                         <h1 class="ui-heading mb-4">Drawer</h1>
                         <div class="ui-text">
                             <h5>Files:</h5>
@@ -806,9 +801,9 @@
                                 <li><code>src/styles/Libraries/Drawer.css</code></li>
                             </ul>
                         </div>
-                        <hr/>
+                        <hr>
                     </div>
-                    <div class="col-12" id="datepicker">
+                    <div class="w-full" id="datepicker">
                         <h1 class="ui-heading mb-4">Datepicker</h1>
                         <div class="ui-text">
                             <p><a href="https://github.com/t1m0n/air-datepicker" target="_blank">Air Datepicker</a> is used as library in <code>ui-control</code> for <code>type="date"</code> and <code>type="datetime-local"</code>.</p>
@@ -817,9 +812,9 @@
                                 <li><code>src/styles/Libraries/Datepicker.css</code></li>
                             </ul>
                         </div>
-                        <hr/>
+                        <hr>
                     </div>
-                    <div class="col-12" id="slider">
+                    <div class="w-full" id="slider">
                         <h1 class="ui-heading mb-4">Slider</h1>
                         <div class="ui-text mb-6">
                             <p>Lightweight scroll based slider, which uses CSS <code>scroll-snap</code></p>
@@ -833,33 +828,31 @@
                                 <div data-controller="lib-slider">
                                     <div class="flex slider gap-3" data-lib-slider-target="slider">
                                         {foreach range(1, 6) as $i}
-                                            <div class="col col-4">
-                                                <div class="ui-image rounded overflow-hidden aspect-[8/5]">
-                                                    <img src="{placeholder(1200, 750)}" alt="" loading="lazy" />
-                                                </div>
+                                            <div class="ui-image rounded overflow-hidden aspect-[8/5] w-4/12">
+                                                <img src="{placeholder(1200, 750)}" alt="" loading="lazy">
                                             </div>
                                         {/foreach}
                                     </div>
-                                    <div class="row-x justify-between items-center mt-4">
-                                        <div class="col col-left">
+                                    <div class="flex justify-between items-center mt-4">
+                                        <div class="flex-col col-left">
                                             <button class="ui-btn square" aria-label="Previous" data-action="click->lib-slider#prev">
                                                 <svg class="icon">
                                                     <use href="#icon-chevron-left"></use>
                                                 </svg>
                                             </button>
                                         </div>
-                                        <div class="col col-counter m:hidden">
-                                            <div class="row py-3 gx-6 items-center justify-center">
-                                                <div class="col">
+                                        <div class="flex-col col-counter max-md:hidden">
+                                            <div class="flex py-3 gap-x-6 items-center justify-center">
+                                                <div class="flex-col">
                                                     <div class="flex gap-1.5 items-center" data-lib-slider-target="dots"></div>
                                                 </div>
-                                                <div class="col">
+                                                <div class="flex-col">
                                                     <div><span data-lib-slider-target="counterMin">1</span>/<span data-lib-slider-target="counterMax"></span></div>
                                                 </div>
                                             </div>
                                             <progress class="ui-progress sm" value="50" max="100" data-lib-slider-target="progress"></progress>
                                         </div>
-                                        <div class="col col-right">
+                                        <div class="flex-col col-right">
                                             <button class="ui-btn square" aria-label="Next" data-action="click->lib-slider#next">
                                                 <svg class="icon">
                                                     <use href="#icon-chevron-right"></use>
@@ -870,9 +863,9 @@
                                 </div>
                             {/capture}{$code|code('html', true)|noescape}
                         </div>
-                        <hr/>
+                        <hr>
                     </div>
-                    <div class="col-12" id="swup">
+                    <div class="w-full" id="swup">
                         <h1 class="ui-heading mb-4">Swup</h1>
                         <div class="ui-text">
                             <p>Full-page animations between pages are done using <a href="https://github.com/gmrchk/swup" target="_blank" rel="noopener">Swup</a></p>
@@ -883,9 +876,9 @@
                                 <li><code>src/scripts/Libraries/Swup.js</code></li>
                             </ul>
                         </div>
-                        <hr/>
+                        <hr>
                     </div>
-                    <div class="col col-12" id="tippy">
+                    <div class="w-full" id="tippy">
                         <h1 class="ui-heading mb-4">Tippy</h1>
                         <div class="ui-text mb-6">
                             <p>For dropdowns and tooltips the <a href="https://atomiks.github.io/tippyjs/" target="_blank">Tippy.js</a> library is used</p>
@@ -914,19 +907,19 @@
                                 <p>Loading a tippy template from an inline template</p>
                             </div>
                             {capture $code}
-                            <button class="ui-btn" type="button" data-controller="lib-tippy" data-lib-tippy="tooltip-arrow, tippy-template" data-lib-tippy-slot='{ "edit": "Upravit položku", "delete": "Smazat položku" }'>
+                            <button class="ui-btn max-w-fit" type="button" data-controller="lib-tippy" data-lib-tippy="tooltip-arrow, tippy-template" data-lib-tippy-slot='{ "edit": "Upravit položku", "delete": "Smazat položku" }'>
                                 Tooltip arrow
                             </button>
                             <template id="tippy-template">
                                 <div class="c-dropdown">
-                                    <ul class="wrp_c_list flex-col row-y gy-4">
-                                        <li class="col">
-                                            <button class="ui-link">
+                                    <ul class="wrp_c_list flex-col gap-y-4">
+                                        <li class="flex-col">
+                                            <button class="ui-link underline decoration-transparent">
                                                 <span>{ edit }</span>
                                             </button>
                                         </li>
-                                        <li class="col">
-                                            <button class="ui-link">
+                                        <li class="flex-col">
+                                            <button class="ui-link underline decoration-transparent">
                                                 <span>{ delete }</span>
                                             </button>
                                         </li>
@@ -938,13 +931,13 @@
                                 <p>Classic tooltip</p>
                             </div>
                         {capture $code}
-                            <button class="ui-btn" type="button" data-controller="lib-tippy" aria-label="Hello world">
+                            <button class="ui-btn max-w-fit" type="button" data-controller="lib-tippy" aria-label="Hello world">
                                 Basic tooltip
                             </button>
                         {/capture}{$code|code('html', true)|noescape}
                         <hr>
                     </div>
-                    <div class="col-12" id="hint">
+                    <div class="w-full" id="hint">
                         <h1 class="ui-heading mb-4">Hint</h1>
                         <div class="ui-text">
                             <p>Easy CSS only tooltip via <code>aria-label</code> attribute.</p>
@@ -963,7 +956,7 @@
                         </div>
                         <hr>
                     </div>
-                    <div class="col-12" id="cookieconsent">
+                    <div class="w-full" id="cookieconsent">
                         <h1 class="ui-heading mb-4">CookieConsent</h1>
                         <div class="ui-text">
                             <h5>Files:</h5>
@@ -973,9 +966,9 @@
                                 <li><code>src/styles/Components/Form/CookieConsent.css</code></li>
                             </ul>
                         </div>
-                        <hr/>
+                        <hr>
                     </div>
-                    <div class="col-12" id="recaptcha">
+                    <div class="w-full" id="recaptcha">
                         <h1 class="ui-heading mb-4">ReCaptcha</h1>
                         <div class="ui-text mb-6">
                             <p>Uses Google's <a href="https://cloud.google.com/recaptcha-enterprise/docs/instrument-web-pages" target="_blank">recaptcha-enterprise</a></p>
@@ -995,7 +988,7 @@
                         {/capture}{$code|code('html', false)|noescape}
                         <hr>
                     </div>
-                    <div class="col-12" id="stimulus">
+                    <div class="w-full" id="stimulus">
                         <h1 class="ui-heading mb-4">Stimulus</h1>
                         <div class="ui-text">
                             <p><a href="https://stimulusjs.org/" target="_blank" rel="noopener">Stimulus</a> is used for controller definitions, events and other JS interactions.</p>

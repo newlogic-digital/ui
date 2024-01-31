@@ -1,10 +1,13 @@
-@import "winduum/src/base/tailwind/utilities.css";
-@import "winduum/src/base/tailwind/gutters.css";
+@import "winduum/src/utilities/index.css";
 
 @layer utilities {
+  .container {
+    max-width: var(--container);
+    margin-inline: auto;
+  }
+
   .slider {
-    overflow-x: auto;
-    overflow-y: hidden;
+    overflow: auto hidden;
     -webkit-overflow-scrolling: touch;
     user-select: none;
     scrollbar-width: none !important;

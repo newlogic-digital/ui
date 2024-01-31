@@ -1,11 +1,17 @@
-@import "winduum/src/base/default.css";
+@import "winduum/src/base/defaults.css";
 
 :where(svg) {
   display: block;
-}
 
-:where(use) {
-  stroke-width: 2;
+  &:has([href]) {
+    stroke-width: 2;
+    stroke: currentcolor;
+    fill: none;
+  }
+
+  &:has([href*="-solid"]) {
+    fill: currentcolor;
+  }
 }
 
 :where(img) {

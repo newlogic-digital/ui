@@ -4,3 +4,4 @@ import './Layout/+.js'
 import './Sections/+.js'
 import './Components/+.js'
 import './Ui/+.js'
+import.meta.glob('/src/assets/**')

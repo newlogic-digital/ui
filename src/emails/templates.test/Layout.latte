@@ -5,19 +5,31 @@
     <title>Email Template</title>
     <!--[if gte mso 9]><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {var $forceLightMode = false}
+
+    {if $forceLightMode}
+        <meta name="color-scheme" content="only light">
+        <meta name="supported-color-schemes" content="only light">
+    {else}
+        <meta name="color-scheme" content="light dark">
+        <meta name="supported-color-schemes" content="light dark">
+    {/if}
+
     <style type="text/css" n:syntax="off">
-      @import '/src/emails/styles/email.css';
+      @import '/src/emails/styles/main.css';
     </style>
 </head>
 <body>
-<table class="elm_container_wrapper">
+<table class="l-main" align="center">
     <tr>
-        <td>
-            <table class="elm_container">
+        <td class="p-container" align="center">
+            <table class="l-main-body w-full">
                 <block name="body" with="locals"></block>
             </table>
         </td>
     </tr>
+    <include src="emails/templates.test/Sections/Footer.latte"></include>
 </table>
 </body>
 </html>

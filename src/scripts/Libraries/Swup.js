@@ -1,30 +1,17 @@
-import Swup from 'swup'
-import { closeDialog } from 'winduum/src/libraries/dialog.js'
+import { closeDialog } from 'winduum/src/components/dialog.js'
 import { hideTippy } from './Tippy.js'
 import { getController, loadStimulus } from './Stimulus.js'
 import LibCookieConsent from './CookieConsent.js'
 import { replaceTag, replaceScript } from '../Utils/Functions/+.js'
 
-document.addEventListener('click', ({ target }) => {
-    const noSwup = target.closest('[data-no-swup]')
-
-    if (!noSwup) {
-        return
-    }
-
-    if (noSwup.classList.contains('ui-btn')) {
-        noSwup.classList.add('loading')
-    } else {
-        noSwup.classList.add('cursor-wait')
-    }
-})
+const Swup = (await import('swup')).default
 
 const LibSwup = new Swup({
     containers: ['#l-main', '#l-header'].filter(element => document.querySelector(element)),
-    linkSelector: `:is(a[href^="${window.location.origin}"], a[href^="/"]):not([data-no-swup], [data-naja], [target="_blank"])`
+    ignoreVisit: (url, { el }) => el?.closest('[data-no-swup], [data-naja], a[href^="#"]')
 })
 
-LibSwup.on('clickLink', async ({ target }) => {
+LibSwup.hooks.on('link:click', async (visit, { event }) => {
     document.body.classList.remove('overflow-hidden')
 
     const LibDrawerSelector = document.querySelector('.lib-drawer.active')
@@ -43,13 +30,13 @@ LibSwup.on('clickLink', async ({ target }) => {
         await closeDialog(LibDialogSelector)
     }
 
-    if (window.location.href === target.closest('a').href) {
+    if (window.location.href === event.target.closest('a').href) {
         document.documentElement.scroll({ top: 0, behavior: 'smooth' })
     }
 })
 
-LibSwup.on('animationOutDone', () => {
-    document.documentElement.scroll({ top: 0, behavior: 'instant' })
+LibSwup.hooks.on('scroll:anchor', () => {
+    document.documentElement.scroll({ top: document.querySelector(`${window.location.hash}`)?.getBoundingClientRect().top, behavior: 'smooth' })
 })
 
 /** @var {Array} dataLayer */
@@ -59,8 +46,8 @@ LibSwup.on('animationOutDone', () => {
 /** @var {Object} retargetingConf */
 /** @var {Object} conversionConf */
 /** @var {Function} fbq */
-LibSwup.on('contentReplaced', () => {
-    const content = new DOMParser().parseFromString(LibSwup.cache.getCurrentPage().originalContent, 'text/html')
+LibSwup.hooks.on('content:replace', (visit, { page }) => {
+    const content = new DOMParser().parseFromString(page.html, 'text/html')
 
     replaceTag(content)
 
@@ -85,8 +72,27 @@ LibSwup.on('contentReplaced', () => {
     window.fbq && window.fbq('track', 'PageView')
 })
 
-LibSwup.options.cache && setInterval(() => {
-    LibSwup.cache.empty()
-}, 90 * 1000)
+LibSwup.hooks.on('cache:set', (visit, { page }) => {
+    LibSwup.cache.update(page.url, { created: Date.now(), ttl: 1000 * 60 })
+})
+
+LibSwup.hooks.before('page:load', () => {
+    // noinspection JSCheckFunctionSignatures
+    LibSwup.cache.prune((url, { created, ttl }) => Date.now() > created + ttl)
+})
+
+document.addEventListener('click', ({ target }) => {
+    const noSwup = target.closest('[data-no-swup]')
+
+    if (!noSwup) {
+        return
+    }
+
+    if (noSwup.classList.contains('ui-btn')) {
+        noSwup.classList.add('loading')
+    } else {
+        noSwup.classList.add('cursor-wait')
+    }
+})
 
 export default LibSwup

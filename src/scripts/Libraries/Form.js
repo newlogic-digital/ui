@@ -7,19 +7,18 @@ LibStimulus.register('lib-form', class extends Controller {
         this.element.addEventListener('submit', e => this.validation(e))
     }
 
-    validation (e) {
+    validation ({ submitter }) {
         if (this.element.checkValidity() === false) {
-            e.preventDefault()
-            e.stopPropagation()
+            arguments[0].preventDefault()
+            arguments[0].stopImmediatePropagation()
 
             this.element.querySelector(':invalid').scrollIntoView({ behavior: 'smooth', block: 'center' })
             this.element.querySelector(':invalid').focus()
         } else {
-            this.element.querySelector('[type="submit"]').classList.add('loading')
+            submitter?.classList.add('loading')
         }
 
         this.element.querySelectorAll('.ui-control, .ui-check, .ui-switch').forEach(element => {
-            console.log(element)
             inputValidity(element, { message: true })
         })
     }

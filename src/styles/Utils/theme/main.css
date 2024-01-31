@@ -1,16 +1,15 @@
 @import "winduum/src/base/theme/default-rgb.css";
-@import "winduum/src/base/theme/default.css";
 
 :root {
   --font-primary: "Poppins", sans-serif;
   --font-secondary: "Poppins", sans-serif;
   --color-primary-rgb: 131 205 79;
-  --color-primary-fg-rgb: var(--color-dark-rgb);
+  --color-primary-foreground-rgb: var(--color-dark-rgb);
   --color-main-rgb: 17 19 21;
   --color-dark-rgb: 17 19 21;
   --color-accent-rgb: var(--color-primary-rgb);
   --color-current-rgb: var(--color-main-rgb);
-  --color-body-secondary-fg: var(--color-main);
+  --color-body-secondary-foreground: var(--color-main);
 
   &.dark {
     --color-main-rgb: 201 209 217;

@@ -1,6 +1,6 @@
 import cdn from '../Utils/cdn.js'
 import { LibStimulus, Controller } from '../Libraries/Stimulus.js'
-import { importStyle, inputStep, inputValidity } from '../Utils/Functions/+.js'
+import { importStyle, inputValidity } from '../Utils/Functions/+.js'
 
 LibStimulus.register('ui-control', class extends Controller {
     static targets = ['number']
@@ -50,13 +50,18 @@ LibStimulus.register('ui-control', class extends Controller {
                     altFieldDateFormat: 'yyyy-MM'
                 }
                 : {}
-            const attributes = [...input.attributes].filter(({ name }) => name !== 'type').map(({ name, value }) => `${name}="${value}"`).join(' ')
+
+            const attributes = [...input.attributes].filter(({ name }) => name.match(/(required|placeholder)/)).map(({ name, value }) => `${name}="${value}"`).join(' ')
 
             input.setAttribute('type', 'hidden')
 
             input.insertAdjacentHTML('afterend', `<input type="text" inputmode="none" ${attributes}>`)
 
             const inputText = this.element.querySelector('[type="text"]')
+
+            if (input.id) {
+                inputText.id = input.id + '-datepicker'
+            }
 
             inputText.addEventListener('keydown', e => {
                 const key = e.key.toLowerCase()
@@ -98,7 +103,7 @@ LibStimulus.register('ui-control', class extends Controller {
                     })
                 },
                 onSelect: ({ date }) => {
-                    inputText.dispatchEvent(new Event('change', { bubbles: true }))
+                    input.dispatchEvent(new Event('change', { bubbles: true }))
                 }
             })
         }
@@ -116,7 +121,7 @@ LibStimulus.register('ui-control', class extends Controller {
             input.setAttribute('maxlength', '9')
             input.setAttribute('pattern', '^#?([a-fA-F0-9]{8}|[a-fA-F0-9]{6}|[a-fA-F0-9]{3})$')
 
-            this.element.insertAdjacentHTML('afterbegin', '<div class="icon-l"><div class="color"></div></div>')
+            this.element.insertAdjacentHTML('afterbegin', '<div class="start"><div class="color"></div></div>')
 
             const pickr = new Pickr({
                 el: input,
@@ -151,29 +156,31 @@ LibStimulus.register('ui-control', class extends Controller {
 
     typeNumber () {
         if (this.element.querySelector('[type="number"]') && !this.hasNumberTarget) {
-            if (!this.element.querySelector('.icon-r')) {
-                this.element.insertAdjacentHTML('beforeend', '<div class="icon-r"></div>')
+            if (!this.element.querySelector('.end')) {
+                this.element.insertAdjacentHTML('beforeend', '<div class="end"></div>')
             }
 
-            this.element.querySelector('.icon-r').insertAdjacentHTML('beforeend', `
-                <div class="flex flex-col gap-0 justify-center -space-y-1" data-ui-control-target="number">
-                    <button class="focus-visible:text-accent" type="button" data-action="click->ui-control#increase">
-                        <svg class="sq-4"><use href="#icon-angle-up"></use></svg>
+            this.element.querySelector('.end').insertAdjacentHTML('beforeend', `
+                <div class="flex flex-col gap-0 justify-center -space-y-1 -me-0.5" data-ui-control-target="number">
+                    <button class="focus-visible:text-accent" type="button" data-action="click->ui-control#stepUp">
+                        <svg class="size-4"><use href="#icon-angle-up-solid"></use></svg>
                     </button>
-                    <button class="focus-visible:text-accent" type="button" data-action="click->ui-control#decrease">
-                        <svg class="sq-4"><use href="#icon-angle-down"></use></svg>
+                    <button class="focus-visible:text-accent" type="button" data-action="click->ui-control#stepDown">
+                        <svg class="size-4"><use href="#icon-angle-down-solid"></use></svg>
                     </button>
                 </div>
             `)
         }
     }
 
-    increase () {
-        inputStep(this.element.querySelector('input[type="number"]'), true)
+    stepUp () {
+        this.element.querySelector('input:not([hidden])').stepUp()
+        this.element.querySelector('input:not([hidden])').dispatchEvent(new Event('change', { bubbles: true }))
     }
 
-    decrease () {
-        inputStep(this.element.querySelector('input[type="number"]'), false)
+    stepDown () {
+        this.element.querySelector('input:not([hidden])').stepDown()
+        this.element.querySelector('input:not([hidden])').dispatchEvent(new Event('change', { bubbles: true }))
     }
 
     showPicker () {

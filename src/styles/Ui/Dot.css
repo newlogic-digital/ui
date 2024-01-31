@@ -1,12 +1,12 @@
 .ui-dot {
-  --ui-dot-sq: 0.375rem;
-  --ui-dot-bg-opacity: 0.2;
+  --tw-bg-opacity: 0.2;
+  --ui-dot-size: 0.375rem;
 
-  width: var(--ui-dot-sq);
-  height: var(--ui-dot-sq);
+  width: var(--ui-dot-size);
+  height: var(--ui-dot-size);
   border-radius: var(--rounded-full);
-  background-color: rgb(var(--color-accent-rgb) / var(--ui-dot-bg-opacity));
-  transition: var(--transition-background), width var(--transition-duration), height var(--transition-duration);
+  background-color: color-mix(in srgb, var(--color-accent) calc(var(--tw-bg-opacity) * 100%), transparent);
+  transition: var(--transition-background), width var(--duration), height var(--duration);
   position: relative;
 
   &::before {
@@ -16,7 +16,7 @@
   }
 
   &.active {
-    --ui-dot-bg-opacity: 1;
-    --ui-dot-sq: 0.5625rem;
+    --tw-bg-opacity: 1;
+    --ui-dot-size: 0.5625rem;
   }
 }

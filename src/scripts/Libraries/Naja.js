@@ -22,12 +22,25 @@ LibStimulus.register('lib-naja', class extends Controller {
         })
 
         naja.uiHandler.selector = '[data-naja]'
+
         naja.initialize({
             history: false
         })
     }
 
-    async get ({ params }) {
-        await naja.makeRequest('GET', params.url, params.data ? JSON.parse(params.data) : null, { history: params.history ?? false })
+    async makeRequest ({ currentTarget, params }) {
+        const { href, action, method, form } = currentTarget
+
+        arguments[0]?.preventDefault()
+
+        await naja.makeRequest(
+            params.method ?? (method ?? 'GET'),
+            params.url ?? (href ?? action),
+            params.data ?? (form ? new FormData(form) : action ? new FormData(currentTarget) : null),
+            {
+                history: (action || form) ? 'replace' : false,
+                ...(params.options ?? {})
+            }
+        )
     }
 })

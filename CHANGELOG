@@ -1,3 +1,43 @@
+v3.6.1
+* feat: update winduum v0.6.0
+
+v3.6.0
+* feat: updated deps - winduum v0.5.0, tailwindcss v3.4
+* feat: updated stylelint, added @stylistic/stylelint
+* feat: updated media vars in `main.json`
+
+v3.5.8
+* feat: icon.svg uses symbols
+* feat: vite v5, vituum v1.1, newlogic-core v2.1
+
+v3.5.7
+* feat: remove service worker
+* feat: simplified inputStep
+
+v3.5.6
+* feat: update winduum to 0.4.0
+
+v3.5.5
+* feat: added preload and modulepreload to main.json
+
+v3.5.4
+* feat: added swup and stimulus as top-level await
+
+v3.5.3
+* feat: tailwindcss emails
+* feat: improved form submitter loading state
+* feat: improved lib-naja makeRequest
+* fix: cleanup deleted userfiles
+
+v3.5.2
+* feat: naja `get` stimulus method changed to `makeRequest`
+* feat: dependencies update
+* fix: datepicker attributes and change event
+
+v3.5.1
+* feat(bc): swup v4 update
+* feat: dependencies update
+
 v3.5.0
 * feat(bc): added winduum 0.3.x and its components
 * feat(bc): added new winduum color pallet with `color-mix`, colors now have also `-rgb` variants for better compatibility
@@ -9,7 +49,7 @@ v3.5.0
 * feat(bc): `ui-radio` and `ui-checkbox` is now replaced with `ui-check`
 * feat(bc): `ui-input-group`,`ui-btn-group` and `ui-badge-group` is now replaced with `ui-group`
 * feat(bc): `Functions/checkValidity.js` renamed to `Functions/inputValidity.js`
-* feat: `vanilla-datepickerv replaced with `air-datepicker`
+* feat: `vanilla-datepicker` replaced with `air-datepicker`
 * feat: added `replaceScript.js` function
 
 

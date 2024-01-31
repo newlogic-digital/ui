@@ -12,7 +12,7 @@
     opacity: 0;
     z-index: var(--z-10);
     pointer-events: none;
-    transition: var(--transition-duration) ease;
+    transition: var(--duration) ease;
     transition-delay: 0ms;
     will-change: transform;
     backface-visibility: hidden;
@@ -36,8 +36,8 @@
     line-height: 0.875rem;
     white-space: nowrap;
     box-shadow:
-      0 0.15rem 1.5rem 0 rgb(var(--color-main-rgb) / 10%),
-      0 0 1rem 0 rgb(var(--color-main-rgb) / 10%);
+      0 0.15rem 1.5rem 0 color-mix(in srgb, var(--color-main) 10%, transparent),
+      0 0 1rem 0 color-mix(in srgb, var(--color-main) 10%, transparent);
     font-weight: var(--lib-hint-font-weight);
     text-align: center;
   }

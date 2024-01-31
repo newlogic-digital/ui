@@ -4,15 +4,15 @@
 }
 
 #l-header {
-  --color-current: rgb(var(--color-light-rgb));
+  --color-current: var(--color-light);
 
   z-index: var(--z-20);
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  padding: 0 2rem;
-  background-color: rgb(var(--color-dark-rgb));
+  padding-inline: 2rem calc(2rem + var(--lib-dialog-scrollbar-width, 0rem));
+  background-color: var(--color-dark);
   color: var(--color-current);
 
   .dark & {
@@ -31,13 +31,7 @@
   }
 
   .l_header_logo {
-    font-size: 1.5rem;
     margin-right: 3rem;
-  }
-
-  .l_header_menu {
-    position: relative;
-    font-size: 1.5rem;
   }
 
   .l_header_nav {

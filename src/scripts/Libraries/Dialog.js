@@ -1,5 +1,5 @@
 import { Controller, LibStimulus, loadStimulus } from './Stimulus.js'
-import { insertDialog, closeDialog, fetchDialog, dialogSelector } from 'winduum/src/libraries/dialog.js'
+import { insertDialog, closeDialog, fetchDialog, dialogSelector } from 'winduum/src/components/dialog.js'
 import { replaceScript } from '../Utils/Functions/+.js'
 
 LibStimulus.register('lib-dialog', class extends Controller {
@@ -27,16 +27,17 @@ LibStimulus.register('lib-dialog', class extends Controller {
     async show ({ currentTarget, params }) {
         currentTarget.classList.add('loading', 'cursor-wait')
 
-        await fetchDialog({
-            url: params.url,
-            insertOptions: {
-                remove: params.remove ?? true,
-                append: params.append ?? false
-            }
-        }).then(() => {
-            loadStimulus(dialogSelector('.lib-dialog'))
-            replaceScript(dialogSelector('.lib-dialog'))
-        })
+        await fetch(params.url, { headers: { 'X-Requested-With': 'XMLHttpRequest' } })
+            .then(response => response.json())
+            .then(async ({ content }) => {
+                await insertDialog(`<dialog class="c-dialog">${content}</dialog>`, {
+                    remove: params.remove ?? true,
+                    append: params.append ?? false
+                })
+
+                loadStimulus(dialogSelector('.c-dialog'))
+                replaceScript(dialogSelector('.c-dialog'))
+            })
 
         currentTarget.classList.remove('loading', 'cursor-wait')
     }

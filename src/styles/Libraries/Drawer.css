@@ -15,8 +15,7 @@
   }
 
   &[data-action*="scroll"] {
-    overflow-x: auto;
-    overflow-y: hidden;
+    overflow: auto hidden;
     -webkit-overflow-scrolling: touch;
     user-select: none;
     scrollbar-width: none;
@@ -36,7 +35,7 @@
     position: fixed;
     inset: 0;
     z-index: -1;
-    background-color: rgb(var(--color-dark-rgb) / 50%);
+    background-color: color-mix(in srgb, var(--color-dark) 50%, transparent);
     content: "";
     opacity: var(--lib-drawer-opacity);
   }

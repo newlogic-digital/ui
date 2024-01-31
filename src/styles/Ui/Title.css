@@ -1,7 +1,3 @@
 @import "winduum/src/ui/title/default.css";
 @import "winduum/src/ui/title/sm.css";
 @import "winduum/src/ui/title/lg.css";
-
-.ui-title {
-  max-width: max-content;
-}

@@ -1,6 +1,13 @@
 {import TEMPLATES_DIR . 'Ui/+.latte'}
 
 <div class="py-section">
+    <div class="[--test:theme(spacing[1.5])]"></div>
+    <svg>
+        <use href="#icon-x-mark"></use>
+    </svg>
+    <svg>
+        <use href="#icon-angle-down-solid"></use>
+    </svg>
     <form class="container flex flex-col gap-4" data-controller="lib-form">
         <div class="grid grid-cols-3 gap-md">
             <div class="c-field">
@@ -46,8 +53,8 @@
             <div class="c-field">
                 {embed UiControl}
                     <input n:block=body type="number" min="0" step="1" max="99" required>
-                    <div n:block=iconr class="icon-r">
-                        <div aria-label="Kč"></div>
+                    <div n:block=iconr class="end">
+                        <div>Kč</div>
                     </div>
                 {/embed}
             </div>
@@ -113,16 +120,16 @@
     <div class="container my-8" data-controller="lib-slider">
         <div class="slider gap-4" data-lib-slider-target="slider">
             <div class="ui-image w-[30rem] h-auto rounded-md overflow-hidden aspect-[8/5]">
-                <img src="{placeholder(1200, 750)}" alt="" loading="lazy" />
+                <img src="{placeholder(1200, 750)}" alt="" loading="lazy">
             </div>
             <div class="ui-image w-[30rem] h-auto rounded-md overflow-hidden aspect-[8/5]">
-                <img src="{placeholder(1200, 750)}" alt="" loading="lazy" />
+                <img src="{placeholder(1200, 750)}" alt="" loading="lazy">
             </div>
             <div class="ui-image w-[30rem] h-auto rounded-md overflow-hidden aspect-[8/5]">
-                <img src="{placeholder(1200, 750)}" alt="" loading="lazy" />
+                <img src="{placeholder(1200, 750)}" alt="" loading="lazy">
             </div>
             <div class="ui-image w-[30rem] h-auto rounded-md overflow-hidden aspect-[8/5]">
-                <img src="{placeholder(1200, 750)}" alt="" loading="lazy" />
+                <img src="{placeholder(1200, 750)}" alt="" loading="lazy">
             </div>
         </div>
         <div class="dots flex gap-1.5 h-4 py-4" data-lib-slider-target="dots"></div>

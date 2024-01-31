@@ -1,0 +1,22 @@
+:root {
+  --color-primary: 131, 205, 79;
+  --color-main: 21, 23, 26;
+  --color-body-primary: 255, 255, 255;
+  --color-body-secondary: 245, 245, 245;
+  --color-body-tertiary: 230, 230, 230;
+  --color-light: 255, 255, 255;
+}
+
+:root {
+  --color-body-primary-dark: 21, 23, 26;
+  --color-body-secondary-dark: 41, 43, 46;
+  --color-body-tertiary-dark: 61, 63, 66;
+}
+
+:root {
+  --spacing-container: 20px;
+  --spacing-container-inner: 30px;
+  --rounded: 20px;
+  --transition-background: background-color 0.2s ease;
+  --transition-color: color 0.2s ease;
+}

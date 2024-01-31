@@ -1,1 +1,2 @@
-@import "winduum/src/libraries/dialog.css";
+@import "winduum/src/components/dialog/default.css";
+@import "winduum/src/components/dialog/default-props.css";

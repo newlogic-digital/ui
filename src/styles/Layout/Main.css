@@ -1,13 +1,12 @@
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: var(--l-header-height);
+  scroll-padding-top: var(--l-scroll-padding-top);
 }
 
 body {
   background-color: var(--color-body);
   display: flex;
   flex-direction: column;
-  overflow-x: hidden;
 }
 
 #l-main {

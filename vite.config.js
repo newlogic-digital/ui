@@ -5,9 +5,11 @@ import postcssCustomSelectors from 'postcss-custom-selectors'
 export default {
     plugins: [
         core({
-            latte: {
-                globals: {
-                    template: './src/templates/Layout/Main.latte'
+            juice: {
+                postcss: {
+                    globalData: {
+                        files: ['./src/emails/styles/main/Base/config.css']
+                    }
                 }
             }
         })
