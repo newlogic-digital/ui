@@ -1,6 +1,7 @@
 import cdn from '../Utils/cdn.js'
 import { LibStimulus, Controller } from '../Libraries/Stimulus.js'
-import { importStyle, inputValidity } from '../Utils/Functions/+.js'
+import { importStyle } from '@newlogic-digital/utils-js'
+import { validateField } from 'winduum/src/components/form/index.js'
 
 LibStimulus.register('ui-control', class extends Controller {
     static targets = ['number']
@@ -16,10 +17,10 @@ LibStimulus.register('ui-control', class extends Controller {
         }
     }
 
-    async connect () {
-        inputValidity(this.element, { validate: false })
+    async connect() {
+        validateField(this.element, { validate: false })
 
-        this.element.addEventListener('change', () => inputValidity(this.element))
+        this.element.addEventListener('change', () => validateField(this.element))
 
         if (this.element.querySelector('select')) {
             return
@@ -32,7 +33,7 @@ LibStimulus.register('ui-control', class extends Controller {
         await this.typeColor()
     }
 
-    async typeDate () {
+    async typeDate() {
         const input = this.element.querySelector('[type^="date"], [type="month"]')
 
         if (input) {
@@ -44,11 +45,11 @@ LibStimulus.register('ui-control', class extends Controller {
             const timepicker = input.type === 'datetime-local'
             const monthView = input.type === 'month'
                 ? {
-                    view: 'months',
-                    minView: 'months',
-                    dateFormat: 'MMMM yyyy',
-                    altFieldDateFormat: 'yyyy-MM'
-                }
+                        view: 'months',
+                        minView: 'months',
+                        dateFormat: 'MMMM yyyy',
+                        altFieldDateFormat: 'yyyy-MM'
+                    }
                 : {}
 
             const attributes = [...input.attributes].filter(({ name }) => name.match(/(required|placeholder)/)).map(({ name, value }) => `${name}="${value}"`).join(' ')
@@ -63,7 +64,7 @@ LibStimulus.register('ui-control', class extends Controller {
                 inputText.id = input.id + '-datepicker'
             }
 
-            inputText.addEventListener('keydown', e => {
+            inputText.addEventListener('keydown', (e) => {
                 const key = e.key.toLowerCase()
 
                 if (key !== 'backspace' && key !== 'tab') {
@@ -97,7 +98,7 @@ LibStimulus.register('ui-control', class extends Controller {
                     }
                 },
                 onShow: () => {
-                    this.datepicker.$datepicker.querySelectorAll('.air-datepicker-button').forEach(element => {
+                    this.datepicker.$datepicker.querySelectorAll('.air-datepicker-button').forEach((element) => {
                         element.setAttribute('type', 'button')
                         element.setAttribute('tabindex', '-1')
                     })
@@ -109,7 +110,7 @@ LibStimulus.register('ui-control', class extends Controller {
         }
     }
 
-    async typeColor () {
+    async typeColor() {
         if (this.element.querySelector('[type="color"]') !== null) {
             const Pickr = (await import('@simonwep/pickr')).default
             const input = this.element.querySelector('input')
@@ -138,12 +139,12 @@ LibStimulus.register('ui-control', class extends Controller {
                         input: true
                     }
                 }
-            }).on('init', pickr => {
+            }).on('init', (pickr) => {
                 pickr.setColor(input.value)
-            }).on('change', color => {
+            }).on('change', (color) => {
                 input.value = color.toHEXA().toString()
                 this.element.querySelector('.color').style['background-color'] = color.toHEXA().toString()
-            }).on('hide', pickr => {
+            }).on('hide', (pickr) => {
                 pickr.applyColor()
                 input.dispatchEvent(new Event('change', { bubbles: true }))
             })
@@ -154,7 +155,7 @@ LibStimulus.register('ui-control', class extends Controller {
         }
     }
 
-    typeNumber () {
+    typeNumber() {
         if (this.element.querySelector('[type="number"]') && !this.hasNumberTarget) {
             if (!this.element.querySelector('.ms-auto')) {
                 this.element.insertAdjacentHTML('beforeend', '<div class="ms-auto"></div>')
@@ -173,21 +174,21 @@ LibStimulus.register('ui-control', class extends Controller {
         }
     }
 
-    stepUp () {
+    stepUp() {
         this.element.querySelector('input:not([hidden])').stepUp()
         this.element.querySelector('input:not([hidden])').dispatchEvent(new Event('change', { bubbles: true }))
     }
 
-    stepDown () {
+    stepDown() {
         this.element.querySelector('input:not([hidden])').stepDown()
         this.element.querySelector('input:not([hidden])').dispatchEvent(new Event('change', { bubbles: true }))
     }
 
-    showPicker () {
+    showPicker() {
         this.element.querySelector('input:not([hidden])').showPicker()
     }
 
-    showDatepicker () {
+    showDatepicker() {
         this.datepicker.$el.focus()
     }
 })

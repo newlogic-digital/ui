@@ -1,3 +1,63 @@
+v3.7.4
+* feat: updated to eslint v9 and neostandard
+* feat: naja update
+* feat: updated deps
+
+v3.7.3
+* feat: updated to naja 3.2
+* feat: updated to swup 3.7
+
+v3.7.2
+* fix: ui-check validate method
+* fix: lib-form example
+* fix: ui-control, ui-check dynamic import
+* feat: deps update
+
+v3.7.1
+* feat: updated to winduum 1.2.0
+* feat(bc): removed tippy, added c-popover as alternative
+
+v3.7.0
+* feat(bc): added winduum c-drawer
+* feat(bc): changed layout components from ids to classes
+* feat(bc): removed l-default wrapper in Layout/Main.tpl
+* feat(bc): removed browser detection script from Layout/Main.tpl
+* feat(bc): c-cookieconsent renamed to c-dialog-cookieconsent
+* feat(bc): added @newlogic-digital/cookieconsent-js
+* feat(bc): added naja 3.1, now lazy loaded and with extensions
+* feat(bc): removed stimulus lib-naja#makeRequest in favour of data-naja
+* feat(bc): recaptcha submit removed, follow docs for more info
+* feat(bc): removed most of utils in favour of @newlogic-digital/utils-js
+* feat(bc): removed lib-script in favour of @newlogic-digital/utils-js
+* feat(bc): removed lib-slider, use c-carousel from winduum instead
+* feat(bc): removed ui-dot, use winduum dot utility class instead
+* feat(bc): theme, removed rgb css properties
+* feat(bc): removed styles/Utils/icons.css, use styles/Utils/config.css instead
+* feat(bc): removed styles/Utils/print.css
+* feat(bc): renamed styles/Utils/tailwind.css to styles/Utils/utilities.css
+* feat(bc): updated to winduum 1.1.1
+* feat: added toaster from winduum
+* feat: added delegateController helper for access other controllers
+* feat: added lib-reveal with ability to lazy-load controllers
+* feat: added winduum c-form, lib-form stays
+* feat: added initAfter util helper
+* feat: removed has polyfill
+* feat: removed lib-hint, use winduum c-popover
+* feat: new modern favicons
+* feat: updated to vite v5.2
+
+v3.6.5
+* feat: cookie consent update
+* feat: manual chunks
+
+v3.6.4
+* feat: update winduum v1.0.0
+* fix: swup transition and containers
+
+v3.6.3
+* feat: update winduum v0.9.0
+* fix: swup scroll
+
 v3.6.2
 * feat: update winduum v0.7.0
 

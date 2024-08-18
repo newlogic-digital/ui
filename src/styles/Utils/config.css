@@ -1,5 +1,16 @@
-@import "winduum/src/base/config.css";
+@import "winduum/src/base/config/font.css";
+@import "winduum/src/base/config/mask.css";
+@import "winduum/src/base/config/rounded.css";
+@import "winduum/src/base/config/spacing.css";
+@import "winduum/src/base/config/text.css";
+@import "winduum/src/base/config/transition.css";
+@import "winduum/src/base/config/z.css";
 
-:root {
-  --spacing-section: 3rem;
+:root, :host {
+  --container: min(100% - (var(--container-padding) * 2), var(--container-width));
+  --container-lg: min(100% - (var(--container-padding) * 2), var(--container-lg-width));
+  --container-width: 80rem;
+  --container-lg-width: 90rem;
+  --container-padding: 5vw;
+  --container-padding-calc: max(calc(50vw - (var(--container-width) / 2)), var(--container-padding));
 }

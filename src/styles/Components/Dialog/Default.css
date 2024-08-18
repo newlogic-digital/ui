@@ -1,26 +1,2 @@
-@import "winduum/src/components/dialog.css";
-
-.c-dialog {
-  &.sm {
-    --c-dialog-width: 30rem;
-  }
-
-  &.lg {
-    --c-dialog-width: 50rem;
-  }
-
-  &.scrollable {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-
-    & .c_dialog_body {
-      flex: 1 1 auto;
-      overflow: auto;
-      margin: var(--c-dialog-py) calc(var(--c-dialog-px) * -1);
-      padding: 0 var(--c-dialog-px);
-      overscroll-behavior: contain;
-      -webkit-overflow-scrolling: touch;
-    }
-  }
-}
+@import "winduum/src/components/dialog/default.css";
+@import "winduum/src/components/dialog/default-props.css";

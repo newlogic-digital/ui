@@ -1,6 +1,5 @@
 import { LibStimulus, Controller } from './Stimulus.js'
-import naja from 'naja'
-import importScript from '../Utils/Functions/importScript.js'
+import { importScript } from '@newlogic-digital/utils-js'
 import cdn from '../Utils/cdn.js'
 
 LibStimulus.register('lib-recaptcha', class extends Controller {
@@ -9,34 +8,18 @@ LibStimulus.register('lib-recaptcha', class extends Controller {
         action: String
     }
 
-    connect () {
+    connect() {
         importScript(cdn.recaptcha.replace('{apikey}', this.apiValue))
     }
 
-    async execute () {
-        return new Promise(resolve => {
-            window.grecaptcha.enterprise.ready(() => {
-                window.grecaptcha.enterprise.execute(this.apiValue, { action: this.actionValue ?? 'form' }).then(token => {
-                    this.element.querySelector('[name="gtoken"]').value = token
-                    resolve()
-                })
+    execute(event) {
+        if (event?.detail?.recaptchaExecuted) return
+
+        window.grecaptcha.enterprise.ready(() => {
+            window.grecaptcha.enterprise.execute(this.apiValue, { action: this.actionValue ?? 'form' }).then((token) => {
+                this.element.gtoken.value = token
+                this.element.dispatchEvent(new CustomEvent('submit', { cancelable: true, detail: { recaptchaExecuted: true } }))
             })
         })
-    }
-
-    async submit ({ params }) {
-        if (this.element.reportValidity() === false) {
-            return false
-        }
-
-        arguments[0].preventDefault()
-
-        await this.execute()
-
-        if (!params.naja) {
-            this.element.submit()
-        } else {
-            await naja.makeRequest(this.element.method, this.element.action, new FormData(this.element), { history: 'replace' })
-        }
     }
 })

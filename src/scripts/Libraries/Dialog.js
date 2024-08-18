@@ -1,48 +1,28 @@
-import { Controller, LibStimulus, loadStimulus } from './Stimulus.js'
-import { insertDialog, closeDialog, fetchDialog, dialogSelector } from 'winduum/src/components/dialog/index.js'
-import { replaceScript } from '../Utils/Functions/+.js'
+import { Controller, LibStimulus } from './../Libraries/Stimulus.js'
+import { insertDialog, closeDialog, dialogSelector } from 'winduum/src/components/dialog/index.js'
+import initAfter from '../Utils/initAfter.js'
+import { fetchJson } from '@newlogic-digital/utils-js'
 
 LibStimulus.register('lib-dialog', class extends Controller {
-    static values = {
-        open: String,
-        url: String
+    async show({ currentTarget, params }) {
+        const loadingClasses = (params.loadingClass ?? 'loading cursor-wait').split(' ')
+
+        currentTarget.classList.add(...loadingClasses)
+
+        await this.fetch(params.url, params)
+
+        currentTarget.classList.remove(...loadingClasses)
     }
 
-    async connect () {
-        if (this.hasOpenValue) {
-            if (this.hasUrlValue) {
-                await fetchDialog({
-                    url: this.urlValue, insertOptions: { remove: true }
-                })
-            } else {
-                await insertDialog(document.querySelector(this.openValue).innerHTML, {
-                    remove: true
-                })
-            }
-
-            loadStimulus(dialogSelector('.lib-dialog'))
-        }
+    async close({ currentTarget, params }) {
+        await closeDialog(currentTarget.closest('dialog'), { remove: params.remove ?? true })
     }
 
-    async show ({ currentTarget, params }) {
-        currentTarget.classList.add('loading', 'cursor-wait')
+    async fetch(url, options) {
+        const { content } = await fetchJson(url)
 
-        await fetch(params.url, { headers: { 'X-Requested-With': 'XMLHttpRequest' } })
-            .then(response => response.json())
-            .then(async ({ content }) => {
-                await insertDialog(`<dialog class="c-dialog">${content}</dialog>`, {
-                    remove: params.remove ?? true,
-                    append: params.append ?? false
-                })
+        await insertDialog(content, options)
 
-                loadStimulus(dialogSelector('.c-dialog'))
-                replaceScript(dialogSelector('.c-dialog'))
-            })
-
-        currentTarget.classList.remove('loading', 'cursor-wait')
-    }
-
-    async close ({ currentTarget, params }) {
-        await closeDialog(currentTarget.closest('dialog'), { remove: params.remove ?? false })
+        initAfter(dialogSelector('.c-dialog'))
     }
 })

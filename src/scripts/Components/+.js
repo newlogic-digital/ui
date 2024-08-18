@@ -1,1 +1,2 @@
-import './CookieConsent.js'
+import './Drawer.js'
+import './Popover.js'

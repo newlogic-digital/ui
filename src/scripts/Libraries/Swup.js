@@ -1,42 +1,25 @@
-import { closeDialog } from 'winduum/src/components/dialog/index.js'
-import { hideTippy } from './Tippy.js'
-import { getController, loadStimulus } from './Stimulus.js'
-import LibCookieConsent from './CookieConsent.js'
-import { replaceTag, replaceScript } from '../Utils/Functions/+.js'
-
-const Swup = (await import('swup')).default
+import { dialogSelector } from 'winduum/src/components/dialog/index.js'
+import { delegateController } from './Stimulus.js'
+import Swup from 'swup'
+import initAfter from '../Utils/initAfter.js'
 
 const LibSwup = new Swup({
-    containers: ['#l-main', '#l-header'].filter(element => document.querySelector(element)),
-    ignoreVisit: (url, { el }) => el?.closest('[data-no-swup], [data-naja], a[href^="#"]')
+    containers: ['.l-main', '.l-header'].filter(element => document.querySelector(element)),
+    ignoreVisit: (url, { el }) => el?.closest('[data-no-swup], [data-naja]'),
+    animationSelector: '.swup-transition'
 })
 
-LibSwup.hooks.on('link:click', async (visit, { event }) => {
+LibSwup.hooks.on('animation:out:start', async () => {
     document.body.classList.remove('overflow-hidden')
 
-    const LibDrawerSelector = document.querySelector('.lib-drawer.active')
-    const LibDialogSelector = document.querySelector('.lib-dialog')
-
-    hideTippy()
-
-    if (LibDrawerSelector) {
-        /** @type {LibDrawer} */
-        const LibDrawer = getController(LibDrawerSelector, 'lib-drawer')
-
-        LibDrawer.hide()
-    }
-
-    if (LibDialogSelector) {
-        await closeDialog(LibDialogSelector)
-    }
-
-    if (window.location.href === event.target.closest('a').href) {
-        document.documentElement.scroll({ top: 0, behavior: 'smooth' })
-    }
+    delegateController('c-drawer', 'close')
+    delegateController('lib-dialog', 'close', {
+        currentTarget: dialogSelector('.c-dialog')
+    }, 'body')
 })
 
-LibSwup.hooks.on('scroll:anchor', () => {
-    document.documentElement.scroll({ top: document.querySelector(`${window.location.hash}`)?.getBoundingClientRect().top, behavior: 'smooth' })
+LibSwup.hooks.before('scroll:top', (visit, { options }) => {
+    if (visit.from.url !== visit.to.url) (options.behavior = 'instant')
 })
 
 /** @var {Array} dataLayer */
@@ -49,25 +32,23 @@ LibSwup.hooks.on('scroll:anchor', () => {
 LibSwup.hooks.on('content:replace', (visit, { page }) => {
     const content = new DOMParser().parseFromString(page.html, 'text/html')
 
-    replaceTag(content)
+    content.querySelectorAll('[data-lib-replace-tag]').forEach((element) => {
+        const replaceTag = document.querySelector(`[data-lib-replace-tag=${element.dataset.libReplaceTag}]`)
+        const placement = element.closest('head') ? document.head : replaceTag.parentElement
 
-    if (window.location.hash) {
-        document.documentElement.scroll({ top: document.querySelector(`${window.location.hash}`)?.offsetTop, behavior: 'smooth' })
-    }
+        replaceTag ? (replaceTag.outerHTML = element.outerHTML) : placement.insertAdjacentHTML('beforeend', element.outerHTML)
+    })
 
-    LibCookieConsent.init()
-
-    LibSwup.options.containers.forEach(selector => {
-        loadStimulus(document.querySelector(selector))
-        replaceScript(document.querySelector(selector))
+    LibSwup.options.containers.forEach((selector) => {
+        initAfter(document.querySelector(selector))
     })
 
     window.dataLayer && window.dataLayer.push({
         event: 'page_view'
     })
 
-    window.rc?.retargetingHit && window.rc.retargetingHit(window.retargetingConf)
-    window.rc?.conversionHit && window.rc.conversionHit(window.conversionConf)
+    window.rc?.retargetingHit && window.rc.retargetingHit(window.retargetingConf ?? {})
+    window.rc?.conversionHit && window.rc.conversionHit(window.conversionConf ?? {})
 
     window.fbq && window.fbq('track', 'PageView')
 })
@@ -84,9 +65,7 @@ LibSwup.hooks.before('page:load', () => {
 document.addEventListener('click', ({ target }) => {
     const noSwup = target.closest('[data-no-swup]')
 
-    if (!noSwup) {
-        return
-    }
+    if (!noSwup) return
 
     if (noSwup.classList.contains('ui-btn')) {
         noSwup.classList.add('loading')

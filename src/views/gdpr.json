@@ -1,11 +1,13 @@
 {
-  "headerNormal": true,
+  "headerOffset": true,
   "page": {
-    "title": "Newlogic UI",
+    "title": "GDPR",
     "body": [
       {
-        "src": "Sections/Gdpr.latte",
-        "intro": true
+        "src": "Sections/Text.latte"
+      },
+      {
+        "src": "Sections/CookieConsent.latte"
       }
     ]
   }

@@ -1,8 +1,8 @@
 import { LibStimulus, Controller } from '../Libraries/Stimulus.js'
-import { inputValidity } from '../Utils/Functions/+.js'
+import { validateField } from 'winduum/src/components/form/index.js'
 
 LibStimulus.register('ui-check', class extends Controller {
-    validity ({ currentTarget }) {
-        inputValidity(currentTarget)
+    async validate({ currentTarget }) {
+        validateField(currentTarget)
     }
 })

@@ -10,6 +10,7 @@
   }
 
   &:has([href*="-solid"]) {
+    stroke: none;
     fill: currentcolor;
   }
 }

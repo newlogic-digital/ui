@@ -1,0 +1,42 @@
+@import "winduum/src/utilities/common.css";
+@import "winduum/src/utilities/container/default.css";
+@import "winduum/src/utilities/ripple/index.css";
+@import "winduum/src/utilities/skeleton/index.css";
+@import "winduum/src/utilities/underline.css";
+@import "winduum/src/utilities/swap/index.css";
+
+.container {
+  width: var(--container);
+  margin-inline: auto;
+}
+
+.reveal {
+  opacity: 0;
+  transition-property: var(--transition);
+  transition-timing-function: var(--ease-in-out);
+  transition-duration: 0.75s;
+  will-change: transform;
+
+  @media (prefers-reduced-motion) {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media print {
+    opacity: 1;
+    transform: none;
+  }
+
+  &:is(.in), .no-js & {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

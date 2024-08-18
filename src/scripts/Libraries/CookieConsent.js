@@ -1,67 +1,78 @@
-const LibCookieConsent = {
-    setItem: (key, value) => {
-        localStorage.setItem(key, value)
-    },
-    getItem: (key) => {
-        return localStorage.getItem(key)
-    },
-    init: () => {
-        const type = LibCookieConsent.getItem('lib-cookieconsent')
+import { LibStimulus, Controller } from './Stimulus.js'
+import { appendCookieConsent, setCookieConsent } from '@newlogic-digital/cookieconsent-js'
+import { showDialog, closeDialog } from 'winduum/src/components/dialog/index.js'
 
-        if (type !== null) {
-            JSON.parse(type).forEach(type => LibCookieConsent.append(type))
+export const getCookieConsentItem = (key = 'cookieconsent-js') => localStorage.getItem(key)
+
+export const initCookieConsent = (element = document, type = getCookieConsentItem() ?? []) => {
+    element.querySelectorAll('[data-lib-cookieconsent]').forEach((element) => {
+        if (type.includes(element.getAttribute('data-lib-cookieconsent'))) {
+            appendCookieConsent(element)
         }
-    },
-    set: (type) => {
-        LibCookieConsent.setItem('lib-cookieconsent', JSON.stringify(type))
-        LibCookieConsent.setItem('lib-cookieconsent-expire', (Date.now() + 31556926 * 1000).toString())
+    })
+}
 
-        if (type.length > 0) {
-            type.forEach(type => LibCookieConsent.append(type))
+LibStimulus.register('c-dialog-cookieconsent', class extends Controller {
+    async connect() {
+        initCookieConsent()
+
+        if (document.querySelector('.c-form-cookieconsent')) {
+            return
+        }
+
+        if (!getCookieConsentItem() || parseInt(getCookieConsentItem('cookieconsent-js-expire')) < Date.now()) {
+            setTimeout(async () => {
+                await showDialog(this.element, { closable: false })
+            }, 1500)
         } else {
-            LibCookieConsent.setItem('lib-cookieconsent', JSON.stringify([]))
-            LibCookieConsent.remove()
+            this.element.remove()
         }
-    },
-    remove: () => {
-        document.cookie.split(';').forEach(c => {
-            document.cookie = c.replace(/^ +/, '').replace(/=.*/, '=;expires=' + new Date().toUTCString() + ';path=/')
+    }
+
+    async approve() {
+        await this.hide(['performance', 'marketing'])
+    }
+
+    async decline() {
+        await this.hide([])
+    }
+
+    async hide(type) {
+        await setCookieConsent(type)
+        initCookieConsent(document, type)
+        await closeDialog(this.element, { remove: true })
+    }
+})
+
+LibStimulus.register('c-form-cookieconsent', class extends Controller {
+    connect() {
+        document.querySelector('.c-dialog-cookieconsent')?.close()
+
+        this.element.querySelectorAll('input:not([disabled])').forEach((input) => {
+            input.checked = false
         })
-    },
-    append: (type) => {
-        document.querySelectorAll('[data-lib-cookieconsent]').forEach(elm => {
-            if (type === 'all' || elm.getAttribute('data-lib-cookieconsent') === type) {
-                const script = document.createElement('script')
-                let delay = 0
 
-                ;[...elm.attributes].forEach((attribute) => {
-                    if (attribute.specified) {
-                        if (attribute.name.indexOf('data-lib-cookieconsent') === -1 && attribute.name.indexOf('type') === -1) {
-                            script.setAttribute(attribute.name, attribute.value)
-                        }
-                    }
-                })
-
-                script.innerHTML = elm.innerHTML
-
-                if (elm.getAttribute('data-lib-cookieconsent-delay')) {
-                    delay = parseInt(elm.getAttribute('data-lib-cookieconsent-delay'))
-                }
-
-                setTimeout(() => {
-                    if (elm.closest('body') !== null) {
-                        document.body.appendChild(script)
-                    } else if (elm.closest('head') !== null) {
-                        document.head.appendChild(script)
-                    }
-
-                    elm.remove()
-                }, delay)
+        JSON.parse(getCookieConsentItem())?.forEach((type) => {
+            if (this.element.querySelector(`input[value="${type}"]`) !== null) {
+                this.element.querySelector(`input[value="${type}"]`).checked = true
             }
         })
     }
-}
 
-LibCookieConsent.init()
+    async update() {
+        const type = []
 
-export default LibCookieConsent
+        this.element.querySelectorAll('input:not([disabled])').forEach((input) => {
+            input.checked && type.push(input.value)
+        })
+
+        await setCookieConsent(type)
+        location.reload()
+    }
+
+    disconnect() {
+        if ((!getCookieConsentItem() || parseInt(getCookieConsentItem('cookieconsent-js-expire')) < Date.now())) {
+            document.querySelector('.c-dialog-cookieconsent')?.showModal()
+        }
+    }
+})

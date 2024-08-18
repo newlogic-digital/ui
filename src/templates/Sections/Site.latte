@@ -1,6 +1,59 @@
 {import TEMPLATES_DIR . 'Ui/+.latte'}
 
-<div class="py-section">
+<div class="py-section" data-controller="lib-reveal">
+    <div class="py-12 grid-cols-container">
+        <div class="w-full flex-col gap-4">
+            <div class="c-popover focus w-max">
+                <div class="c-tooltip focus bottom" aria-label="I am tooltip">
+                    <div role="button" class="ui-btn" tabindex="0">Popover</div>
+                </div>
+                <div class="c-popover-content shadow mt-2.5 p-2 w-32 flex-col">
+                    <div class="c-tooltip right" aria-label="I am tooltip">
+                        <button class="ui-btn ghosted accent-main justify-start w-full">Item 1</button>
+                    </div>
+                    <div class="c-popover hover">
+                        <button class="ui-btn ghosted accent-main justify-start w-full">Item 2</button>
+                        <div class="c-popover-content right shadow ml-4 p-2 w-32 flex-col">
+                            <div class="c-tooltip right" aria-label="I am tooltip">
+                                <button class="ui-btn ghosted accent-main justify-start w-full">Item 1</button>
+                            </div>
+                            <button class="ui-btn ghosted accent-main justify-start">Item 2</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="c-tooltip focus bottom w-max" aria-label="I am tooltip">
+                <div role="button" class="ui-btn" tabindex="0">Popover</div>
+            </div>
+            <div class="c-popover mt-12" data-controller="c-popover">
+                <button
+                    class="ui-btn"
+                    role="button"
+                    data-c-popover-placement-param="bottom-end"
+                    popovertargetaction="toggle"
+                    popovertarget="popover"
+                >Popover</button>
+                <div class="c-popover-content shadow h-48" id="popover" popover="manual">
+                    <input type="text" autofocus>
+                    <button type="button" data-action="c-popover#hide">x</button>
+                </div>
+            </div>
+            <div
+                class="c-popover mt-12"
+                data-controller="c-popover"
+                data-c-popover-url-value="/popover/info.json"
+                data-c-popover-insert-to-value="body"
+                id="popoverAction"
+            >
+                <button
+                    class="ui-btn"
+                    role="button"
+                    popovertargetaction="toggle"
+                    popovertarget="popover2"
+                >Popover</button>
+            </div>
+        </div>
+    </div>
     <div class="[--test:theme(spacing[1.5])]"></div>
     <svg>
         <use href="#icon-x-mark"></use>
@@ -8,7 +61,19 @@
     <svg>
         <use href="#icon-angle-down-solid"></use>
     </svg>
-    <form class="container flex flex-col gap-4" data-controller="lib-form">
+    <form class="grid grid-cols-3 gap-2" data-controller="lib-naja" data-lib-recaptcha-api-value="6Ldvm2scAAAAAL3GHSR6zJb8ilfCdFfNe9dh8pn9" data-action="submit->lib-recaptcha#execute:prevent" data-naja action="/">
+        <div class="ui-control">
+            <input required name="given-name">
+        </div>
+        <div class="ui-control">
+            <input required name="surname">
+        </div>
+        <input type="hidden" name="gtoken" autocomplete="off">
+        <button class="ui-btn" type="button" data-action="utils#submit">
+            Odeslat
+        </button>
+    </form>
+    <form class="container flex flex-col gap-4" data-lib-reveal-target="item" data-controller-name-param="lib-form">
         <div class="grid grid-cols-3 gap-md">
             <div class="c-field">
                 {embed UiControl}

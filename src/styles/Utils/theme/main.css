@@ -1,17 +1,33 @@
-@import "winduum/src/base/theme/default-rgb.css";
-
-:root {
+:root, :host {
   --font-primary: "Poppins", sans-serif;
   --font-secondary: "Poppins", sans-serif;
-  --color-primary-rgb: 131 205 79;
-  --color-primary-foreground-rgb: var(--color-dark-rgb);
-  --color-main-rgb: 17 19 21;
-  --color-dark-rgb: 17 19 21;
-  --color-accent-rgb: var(--color-primary-rgb);
-  --color-body-secondary-foreground: var(--color-main);
+  --space: srgb;
+  --scheme: dark;
+  --color-accent: var(--color-primary);
+  --color-accent-foreground: var(--color-primary-foreground);
+  --color-primary: #83cd4f;
+  --color-primary-foreground: var(--color-dark);
+  --color-main: #111315;
+  --color-main-foreground: var(--color-body);
+  --color-main-primary: var(--color-main);
+  --color-main-secondary: color-mix(in var(--space), var(--color-main) 75%, var(--color-main-foreground));
+  --color-main-tertiary: color-mix(in var(--space), var(--color-main) 50%, var(--color-main-foreground));
+  --color-body: #fff;
+  --color-body-foreground: var(--color-main);
+  --color-body-primary: var(--color-body);
+  --color-body-secondary: color-mix(in var(--space), var(--color-body) 95%, var(--color-body-foreground));
+  --color-body-tertiary: color-mix(in var(--space), var(--color-body) 90%, var(--color-body-foreground));
+  --color-light: #fff;
+  --color-light-foreground: var(--color-dark);
+  --color-dark: #111315;
+  --color-dark-foreground: var(--color-light);
+  --color-success: #16a34a;
+  --color-error: #dc2626;
+  --color-warning: #eab308;
+  --color-info: #0ea5e9;
 
   &.dark {
-    --color-main-rgb: 201 209 217;
-    --color-body-rgb: 14 17 22;
+    --color-main: #c9d1d9;
+    --color-body: #0e1116;
   }
 }

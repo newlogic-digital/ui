@@ -20,10 +20,6 @@
       "crossorigin": true
     }
   ],
-  "modulepreload": [
-    "node_modules/@hotwired/stimulus/dist/stimulus.js",
-    "node_modules/swup/dist/Swup.modern.js"
-  ],
   "assets": {
     "css": {
       "all": [
@@ -35,7 +31,7 @@
     }
   },
   "layout": {
-    "cookies": false,
+    "cookies": true,
     "nav": [
       {
         "name": "Home",

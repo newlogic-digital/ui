@@ -18,6 +18,16 @@ Lightweight, modern and modular CSS framework with the best principles
 - ✨️ Progressive
 - ⚡️ Fast
 
+## Příprava projektu pro implementaci
+1. nainstalovat node - `npm i`
+2. nainstalovat cms - `newlogic init cms`
+3. vytvořit si db na devlogic.cz a nastavit v `config/local.neon`
+4. spustit `docker compose up` a `vite`
+5. spustit `make prepare`
+6. spustit `make phinx-seed`
+7. nastavit `FTP_SERVER`, `DB_USERNAME` a `DB_PASSWORD` a vytvořit prostor na devlogic.cz
+8. commitnout změny a pushnout
+
 Newlogic UI is component framework with easy syntax for backend integration. Modern approach of CSS properties, enriched with utility classes from TailwindCSS and powered by Winduum.
 
 Javascript implementation is only **28 kB** and mainly intended for use on backend rendered websites and applications with PHP framework Nette

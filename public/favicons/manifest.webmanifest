@@ -1,0 +1,23 @@
+{
+    "name": "Newlogic UI",
+    "short_name": "Newlogic UI",
+    "description": "",
+    "icons": [
+        {
+            "src": "/favicons/favicon-512.webp",
+            "sizes": "512x512",
+            "type": "image/webp",
+            "purpose": "any"
+        },
+        {
+            "src": "/favicons/favicon-512.webp",
+            "sizes": "512x512",
+            "type": "image/webp",
+            "purpose": "maskable"
+        }
+    ],
+    "theme_color": "#fff",
+    "background_color": "#fff",
+    "display": "standalone",
+    "start_url": "/"
+}

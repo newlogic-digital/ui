@@ -1,8 +1,7 @@
+import { defineConfig } from 'vite'
 import core from '@newlogic-digital/core'
-import postcssHasPseudo from 'css-has-pseudo'
-import postcssCustomSelectors from 'postcss-custom-selectors'
 
-export default {
+export default defineConfig({
     plugins: [
         core({
             juice: {
@@ -14,9 +13,15 @@ export default {
             }
         })
     ],
-    css: {
-        postcss: {
-            plugins: [postcssCustomSelectors(), postcssHasPseudo()]
+    build: {
+        target: ['edge111', 'firefox111', 'chrome111', 'safari16'],
+        rollupOptions: {
+            output: {
+                manualChunks: {
+                    swup: ['swup'],
+                    stimulus: ['@hotwired/stimulus']
+                }
+            }
         }
     }
-}
+})

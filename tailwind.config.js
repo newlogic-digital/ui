@@ -1,4 +1,4 @@
-import winduum, { defaultConfig } from 'winduum/plugin/tailwind.js'
+import winduum, { defaultConfig } from 'winduum/plugin'
 import containerQueries from '@tailwindcss/container-queries'
 
 export default !process.argv.includes('emails')
@@ -12,13 +12,16 @@ export default !process.argv.includes('emails')
         ],
         plugins: [
             winduum({
-                settings: {
-                    rgb: true
-                },
                 spacing: [...defaultConfig.spacing, 'section']
             }),
             containerQueries
-        ]
+        ],
+        corePlugins: {
+            container: false
+        },
+        future: {
+            hoverOnlyWhenSupported: true
+        }
     }
     : {
         content: [

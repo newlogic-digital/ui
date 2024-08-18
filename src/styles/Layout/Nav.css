@@ -1,47 +1,23 @@
-#l-nav {
-  --l-nav-width: calc(100vw - 2.5rem);
-
-  @media (--media-md) {
-    --l-nav-width: 25rem;
-  }
-
-  .l_header_nav {
-    flex-direction: column;
-  }
-
-  > .l_nav {
-    width: var(--l-nav-width);
-    background-color: var(--color-body);
-    height: 100vh;
-    flex-shrink: 0;
+.l-nav {
+  .c-drawer-content {
     padding: 2rem;
   }
 
-  .l_nav_head {
+  [data-part~="logo"] {
+    display: flex;
     padding: 0.75rem 0 2.5rem;
   }
 
-  .l_nav_body {
+  [data-part~="nav"] {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    align-items: flex-start;
 
     & a {
       padding: 0.5rem 0;
       font-size: 1.75rem;
       display: block;
-    }
-  }
-
-  &.is-transition {
-    > .l_nav {
-      transition: transform 0.3s ease;
-    }
-  }
-
-  &:not(.active) {
-    > .l_nav {
-      transform: translateX(calc(var(--l-nav-width) * -1));
     }
   }
 }

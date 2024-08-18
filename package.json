@@ -1,6 +1,6 @@
 {
   "name": "@newlogic-digital/ui",
-  "version": "3.6.2",
+  "version": "3.7.4",
   "type": "module",
   "main": "vite.config.js",
   "author": "New Logic Studio s.r.o.",
@@ -23,24 +23,26 @@
     "npm-sort": "npm r -S example && npm r -D example"
   },
   "dependencies": {
+    "@floating-ui/dom": "^1.6.10",
     "@hotwired/stimulus": "^3.2.2",
-    "@simonwep/pickr": "^1.9.0",
-    "air-datepicker": "^3.4.0",
-    "css-has-pseudo": "^6.0.1",
-    "naja": "^2.6.1",
-    "swup": "^4.5.2",
-    "tippy.js": "^6.3.7",
-    "winduum": "^0.7.1"
+    "@newlogic-digital/cookieconsent-js": "^0.1.0",
+    "@newlogic-digital/utils-js": "^0.3.2",
+    "@simonwep/pickr": "^1.9.1",
+    "air-datepicker": "^3.5.3",
+    "eslint": "^9.9.0",
+    "naja": "^3.2.1",
+    "neostandard": "^0.11.2",
+    "stylelint-config-standard": "^36.0.1",
+    "swup": "^4.7.0",
+    "winduum": "^1.2.1"
   },
   "devDependencies": {
-    "@newlogic-digital/core": "^2.1.1",
-    "@stylistic/stylelint-config": "^1.0.1",
+    "@newlogic-digital/core": "^2.1.2",
+    "@stylistic/stylelint-config": "^2.0.0",
     "@tailwindcss/container-queries": "^0.1.1",
-    "@types/grecaptcha": "^3.0.7",
-    "eslint-config-standard": "^17.1.0",
-    "npm-check-updates": "^16.14.14",
-    "postcss-custom-selectors": "^7.1.6",
-    "stylelint-config-standard": "^36.0.0"
+    "@types/grecaptcha": "^3.0.9",
+    "npm-check-updates": "^17.0.6",
+    "vite": "^5.4.1"
   },
   "files": [
     "src"

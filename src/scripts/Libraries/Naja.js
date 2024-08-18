@@ -1,46 +1,38 @@
-import naja from 'naja'
-import { Controller, LibStimulus, loadStimulus } from './Stimulus.js'
+import { Controller, LibStimulus, initStimulus } from './Stimulus.js'
+import { initCookieConsent } from './CookieConsent.js'
+import {
+    initNaja,
+    NajaRecaptchaExtension,
+    NajaFormValidityExtension
+} from '@newlogic-digital/utils-js'
+import LibSwup from './Swup.js'
 
 LibStimulus.register('lib-naja', class extends Controller {
-    async connect () {
-        naja.uiHandler.addEventListener('interaction', ({ detail }) => {
-            const element = detail.element
-
-            detail.options.target = element
-
-            element.dispatchEvent(new CustomEvent('naja:interaction', { bubbles: true, cancelable: true }))
-
-            if (element?.form && !element.form.reportValidity()) {
-                arguments[0].preventDefault()
-            }
-        })
-
-        naja.snippetHandler.addEventListener('afterUpdate', ({ detail }) => {
-            detail?.options.target.dispatchEvent(new CustomEvent('naja:afterUpdate', { bubbles: true, cancelable: true }))
-
-            loadStimulus(document.body, false)
-        })
+    async initialize() {
+        const naja = (await import('naja')).default
 
         naja.uiHandler.selector = '[data-naja]'
 
-        naja.initialize({
-            history: false
+        await initNaja(this.element, false)
+
+        if (naja.initialized) return
+
+        naja.uiHandler.addEventListener('interaction', ({ detail }) => {
+            detail.element.dispatchEvent(new CustomEvent('naja:interaction', { bubbles: true, cancelable: true }))
         })
-    }
 
-    async makeRequest ({ currentTarget, params }) {
-        const { href, action, method, form } = currentTarget
+        naja.snippetHandler.addEventListener('afterUpdate', ({ detail }) => {
+            detail.snippet.dispatchEvent(new CustomEvent('naja:afterUpdate', { bubbles: true, cancelable: true }))
 
-        arguments[0]?.preventDefault()
+            initStimulus(detail.snippet)
+            initNaja(detail.snippet)
+            initCookieConsent(detail.snippet)
 
-        await naja.makeRequest(
-            params.method ?? (method ?? 'GET'),
-            params.url ?? (href ?? action),
-            params.data ?? (form ? new FormData(form) : action ? new FormData(currentTarget) : null),
-            {
-                history: (action || form) ? 'replace' : false,
-                ...(params.options ?? {})
-            }
-        )
+            LibSwup.cache.clear()
+        })
+
+        naja.registerExtension(NajaRecaptchaExtension)
+        naja.registerExtension(NajaFormValidityExtension)
+        naja.initialize()
     }
 })
