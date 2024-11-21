@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>{$title}</title>
+
+        <meta name="keywords" content="">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-title" content="{$title}">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="theme-color" content="#ffffff">
+
+        {if isset($prefetch)}
+            {foreach $prefetch as $url}
+                <link rel="preconnect" href="{$url}" crossorigin>
+                <link rel="dns-prefetch" href="{$url}">
+            {/foreach}
+        {/if}
+
+        {if isset($preload)}
+            <link
+                n:foreach="$preload as $url"
+                href="{$url->href|asset}"
+                {if isset($url->rel)}rel="{$url->rel}"{else}rel="preload"{/if}
+                {if isset($url->as)}as="{$url->as}"{/if}
+                {if isset($url->type)}type="{$url->type}"{/if}
+                {if isset($url->crossorigin)}crossorigin{/if}
+            >
+        {/if}
+
+        <link n:foreach="$assets->css->all as $url" href="{$url|asset}" rel="stylesheet">
+
+        {if isset($modulepreload)}
+            <link n:foreach="$modulepreload as $url" href="{$url|asset}" rel="modulepreload">
+        {/if}
+
+        <script>
+            (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) && document.documentElement.classList.add('dark')
+            document.documentElement.classList.remove('no-js')
+        </script>
+
+        <script src="{$assets->js->main|asset}" type="module"></script>
+
+        <link rel="icon" type="image/svg+xml" href="/favicons/favicon.svg">
+        <link rel="apple-touch-icon" type="image/webp" href="/favicons/favicon-512.webp">
+        <link rel="manifest" href="/favicons/manifest.webmanifest">
+    </head>
+    <body data-controller="x-app invoke" data-naja-snippet-append>
+        {include '../components/(layout)/Header.latte'}
+        <main class="x-main view-transition-main">
+            {include '../utils/sections.latte', sections => $body}
+        </main>
+        {include '../components/(layout)/Footer.latte'}
+
+        {if $cookieConsent}
+            {include '../components/cookieconsent/CookieConsentDialog.latte'}
+        {/if}
+
+        <ol class="x-toaster items-end">
+            {*include TEMPLATES_DIR . 'Components/(ui)/Toast.latte'*}
+        </ol>
+
+        {if true} {* load only on first load in production *}
+            {fetch('/src/icons.svg')|noescape}
+        {/if}
+    </body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "title": "GDPR",
+  "body": [
+    {
+      "src": "components/Content.latte"
+    },
+    {
+      "src": "components/cookieconsent/CookieConsentContent.latte"
+    }
+  ]
+}

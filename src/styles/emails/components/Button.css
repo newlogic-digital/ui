@@ -1,0 +1,31 @@
+.x-button {
+  a {
+    line-height: 24px;
+    mso-line-height-rule: exactly;
+    border-radius: var(--radius);
+    display: inline-block;
+    border: 1px solid var(--color-primary);
+    padding: 5px 12px;
+    font-size: 14px;
+    font-weight: 700;
+
+    &, span {
+      text-decoration: none;
+      color: var(--color-primary-foreground);
+    }
+  }
+
+  .x-button-content {
+    border-radius: var(--radius);
+    transition: background-color 0.15s;
+    background-color: var(--color-primary);
+
+    &:hover {
+      background-color: var(--color-primary-hover) !important;
+
+      a {
+        border: 1px solid var(--color-primary-hover) !important;
+      }
+    }
+  }
+}

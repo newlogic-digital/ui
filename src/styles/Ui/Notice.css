@@ -1,9 +1,0 @@
-@import "winduum/src/ui/notice/index.css";
-
-.ui-notice {
-  align-items: flex-start;
-
-  hr {
-    width: 100%;
-  }
-}

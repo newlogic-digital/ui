@@ -1,0 +1,12 @@
+{capture $content}
+    <div class="x-popover-content shadow h-48" aria-describedby="popoverAction" popover="manual">
+        <input type="text" autofocus>
+        <button
+            type="button"
+            data-action="x-popover#hide"
+        >x</button>
+    </div>
+{/capture}
+
+{$content|json('content')|noescape}
+

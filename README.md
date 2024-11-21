@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://ui.newlogic.cz/" target="_blank" rel="noopener noreferrer">
-    <img width="180" src="https://ui.newlogic.cz/favicons/favicon.svg" alt="Logo">
+    <img width="180" src="https://next.ui.newlogic.cz/favicon.svg" alt="Logo">
   </a>
 </p>
 <p align="center">
@@ -10,7 +10,7 @@
 
 # 🎨 Newlogic UI
 
-Lightweight, modern and modular CSS framework with the best principles
+Where Innovation Meets Simplicity.
 
 - 💡 Modern
 - 📦 Modular
@@ -18,41 +18,37 @@ Lightweight, modern and modular CSS framework with the best principles
 - ✨️ Progressive
 - ⚡️ Fast
 
-Newlogic UI is component framework with easy syntax for backend integration. Modern approach of CSS properties, enriched with utility classes from TailwindCSS and powered by Winduum.
-
-Javascript implementation is only **28 kB** and mainly intended for use on backend rendered websites and applications with PHP framework Nette
+Component framework for modern backend driven web applications. Powered by Vite and Winduum.
 
 ## ⚙️ Under the hood
-* **[Vituum](https://vituum.dev/)** - plugins for Vite, adds support for template engines and more.
 * **[Newlogic Core](https://github.com/newlogic-digital/core)** - starter pack for creating modern web applications. Powered by Vite and Vituum.
-* **[ESM](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)** - completely written in modern JS syntax - esnext, ES modules, etc.
-* **[PostCSS](https://postcss.org/)** - completely written in modern CSS syntax - nesting, variables, etc.
-* **[Tailwind CSS](https://tailwindcss.com/)** - rich utility classes for everything
+* **[Vituum](https://vituum.dev/)** - plugins for Vite, adds support for template engines, and more.
+* **[Vite](https://vituum.dev/)** - next generation frontend tooling
+* **[Winduum](https://winduum.dev/)** - a small modest CSS component framework for TailwindCSS
+* **[Tailwind CSS](https://tailwindcss.com/)** - rapidly build modern websites without ever leaving your HTML
+* **[Naja](https://naja.js.org/)** - a full-featured JS client-side AJAX library for Nette Framework
 * **[Stimulus](https://stimulus.hotwire.dev/)** - a modest JavaScript framework for the HTML you already have
-* **Dark mode** - creating dark mode was never easier
-* **Easy syntax** - .ui-btn (ui elements), .c-component (components), .c-section (sections) etc.
+* **[Swup](https://next.ui.newlogic.cz/docs/.html)** - versatile and extensible page transition library for server-rendered websites
 
-
-Newlogic UI uses Newlogic Core, which compiles modern JS and CSS syntax via Vite and Vituum. Source code can be used with any other tools or even different environment than NodeJS, e.g. Deno and is written in W3C standards and should be runnable in current or future version of browsers.
 
 ## 🪄 Get started
 
-Creating a new project (with Vituum and Newlogic Core)
+Creating a new project
 ```sh
-$ git clone --depth 1 https://github.com/newlogic-digital/ui.git newlogic-ui-project
-$ cd newlogic-ui-project && npm i
+git clone --depth 1 https://github.com/newlogic-digital/ui.git newlogic-ui-project
+cd newlogic-ui-project && npm i
 ```
 ```sh
-$ vite
+npm run dev
 ```
 or
 ```sh
-$ vituum build
+npm run build
 ```
 ___
 Or in any other environment
 ```sh
-$ npm i @newlogic-digital/ui
+npm i @newlogic-digital/ui
 ```
 
 ```css
@@ -67,8 +63,8 @@ import "@newlogic-digital/ui/src/scripts/main.js"
 
 ### Requirements
 
-- [Node.js LTS (16.x)](https://nodejs.org/en/download/)
-- [NPM (9.x)](https://www.npmjs.com/package/npm) or any other package manager
+- [Node.js LTS (22.x)](https://nodejs.org/en/download/)
+- [NPM (10.x)](https://www.npmjs.com/package/npm) or any other package manager
 
 ## Licence
 GNU GPLv3

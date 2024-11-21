@@ -1,0 +1,27 @@
+{var $center = true}
+
+<dialog class="x-cookieconsent-dialog x-dialog {if $center}center{/if}" data-controller="x-cookieconsent-dialog">
+    <div class="x-dialog-content">
+        <div class="mt-2 mb-4 md:mb-6">
+            {if true}
+                <div class="x-image w-40 my-4">
+                    <img src="{placeholder(160, 46)}" alt="">
+                </div>
+            {/if}
+            <div class="x-heading text-3xl md:my-8">Nastavení soukromí a&nbsp;cookies&nbsp;🍪</div>
+        </div>
+        <div class="x-text">
+            <p>Webové stránky používají k poskytování služeb, personalizaci reklam a analýze návštěvnosti soubory&nbsp;cookies.</p>
+            <p>Následující volbou souhlasíte s našimi <a href="/gdpr">zásady&nbsp;ochrany osobních údajů a cookies</a>. Svá&nbsp;nastavení můžete kdykoli změnit.</p>
+        </div>
+        <div class="flex items-center mt-6 md:mt-8 gap-4 {if $center}flex-col{else}max-md:flex-col{/if} px-4">
+            <div class="flex flex-col w-full">
+                <button class="x-button lg w-full" data-action="click->x-cookieconsent-dialog#approve">Ano, souhlasím</button>
+            </div>
+            <div class="flex w-full gap-4">
+                <a class="x-button ghosted lg accent-main flex-1 px-4" href="/gdpr"><span>Přizpůsobit</span></a>
+                <button class="x-button ghosted lg accent-main flex-1 px-4" data-action="click->x-cookieconsent-dialog#decline"><span>Nesouhlasím</span></button>
+            </div>
+        </div>
+    </div>
+</dialog>

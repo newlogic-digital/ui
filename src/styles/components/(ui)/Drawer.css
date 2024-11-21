@@ -1,0 +1,14 @@
+@import "winduum/src/components/drawer/props/default.css";
+@import "winduum/src/components/drawer/props/content.css";
+@import "winduum/src/components/drawer/default.css";
+@import "winduum/src/components/drawer/content.css";
+
+.x-drawer {
+  --x-drawer-content-width: min(calc(100vw - 2rem), 22rem);
+  --x-drawer-content-height: 100dvh;
+}
+
+.x-drawer-content {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}

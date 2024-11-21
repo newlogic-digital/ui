@@ -1,0 +1,8 @@
+{
+  "title": "Playground",
+  "body": [
+    {
+      "src": "components/Playground.latte"
+    }
+  ]
+}

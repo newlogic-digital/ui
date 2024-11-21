@@ -1,0 +1,229 @@
+<div class="grid grid-cols-container gap-y-6">
+    <div>
+        <button class="x-button" data-loading disabled data-action="click->x-button#click">
+            Testo button
+            <span class="spinner spinner-absolute"></span>
+        </button>
+    </div>
+    <div>
+        <div class="x-control" tabindex="-1" data-controller="x-control-select">
+            <select>
+                <option selected="" value="">- select an option -</option>
+                <option value="1">Option 1</option>
+                <option value="2" disabled="">Option 2</option>
+                <option value="3">Option 3</option>
+            </select>
+            <label>Javascript select</label>
+            <div aria-hidden="true">
+                <div data-option="" tabindex="0">- select option -</div>
+                <div data-option="1" tabindex="0">Option 1</div>
+                <div data-option="2" data-disabled="">Option 2</div>
+                <div data-option="3" tabindex="0">Option 3</div>
+            </div>
+        </div>
+    </div>
+    <div class="bg-red-500 h-4 col-[container-lg]"></div>
+    <div class="flex gap-4">
+        <button
+            class="x-button"
+            data-invoke-action="x-dialog#show"
+            data-invoke-target="#dialogElement"
+        >
+            Show Existing Dialog
+        </button>
+        <button
+            class="x-button data-[loading]:bg-red-300"
+            data-naja="invoke once"
+            data-naja-url="/fetch"
+            data-invoke-action="x-dialog#show"
+        >
+            Fetch New Dialog
+        </button>
+    </div>
+    <div
+        class="x-popover mt-12"
+        data-controller="x-popover"
+        id="popoverAction"
+    >
+        <button
+            class="x-button"
+            role="button"
+            popovertargetaction="toggle"
+            popovertarget="snippet--popover-content"
+            data-naja="once"
+            data-naja-url="/fetch"
+        >Popover Naja</button>
+        <div class="x-popover-content" data-action="naja:afterUpdate->x-popover#actionToggle" popover id="snippet--popover-content" n:inner-if="false">
+            <div>asdf</div>
+            <div></div>
+        </div>
+    </div>
+
+    <div class="flex">
+        <div class="x-control">
+            <input>
+        </div>
+    </div>
+    <div class="flex flex-wrap gap-4">
+        <button
+            class="x-button"
+            data-invoke-action="x-drawer#show"
+            data-invoke-target="#drawerLeftElement"
+        >Show left drawer</button>
+        <dialog class="x-drawer" data-controller="x-drawer" data-x-drawer-dialog-value="non-modal" id="drawerLeftElement" data-action="scroll->x-drawer#scroll" inert>
+            <nav class="x-drawer-content">
+                Drawer content
+                <button class="x-button muted" data-action="x-drawer#close">Close drawer</button>
+            </nav>
+        </dialog>
+
+        <button
+                class="x-button"
+                data-invoke-action="x-drawer#show"
+                data-invoke-target="#drawerRightElement"
+        >Show right drawer</button>
+        <dialog class="x-drawer after:-order-last" data-controller="x-drawer" data-x-drawer-placement-value="right" id="drawerRightElement" data-action="scroll->x-drawer#scroll" inert>
+            <nav class="x-drawer-content">
+                Drawer content
+                <button class="x-button muted" data-action="x-drawer#close">Close drawer</button>
+            </nav>
+        </dialog>
+
+        <button
+                class="x-button"
+                data-invoke-action="x-drawer#show"
+                data-invoke-target="#drawerBottomElement"
+        >Show bottom drawer</button>
+        <dialog class="x-drawer flex flex-col after:-order-last" data-controller="x-drawer" data-x-drawer-placement-value="bottom" id="drawerBottomElement" data-action="scroll->x-drawer#scroll" inert>
+            <nav class="x-drawer-content">
+                Drawer content
+                <button class="x-button muted" data-action="x-drawer#close">Close drawer</button>
+            </nav>
+        </dialog>
+
+        <button
+                class="x-button"
+                data-invoke-action="x-drawer#show"
+                data-invoke-target="#drawerTopElement"
+        >Show top drawer</button>
+        <dialog class="x-drawer flex flex-col" data-controller="x-drawer" data-x-drawer-placement-value="top" id="drawerTopElement" data-action="scroll->x-drawer#scroll" inert>
+            <nav class="x-drawer-content">
+                Drawer content
+                <button class="x-button muted" data-action="x-drawer#close">Close drawer</button>
+            </nav>
+        </dialog>
+    </div>
+
+    <div class="x-control" data-controller="x-control">
+        <input type="number" min="0">
+        <div class="me-auto">
+            <svg role="button" data-action="click->x-control#stepDown" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14" />
+            </svg>
+        </div>
+        <div class="ms-auto">
+            <svg role="button" data-action="click->x-control#stepUp" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+        </div>
+    </div>
+
+    <div class="x-control" data-controller="x-control">
+        <input type="date">
+        <div class="ms-auto">
+            <svg class="size-6" role="button" data-action="click->x-control#showPicker" fill="none" viewBox="0 0 24 24" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+            </svg>
+        </div>
+    </div>
+
+    <div class="x-field">
+        <label class="x-label">Label</label>
+        <div class="x-control">
+            <input type="text" required>
+        </div>
+        <em class="x-info text-error" hidden>Info</em>
+    </div>
+
+    <div class="flex justify-between items-center">
+        <output class="x-title xs font-normal flex gap-1 after:content-[attr(data-unit)]" data-unit="Kč" id="single" aria-label="Cena od">0</output>
+    </div>
+
+    <div class="x-range mt-1 items-center" data-controller="x-range">
+        <input type="range" value="0" step="100" max="10000" min="0" aria-labelledby="single" data-x-range-target="start" data-action="input->x-range#setValue">
+    </div>
+
+    <div class="x-tabs" data-controller="x-tabs">
+        <div class="x-tabs-content" role="tablist">
+            <button class="x-button accent-main aria-selected:accent-primary" data-action="x-tabs#toggle" data-x-tabs-target="tab" role="tab" aria-controls="tab-all" id="all" aria-selected="true">
+                All
+            </button>
+            <button class="x-button accent-main aria-selected:accent-primary" data-action="x-tabs#toggle" data-x-tabs-target="tab" role="tab" aria-controls="tab-photos" id="photos">
+                Photos
+            </button>
+            <button class="x-button accent-main aria-selected:accent-primary" data-action="x-tabs#toggle" data-x-tabs-target="tab" role="tab" aria-controls="tab-music" id="music">
+                Music
+            </button>
+            <button class="x-button accent-main aria-selected:accent-primary" data-action="x-tabs#toggle" data-x-tabs-target="tab" role="tab" aria-controls="tab-documents" id="documents">
+                Documents
+            </button>
+        </div>
+        <div class="aria-hidden:hidden" data-x-tabs-target="tabpanel" role="tabpanel" aria-hidden="false" id="tab-all" aria-labelledby="all">
+            All
+        </div>
+        <div class="aria-hidden:hidden" data-x-tabs-target="tabpanel" role="tabpanel" aria-hidden="true" id="tab-photos" aria-labelledby="photos">
+            Photos
+        </div>
+        <div class="aria-hidden:hidden" data-x-tabs-target="tabpanel" role="tabpanel" aria-hidden="true" id="tab-music" aria-labelledby="music">
+            Music
+        </div>
+        <div class="aria-hidden:hidden" data-x-tabs-target="tabpanel" role="tabpanel" aria-hidden="true" id="tab-documents" aria-labelledby="documents">
+            Documents
+        </div>
+    </div>
+</div>
+
+<dialog class="x-dialog" id="dialogElement" data-controller="x-dialog">
+    <form class="x-dialog-content">
+        <div class="flex justify-between">
+            <h2 class="x-heading">Info</h2>
+            <button class="x-button square ghosted accent-main" type="button" data-action="click->x-dialog#close">
+                <svg>
+                    <use href="#icon-x-mark"></use>
+                </svg>
+            </button>
+        </div>
+        <div class="py-4">
+            <div class="x-text">
+                {foreach range(1, 44) as $i}
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget efficitur metus. In bibendum nisi et dui sagittis efficitur.</p>
+                {/foreach}
+            </div>
+        </div>
+        <div class="flex">
+            <div class="col max-md:w-full">
+                <button class="x-button" type="button" data-action="click->x-dialog#close">Continue</button>
+            </div>
+        </div>
+    </form>
+</dialog>
+
+<div class="x-compare rounded size-fit accent-light" data-controller="x-compare">
+    <input type="range" step="0.1" aria-hidden="true" data-action="input->x-compare#setPosition keydown->x-compare#setKeyboardStep mousedown->x-compare#setMouseStep">
+    <div class="x-button circle" aria-hidden="true">
+        <svg class="size-6" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none">
+            <path class="-translate-x-1.5 scale-75 origin-center" stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+            <path class="translate-x-1.5 scale-75 origin-center" stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+        </svg>
+    </div>
+    <div class="x-image">
+        <img src="https://via.placeholder.com/896x504/333/" alt="Image 1" loading="lazy" width="896" height="504">
+        <img src="https://via.placeholder.com/896x504/888" alt="Image 2" loading="lazy" width="896" height="504">
+    </div>
+</div>
+
+<div class="min-h-[200vh]"></div>
+
+<script data-cookieconsent="performance" type="text/plain">
+    console.log('asdf')
+</script>
