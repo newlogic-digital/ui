@@ -1,0 +1,12 @@
+{
+  "nav": [
+    {
+      "name": "Home",
+      "url": "/"
+    },
+    {
+      "name": "Gdpr",
+      "url": "/gdpr"
+    }
+  ]
+}

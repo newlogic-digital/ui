@@ -1,0 +1,36 @@
+@import "winduum/src/base/defaults.css";
+@import "winduum/tailwindcss/base/defaults.css";
+
+:where(svg) {
+  display: block;
+
+  &:has([href]) {
+    stroke-width: 1.5;
+    stroke: currentcolor;
+    fill: none;
+  }
+
+  &:has([href*="-solid"]) {
+    stroke: none;
+    fill: currentcolor;
+  }
+}
+
+:where(img) {
+  display: block;
+  font-size: 0;
+}
+
+:where(ol:not([type]), ul, menu) {
+  padding: 0;
+  margin: 0;
+}
+
+:where([type="number"]) {
+  -moz-appearance: textfield;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+}

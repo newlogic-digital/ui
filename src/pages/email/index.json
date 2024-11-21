@@ -1,0 +1,12 @@
+{
+  "title": "Email",
+  "template": "./src/templates/emails/layouts/default.latte",
+  "body": [
+    {
+      "src": "emails/components/Header.latte"
+    },
+    {
+      "src": "emails/components/Content.latte"
+    }
+  ]
+}

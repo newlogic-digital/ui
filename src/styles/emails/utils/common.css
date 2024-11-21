@@ -1,0 +1,29 @@
+.container {
+  min-width: var(--container);
+  width: var(--container);
+
+  @media (max-width: 647px) {
+    min-width: 100% !important;
+    width: 100% !important;
+  }
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.border-r {
+  border-right: 1px solid;
+}
+
+.border-l {
+  border-left: 1px solid;
+}
+
+.border-b {
+  border-bottom: 1px solid;
+}
+
+.border-t {
+  border-top: 1px solid;
+}

@@ -1,6 +1,6 @@
 {
   "name": "@newlogic-digital/ui",
-  "version": "3.7.5",
+  "version": "4.0.0-beta.2",
   "type": "module",
   "main": "vite.config.js",
   "author": "New Logic Studio s.r.o.",
@@ -26,24 +26,32 @@
     "@floating-ui/dom": "^1.6.12",
     "@hotwired/stimulus": "^3.2.2",
     "@newlogic-digital/cookieconsent-js": "^1.0.0",
+    "@newlogic-digital/naja-extensions": "^0.2.5",
+    "@newlogic-digital/stimulus-components": "^0.0.9",
+    "@newlogic-digital/swup-plugins": "^0.1.4",
     "@newlogic-digital/utils-js": "^1.1.1",
-    "@simonwep/pickr": "^1.9.1",
-    "air-datepicker": "^3.5.3",
-    "eslint": "^9.15.0",
     "naja": "^3.2.1",
-    "neostandard": "^0.11.8",
-    "stylelint-config-standard": "^36.0.1",
+    "slide-element": "^2.3.1",
     "swup": "^4.8.1",
-    "winduum": "^1.2.4"
+    "winduum": "^2.0.4",
+    "winduum-stimulus": "^2.0.6"
   },
   "devDependencies": {
-    "@newlogic-digital/core": "^2.1.2",
+    "@newlogic-digital/core": "^3.0.0-next.4",
     "@stylistic/stylelint-config": "^2.0.0",
     "@tailwindcss/container-queries": "^0.1.1",
-    "@types/grecaptcha": "^3.0.9",
+    "eslint": "^9.15.0",
+    "neostandard": "^0.11.8",
     "npm-check-updates": "^17.1.11",
+    "stylelint-config-standard": "^36.0.1",
     "vite": "^5.4.11"
   },
+  "browserslist": [
+    "> 1%",
+    "last 2 major versions",
+    "not kaios > 0",
+    "not dead"
+  ],
   "files": [
     "src"
   ],
