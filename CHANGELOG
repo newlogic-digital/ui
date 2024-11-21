@@ -1,3 +1,7 @@
+v3.7.5
+* fix: swup replace tag selector
+* fix: readme logo
+
 v3.7.4
 * feat: updated to eslint v9 and neostandard
 * feat: naja update

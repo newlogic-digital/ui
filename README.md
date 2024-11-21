@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://ui.newlogic.cz/" target="_blank" rel="noopener noreferrer">
-    <img width="180" src="https://ui.newlogic.cz/favicons/favicon-512.webp" alt="Logo" style="border-radius: 999px">
+    <img width="180" src="https://ui.newlogic.cz/favicons/favicon.svg" alt="Logo">
   </a>
 </p>
 <p align="center">
