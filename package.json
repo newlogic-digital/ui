@@ -23,26 +23,26 @@
     "npm-sort": "npm r -S example && npm r -D example"
   },
   "dependencies": {
-    "@floating-ui/dom": "^1.6.10",
+    "@floating-ui/dom": "^1.6.12",
     "@hotwired/stimulus": "^3.2.2",
-    "@newlogic-digital/cookieconsent-js": "^0.1.0",
-    "@newlogic-digital/utils-js": "^0.3.2",
+    "@newlogic-digital/cookieconsent-js": "^1.0.0",
+    "@newlogic-digital/utils-js": "^1.1.1",
     "@simonwep/pickr": "^1.9.1",
     "air-datepicker": "^3.5.3",
-    "eslint": "^9.9.0",
+    "eslint": "^9.15.0",
     "naja": "^3.2.1",
-    "neostandard": "^0.11.2",
+    "neostandard": "^0.11.8",
     "stylelint-config-standard": "^36.0.1",
-    "swup": "^4.7.0",
-    "winduum": "^1.2.1"
+    "swup": "^4.8.1",
+    "winduum": "^1.2.4"
   },
   "devDependencies": {
     "@newlogic-digital/core": "^2.1.2",
     "@stylistic/stylelint-config": "^2.0.0",
     "@tailwindcss/container-queries": "^0.1.1",
     "@types/grecaptcha": "^3.0.9",
-    "npm-check-updates": "^17.0.6",
-    "vite": "^5.4.1"
+    "npm-check-updates": "^17.1.11",
+    "vite": "^5.4.11"
   },
   "files": [
     "src"

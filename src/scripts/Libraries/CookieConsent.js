@@ -7,7 +7,9 @@ export const getCookieConsentItem = (key = 'cookieconsent-js') => localStorage.g
 export const initCookieConsent = (element = document, type = getCookieConsentItem() ?? []) => {
     element.querySelectorAll('[data-lib-cookieconsent]').forEach((element) => {
         if (type.includes(element.getAttribute('data-lib-cookieconsent'))) {
-            appendCookieConsent(element)
+            appendCookieConsent(element, {
+                ignoreAttributeName: /(type|data-lib-cookieconsent)/
+            })
         }
     })
 }

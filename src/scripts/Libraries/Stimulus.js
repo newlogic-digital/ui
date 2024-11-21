@@ -1,5 +1,25 @@
 import { Application, Controller } from '@hotwired/stimulus'
-import { initControllers, initActions, dataset } from '@newlogic-digital/utils-js'
+import { dataset } from '@newlogic-digital/utils-js'
+
+function initActions(parent, selectors) {
+    if (!parent) return
+
+    selectors.forEach(([selector, action]) => {
+        parent.querySelectorAll(selector).forEach((element) => {
+            dataset(element, 'action').add(action)
+        })
+    })
+}
+
+function initControllers(parent, selectors) {
+    if (!parent) return
+
+    selectors.forEach((selector) => {
+        [...parent.getElementsByClassName(selector)].forEach((element) => {
+            dataset(element, 'controller').add(selector)
+        })
+    })
+}
 
 function initStimulus(element, { controllers, actions } = {
     controllers: ['ui-control', 'ui-text', 'ui-check'],

@@ -4,13 +4,12 @@ import {
     initNaja,
     NajaRecaptchaExtension,
     NajaFormValidityExtension
-} from '@newlogic-digital/utils-js'
+} from '../Utils/naja.js'
+import naja from 'naja'
 import LibSwup from './Swup.js'
 
 LibStimulus.register('lib-naja', class extends Controller {
     async initialize() {
-        const naja = (await import('naja')).default
-
         naja.uiHandler.selector = '[data-naja]'
 
         await initNaja(this.element, false)
