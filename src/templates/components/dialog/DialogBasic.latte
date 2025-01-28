@@ -1,0 +1,18 @@
+<dialog class="x-dialog" data-controller="x-dialog">
+    <form class="x-dialog-content">
+        <div class="flex justify-between">
+            <h2 class="x-heading">Dialog Basic</h2>
+            <button class="x-button square ghosted accent-main" type="button" data-action="click->x-dialog#close">
+                <svg>
+                    <use href="#icon-x-mark"></use>
+                </svg>
+            </button>
+        </div>
+        <div class="x-text py-4">
+            {foreach range(1, 44) as $i}
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget efficitur metus. In bibendum nisi et dui sagittis efficitur.</p>
+            {/foreach}
+        </div>
+        <button class="x-button" type="button" data-action="click->x-dialog#close">Continue</button>
+    </form>
+</dialog>

@@ -1,0 +1,29 @@
+@import "winduum/src/components/control/props/default.css";
+@import "winduum/src/components/control/props/floating.css";
+@import "winduum/src/components/control/props/select.css";
+@import "winduum/src/components/control/props/icon.css";
+@import "winduum/src/components/control/default.css";
+@import "winduum/src/components/control/interactive.css";
+@import "winduum/src/components/control/file.css";
+@import "winduum/src/components/control/select.css";
+@import "winduum/src/components/control/icon.css";
+@import "winduum/src/components/control/floating.css";
+@import "winduum/src/components/control/invalid.css";
+
+.x-control {
+  &[data-active] label,
+  :where(input, textarea):is(:focus, [placeholder]) ~ label,
+  :where(select):is([data-placeholder]) ~ label {
+    transform: translateY(calc(var(--x-control-label-translate-y) * -1)) scale(var(--x-control-label-scale));
+    opacity: var(--x-control-label-focus-opacity, 0.5);
+  }
+
+  &:has(label):not([data-active]) select:not([data-placeholder]) {
+    font-size: 0;
+    height: inherit;
+
+    & option {
+      font-size: var(--x-control-font-size);
+    }
+  }
+}

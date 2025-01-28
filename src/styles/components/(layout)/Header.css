@@ -1,0 +1,11 @@
+:root {
+  --x-header-height: 4rem;
+  --scroll-padding-top: calc(var(--x-header-height) + 1rem);
+}
+
+.x-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-index-20);
+  height: var(--x-header-height);
+}

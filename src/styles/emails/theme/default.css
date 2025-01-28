@@ -1,0 +1,13 @@
+:root {
+  --color-primary: #83cd4f;
+  --color-primary-hover: #73b346;
+  --color-primary-foreground: #000;
+  --color-main: var(--color-main-primary);
+  --color-main-primary: #000;
+  --color-body: var(--color-body-secondary);
+  --color-body-primary: #fff;
+  --color-body-secondary: #f3f2f6;
+  --color-body-tertiary: #fcfcfd;
+  --color-light: #fff;
+  --color-dark: #000;
+}

@@ -1,0 +1,8 @@
+{
+  "title": "Example",
+  "body": [
+    {
+      "src": "components/Example.latte"
+    }
+  ]
+}

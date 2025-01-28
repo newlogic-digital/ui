@@ -1,7 +1,4 @@
-import './Libraries/+.js'
-import './Layout/+.js'
-import './Sections/+.js'
-import './Components/+.js'
-import './Ui/+.js'
-import './Utils/utilities.js'
+import './composables/stimulus.js'
+import './composables/swup.js'
+import './components/+.js'
 import.meta.glob('/src/assets/**')

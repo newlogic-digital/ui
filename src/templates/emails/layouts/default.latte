@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns:m="http://schemas.microsoft.com/office/2004/12/omml" xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Email Template</title>
+    <!--[if gte mso 9]><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {var $forceLightMode = true}
+
+    {if $forceLightMode}
+        <meta name="color-scheme" content="only light">
+        <meta name="supported-color-schemes" content="only light">
+    {else}
+        <meta name="color-scheme" content="light dark">
+        <meta name="supported-color-schemes" content="light dark">
+    {/if}
+
+    <style type="text/css" n:syntax="off">
+      @import '/src/styles/emails/main.css';
+    </style>
+</head>
+<body>
+    <table class="x-main w-full" align="center">
+        <tr>
+            <td class="p-[20px]" align="center">
+                <table class="x-main-body container">
+                    {include '../../utils/sections.latte', sections => $body}
+                </table>
+            </td>
+        </tr>
+        {include '../components/Footer.latte'}
+    </table>
+</body>
+</html>

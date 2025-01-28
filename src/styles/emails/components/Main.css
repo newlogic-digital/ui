@@ -1,0 +1,13 @@
+.x-main {
+  font-family: Roboto, Tahoma, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  background-color: var(--color-body);
+  color: var(--color-main);
+  color-scheme: light;
+  min-width: 320px;
+  box-sizing: content-box;
+}
+
+.x-main-body {
+  background-color: var(--color-body-primary);
+  border-radius: var(--radius);
+}

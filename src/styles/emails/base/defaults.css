@@ -1,0 +1,22 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-body);
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  transition: color 0.15s;
+
+  &, img {
+    text-decoration: none;
+    color: var(--color-main);
+  }
+
+  & img {
+    font-weight: 700;
+  }
+}

@@ -1,0 +1,22 @@
+.reveal {
+  opacity: 0;
+  transition-property: var(--default-transition-property);
+  transition-timing-function: var(--ease-in-out);
+  transition-duration: 0.75s;
+  will-change: transform;
+
+  @media (prefers-reduced-motion) {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media print {
+    opacity: 1;
+    transform: none;
+  }
+
+  &:is([data-in]), .no-js & {
+    opacity: 1;
+    transform: none;
+  }
+}

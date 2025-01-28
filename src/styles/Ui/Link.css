@@ -1,8 +1,0 @@
-@import "winduum/src/ui/link/default.css";
-@import "winduum/src/ui/link/interactive.css";
-@import "winduum/src/ui/link/interactive-props.css";
-
-.ui-link {
-  --ui-link-font-weight: var(--font-medium);
-  --ui-link-font-size: var(--text-sm);
-}
