@@ -7,7 +7,8 @@ const initConfig = {
     controllers: ['x-button', 'x-control', 'x-text', 'x-check', 'x-dialog'],
     actions: [
         ['.x-button', 'click->x-button#ripple'],
-        ['.x-check', 'change->x-form#validateForm'],
+        ['.x-check', 'change->x-form#validateField'],
+        ['.x-switch', 'change->x-form#validateField'],
         ['[data-invoke-action]:not([data-naja], [data-action*="invoke#action"])', 'invoke#action']
     ]
 }

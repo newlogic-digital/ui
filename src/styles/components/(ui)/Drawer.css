@@ -4,8 +4,8 @@
 @import "winduum/src/components/drawer/content.css";
 
 .x-drawer {
-  --x-drawer-content-width: min(calc(100vw - 2rem), 22rem);
-  --x-drawer-content-height: 100dvh;
+  --x-drawer-content-inline-size: min(calc(100vw - 2rem), 22rem);
+  --x-drawer-content-block-size: 100dvh;
 }
 
 .x-drawer-content {

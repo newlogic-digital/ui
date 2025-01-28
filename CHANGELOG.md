@@ -1,8 +1,14 @@
 ## v4.0.0
+https://ui.newlogic.cz/blog/newlogic-ui-4.x.html
+* feat(bc): updated to winduum v2
 * feat(bc): added winduum-stimulus
-* feat(bc): externalize stimulus controllers and modules
+* feat(bc): externalize stimulus controllers, modules and composibles
 * feat(bc): new file structure
 * feat(bc): updated to eslint v9, added neostandard
+* feat(bc): added support for tailwindcss v4
+* feat(bc): removed air-datepicker and @simonwep/pickr
+* feat: added support for view transition API
+* feat: updated to vite newlogic core v3 and vite v6
 
 ## v3.7.5
 * feat: deps update

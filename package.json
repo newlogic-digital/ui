@@ -1,6 +1,6 @@
 {
   "name": "@newlogic-digital/ui",
-  "version": "4.0.0-beta.2",
+  "version": "4.0.0",
   "type": "module",
   "main": "vite.config.js",
   "author": "New Logic Studio s.r.o.",
@@ -23,28 +23,29 @@
     "npm-sort": "npm r -S example && npm r -D example"
   },
   "dependencies": {
-    "@floating-ui/dom": "^1.6.12",
+    "@floating-ui/dom": "^1.6.13",
     "@hotwired/stimulus": "^3.2.2",
     "@newlogic-digital/cookieconsent-js": "^1.0.0",
-    "@newlogic-digital/naja-extensions": "^0.2.5",
-    "@newlogic-digital/stimulus-components": "^0.0.9",
-    "@newlogic-digital/swup-plugins": "^0.1.4",
+    "@newlogic-digital/naja-extensions": "^1.0.0",
+    "@newlogic-digital/stimulus-components": "^1.0.0",
+    "@newlogic-digital/swup-plugins": "^1.0.0",
     "@newlogic-digital/utils-js": "^1.1.1",
     "naja": "^3.2.1",
     "slide-element": "^2.3.1",
     "swup": "^4.8.1",
-    "winduum": "^2.0.4",
-    "winduum-stimulus": "^2.0.6"
+    "winduum": "^2.1.0",
+    "winduum-stimulus": "^2.0.9"
   },
   "devDependencies": {
-    "@newlogic-digital/core": "^3.0.0-next.4",
+    "@newlogic-digital/core": "^3.0.0",
     "@stylistic/stylelint-config": "^2.0.0",
     "@tailwindcss/container-queries": "^0.1.1",
-    "eslint": "^9.15.0",
-    "neostandard": "^0.11.8",
-    "npm-check-updates": "^17.1.11",
-    "stylelint-config-standard": "^36.0.1",
-    "vite": "^5.4.11"
+    "@vituum/vite-plugin-tailwindcss": "^1.2.0",
+    "eslint": "^9.19.0",
+    "neostandard": "^0.12.0",
+    "npm-check-updates": "^17.1.14",
+    "stylelint-config-standard": "^37.0.0",
+    "tailwindcss": "^3.4.17"
   },
   "browserslist": [
     "> 1%",

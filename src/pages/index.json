@@ -1,8 +1,8 @@
 {
-  "title": "Playground",
+  "title": "Example",
   "body": [
     {
-      "src": "components/Playground.latte"
+      "src": "components/Example.latte"
     }
   ]
 }

@@ -4,7 +4,7 @@
 @import "./base/+.css";
 @import "./theme/main.css";
 @import "./components/+.css" layer(components);
-@import "./utils/+.css";
+@import "./utils/+.css" layer(components);
 @import "tailwindcss/components.css";
 @import "tailwindcss/utilities.css";
 @import "tailwindcss/variants.css";

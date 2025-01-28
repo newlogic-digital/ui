@@ -1,26 +1,24 @@
-import { default as useNaja } from 'naja'
+import naja from 'naja'
 import {
-    initNaja,
     NajaCoreExtension,
     NajaInvokeExtension,
     NajaCheckValidityExtension
 } from '@newlogic-digital/naja-extensions'
 import { initCookieConsent } from '@newlogic-digital/cookieconsent-js'
 import { initStimulus } from './stimulus.js'
-import useSwup from './swup.js'
+import { useSwup } from './swup.js'
 
-useNaja.registerExtension(NajaCoreExtension())
-useNaja.registerExtension(NajaInvokeExtension())
-useNaja.registerExtension(NajaCheckValidityExtension())
+naja.registerExtension(NajaCoreExtension())
+naja.registerExtension(NajaInvokeExtension())
+naja.registerExtension(NajaCheckValidityExtension())
 
-useNaja.snippetHandler.addEventListener('afterUpdate', ({ detail }) => {
+naja.snippetHandler.addEventListener('afterUpdate', ({ detail }) => {
     initStimulus(detail.snippet)
-    initNaja(detail.snippet)
     initCookieConsent(detail.snippet)
 
     useSwup.cache.clear()
 })
 
-useNaja.initialize()
-
-export { useNaja, initNaja }
+naja.initialize({
+    history: 'replace'
+})

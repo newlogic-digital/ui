@@ -1,6 +1,6 @@
 <header class="x-header grid grid-cols-container" data-controller="x-header">
-    <nav class="flex py-4 gap-4">
-        <a n:foreach="$nav as $page" class="button muted" href="{$page->url}" title="{$page->name}">
+    <nav class="flex justify-center py-4 gap-4">
+        <a n:foreach="$nav as $page" class="x-link" href="{$page->url}" title="{$page->name}">
             {$page->name}
         </a>
     </nav>
