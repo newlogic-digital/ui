@@ -1,4 +1,4 @@
-.no-scrollbar {
+@utility no-scrollbar {
   scrollbar-width: none;
 
   &::-webkit-scrollbar {
@@ -6,7 +6,7 @@
   }
 }
 
-.scrollbar {
+@utility scrollbar {
   scrollbar-width: thin;
   scrollbar-color: var(--color-primary) var(--color-body-primary);
   overscroll-behavior: contain;

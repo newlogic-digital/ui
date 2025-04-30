@@ -1,1 +1,6 @@
-@import "winduum/src/components/progress/index.css";
+@import "winduum/src/components/progress/props/default.css" layer(theme);
+@import "winduum/src/components/progress/keyframes/default.css";
+@import "winduum/src/components/progress/default.css" layer(utilities);
+@import "winduum/src/components/progress/meter.css" layer(utilities);
+@import "winduum/src/components/progress/sm.css" layer(utilities);
+@import "winduum/src/components/progress/lg.css" layer(utilities);

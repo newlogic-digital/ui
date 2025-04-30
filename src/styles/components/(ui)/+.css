@@ -1,5 +1,6 @@
 @import "./Badge.css";
 @import "./Button.css";
+@import "./Carousel.css";
 @import "./Check.css";
 @import "./Compare.css";
 @import "./Control.css";
@@ -19,5 +20,6 @@
 @import "./Switch.css";
 @import "./Text.css";
 @import "./Title.css";
+@import "./Toast.css";
 @import "./Toaster.css";
 @import "./dialog/+.css";

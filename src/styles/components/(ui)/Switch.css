@@ -1,1 +1,4 @@
-@import "winduum/src/components/switch/index.css";
+@import "winduum/src/components/switch/props/default.css" layer(theme);
+@import "winduum/src/components/switch/default.css" layer(utilities);
+@import "winduum/src/components/switch/interactive.css" layer(utilities);
+@import "winduum/src/components/switch/invalid.css" layer(utilities);

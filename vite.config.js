@@ -3,6 +3,10 @@ import core from '@newlogic-digital/core'
 
 export default defineConfig({
     plugins: [
-        core()
+        core({
+            css: {
+                transformer: 'lightningcss'
+            }
+        })
     ]
 })

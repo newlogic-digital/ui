@@ -1,6 +1,6 @@
 .idea
 .DS_Store
-.env
+.env.local
 /node_modules/
 /public/assets/
 /public/**/*.html

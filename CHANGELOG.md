@@ -1,3 +1,33 @@
+## v4.1.0
+* feat(bc): updated to tailwindcss v4.1
+* feat(bc): changed .env in gitignore to .env.local
+* feat: moved x-carousel to winduum-stimulus
+* feat: updated to winduum v2.2
+* feat: updated deps
+
+## v4.0.7
+* feat: added carousel
+
+## v4.0.6
+* feat: deps update
+* feat: gitlab-ci updated to krypton-php8.4
+
+## v4.0.5
+* feat: deps update
+* feat: remove no-js
+
+## v4.0.4
+* fix: stimulus import
+
+## v4.0.3
+* fix: naja import
+
+## v4.0.2
+* fix: winduum plugin
+
+## v4.0.1
+* fix: utils recursive import
+
 ## v4.0.0
 https://ui.newlogic.cz/blog/newlogic-ui-4.x.html
 * feat(bc): updated to winduum v2

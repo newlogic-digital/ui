@@ -1,1 +1,4 @@
-@import "winduum/src/components/range/index.css";
+@import "winduum/src/components/range/props/default.css" layer(theme);
+@import "winduum/src/components/range/default.css" layer(utilities);
+@import "winduum/src/components/range/multi.css" layer(utilities);
+@import "winduum/src/components/range/vertical.css" layer(utilities);

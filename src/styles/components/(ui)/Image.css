@@ -1,1 +1,2 @@
-@import "winduum/src/components/image/index.css";
+@import "winduum/src/components/image/default.css" layer(utilities);
+@import "winduum/src/components/image/avatar.css" layer(utilities);

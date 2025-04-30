@@ -1,1 +1,2 @@
-@import "winduum/src/components/info/index.css";
+@import "winduum/src/components/info/props/default.css" layer(theme);
+@import "winduum/src/components/info/default.css" layer(utilities);

@@ -16,9 +16,18 @@
         <meta name="supported-color-schemes" content="light dark">
     {/if}
 
-    <style type="text/css" n:syntax="off">
-      @import '/src/styles/emails/main.css';
-    </style>
+    <link rel="stylesheet" href="/src/styles/emails/main.css">
+
+    <script type="module" n:if="VITE_SERVER">
+        if (import.meta.hot && window.location.search === '?send') {
+            import.meta.hot.send('my:send', {
+                filename: window.location.href,
+                content:
+                    new XMLSerializer().serializeToString(document.doctype) +
+                    document.documentElement.outerHTML.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, "")
+            })
+        }
+    </script>
 </head>
 <body>
     <table class="x-main w-full" align="center">

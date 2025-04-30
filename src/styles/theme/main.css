@@ -1,12 +1,6 @@
-@import "winduum/src/theme/config/font.css";
-@import "winduum/src/theme/config/mask.css";
-@import "winduum/src/theme/config/radius.css";
-@import "winduum/src/theme/config/spacing.css";
-@import "winduum/src/theme/config/transition.css";
-@import "winduum/src/theme/config/z.css";
 @import "./dark.css";
 
-:root, :host {
+@theme {
   --default-font-family: "Poppins", sans-serif;
   --default-color-space: srgb;
   --default-color-scheme: inherit;
@@ -32,4 +26,5 @@
   --color-error: #dc2626;
   --color-warning: #eab308;
   --color-info: #0ea5e9;
+  --container-width: 80rem;
 }

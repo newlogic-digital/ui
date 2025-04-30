@@ -1,2 +1,2 @@
-@import "winduum/src/components/link/default.css";
-@import "winduum/src/components/link/interactive.css";
+@import "winduum/src/components/link/default.css" layer(utilities);
+@import "winduum/src/components/link/interactive.css" layer(utilities);

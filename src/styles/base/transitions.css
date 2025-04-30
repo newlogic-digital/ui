@@ -1,6 +1,6 @@
 @import "winduum/src/base/transitions.css";
 
-.view-transition-main {
+@utility view-transition-main {
   html.swup-enabled & {
     transition: opacity var(--view-transition-main-duration);
     opacity: 1;

@@ -1,7 +1,7 @@
 import Swup from 'swup'
 import { SwupCorePlugin } from '@newlogic-digital/swup-plugins'
 import initAfter from '../utils/initAfter.js'
-import { useController } from 'winduum-stimulus'
+import { useController } from './stimulus.js'
 
 const useSwup = new Swup({
     containers: ['.x-main', '.x-header', '.x-toaster'],

@@ -1,8 +1,8 @@
-@import "winduum/src/components/badge/props/default.css";
-@import "winduum/src/components/badge/default.css";
-@import "winduum/src/components/badge/sm.css";
-@import "winduum/src/components/badge/lg.css";
-@import "winduum/src/components/badge/bordered.css";
-@import "winduum/src/components/badge/muted.css";
-@import "winduum/src/components/badge/square.css";
-@import "winduum/src/components/badge/circle.css";
+@import "winduum/src/components/badge/props/default.css" layer(theme);
+@import "winduum/src/components/badge/default.css" layer(utilities);
+@import "winduum/src/components/badge/sm.css" layer(utilities);
+@import "winduum/src/components/badge/lg.css" layer(utilities);
+@import "winduum/src/components/badge/bordered.css" layer(utilities);
+@import "winduum/src/components/badge/muted.css" layer(utilities);
+@import "winduum/src/components/badge/square.css" layer(utilities);
+@import "winduum/src/components/badge/circle.css" layer(utilities);

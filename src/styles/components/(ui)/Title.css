@@ -1,4 +1,14 @@
-@import "winduum/src/components/title/props/default.css";
-@import "winduum/src/components/title/default.css";
-@import "winduum/src/components/title/sm.css";
-@import "winduum/src/components/title/lg.css";
+@import "winduum/src/components/title/props/default.css" layer(theme);
+@import "winduum/src/components/title/default.css" layer(utilities);
+
+@utility sm {
+  .x-title:is(&) {
+    --x-title-font-size: var(--text-xs);
+  }
+}
+
+@utility lg {
+  .x-title:is(&) {
+    --x-title-font-size: var(--text-base);
+  }
+}

@@ -1,2 +1,2 @@
-@import "winduum/src/components/toaster/index.css";
-@import "winduum/src/components/toast/index.css";
+@import "winduum/src/components/toaster/props/default.css" layer(theme);
+@import "winduum/src/components/toaster/default.css" layer(utilities);

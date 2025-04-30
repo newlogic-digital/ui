@@ -1,4 +1,5 @@
 import './Button.js'
+import './Carousel.js'
 import './Compare.js'
 import './Control.js'
 import './ControlSelect.js'

@@ -1,14 +1,16 @@
-@import "winduum/src/components/drawer/props/default.css";
-@import "winduum/src/components/drawer/props/content.css";
-@import "winduum/src/components/drawer/default.css";
-@import "winduum/src/components/drawer/content.css";
+@import "winduum/src/components/drawer/props/default.css" layer(theme);
+@import "winduum/src/components/drawer/props/content.css" layer(theme);
+@import "winduum/src/components/drawer/default.css" layer(utilities);
+@import "winduum/src/components/drawer/content.css" layer(utilities);
 
-.x-drawer {
-  --x-drawer-content-inline-size: min(calc(100vw - 2rem), 22rem);
-  --x-drawer-content-block-size: 100dvh;
-}
+@layer utilities {
+  .x-drawer {
+    --x-drawer-content-inline-size: min(calc(100vw - 2rem), 22rem);
+    --x-drawer-content-block-size: 100dvh;
+  }
 
-.x-drawer-content {
-  overflow-y: auto;
-  overscroll-behavior: contain;
+  .x-drawer-content {
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
 }

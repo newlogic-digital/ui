@@ -1,4 +1,4 @@
-.container {
+@utility container {
   min-width: var(--container);
   width: var(--container);
 
@@ -8,22 +8,22 @@
   }
 }
 
-.underline {
+@utility underline {
   text-decoration: underline;
 }
 
-.border-r {
+@utility border-r {
   border-right: 1px solid;
 }
 
-.border-l {
+@utility border-l {
   border-left: 1px solid;
 }
 
-.border-b {
+@utility border-b {
   border-bottom: 1px solid;
 }
 
-.border-t {
+@utility border-t {
   border-top: 1px solid;
 }

@@ -1,1 +1,3 @@
-@import "winduum/src/components/popover/index.css";
+@import "winduum/src/components/popover/props/content.css" layer(theme);
+@import "winduum/src/components/popover/default.css" layer(utilities);
+@import "winduum/src/components/popover/content.css" layer(utilities);

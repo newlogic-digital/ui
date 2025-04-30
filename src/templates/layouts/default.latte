@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en">
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <title>{$title}</title>
@@ -40,12 +40,12 @@
 
         <script>
             (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) && document.documentElement.classList.add('dark')
-            document.documentElement.classList.remove('no-js')
         </script>
 
         <script src="{$assets->js->main|asset}" type="module"></script>
 
         <link rel="icon" type="image/svg+xml" href="/favicons/favicon.svg">
+        <link rel="icon" type="image/webp" href="/favicons/favicon-512.webp">
         <link rel="apple-touch-icon" type="image/webp" href="/favicons/favicon-512.webp">
         <link rel="manifest" href="/favicons/manifest.webmanifest">
     </head>

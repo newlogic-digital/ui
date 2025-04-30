@@ -1,10 +1,15 @@
-@import "winduum/src/base/reset.css";
-@import "tailwindcss/base.css";
-@import "winduum/tailwindcss/base/defaults.css";
-@import "./base/+.css";
-@import "./theme/main.css";
-@import "./components/+.css" layer(components);
-@import "./utils/+.css" layer(components);
-@import "tailwindcss/components.css";
-@import "tailwindcss/utilities.css";
-@import "tailwindcss/variants.css";
+@import "tailwindcss/theme.css" layer(theme);
+@import "winduum/tailwindcss/theme/config/index.css" layer(theme);
+@import "./theme/main.css" layer(theme);
+@import "winduum/src/base/reset.css" layer(base);
+@import "./base/defaults.css" layer(base);
+@import "./components/+.css";
+@import "./utils/+.css";
+@import "tailwindcss/utilities" layer(utilities);
+@import "winduum/tailwindcss/variants/dark.css";
+@import "./base/breakpoints.css";
+@import "./base/keyframes.css";
+@import "./base/transitions.css";
+
+@source not "../templates/emails";
+@source not "../views/emails";

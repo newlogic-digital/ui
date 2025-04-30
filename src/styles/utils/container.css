@@ -1,5 +1,0 @@
-@import "winduum/src/utilities/container/index.css";
-
-:root, :host {
-  --container-width: 80rem;
-}

@@ -1,9 +1,8 @@
-@import "tailwindcss/base.css";
-@import "tailwindcss/components.css";
-@import "tailwindcss/utilities.css";
-@import "tailwindcss/variants.css";
+@import "tailwindcss/utilities" source(none);
 @import "./base/+.css";
 @import "./theme/config.css";
 @import "./theme/default.css";
 @import "./components/+.css";
 @import "./utils/+.css";
+
+@source "../../templates/emails";

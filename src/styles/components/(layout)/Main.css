@@ -1,20 +1,24 @@
-html {
-  scroll-padding-top: var(--scroll-padding-top);
+@layer base {
+  html {
+    scroll-padding-top: var(--scroll-padding-top);
 
-  @media (min-width: 60em) and (max-width: 75.9375rem) {
-    font-size: 87.5%;
+    @media (min-width: 60em) and (max-width: 75.9375rem) {
+      font-size: 87.5%;
+    }
+  }
+
+  body {
+    background-color: var(--color-body);
+    display: flex;
+    flex-direction: column;
+    overflow-x: clip;
   }
 }
 
-body {
-  background-color: var(--color-body);
-  display: flex;
-  flex-direction: column;
-  overflow-x: clip;
-}
-
-.x-main {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
+@layer utilities {
+  .x-main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
 }

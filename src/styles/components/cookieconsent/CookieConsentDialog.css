@@ -1,16 +1,18 @@
-.x-cookieconsent-dialog {
-  .x-dialog-content {
-    max-width: 32rem;
-  }
-
-  &.center {
+@layer utilities {
+  .x-cookieconsent-dialog {
     .x-dialog-content {
-      max-width: 26rem;
-      text-align: center;
+      max-width: 32rem;
+    }
 
-      & .x-image {
-        margin-left: auto;
-        margin-right: auto;
+    &.center {
+      .x-dialog-content {
+        max-width: 26rem;
+        text-align: center;
+
+        & .x-image {
+          margin-left: auto;
+          margin-right: auto;
+        }
       }
     }
   }
