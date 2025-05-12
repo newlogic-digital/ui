@@ -1,3 +1,11 @@
+## v4.2.0
+* feat(bc): removed neostandard in favor of recommended rules
+* feat(tailwindcss): added hocus variant
+* fix(tailwindcss): matching winduum files via @source
+* feat: removed some stylelint rules
+* feat: added examples directory
+* feat: added autocomplete popover
+
 ## v4.1.0
 * feat(bc): updated to tailwindcss v4.1
 * feat(bc): changed .env in gitignore to .env.local

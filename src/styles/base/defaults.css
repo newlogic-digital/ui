@@ -27,10 +27,16 @@
 }
 
 :where([type="number"]) {
-  -moz-appearance: textfield;
+  appearance: textfield;
 
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
-    -webkit-appearance: none;
+    appearance: none;
+  }
+}
+
+:where([type="search"]) {
+  &::-webkit-search-cancel-button {
+    appearance: none;
   }
 }

@@ -3,7 +3,8 @@
   line-height: 24px;
   mso-line-height-rule: exactly;
 
-  b, strong {
+  b,
+  strong {
     font-weight: 700;
   }
 

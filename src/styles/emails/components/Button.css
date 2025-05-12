@@ -9,7 +9,8 @@
     font-size: 14px;
     font-weight: 700;
 
-    &, span {
+    &,
+    span {
       text-decoration: none;
       color: var(--color-primary-foreground);
     }

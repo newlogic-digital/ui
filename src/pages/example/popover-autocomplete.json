@@ -1,0 +1,8 @@
+{
+  "title": "Example Popover Autocomplete",
+  "body": [
+    {
+      "src": "components/(example)/PopoverAutocomplete.latte"
+    }
+  ]
+}

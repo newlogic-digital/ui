@@ -11,7 +11,8 @@ img {
 a {
   transition: color 0.15s;
 
-  &, img {
+  &,
+  img {
     text-decoration: none;
     color: var(--color-main);
   }

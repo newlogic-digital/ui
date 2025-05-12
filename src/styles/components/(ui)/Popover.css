@@ -1,3 +1,13 @@
 @import "winduum/src/components/popover/props/content.css" layer(theme);
 @import "winduum/src/components/popover/default.css" layer(utilities);
 @import "winduum/src/components/popover/content.css" layer(utilities);
+
+@utility closed {
+  .x-popover-content:is(&) {
+    --tw-scale-x: var(--x-popover-content-scale-x);
+    --tw-scale-y: var(--x-popover-content-scale-y);
+
+    opacity: 0;
+    visibility: hidden;
+  }
+}

@@ -10,6 +10,8 @@
 @import "./base/breakpoints.css";
 @import "./base/keyframes.css";
 @import "./base/transitions.css";
+@import "./base/variants.css";
 
+@source "../../node_modules/winduum/src";
 @source not "../templates/emails";
 @source not "../views/emails";

@@ -1,6 +1,6 @@
 {
   "name": "@newlogic-digital/ui",
-  "version": "4.1.0",
+  "version": "4.2.0",
   "type": "module",
   "main": "vite.config.js",
   "author": "New Logic Studio s.r.o.",
@@ -23,24 +23,25 @@
     "npm-sort": "npm r -S example && npm r -D example"
   },
   "dependencies": {
-    "@floating-ui/dom": "^1.6.13",
+    "@floating-ui/dom": "^1.7.0",
     "@hotwired/stimulus": "^3.2.2",
     "@newlogic-digital/cookieconsent-js": "^1.0.0",
     "@newlogic-digital/naja-extensions": "^1.0.3",
-    "@newlogic-digital/stimulus-components": "^1.0.0",
+    "@newlogic-digital/stimulus-components": "^1.1.0",
     "@newlogic-digital/swup-plugins": "^1.0.0",
     "@newlogic-digital/utils-js": "^1.1.4",
     "naja": "^3.2.1",
     "slide-element": "^2.3.1",
     "swup": "^4.8.2",
-    "winduum": "^2.2.0",
+    "winduum": "^2.2.1",
     "winduum-stimulus": "^2.0.11"
   },
   "devDependencies": {
-    "@newlogic-digital/core": "^3.0.1",
+    "@eslint/js": "^9.26.0",
+    "@newlogic-digital/core": "^3.1.0",
+    "@stylistic/eslint-plugin": "^4.2.0",
     "@stylistic/stylelint-config": "^2.0.0",
-    "eslint": "^9.25.1",
-    "neostandard": "^0.12.1",
+    "eslint": "^9.26.0",
     "npm-check-updates": "^18.0.1",
     "stylelint-config-standard": "^38.0.0"
   },

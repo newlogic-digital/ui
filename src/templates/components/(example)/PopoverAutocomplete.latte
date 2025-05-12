@@ -1,0 +1,27 @@
+<div class="x-popover trigger-focus group mx-auto w-80" data-controller="x-popover">
+    <div class="x-control w-full">
+        <input
+            data-action="input->x-popover#autocomplete"
+            data-x-popover-target="autocomplete"
+            type="search"
+            placeholder="Vyhledávání ..."
+            autocomplete="off"
+            role="combobox"
+            aria-autocomplete="list"
+            aria-controls="popoverContent"
+            aria-haspopup="listbox"
+            aria-expanded="true"
+            value="Volba"
+        >
+    </div>
+    <div
+        class="x-popover-content center flex flex-col shadow dark:bg-body-secondary mt-2 p-2 gap-2 w-full empty:closed group-not-has-aria-expanded:closed"
+        data-x-popover-target="content"
+        role="listbox"
+        id="popoverContent"
+    >
+        <button id="option-1" class="x-button ghosted justify-start" role="option" data-action="click->x-popover#selectDescendant">Volba 1</button>
+        <button id="option-2" class="x-button ghosted justify-start" role="option" data-action="click->x-popover#selectDescendant">Volba 2</button>
+        <button id="option-3" class="x-button ghosted justify-start" role="option" data-action="click->x-popover#selectDescendant">Volba 3</button>
+    </div>
+</div>
